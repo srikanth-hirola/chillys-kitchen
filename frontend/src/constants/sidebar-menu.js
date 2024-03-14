@@ -54,17 +54,45 @@ const sidebar_menu = [
     {
       id: 4,
       icon: UserIcon,
+      path: '/admin-blogs',
+      title: 'Blogs',
+      submenu: [
+        {
+          id: 21,
+         icon: ShippingIcon,
+          path: '/admin-blogs',
+          title: 'All Blogs',
+        },
+        {
+          id: 22,
+         icon: ShippingIcon,
+          path: '/add-blogs',
+          title: 'Add Blog',
+        },
+        {
+          id: 23,
+         icon: ShippingIcon,
+          path: '/admin-blogs/:edit',
+          title: 'Edit Blog',
+        },
+        
+      ],
+  },
+    {
+      id: 5,
+      icon: UserIcon,
       path: '/catering',
       title: 'Catering',
   },
+
     {
-        id: 5,
+        id: 6,
         icon: UserIcon,
         path: '/profile',
         title: 'My account',
     },
     {
-        id: 5,
+        id: 7,
         icon: UserIcon,
         path: '/Login',
         title: 'Login',
