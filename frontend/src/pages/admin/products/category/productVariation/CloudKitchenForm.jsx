@@ -14,10 +14,13 @@ function CloudKitchen({ onFinish, productData, setProductData }) {
     const [images, setImages] = useState([]);
 
     console.log(productData, "produEdit")
+    const [multipleImagesEnabled, setMultipleImagesEnabled] = useState(false);
 
 
     const { handleInputChange, handleAddInput, handleRemoveInput, handleVariationsToggle, handleAddVariation, handleRemoveVariation, handleProductChange, handleProductNumberChange, handleSubmitProductData, handleMainImageChange, handleImageChange, handleVarientImageChange, handleVarientInputChange, handleVarientNumberInputChange } = useProductHandler({ productData, setProductData, variations, setVariations, setMainImage, setImages });
-
+    const handleMultipleImagesToggle = (checked) => {
+        setMultipleImagesEnabled(checked);
+    };
 
     return (
         <>
@@ -29,7 +32,7 @@ function CloudKitchen({ onFinish, productData, setProductData }) {
             >
                 {/* Main Product Information */}
                 <Form.Item
-                    label="Name"
+                    label="Product Name"
                     name="name"
                     rules={[{ required: true, message: 'Please input the product name!' }]}
                 >
@@ -69,19 +72,26 @@ function CloudKitchen({ onFinish, productData, setProductData }) {
 
                     </div>
                 </Form.Item>
-                <Form.Item
-                    label="Multiple Images"
-                    name="image"
-                >
-                    <input
-                        type="file"
-                        name=""
-                        id="upload"
-                        className="hidden"
-                        multiple
-                        onChange={handleImageChange}
-                    />
+                <Form.Item>
+                    <Switch checked={multipleImagesEnabled} onChange={handleMultipleImagesToggle} />
+                    <span style={{ marginLeft: '8px' }}>Multiple Images</span>
                 </Form.Item>
+
+                {multipleImagesEnabled && (
+                    <Form.Item
+                        label="Multiple Images"
+                        name="image"
+                    >
+                        <input
+                            type="file"
+                            name=""
+                            id="upload"
+                            className="hidden"
+                            multiple
+                            onChange={handleImageChange}
+                        />
+                    </Form.Item>
+                )}
                 <Form.Item
                     label="Original Price"
                     name="originalPrice"
@@ -130,7 +140,7 @@ function CloudKitchen({ onFinish, productData, setProductData }) {
                         </div>
                     ))}
                     <Button type="dashed" onClick={() => handleAddInput({ inputs, setInputs })} style={{ marginBottom: '8px' }}>
-                        Add Input
+                        Add Specifications
                     </Button>
                 </Form.Item>
 
@@ -139,87 +149,90 @@ function CloudKitchen({ onFinish, productData, setProductData }) {
                     <Switch checked={variationsEnabled} onChange={(checked) => handleVariationsToggle({ checked, setVariationsEnabled })} />
                     <span style={{ marginLeft: '8px' }}>Variations</span>
                 </Form.Item>
-                {variationsEnabled && (
-                    <>
-                        {variations.map((variation, index) => (
-                            <div key={index}>
-                                <h4>Variation {index + 1}</h4>
-                                <Form.Item
-                                    label="Name"
-                                    name={`variations[${index}].imageColor`}
-                                    rules={[{ required: true, message: 'Please input the variation name!' }]}
-                                >
-                                    <Input value={variation?.imageColor} onChange={(e) =>
-                                        handleVarientInputChange(index, 'imageColor', e.target.value)
-                                    } />
-                                </Form.Item>
-                                <Form.Item
-                                    label="Original Price"
-                                    name={`variations[${index}].originalPrice`}
-                                    rules={[{ required: true, message: 'Please input the variation original price!' }]}
-                                >
-                                    <InputNumber type="number" value={variation?.originalPrice} onChange={(e) =>
-                                        handleVarientNumberInputChange(e, index, 'originalPrice',)
-                                    } />
-                                </Form.Item>
-                                <Form.Item
-                                    label="Discount Price"
-                                    name={`variations[${index}].discountPrice`}
-                                    rules={[{ required: true, message: 'Please input the variation discount price!' }]}
-                                >
-                                    <InputNumber type="number" value={variation?.discountPrice} onChange={(e) =>
-                                        handleVarientNumberInputChange(e, index, 'discountPrice')
-                                    } />
-                                </Form.Item>
-                                <Form.Item
-                                    label="Stock"
-                                    name={`variations[${index}].stock`}
-                                    rules={[{ required: true, message: 'Please input the variation stock!' }]}
-                                >
-                                    <InputNumber value={variation?.stock} onChange={(e) =>
-                                        handleVarientNumberInputChange(e, index, 'stock')
-                                    } />
-                                </Form.Item>
-                                <Form.Item
-                                    label="Variation Sku Code"
-                                    name="variationskuCode"
-                                    rules={[{ required: true, message: 'Please enter sku code' }]}
-                                >
-                                    <Input value={variation?.SKU} onChange={(e) =>
-                                        handleVarientInputChange(index, 'SKU', e.target.value)
-                                    } />
-                                </Form.Item>
-                                <Form.Item
-                                    label="Image"
-                                    name={`variations[${index}].image`}
-                                >
-                                    <input
-                                        type="file"
-                                        accept="image/*"
-                                        className='mt-1'
-                                        onChange={(e) => handleVarientImageChange(index, e)}
-                                    />
-                                    {variation?.image?.url && (
-                                        <>
-                                            <img
-                                                className="mt-4 mb-3"
-                                                src={variation?.image?.url}
-                                                alt={`Color ${index + 1}`}
-                                                style={{ width: '100px', height: '100px' }}
-                                            />
-                                        </>
-                                    )}
-                                </Form.Item>
-                                <Button type="danger" icon={<MinusCircleOutlined />} onClick={() => handleRemoveVariation(index)}>
-                                    Remove Variation
-                                </Button>
-                            </div>
-                        ))}
-                        <Button type="dashed" onClick={handleAddVariation} style={{ marginBottom: '8px' }}>
-                            Add Variation
-                        </Button>
-                    </>
-                )}
+                {
+                    variationsEnabled && (
+                        <>
+                            {variations.map((variation, index) => (
+                                <div key={index}>
+                                    <h4>Variation {index + 1}</h4>
+                                    <Form.Item
+                                        label="Name"
+                                        name={`variations[${index}].imageColor`}
+                                        rules={[{ required: true, message: 'Please input the variation name!' }]}
+                                    >
+                                        <Input value={variation?.imageColor} onChange={(e) =>
+                                            handleVarientInputChange(index, 'imageColor', e.target.value)
+                                        } />
+                                    </Form.Item>
+                                    <Form.Item
+                                        label="Original Price"
+                                        name={`variations[${index}].originalPrice`}
+                                        rules={[{ required: true, message: 'Please input the variation original price!' }]}
+                                    >
+                                        <InputNumber type="number" value={variation?.originalPrice} onChange={(e) =>
+                                            handleVarientNumberInputChange(e, index, 'originalPrice',)
+                                        } />
+                                    </Form.Item>
+                                    <Form.Item
+                                        label="Discount Price"
+                                        name={`variations[${index}].discountPrice`}
+                                        rules={[{ required: true, message: 'Please input the variation discount price!' }]}
+                                    >
+                                        <InputNumber type="number" value={variation?.discountPrice} onChange={(e) =>
+                                            handleVarientNumberInputChange(e, index, 'discountPrice')
+                                        } />
+                                    </Form.Item>
+                                    <Form.Item
+                                        label="Stock"
+                                        name={`variations[${index}].stock`}
+                                        rules={[{ required: true, message: 'Please input the variation stock!' }]}
+                                    >
+                                        <InputNumber value={variation?.stock} onChange={(e) =>
+                                            handleVarientNumberInputChange(e, index, 'stock')
+                                        } />
+                                    </Form.Item>
+                                    <Form.Item
+                                        label="Variation Sku Code"
+                                        name="variationskuCode"
+                                        rules={[{ required: true, message: 'Please enter sku code' }]}
+                                    >
+                                        <Input value={variation?.SKU} onChange={(e) =>
+                                            handleVarientInputChange(index, 'SKU', e.target.value)
+                                        } />
+                                    </Form.Item>
+                                    <Form.Item
+                                        label="Image"
+                                        name={`variations[${index}].image`}
+                                    >
+                                        <input
+                                            type="file"
+                                            accept="image/*"
+                                            className='mt-1'
+                                            onChange={(e) => handleVarientImageChange(index, e)}
+                                        />
+                                        {variation?.image?.url && (
+                                            <>
+                                                <img
+                                                    className="mt-4 mb-3"
+                                                    src={variation?.image?.url}
+                                                    alt={`Color ${index + 1}`}
+                                                    style={{ width: '100px', height: '100px' }}
+                                                />
+                                            </>
+                                        )}
+                                    </Form.Item>
+                                    <Button type="danger" icon={<MinusCircleOutlined />} onClick={() => handleRemoveVariation(index)}>
+                                        Remove Variation
+                                    </Button>
+                                </div >
+                            ))
+                            }
+                            <Button type="dashed" onClick={handleAddVariation} style={{ marginBottom: '8px' }}>
+                                Add Variation
+                            </Button>
+                        </>
+                    )
+                }
                 {/* Additional Fields */}
 
 
@@ -284,7 +297,7 @@ function CloudKitchen({ onFinish, productData, setProductData }) {
                         Add Product
                     </Button>
                 </Form.Item>
-            </Form>
+            </Form >
         </>
     );
 }

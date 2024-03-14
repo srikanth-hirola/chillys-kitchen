@@ -11,6 +11,10 @@ function CloudKitchen({ onFinish, productData, setProductData }) {
     const [inputs, setInputs] = useState([{ key: '', value: '' }]);
     const [variations, setVariations] = useState([{ SKU: "", imageColor: '', originalPrice: null, stock: null, discountPrice: null, image: { public_id: '', url: '' } }]);
     const [variationsEnabled, setVariationsEnabled] = useState(false);
+    const [multipleImagesEnabled, setMultipleImagesEnabled] = useState(false);
+    const handleMultipleImagesToggle = (checked) => {
+        setMultipleImagesEnabled(checked);
+    };
     const [mainImage, setMainImage] = useState('');
     const [images, setImages] = useState([]);
 
@@ -26,7 +30,7 @@ function CloudKitchen({ onFinish, productData, setProductData }) {
             >
                 {/* Main Product Information */}
                 <Form.Item
-                    label="Name"
+                    label="Product Name"
                     name="name"
                     rules={[{ required: true, message: 'Please input the product name!' }]}
                 >
@@ -67,19 +71,25 @@ function CloudKitchen({ onFinish, productData, setProductData }) {
 
                     </div>
                 </Form.Item>
-                <Form.Item
-                    label="Multiple Images"
-                    name="image"
-                >
-                    <input
-                        type="file"
-                        name=""
-                        id="upload"
-                        className="hidden"
-                        multiple
-                        onChange={handleImageChange}
-                    />
+                <Form.Item>
+                    <Switch checked={multipleImagesEnabled} onChange={handleMultipleImagesToggle} />
+                    <span style={{ marginLeft: '8px' }}>Multiple Images</span>
                 </Form.Item>
+                {multipleImagesEnabled && (
+                    <Form.Item
+                        label="Multiple Images"
+                        name="image"
+                    >
+                        <input
+                            type="file"
+                            name=""
+                            id="upload"
+                            className="hidden"
+                            multiple
+                            onChange={handleImageChange}
+                        />
+                    </Form.Item>
+                )}
                 <Form.Item
                     label="Original Price"
                     name="originalPrice"
