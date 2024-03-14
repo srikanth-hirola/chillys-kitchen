@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import React from 'react';
-import { Form, Input, Button, Select } from 'antd';
+import { Form, Input, Button, Select, InputNumber } from 'antd';
 import DashboardHeader from '../../../components/DashboardHeader';
 import SideBar from '../../../components/Sidebar';
 import sidebar_menu from '../../../constants/sidebar-menu';
@@ -65,6 +65,20 @@ function Catering() {
                         <Option value="other">Other</Option>
                     </Select>
                 </Form.Item>
+               
+                        <Form.Item
+                            label="Quantity"
+                            name="quantity"
+                            rules={[{ required: true, message: 'Please input quantity!' }]}
+                        >
+                            <InputNumber min={1} />
+                        </Form.Item>
+                        <Form.Item
+                            label="Message"
+                            name="message"
+                        >
+                            <Input.TextArea />
+                        </Form.Item>
                 <Form.Item>
                     <Button type="primary" htmlType="submit">
                         Submit
