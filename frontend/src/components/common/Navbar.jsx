@@ -51,7 +51,7 @@ const Navbar = () => {
                       <Link to='/blog'>Blog</Link>
                     </li>
                     <li>
-                      <Link to='/contact'>Contact</Link>
+                      <Link to='/contact-us'>Contact</Link>
                     </li>
                     <li>
         <Badge count={5} /* Set your desired count here */>
@@ -75,7 +75,7 @@ const Navbar = () => {
                     </li>
                     <li>
                       <span>
-                      <Link to='login-btn'>Login</Link>
+                      <Link to='/login'>Login</Link>
                       </span>
                     </li>
                   </ul>

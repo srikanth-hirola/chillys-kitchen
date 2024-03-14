@@ -94,7 +94,7 @@ const sidebar_menu = [
     {
         id: 7,
         icon: UserIcon,
-        path: '/Login',
+        path: '/login',
         title: 'Login',
     }
 ]
