@@ -25,6 +25,7 @@ import Login from './pages/authentication/Login';
 import UserLogin from './pages/user/UserLogin';
 import UserRegister from './pages/user/UserRegister';
 import ForgotPassword from './pages/user/ForgotPassword';
+import ProductDetails from './pages/products/ProductDetails';
 
 function App () {
   return(
@@ -52,6 +53,7 @@ function App () {
                   <Route path='/' element={<Home />}/>
                   <Route path='/about' element={<About />}/>
                   <Route path='/menu' element={<Menu/>}/>
+                  <Route path='/menu/:id' element={<ProductDetails/>}/>
                   <Route path='/book-table' element={<BookTable />}/>
                   <Route path='/blog' element={<Blog />}/>
                   <Route path='/blog/:slug' element={<BlogDetails />}/>

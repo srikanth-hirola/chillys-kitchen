@@ -29,7 +29,7 @@ const Navbar = () => {
             <div className="row align-items-center">
               <div className="col-md-3">
                 <div className="logo-sec">
-                  <img src="images/logo.png" alt="" />
+                  <img src="/images/logo.png" alt="" />
                 </div>
               </div>
               <div className="col-md-9">
