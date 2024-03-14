@@ -23,11 +23,8 @@ const productSchema = new mongoose.Schema({
   SKU: String,
   specs: [
     {
-      heading: String,
-      key: {
-        name: String,
-        value: [String],
-      },
+      key: String,
+      value: String,
     },
   ],
   specs2: [
@@ -105,14 +102,6 @@ const productSchema = new mongoose.Schema({
   ],
   ratings: {
     type: Number,
-  },
-  shopId: {
-    type: String,
-    required: true,
-  },
-  shop: {
-    type: Object,
-    required: true,
   },
   sold_out: {
     type: Number,

@@ -1,80 +1,92 @@
 /* eslint-disable no-unused-vars */
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Table, Tag, Button } from 'antd';
-import { PlusOutlined } from '@ant-design/icons';
+import { EditOutlined, DeleteOutlined } from '@ant-design/icons';
 import SideBar from '../../../components/Sidebar';
 import sidebar_menu from '../../../constants/sidebar-menu';
+import useAPI from '../../../customHooks/API/useAPI';
+import { Link } from 'react-router-dom';
 function ProductList() {
-    const dataSource = [
-  {
-    key: '1',
-    name: 'John Doe',
-    age: 32,
-    address: 'New York',
-    tags: ['developer', 'react'],
-  },
-  {
-    key: '2',
-    name: 'Jane Smith',
-    age: 28,
-    address: 'Los Angeles',
-    tags: ['designer', 'ui/ux'],
-  },
-];
-const columns = [
-  {
-    title: 'Name',
-    dataIndex: 'name',
-    key: 'name',
-    render: text => <a>{text}</a>,
-  },
-  {
-    title: 'Age',
-    dataIndex: 'age',
-    key: 'age',
-  },
-  {
-    title: 'Address',
-    dataIndex: 'address',
-    key: 'address',
-  },
-  {
-    title: 'Tags',
-    key: 'tags',
-    dataIndex: 'tags',
-    render: tags => (
-      <>
-        {tags.map(tag => (
-          <Tag color="blue" key={tag}>
-            {tag}
-          </Tag>
-        ))}
-      </>
-    ),
-  },
-  {
-    title: 'Action',
-    key: 'action',
-    render: () => (
-      <Button type="link" icon={<PlusOutlined />} />
-    ),
-  },
-];
-    return (
-        <div className='dashboard-container'>
-            <SideBar menu={sidebar_menu} />
-            <div className='dashboard-content'>
-            
-                <h3>Products List</h3>
-                <Table
-      dataSource={dataSource}
-      columns={columns}
-      bordered={false}
-      pagination={false}
-    />
-            </div>
-        </div>
-    );
+
+  const { getApi } = useAPI();
+  const [products, setAllProducts] = useState([]);
+
+  useEffect(() => {
+    const fetchAllProducts = async () => {
+      try {
+        let { data } = await getApi({ endpoint: '/api/v2/product/get-published-products' })
+        setAllProducts(data.products)
+      } catch (error) {
+        console.log(error)
+      }
+    }
+    fetchAllProducts()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
+
+  const dataSource = [
+    {
+      key: '1',
+      name: 'John Doe',
+      age: 32,
+      address: 'New York',
+      tags: ['developer', 'react'],
+    },
+    {
+      key: '2',
+      name: 'Jane Smith',
+      age: 28,
+      address: 'Los Angeles',
+      tags: ['designer', 'ui/ux'],
+    },
+  ];
+  const columns = [
+    {
+      title: 'Name',
+      dataIndex: 'name',
+      key: 'name',
+      render: text => <a>{text}</a>,
+    },
+    {
+      title: 'SKU',
+      dataIndex: 'SKU',
+      key: 'SKU',
+      render: text => <a>{text}</a>,
+    },
+
+    {
+      title: 'Edit',
+      key: 'action',
+      render: (data) => (
+        <>
+          <Link to={`/products/${data?._id}`}><EditOutlined /></Link>
+        </>
+      ),
+    },
+    {
+      title: 'Delete',
+      key: 'action',
+      render: () => (
+        <Button type="button" icon={<DeleteOutlined />} />
+      ),
+    },
+  ];
+  return (
+    <div className='dashboard-container'>
+      <SideBar menu={sidebar_menu} />
+      <div className='dashboard-content'>
+
+        <h3>Products List</h3>
+        <Table
+          dataSource={products}
+          columns={columns}
+          bordered={false}
+          pagination={false}
+        />
+      </div>
+    </div>
+  );
 }
 
 export default ProductList;

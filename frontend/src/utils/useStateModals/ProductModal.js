@@ -6,7 +6,7 @@ const ProductModal = {
     metaDescription: "",
 
     description: "",
-    noItem: 0,
+    noItem: null,
     searchTerms: [],
     category: "",
     SKU: "",
@@ -22,17 +22,20 @@ const ProductModal = {
             SKU: "",
             image: "",
             imageColor: "",
-            originalPrice: 0,
-            discountPrice: 0,
-            stock: 0,
-            sold_out: 0,
+            originalPrice: null,
+            discountPrice: null,
+            stock: null,
+            sold_out: null,
         },
     ],
-    originalPrice: 0,
-    discountPrice: 0,
-    stock: 0,
+    originalPrice: null,
+    discountPrice: null,
+    stock: null,
     images: [],
-    mainImage: "",
+    mainImage: {
+        public_id: '',
+        url: ''
+    },
 };
 
 export default ProductModal;

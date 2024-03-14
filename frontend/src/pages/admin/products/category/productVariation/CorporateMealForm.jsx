@@ -1,60 +1,27 @@
 /* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
-import { Form, Input, Button, Switch, Upload, message } from 'antd';
+import { Form, Input, Button, Switch, Upload, message, InputNumber } from 'antd';
 import { UploadOutlined, PlusOutlined, MinusCircleOutlined } from '@ant-design/icons';
 import PropTypes from 'prop-types';
+import useAPI from '../../../../../customHooks/API/useAPI';
+import useProductHandler from '../../../../../customHooks/Products/useProductHandlers';
 
-function CloudKitchen({ onFinish }) {
+function CloudKitchen({ onFinish, productData, setProductData }) {
+    const { postApi } = useAPI();
     const [inputs, setInputs] = useState([{ key: '', value: '' }]);
-    const [variations, setVariations] = useState([{ name: '', price: '', description: '', discountPrice: '', image: null }]);
+    const [variations, setVariations] = useState([{ SKU: "", imageColor: '', originalPrice: null, stock: null, discountPrice: null, image: { public_id: '', url: '' } }]);
     const [variationsEnabled, setVariationsEnabled] = useState(false);
+    const [mainImage, setMainImage] = useState('');
+    const [images, setImages] = useState([]);
 
-    const handleInputChange = (index, event) => {
-        const values = [...inputs];
-        values[index][event.target.name] = event.target.value;
-        setInputs(values);
-    };
-
-
-    const handleVariationsToggle = (checked) => {
-        setVariationsEnabled(checked);
-    };
-
-    const handleAddVariation = () => {
-        setVariations([...variations, { name: '', price: '', description: '', discountPrice: '', image: null }]);
-    };
-
-    const handleRemoveVariation = (index) => {
-        const updatedVariations = [...variations];
-        updatedVariations.splice(index, 1);
-        setVariations(updatedVariations);
-    };
-
-    const handleSubmit = () => {
-        onFinish(inputs, variations);
-    };
-
-    const uploadProps = {
-        name: 'file',
-        action: 'https://www.mocky.io/v2/5cc8019d300000980a055e76',
-        onChange(info) {
-            if (info.file.status !== 'uploading') {
-                console.log(info.file, info.fileList);
-            }
-            if (info.file.status === 'done') {
-                message.success(`${info.file.name} file uploaded successfully`);
-            } else if (info.file.status === 'error') {
-                message.error(`${info.file.name} file upload failed.`);
-            }
-        },
-    };
+    const { handleVariationsToggle, handleAddVariation, handleRemoveVariation, handleProductChange, handleProductNumberChange, handleSubmitProductData, handleMainImageChange, handleImageChange, handleVarientImageChange, handleVarientInputChange, handleVarientNumberInputChange } = useProductHandler({ productData, setProductData, variations, setVariations, setMainImage, setImages });
 
     return (
         <>
-            <h3>Add Product (Cloud Kitchen)</h3>
+            <h3>Add Product (Corporate Meal)</h3>
             <Form
                 name="addProductForm"
-                onFinish={handleSubmit}
+                onFinish={(e) => handleSubmitProductData({ dataParam: productData, mainImage, images })}
                 layout="vertical"
             >
                 {/* Main Product Information */}
@@ -63,48 +30,81 @@ function CloudKitchen({ onFinish }) {
                     name="name"
                     rules={[{ required: true, message: 'Please input the product name!' }]}
                 >
-                    <Input />
+                    <Input value={productData?.name} onChange={handleProductChange} name='name' />
                 </Form.Item>
-                <Form.Item
-                    label="Quantity"
-                    name="quantity"
-                    rules={[{ required: true, message: 'Please input the quantity!' }]}
-                >
-                    <Input type="number" />
-                </Form.Item>
+
                 <Form.Item
                     label="Image"
                     name="image"
                 >
-                    <Upload {...uploadProps}>
-                        <Button icon={<UploadOutlined />}>Upload</Button>
-                    </Upload>
+                    <input
+                        type="file"
+                        name=""
+                        id="MainImage"
+                        className="hidden"
+                        onChange={handleMainImageChange}
+                    />
+                    <div className="w-full flex items-center flex-wrap">
+
+                        {mainImage !== '' && (
+                            <div className="image-div">
+                                <img
+                                    src={mainImage}
+                                    alt="main"
+                                    className="h-[130px] w-[130px] object-cover"
+                                />
+                                <button
+                                    onClick={(e) => {
+                                        e.preventDefault();
+                                        setMainImage('');
+                                    }}
+                                    className="images-delete-btn"
+                                >
+                                    {/* <FontAwesomeIcon icon={faTrash} style={{ color: 'red' }} /> */}
+                                </button>
+                            </div>
+                        )}
+
+                    </div>
                 </Form.Item>
                 <Form.Item
-                    label="Price"
-                    name="price"
-                    rules={[{ required: true, message: 'Please input the price!' }]}
+                    label="Multiple Images"
+                    name="image"
                 >
-                    <Input type="number" />
+                    <input
+                        type="file"
+                        name=""
+                        id="upload"
+                        className="hidden"
+                        multiple
+                        onChange={handleImageChange}
+                    />
+                </Form.Item>
+                <Form.Item
+                    label="Original Price"
+                    name="originalPrice"
+                    rules={[{ required: true, message: 'Please input the Original price!' }]}
+                >
+                    <InputNumber type="number" value={productData?.originalPrice} onChange={(e) => handleProductNumberChange(e, "originalPrice")} name="originalPrice" />
                 </Form.Item>
                 <Form.Item
                     label="Discount Price"
                     name="discountPrice"
                     rules={[{ required: true, message: 'Please input the price!' }]}
                 >
-                    <Input type="number" />
+                    <InputNumber type="number" value={productData?.discountPrice} onChange={(e) => handleProductNumberChange(e, "discountPrice")} name="discountPrice" />
                 </Form.Item>
                 <Form.Item
                     label="Description"
                     name="description"
                 >
-                    <Input.TextArea />
+                    <Input.TextArea value={productData?.description} onChange={handleProductChange} name="description" />
                 </Form.Item>
-               
+
 
                 {/* Variations */}
                 <Form.Item>
-                    <Switch checked={variationsEnabled} onChange={handleVariationsToggle} />
+                    <Switch checked={variationsEnabled} onChange={(checked) => handleVariationsToggle({ checked, setVariationsEnabled })} />
                     <span style={{ marginLeft: '8px' }}>Variations</span>
                 </Form.Item>
                 {variationsEnabled && (
@@ -114,38 +114,69 @@ function CloudKitchen({ onFinish }) {
                                 <h4>Variation {index + 1}</h4>
                                 <Form.Item
                                     label="Name"
-                                    name={`variations[${index}].name`}
+                                    name={`variations[${index}].imageColor`}
                                     rules={[{ required: true, message: 'Please input the variation name!' }]}
                                 >
-                                    <Input />
+                                    <Input value={variation?.imageColor} onChange={(e) =>
+                                        handleVarientInputChange(index, 'imageColor', e.target.value)
+                                    } />
                                 </Form.Item>
                                 <Form.Item
-                                    label="Price"
-                                    name={`variations[${index}].price`}
-                                    rules={[{ required: true, message: 'Please input the variation price!' }]}
+                                    label="Original Price"
+                                    name={`variations[${index}].originalPrice`}
+                                    rules={[{ required: true, message: 'Please input the variation original price!' }]}
                                 >
-                                    <Input type="number" />
+                                    <InputNumber type="number" value={variation?.originalPrice} onChange={(e) =>
+                                        handleVarientNumberInputChange(e, index, 'originalPrice',)
+                                    } />
                                 </Form.Item>
                                 <Form.Item
-                                    label="Description"
-                                    name={`variations[${index}].description`}
+                                    label="Discount Price"
+                                    name={`variations[${index}].discountPrice`}
+                                    rules={[{ required: true, message: 'Please input the variation discount price!' }]}
                                 >
-                                    <Input.TextArea />
+                                    <InputNumber type="number" value={variation?.discountPrice} onChange={(e) =>
+                                        handleVarientNumberInputChange(e, index, 'discountPrice')
+                                    } />
                                 </Form.Item>
                                 <Form.Item
-                    label="Variation Sku Code"
-                    name="variationskuCode"
-                    rules={[{ required: true, message: 'Please enter sku code' }]}
-                >
-                    <Input />
-                </Form.Item>
+                                    label="Stock"
+                                    name={`variations[${index}].stock`}
+                                    rules={[{ required: true, message: 'Please input the variation stock!' }]}
+                                >
+                                    <InputNumber value={variation?.stock} onChange={(e) =>
+                                        handleVarientNumberInputChange(e, index, 'stock')
+                                    } />
+                                </Form.Item>
+                                <Form.Item
+                                    label="Variation Sku Code"
+                                    name="variationskuCode"
+                                    rules={[{ required: true, message: 'Please enter sku code' }]}
+                                >
+                                    <Input value={variation?.SKU} onChange={(e) =>
+                                        handleVarientInputChange(index, 'SKU', e.target.value)
+                                    } />
+                                </Form.Item>
                                 <Form.Item
                                     label="Image"
                                     name={`variations[${index}].image`}
                                 >
-                                    <Upload {...uploadProps}>
-                                        <Button icon={<UploadOutlined />}>Upload</Button>
-                                    </Upload>
+                                    <input
+                                        type="file"
+                                        accept="image/*"
+                                        className='mt-1'
+                                        onChange={(e) => handleVarientImageChange(index, e)}
+                                    />
+                                    {variation?.image?.url && (
+                                        <>
+                                            <img
+                                                className="mt-4 mb-3"
+                                                src={variation?.image?.url}
+                                                alt={`Color ${index + 1}`}
+                                                style={{ width: '100px', height: '100px' }}
+                                            />
+                                        </>
+                                    )}
                                 </Form.Item>
                                 <Button type="danger" icon={<MinusCircleOutlined />} onClick={() => handleRemoveVariation(index)}>
                                     Remove Variation
@@ -159,65 +190,63 @@ function CloudKitchen({ onFinish }) {
                 )}
 
                 {/* Additional Fields */}
-                
-                
-                <div className="">
-                    <h4 className='' >Stock Information</h4>
-                    <Form.Item
-                    label="Number of Items"
-                    name="numberOfItems"
-                    rules={[{ required: true, message: 'Please enter items' }]}
-                >
-                    <Input type="number" />
-                </Form.Item>
-                <Form.Item
-                    label="Search Terms"
-                    name="searchTerms"
-                >
-                    <Input />
-                </Form.Item>
 
-                {/* SKU Code */}
-                <Form.Item
-                    label="Sku Code"
-                    name="skuCode"
-                    rules={[{ required: true, message: 'Please enter sku code' }]}
-                >
-                    <Input />
-                </Form.Item>
-                <Form.Item
-                    label="Stock"
-                    name="stock"
-                    rules={[{ required: true, message: 'Please enter stock' }]}
-                >
-                    <Input type="number" />
-                </Form.Item>
+
+                <div className="">
+                    <Form.Item
+                        label="Number of Items"
+                        name="noItem"
+                        rules={[{ required: true, message: 'Please enter numbe of items' }]}
+                    >
+                        <InputNumber type="number" value={productData?.noItem} onChange={(e) => handleProductNumberChange(e, "noItem")} name="noItem" />
+                    </Form.Item>
+                    <Form.Item
+                        label="Search Terms"
+                        name="searchTerms"
+                    >
+                        <Input />
+                    </Form.Item>
+
+                    {/* SKU Code */}
+                    <Form.Item
+                        label="Sku Code"
+                        name="SKU"
+                        rules={[{ required: true, message: 'Please enter sku code' }]}
+                    >
+                        <Input value={productData?.SKU} onChange={handleProductChange} name="SKU" />
+                    </Form.Item>
+                    <Form.Item
+                        label="Stock"
+                        name="stock"
+                        rules={[{ required: true, message: 'Please enter stock' }]}
+                    >
+                        <InputNumber type="number" value={productData?.stock} onChange={(e) => handleProductNumberChange(e, "stock")} name="stock" />
+                    </Form.Item>
                 </div>
-                            <div className="">
-                            <h4>Meta Information</h4>
-                            <Form.Item
-                    label="Meta Title"
-                    name="metatitle"
-                    rules={[{ required: true, message: 'Please Enter Meta Title' }]}
-                >
-                    <Input />
-                </Form.Item>
-                <Form.Item
-                    label="Meta Description"
-                    name="metaDescription"
-                    rules={[{ required: true, message: 'Please enter meta description' }]}
-                >
-                    <Input.TextArea />
-                </Form.Item>
-                <Form.Item
-                    label="Slug"
-                    name="slug"
-                    rules={[{ required: true, message: 'Please Enter slug' }]}
-                >
-                    <Input />
-                </Form.Item>
-               
-                            </div>
+                <div className="">
+                    <h4>Meta Information</h4>
+                    <Form.Item
+                        label="Slug"
+                        name="slug"
+                        rules={[{ required: true, message: 'Please Enter slug' }]}
+                    >
+                        <Input value={productData?.slug} onChange={handleProductChange} name="slug" />
+                    </Form.Item>
+                    <Form.Item
+                        label="Meta Title"
+                        name="metaTitle"
+                        rules={[{ required: true, message: 'Please Enter Meta Title' }]}
+                    >
+                        <Input value={productData?.metaTitle} onChange={handleProductChange} name="metaTitle" />
+                    </Form.Item>
+                    <Form.Item
+                        label="Meta Description"
+                        name="metaDescription"
+                        rules={[{ required: true, message: 'Please enter meta description' }]}
+                    >
+                        <Input.TextArea value={productData?.metaDescription} onChange={handleProductChange} name="metaDescription" />
+                    </Form.Item>
+                </div>
                 {/* Submit Button */}
                 <Form.Item>
                     <Button type="primary" htmlType="submit" icon={<PlusOutlined />}>
@@ -231,6 +260,8 @@ function CloudKitchen({ onFinish }) {
 
 CloudKitchen.propTypes = {
     onFinish: PropTypes.func.isRequired,
+    productData: PropTypes.object,
+    setProductData: PropTypes.func.isRequired
 };
 
 export default CloudKitchen;

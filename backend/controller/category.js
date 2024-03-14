@@ -21,7 +21,7 @@ router.get(
   '/get-all-categories', cacheMiddleware,
   catchAsyncErrors(async (req, res, next) => {
     try {
-      const categories = await Category.find({ approved: true });
+      const categories = await Category.find({});
       res.status(201).json({
         success: true,
         categories,
