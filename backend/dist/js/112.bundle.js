@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkecom=self.webpackChunkecom||[]).push([[112],{50112:(e,l,c)=>{c.r(l),c.d(l,{default:()=>s});var t=c(96800),n=c(83284),r=c(60580);const s=e=>{let{children:l}=e;const{isLoading:c,isSeller:s}=(0,t.w1)((e=>e.seller));return!0===c?React.createElement(r.c,null):s?l:React.createElement(n.YX,{to:"/shop-login",replace:!0})}}}]);
