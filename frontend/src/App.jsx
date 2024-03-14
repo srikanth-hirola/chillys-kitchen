@@ -29,7 +29,7 @@
 // export default App
 
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route  } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 import SideBar from './components/Sidebar';
 import sidebar_menu from './constants/sidebar-menu';
@@ -49,41 +49,41 @@ import EditProduct from './pages/admin/products/EditProduct';
 import Category from './pages/admin/products/category/Category';
 import Catering from './pages/admin/catering/Catering';
 
-function App () {
-  return(
+function App() {
+  return (
     <Router>
       {/* <div className='dashboard-container'>
         <SideBar menu={sidebar_menu} />
           
           <div className='dashboard-body'> */}
-          {/* dashboard Routes */}
-              <Routes>
-                  <Route path="*" element={<div></div>} />
-                  <Route exact path="/admin" element={<Dashboard/>} />
-                  <Route exact path="/products" element={<ProductList/>} />
-                  <Route exact path="/add-product" element={<AddProduct/>} />
-                  <Route exact path="/products/:edit" element={<EditProduct/>} />
-                  <Route exact path="/category" element={<Category/>} />
-                  <Route exact path="/catering" element={<Catering/>} />
-                  <Route exact path="/orders" element={< Orders/>} />
-                  <Route exact path="/locations" element={<div>LOcations</div>} />
-                  <Route exact path="/profile" element={<div>Profile</div>} />
-                  <Route exact path="/login" element={<div>Login</div>} />
-               
-              {/* </Routes>
+      {/* dashboard Routes */}
+      <Routes>
+        <Route path="*" element={<div></div>} />
+        <Route exact path="/admin" element={<Dashboard />} />
+        <Route exact path="/products" element={<ProductList />} />
+        <Route exact path="/add-product" element={<AddProduct />} />
+        <Route exact path="/products/:edit" element={<EditProduct />} />
+        <Route exact path="/category" element={<Category />} />
+        <Route exact path="/catering" element={<Catering />} />
+        <Route exact path="/orders" element={< Orders />} />
+        <Route exact path="/locations" element={<div>LOcations</div>} />
+        <Route exact path="/profile" element={<div>Profile</div>} />
+        <Route exact path="/login" element={<div>Login</div>} />
+
+        {/* </Routes>
           </div>
           
       </div>
       <Routes> */}
-      {/* websites routes */}
-          <Route path='/' element={<Home />}/>
-<Route path='/about' element={<About />}/>
-<Route path='/menu' element={<Menu/>}/>
-<Route path='/book-table' element={<BookTable />}/>
-<Route path='/blog' element={<Blog />}/>
-<Route path='/blog/:slug' element={<BlogDetails />}/>
-<Route path='/menu' element={<Contact />}/>
-          </Routes>
+        {/* websites routes */}
+        <Route path='/' element={<Home />} />
+        <Route path='/about' element={<About />} />
+        <Route path='/menu' element={<Menu />} />
+        <Route path='/book-table' element={<BookTable />} />
+        <Route path='/blog' element={<Blog />} />
+        <Route path='/blog/:slug' element={<BlogDetails />} />
+        <Route path='/menu' element={<Contact />} />
+      </Routes>
     </Router>
   )
 }
