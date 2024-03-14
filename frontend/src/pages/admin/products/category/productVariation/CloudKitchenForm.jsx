@@ -8,7 +8,7 @@ function CloudKitchen({ onFinish }) {
     const [inputs, setInputs] = useState([{ key: '', value: '' }]);
     const [variations, setVariations] = useState([{ name: '', price: '', description: '', discountPrice: '', image: null }]);
     const [variationsEnabled, setVariationsEnabled] = useState(false);
-
+    const [multipleImagesEnabled, setMultipleImagesEnabled] = useState(false);
     const handleInputChange = (index, event) => {
         const values = [...inputs];
         values[index][event.target.name] = event.target.value;
@@ -43,6 +43,9 @@ function CloudKitchen({ onFinish }) {
         onFinish(inputs, variations);
     };
 
+    const handleMultipleImagesToggle = (checked) => {
+        setMultipleImagesEnabled(checked);
+    };
     const uploadProps = {
         name: 'file',
         action: 'https://www.mocky.io/v2/5cc8019d300000980a055e76',
@@ -68,7 +71,7 @@ function CloudKitchen({ onFinish }) {
             >
                 {/* Main Product Information */}
                 <Form.Item
-                    label="Name"
+                    label="Product Name"
                     name="name"
                     rules={[{ required: true, message: 'Please input the product name!' }]}
                 >
@@ -89,8 +92,22 @@ function CloudKitchen({ onFinish }) {
                         <Button icon={<UploadOutlined />}>Upload</Button>
                     </Upload>
                 </Form.Item>
+                <Form.Item>
+                    <Switch checked={multipleImagesEnabled} onChange={handleMultipleImagesToggle} />
+                    <span style={{ marginLeft: '8px' }}>Multiple Images</span>
+                </Form.Item>
+                {multipleImagesEnabled && (
+                    <Form.Item
+                        label="Additional Images"
+                        name="additionalImages"
+                    >
+                        <Upload {...uploadProps} multiple>
+                            <Button icon={<UploadOutlined />}>Upload Additional Images</Button>
+                        </Upload>
+                    </Form.Item>
+                )}
                 <Form.Item
-                    label="Price"
+                    label="Original Price"
                     name="price"
                     rules={[{ required: true, message: 'Please input the price!' }]}
                 >
@@ -137,7 +154,7 @@ function CloudKitchen({ onFinish }) {
                         </div>
                     ))}
                     <Button type="dashed" onClick={handleAddInput} style={{ marginBottom: '8px' }}>
-                        Add Input
+                        Add Specifications
                     </Button>
                 </Form.Item>
 
@@ -166,6 +183,20 @@ function CloudKitchen({ onFinish }) {
                                     <Input type="number" />
                                 </Form.Item>
                                 <Form.Item
+                    label="Variation Discount Price"
+                    name="variationdiscountPrice"
+                    rules={[{ required: true, message: 'Please input the price!' }]}
+                >
+                    <Input type="number" />
+                </Form.Item>
+                                <Form.Item
+                    label="Variation Stock"
+                    name="variationstock"
+                    rules={[{ required: true, message: 'Please enter stock' }]}
+                >
+                    <Input type="number" />
+                </Form.Item>
+                                <Form.Item
                                     label="Description"
                                     name={`variations[${index}].description`}
                                 >
@@ -178,6 +209,7 @@ function CloudKitchen({ onFinish }) {
                 >
                     <Input />
                 </Form.Item>
+
                                 <Form.Item
                                     label="Image"
                                     name={`variations[${index}].image`}

@@ -48,6 +48,9 @@ import AddProduct from './pages/admin/products/AddProduct';
 import EditProduct from './pages/admin/products/EditProduct';
 import Category from './pages/admin/products/category/Category';
 import Catering from './pages/admin/catering/Catering';
+import BlogList from './pages/admin/blogs/Blogs';
+import AddBlog from './pages/admin/blogs/AddBlog';
+import EditBlog from './pages/admin/blogs/EditBlog';
 
 function App () {
   return(
@@ -65,6 +68,9 @@ function App () {
                   <Route exact path="/products/:edit" element={<EditProduct/>} />
                   <Route exact path="/category" element={<Category/>} />
                   <Route exact path="/catering" element={<Catering/>} />
+                  <Route exact path="/admin-blogs" element={<BlogList/>} />
+                  <Route exact path="/add-blogs" element={<AddBlog/>} />
+                  <Route exact path="/admin-blogs/:edit" element={<EditBlog/>} />
                   <Route exact path="/orders" element={< Orders/>} />
                   <Route exact path="/locations" element={<div>LOcations</div>} />
                   <Route exact path="/profile" element={<div>Profile</div>} />
