@@ -1,0 +1,37 @@
+.login-container {
+    margin: 100px 0px 0px;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    background: url(https://images.pexels.com/photos/958545/pexels-photo-958545.jpeg?cs=srgb&dl=pexels-chan-walrus-958545.jpg&fm=jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    .login-container-login{
+        max-width: 500px;
+        margin: auto;
+        h2{
+            padding: 30px 0px;
+        }
+    }
+}
+
+
+
+.login-form-container {
+    padding: 40px;
+    background-color: #fff; /* Set your desired background color */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add shadow for a card-like effect */
+}
+
+.login-form {
+    width: 100%;
+    margin: auto;
+    height: 290px;
+    padding: 0px 0px 0px;
+}
+
+.login-form-button {
+    width: 100%;
+}

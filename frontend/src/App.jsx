@@ -51,6 +51,7 @@ import Catering from './pages/admin/catering/Catering';
 import BlogList from './pages/admin/blogs/Blogs';
 import AddBlog from './pages/admin/blogs/AddBlog';
 import EditBlog from './pages/admin/blogs/EditBlog';
+import Login from './pages/authentication/Login';
 
 function App () {
   return(
@@ -74,14 +75,9 @@ function App () {
                   <Route exact path="/orders" element={< Orders/>} />
                   <Route exact path="/locations" element={<div>LOcations</div>} />
                   <Route exact path="/profile" element={<div>Profile</div>} />
-                  <Route exact path="/login" element={<div>Login</div>} />
+                  <Route exact path="/login" element={<Login/>}/> 
                
-              {/* </Routes>
-          </div>
-          
-      </div>
-      <Routes> */}
-      {/* websites routes */}
+             
           <Route path='/' element={<Home />}/>
 <Route path='/about' element={<About />}/>
 <Route path='/menu' element={<Menu/>}/>
