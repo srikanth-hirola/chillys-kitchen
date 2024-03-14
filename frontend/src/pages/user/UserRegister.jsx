@@ -13,7 +13,8 @@ function UserRegister() {
     return (
       <>
         <Navbar/>
-        <Form
+      <div className="user-register">
+      <Form
             name="registerForm"
             onFinish={handleFinish}
             layout="vertical"
@@ -63,6 +64,7 @@ function UserRegister() {
                 <Button type="primary" htmlType="submit">Register</Button>
             </Form.Item>
         </Form>
+      </div>
         <Footer/>
       </>
     );

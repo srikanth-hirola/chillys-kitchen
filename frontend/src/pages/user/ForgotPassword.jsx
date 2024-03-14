@@ -13,16 +13,17 @@ function ForgotPassword() {
     return (
       <>
         <Navbar/>
-        <Form
+    <div className="forgot-password">
+    <Form
             name="forgotPasswordForm"
             onFinish={handleFinish}
             layout="vertical"
         >
             <Form.Item
-                name="oldPassword"
-                rules={[{ required: true, message: 'Please input your old password!' }]}
+                name="Enter Otp"
+                rules={[{ required: true, message: 'Please input your Otp!' }]}
             >
-                <Input.Password prefix={<LockOutlined />} placeholder="Old Password" />
+                <Input.Password prefix={<LockOutlined />} placeholder="Enter Otp" />
             </Form.Item>
             <Form.Item
                 name="newPassword"
@@ -51,6 +52,7 @@ function ForgotPassword() {
                 <Button type="primary" htmlType="submit">Submit</Button>
             </Form.Item>
         </Form>
+    </div>
         <Footer/>
       </>
     );

@@ -12,7 +12,8 @@ function UserLogin() {
     return (
    <>
      <Navbar/>
-        <Form
+       <div className="user-login">
+       <Form
             name="loginForm"
            
             layout="vertical"
@@ -33,6 +34,7 @@ function UserLogin() {
                 <Button type="primary" htmlType="submit">Login</Button>
             </Form.Item>
         </Form>
+       </div>
         <Footer/>
    </>
     );
