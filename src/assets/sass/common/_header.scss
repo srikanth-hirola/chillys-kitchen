@@ -1,0 +1,163 @@
+// topbar stylings goes here
+.top-bar {
+  background: #474747;
+  height: 47px;
+  .top-bar-sec-one {
+    ul {
+      display: flex;
+      margin: 0;
+      padding: 0;
+      li {
+        list-style: none;
+        padding: 0px 9px 7px;
+        border-radius: 19px;
+        margin: 8px 4px 0px;
+        display: flex;
+        align-items: center;
+        span {
+          svg {
+            color: #fff;
+            position: relative;
+            bottom: 3px;
+          }
+        }
+        p {
+          padding: 0 9px;
+          margin: 0;
+          color: #fff;
+          a {
+            color: #fff;
+            text-decoration: none;
+          }
+        }
+      }
+    }
+  }
+  .top-bar-sec-two{
+    ul{
+        display: flex;
+        justify-content: end;
+        li{
+            list-style: none;
+    padding: 0px 9px 7px;
+    background: #F9F9F71F;
+    border-radius: 19px;
+    margin: 7px 4px;
+    span{
+        svg{
+            color: #fff;
+        }
+    }
+        }
+    }
+  }
+}
+// topbar stylings goes here
+
+
+
+
+// header stylings goes here
+.header-sec {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 0rem;
+  transition: background-color 0.3s ease;
+  z-index: 99;
+
+  &.transparent {
+    background-color: transparent;
+  }
+
+  &.solid {
+    background-color: #ffffff; // Set your solid background color here
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); // Optional: Add shadow for a subtle effect
+  }
+
+    height: 90px;
+    .header-sec-sub{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 90px;
+        backdrop-filter: blur(3px);
+    background: #fff4ef85;
+    }
+    .logo-sec {
+        width: 122px;
+        height: 90px;
+       img{
+        height: 100%;
+        width: 100%;
+       }
+    }
+    .header-menu{
+        ul{
+          padding: 0;
+          display: flex;
+          justify-content: end;
+          margin: 0;
+          width: 100%;
+        }
+        li{
+            list-style: none;
+            color: #2C2F24;
+            font-family: "DM Sans";
+            font-size: 18px;
+            font-style: normal;
+            font-weight: 500;
+            line-height: 24px;
+            padding: 0px 15px;
+            transition: .3s linear all 0s;
+            position: relative;
+            top: 0px;
+            
+            a{
+              list-style: none;
+              color: #000;
+              font-family: "DM Sans";
+              font-size: 16px;
+              font-style: normal;
+              font-weight: 500;
+              text-decoration: none;
+              &:hover{
+                color: #AD343E;
+                font-weight: 500;
+              }
+            }
+            span{
+              a{
+                list-style: none;
+      color: #000;
+      font-family: "DM Sans";
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 500;
+      text-decoration: none;
+      border: 1px solid #AD343E;
+      padding: 12px;
+      border-radius: 10px;
+      transition: .3s linear all 0s;
+      &:hover{
+        background: #AD343E;
+        color: #fff;
+      }
+              }
+            }
+        }
+    }
+    .header-book-btn{
+        text-align: end;
+        a{
+            padding: 12px 24px;
+            border-radius: 118px;
+            border: 1.5px solid var(--Neutral-07, #2C2F24);
+            color: #000;
+            text-decoration: none;
+            font-weight: 500;
+        }
+    }
+}
+// header stylings goes here

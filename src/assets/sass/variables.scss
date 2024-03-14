@@ -1,0 +1,13 @@
+$input-styles-1: (
+    border: 1px solid #ff0000,
+    background: #181818,
+    border-radius: 5px,
+    color: #ffffff,
+    line-height: 1.5,
+  );
+
+  input {
+    @each $property, $value in $input-styles-1 {
+      #{$property}: $value;
+    }
+  }

@@ -1,0 +1,126 @@
+// Navbar.scss
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 1rem;
+    transition: background-color 0.3s ease;
+  
+    &.transparent {
+      background-color: transparent;
+    }
+  
+    &.solid {
+      background-color: #ffffff; // Set your solid background color here
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); // Optional: Add shadow for a subtle effect
+    }
+  
+    .navbar-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+  
+    h1 {
+      margin: 0;
+      color: #ffffff; // Set your text color for the logo
+      // Add other styles as needed
+    }
+  
+    // Add styles for other navbar content as needed
+  }
+  
+
+.home-banner-sec{
+    .home-banner-sec-sub {
+        width: 100%;
+        height: 730px;
+        background-size: cover;
+        .banner-text {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 800px;
+            flex-direction: column;
+            margin: auto;
+            .banner-title{
+                strong{
+                    color: var(--cafeu-vercel-app-persian-red, #C33);
+                    font-family: "Lobster Two";
+                    font-size: 20px;
+                    font-style: normal;
+                    font-weight: 600;
+                    line-height: 45px;
+                }
+                h1{
+                    margin: 10px 0px;
+                    color: var(--Neutral-07, #2C2F24);
+                    text-align: left;
+                    font-size: 56px;
+                    font-style: normal;
+                    font-weight: 400;
+                    line-height: 66px;
+                    font-family: "DM Sans";
+                    letter-spacing: 4px;
+                    strong{
+                        color: #C33;
+                        font-size: 56px;
+                    }
+                }
+            }
+            .banner-description {
+                margin: 20px 0px;
+                p{
+                    color: var(--Neutral-07, #2C2F24);
+                    text-align: center;
+                    font-family: "DM Sans";
+                    font-size: 20px;
+                    font-style: normal;
+                    font-weight: 400;
+                    line-height: 32px;
+                    text-align: left;
+                }
+            }
+            .banner-actions{
+                display: flex;
+                gap: 21px;
+                justify-content: start;
+                width: 100%;
+                .banner-action-one{
+                    display: flex;
+    padding: 14px 28px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 13px;
+    background: #AD343E;
+    color: #fff;
+    border: none;
+                }
+                .banner-action-two{
+                    display: flex;
+                    padding: 14px 28px;
+                    justify-content: center;
+                    align-items: center;
+                    gap: 10px;
+                    border-radius: 13px;
+                    background: #2C2F24;
+                    color: #fff;
+                    border: none;
+                }
+            }
+
+        }
+        .banner-img {
+            width: 100%;
+            height: 500px;
+            img{
+                width: 100%;height: 100%;object-fit: contain;
+            }
+        }
+    }
+
+}

@@ -1,0 +1,57 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lobster+Two:ital,wght@0,400;0,700;1,400;1,700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+@import url(./home/_home.scss);
+@import url(./common/_header.scss);
+@import url(./common/_footer.scss);
+@import url(./home/_banner.scss);
+@import url(./menu/_menu.scss);
+
+
+
+// admin styles
+@import url(./admin/_global.scss);
+// @import url(./variables.scss);
+
+// Override default variables before the import
+$body-bg: #fff;
+$topbar-bg:#474747;
+$footer-bg:#474747;
+$bg-section-1:#F9F9F7;
+$bg-section-2:#474747;
+$bg-section-1:#F9F9F7;
+
+$card-bg-1:#474747;
+$card-bg-2:#F9F9F7;
+
+$button-bg-1:#DBDFD0;
+$button-bg-2:#AD343E;
+
+$h1-font:96px;
+$h2-font:55px;
+$h3-font:24px;
+$h4-font:20px;
+$h5-font:18px;
+$h6-font:16px;
+
+$p-font-one:16px;
+$p-font-two:14px;
+$p-font-three:12px;
+
+
+
+$button-actibe-bg-1:#AD343E;
+
+
+
+
+
+
+
+
+body{
+    font-family: "DM Sans", sans-serif;
+}
+*{
+    padding: 0;margin: 0;box-sizing: border-box;
+}
