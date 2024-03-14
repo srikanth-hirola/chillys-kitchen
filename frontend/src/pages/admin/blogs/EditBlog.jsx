@@ -6,7 +6,6 @@ import SideBar from '../../../components/Sidebar';
 import  { useState } from 'react';
 import { Form, Input, Button, DatePicker, Select, Upload, message, Modal } from 'antd';
 import { UploadOutlined ,PlusOutlined} from '@ant-design/icons';
-import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 import PropTypes from 'prop-types';
 import DashboardHeader from '../../../components/DashboardHeader';
 import { CKEditor } from '@ckeditor/ckeditor5-react';

@@ -3,7 +3,6 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
 const shopSchema = new mongoose.Schema({
-  approved: Boolean,
   name: {
     type: String,
     required: [true, 'Please enter your shop name!'],
@@ -18,72 +17,6 @@ const shopSchema = new mongoose.Schema({
     minLength: [6, 'Password should be greater than 6 characters'],
     select: false,
   },
-  description: {
-    type: String,
-  },
-  couriers: Array,
-  pickupLocation: Object,
-  address: {
-    type: String,
-    required: true,
-  },
-  phoneNumber: {
-    type: Number,
-    required: true,
-  },
-  role: {
-    type: String,
-    default: 'Seller',
-  },
-  avatar: {
-    public_id: {
-      type: String,
-      required: true,
-    },
-    url: {
-      type: String,
-      required: true,
-    },
-  },
-  zipCode: {
-    type: Number,
-    required: true,
-  },
-  withdrawMethod: {
-    type: Object,
-  },
-  availableBalance: {
-    type: Number,
-    default: 0,
-  },
-  shipment: {
-    company_id: Number,
-    created_at: Date,
-    email: String,
-    first_name: String,
-    id: Number,
-    last_name: String,
-    token: String,
-  },
-  transections: [
-    {
-      amount: {
-        type: Number,
-        required: true,
-      },
-      status: {
-        type: String,
-        default: 'Processing',
-      },
-      createdAt: {
-        type: Date,
-        default: Date.now(),
-      },
-      updatedAt: {
-        type: Date,
-      },
-    },
-  ],
   createdAt: {
     type: Date,
     default: Date.now(),

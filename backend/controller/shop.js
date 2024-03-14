@@ -21,22 +21,14 @@ router.post(
         return next(new ErrorHandler('User already exists', 400));
       }
 
-      const myCloud = await cloudinary.v2.uploader.upload(req.body.avatar, {
-        folder: 'avatars',
-      });
+      // const myCloud = await cloudinary.v2.uploader.upload(req.body.avatar, {
+      //   folder: 'avatars',
+      // });
 
       const seller = {
-        approved: false,
         name: req.body.name,
         email: email,
         password: req.body.password,
-        avatar: {
-          public_id: myCloud.public_id,
-          url: myCloud.secure_url,
-        },
-        address: req.body.address,
-        phoneNumber: req.body.phoneNumber,
-        zipCode: req.body.zipCode,
       };
 
       let sellerNew = await Shop.findOne({ email });
@@ -212,7 +204,7 @@ router.post(
         return next(new ErrorHandler('Please provide the all fields!', 400));
       }
 
-      const user = await Shop.findOne({ email, approved: true }).select(
+      const user = await Shop.findOne({ email }).select(
         '+password'
       );
 
@@ -220,13 +212,13 @@ router.post(
         return next(new ErrorHandler("User doesn't exists!", 400));
       }
 
-      const isPasswordValid = await user.comparePassword(password);
+      // const isPasswordValid = await user.comparePassword(password);
 
-      if (!isPasswordValid) {
-        return next(
-          new ErrorHandler('Please provide the correct information', 400)
-        );
-      }
+      // if (!isPasswordValid) {
+      //   return next(
+      //     new ErrorHandler('Please provide the correct information', 400)
+      //   );
+      // }
 
       sendShopToken(user, 201, res);
     } catch (error) {
