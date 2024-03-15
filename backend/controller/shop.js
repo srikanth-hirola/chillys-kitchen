@@ -9,6 +9,7 @@ const cloudinary = require('cloudinary');
 const catchAsyncErrors = require('../middleware/catchAsyncErrors');
 const ErrorHandler = require('../utils/ErrorHandler');
 const sendShopToken = require('../utils/shopToken');
+const otpGenerator = require('otp-generator');
 
 // create shop
 router.post(
@@ -212,15 +213,145 @@ router.post(
         return next(new ErrorHandler("User doesn't exists!", 400));
       }
 
-      // const isPasswordValid = await user.comparePassword(password);
+      const isPasswordValid = await user.comparePassword(password);
 
-      // if (!isPasswordValid) {
-      //   return next(
-      //     new ErrorHandler('Please provide the correct information', 400)
-      //   );
-      // }
+      if (!isPasswordValid) {
+        return next(
+          new ErrorHandler('Please provide the correct information', 400)
+        );
+      }
 
       sendShopToken(user, 201, res);
+    } catch (error) {
+      return next(new ErrorHandler(error.message, 500));
+    }
+  })
+);
+
+// forget password
+router.post(
+  "/admin-forget-password",
+  catchAsyncErrors(async (req, res, next) => {
+    try {
+      const { email } = req.body;
+
+      if (!email) {
+        return next(new ErrorHandler("Please provide email!", 400));
+      }
+
+      const user = await Shop.findOne({ email })
+
+      if (!user) {
+        return next(new ErrorHandler("User doesn't exists!", 400));
+      }
+
+      const otp = otpGenerator.generate(4, {
+        digits: true,
+        upperCaseAlphabets: false,
+        specialChars: false,
+        lowerCaseAlphabets: false,
+      });
+
+      const optionUser = {
+        email: user?.email,
+        subject: 'Change Password',
+        message: `OTP to Change Password ${otp}`
+      }
+
+      await sendMail(optionUser)
+      console.log(email)
+      await Shop.findOneAndUpdate({ email }, {
+        $set: {
+          otp: otp
+        }
+      })
+
+      res.status(200).json({ success: true })
+
+    } catch (error) {
+      return next(new ErrorHandler(error.message, 500));
+    }
+  })
+);
+
+// reset otp
+router.post(
+  "/admin-otpVer",
+  catchAsyncErrors(async (req, res, next) => {
+    try {
+      const { email, otp } = req.body;
+
+      if (!email) {
+        return next(new ErrorHandler("Please provide email!", 400));
+      }
+
+      let user = await Shop.findOne({ email })
+      if (user.otp === Number(otp)) {
+        await Shop.findOneAndUpdate({ email }, {
+          $set: {
+            otp: 0
+          }
+        })
+        res.status(200).json({ success: true })
+
+      } else {
+        res.status(400).json({ message: "Invalid OTP" })
+      }
+
+
+    } catch (error) {
+      return next(new ErrorHandler(error.message, 500));
+    }
+  })
+);
+
+// reset otp
+router.post(
+  "/admin-resetOTP",
+  catchAsyncErrors(async (req, res, next) => {
+    try {
+      const { email } = req.body;
+
+      if (!email) {
+        return next(new ErrorHandler("Please provide email!", 400));
+      }
+
+      await Shop.findOneAndUpdate({ email }, {
+        $set: {
+          otp: 0
+        }
+      })
+
+      res.status(200).json({ success: true })
+
+    } catch (error) {
+      return next(new ErrorHandler(error.message, 500));
+    }
+  })
+);
+
+// change password
+router.post(
+  "/changeAdminPassword",
+  catchAsyncErrors(async (req, res, next) => {
+    try {
+      const { email, password } = req.body;
+
+      if (!email) {
+        return next(new ErrorHandler("Please provide email!", 400));
+      }
+      const user = await Shop.findOne({ email })
+
+      if (!user) {
+        return next(new ErrorHandler("User doesn't exists!", 400));
+      }
+
+      user.password = password
+
+      await user.save();
+
+      res.status(200).json({ success: true })
+
     } catch (error) {
       return next(new ErrorHandler(error.message, 500));
     }

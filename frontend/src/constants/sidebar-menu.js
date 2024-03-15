@@ -96,7 +96,7 @@ const sidebar_menu = [
         icon: UserIcon,
         path: '/login',
         title: 'Login',
-    }
+    },
 ]
 
 export default sidebar_menu;

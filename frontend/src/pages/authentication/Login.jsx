@@ -6,6 +6,8 @@ import Navbar from '../../components/common/Navbar';
 import Footer from '../../components/common/Footer';
 import axios from "axios";
 import { useNavigate } from 'react-router';
+import { Link } from 'react-router-dom';
+import toast from 'react-hot-toast';
 
 function Login() {
     const navigate = useNavigate();
@@ -41,6 +43,15 @@ function Login() {
             console.log("login error",error)
             alert(error.response.data.message)
         }
+    }
+
+    const handleForgetPassword = (e) => {
+        e.preventDefault();
+        if (!logindata.email) {
+            toast.error("Email is required");
+            return
+        }
+        navigate(`/admin-forgot-password?email=${logindata.email}`)
     }
 
     return (
@@ -81,6 +92,7 @@ function Login() {
                                 Log in
                             </Button>
                         </Form.Item>
+                        <Link to={''} onClick={handleForgetPassword}>Forget Your Password?</Link>
                     </Form>
                 </div>
             </Row>

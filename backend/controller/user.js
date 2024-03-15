@@ -13,25 +13,23 @@ const otpGenerator = require('otp-generator');
 // create user
 router.post("/create-user", async (req, res, next) => {
   try {
-    const { name, email, password, avatar } = req.body;
+    const { name, email, password, phonenumber, confirmpassword } = req.body;
     const userEmail = await User.findOne({ email });
 
     if (userEmail) {
       return next(new ErrorHandler("User already exists", 400));
     }
 
-    const myCloud = await cloudinary.v2.uploader.upload(avatar, {
-      folder: "avatars",
-    });
+    // const myCloud = await cloudinary.v2.uploader.upload(avatar, {
+    //   folder: "avatars",
+    // });
 
     const user = {
       name: name,
       email: email,
       password: password,
-      avatar: {
-        public_id: myCloud.public_id,
-        url: myCloud.secure_url,
-      },
+      phonenumber: phonenumber,
+      confirmpassword: confirmpassword,
     };
 
     const activationToken = createActivationToken(user);
@@ -78,7 +76,7 @@ router.post(
       if (!newUser) {
         return next(new ErrorHandler("Invalid token", 400));
       }
-      const { name, email, password, avatar } = newUser;
+      const { name, email, password, phonenumber, confirmpassword } = newUser;
 
       let user = await User.findOne({ email });
 
@@ -88,8 +86,9 @@ router.post(
       user = await User.create({
         name,
         email,
-        avatar,
+        phonenumber,
         password,
+        confirmpassword,
       });
 
       sendToken(user, 201, res);
@@ -142,10 +141,7 @@ router.post(
         return next(new ErrorHandler("Please provide email!", 400));
       }
 
-
-
       const user = await User.findOne({ email })
-
 
       if (!user) {
         return next(new ErrorHandler("User doesn't exists!", 400));
