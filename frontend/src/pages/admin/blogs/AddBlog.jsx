@@ -56,7 +56,7 @@ function AddBlog() {
         </div>
     );
 }
-AddBlog.propTypes = {
-    onFinish: PropTypes.func.isRequired,
-};
+// AddBlog.propTypes = {
+//     onFinish: PropTypes.func.isRequired,
+// };
 export default AddBlog;
