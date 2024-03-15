@@ -9,7 +9,9 @@ const ProductModal = {
     noItem: null,
     searchTerms: [],
     category: "",
+    subCategory: '',
     SKU: "",
+    isMultiImage: false,
     specs: [
         {
             key: "",

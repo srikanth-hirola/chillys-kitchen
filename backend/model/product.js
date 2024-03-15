@@ -20,22 +20,13 @@ const productSchema = new mongoose.Schema({
     type: String,
     // required: [true, 'Please enter your product category!'],
   },
+  subCategory: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "SubCategory"
+  },
   SKU: String,
-  specs: [
-    {
-      key: String,
-      value: String,
-    },
-  ],
-  specs2: [
-    {
-      heading: String,
-      key: {
-        name: String,
-        value: String,
-      },
-    },
-  ],
+  isMultiImage: Boolean,
+  specs: [{ key: String, value: String }],
   showInputs: Boolean,
   colorInputs: [ //to check if it has varient or not
     {

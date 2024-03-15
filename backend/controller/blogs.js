@@ -49,7 +49,7 @@ router.get('/pagination', cacheMiddleware, catchAsyncErrors(async (req, res) => 
     }
 }));
 
-router.post('/compose', isSeller, flushBlogs, catchAsyncErrors(async (req, res) => {
+router.post('/compose', flushBlogs, catchAsyncErrors(async (req, res) => {
     try {
         const { blogData } = req.body;
         let allImages = blogData?.large_thumb;
@@ -61,7 +61,7 @@ router.post('/compose', isSeller, flushBlogs, catchAsyncErrors(async (req, res) 
 
         const uploadPromises = allImages.map(async (image) => {
             const myCloud = await cloudinary.v2.uploader.upload(image, {
-                folder: 'ecom-blogs',
+                folder: 'chilly_kitchen/blogs',
             });
 
             return {
@@ -96,7 +96,7 @@ router.get("/category", catchAsyncErrors(async (req, res) => {
     }
 }));
 
-router.post('/category', isSeller, catchAsyncErrors(async (req, res) => {
+router.post('/category', catchAsyncErrors(async (req, res) => {
     const { category } = req.body;
     try {
         if (!category) {
@@ -127,7 +127,7 @@ router.get('/blog/edit/:id', catchAsyncErrors(async (req, res) => {
         });
 }));
 
-router.put('/update/:id', isSeller, flushBlogs, catchAsyncErrors(async (req, res) => {
+router.put('/update/:id', flushBlogs, catchAsyncErrors(async (req, res) => {
     try {
         const { blogEdit } = req.body;
         const { id } = req.params;
@@ -143,7 +143,7 @@ router.put('/update/:id', isSeller, flushBlogs, catchAsyncErrors(async (req, res
 
             if (typeof image === "string") {
                 const myCloud = await cloudinary.uploader.upload(image, {
-                    folder: 'hirola-blogs',
+                    folder: 'chilly_kitchen/blogs',
                 });
 
                 return {
@@ -210,9 +210,11 @@ router.get('/blog/:publish', catchAsyncErrors(async (req, res) => {
     }
 }));
 
-router.delete('/delete-Img/:public_id/:blogId', isSeller, flushBlogs, catchAsyncErrors(async (req, res) => {
+router.delete('/delete-Img/:blogId', flushBlogs, catchAsyncErrors(async (req, res) => {
     try {
-        const { public_id, blogId } = req.params;
+        const { blogId } = req.params;
+        const { public_id } = req.body;
+        console.log(public_id, req.body, blogId)
         await cloudinary.v2.uploader.destroy(public_id);
         await Blog.updateOne(
             { _id: blogId },
@@ -222,11 +224,11 @@ router.delete('/delete-Img/:public_id/:blogId', isSeller, flushBlogs, catchAsync
         res.status(200).json({ message: 'Deleted Image Successfully!' })
 
     } catch (error) {
-        res.status(500).json({ error: e.message || 'Internal Server Error' });
+        res.status(500).json({ error: error.message || 'Internal Server Error' });
     }
 }));
 
-router.delete('/blog/delete/:id', isSeller, flushBlogs, catchAsyncErrors(async (req, res) => {
+router.delete('/blog/delete/:id', flushBlogs, catchAsyncErrors(async (req, res) => {
     const requestedId = req.params.id;
     try {
         Blog.findByIdAndDelete({ _id: requestedId })
