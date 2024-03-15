@@ -11,6 +11,8 @@ const sendMail = require('../utils/sendMail');
 const User = require('../model/user');
 const Shop = require('../model/shop');
 const { cacheMiddleware, flushCategories } = require('../middleware/cacheMiddleware');
+const { check } = require('express-validator');
+const { EmptyValidation } = require('../middleware/EmptyValidation');
 
 
 
@@ -19,7 +21,7 @@ router.get(
   '/get-all-categories', cacheMiddleware,
   catchAsyncErrors(async (req, res, next) => {
     try {
-      const categories = await Category.find({ approved: true });
+      const categories = await Category.find({});
       res.status(201).json({
         success: true,
         categories,
@@ -110,69 +112,18 @@ router.get(
 
 // Add Category
 router.post(
-  '/add-category', flushCategories,
+  '/add-category', [
+  check('category', 'Please enter a valid category').isLength({ min: 3 }),
+], EmptyValidation, flushCategories,
   catchAsyncErrors(async (req, res, next) => {
     try {
-      const category = req.body.categories[0];
-
-      let logoToUpload = category.CatImg;
-      const myCloud = await cloudinary.v2.uploader.upload(logoToUpload, {
-        folder: 'siteCategoryImages',
+      const category = req.body;
+      console.log(category)
+      const categoryNew = await Category.create(category);
+      res.status(201).json({
+        success: true,
+        categoryNew,
       });
-
-      logoToUpload = {
-        public_id: myCloud.public_id,
-        url: myCloud.secure_url,
-      };
-
-      category.CatImg = logoToUpload;
-
-      const newCategory = new Category(category);
-
-      await Category.insertMany(newCategory)
-        .then((result) => {
-          res.status(201).json({
-            Status: 'Success',
-          });
-        })
-        .catch((error) => {
-          console.log(error)
-          return next(new ErrorHandler(error, 400));
-        });
-      // let images = [];
-
-      // if (req.body.images.length === 0) {
-      //   return next(new ErrorHandler('Category Image is Required!', 400));
-      // }
-
-      // if (typeof req.body.images === 'string') {
-      //   images.push(req.body.images);
-      // } else {
-      //   images = req.body.images;
-      // }
-
-      // const imagesLinks = [];
-
-      // for (let i = 0; i < images.length; i++) {
-      //   const result = await cloudinary.v2.uploader.upload(images[i], {
-      //     folder: 'category',
-      //   });
-
-      //   imagesLinks.push({
-      //     public_id: result.public_id,
-      //     url: result.secure_url,
-      //   });
-      // }
-
-      // const categoryData = req.body;
-      // categoryData.images = imagesLinks;
-
-      // const category = await Category.create(categoryData);
-
-      // res.status(201).json({
-      //   success: true,
-      //   category,
-      // });
     } catch (error) {
       return next(new ErrorHandler(error, 400));
     }

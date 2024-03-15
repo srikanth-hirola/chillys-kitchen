@@ -26,6 +26,11 @@ import UserLogin from './pages/user/UserLogin';
 import UserRegister from './pages/user/UserRegister';
 import ForgotPassword from './pages/user/ForgotPassword';
 import ProductDetails from './pages/products/ProductDetails';
+import Cart from './pages/Cart';
+import Wishlist from './pages/Wishlist';
+import SiteConfig from './pages/admin/configuration/SiteConfig';
+import SiteConfigBanner from './components/siteconfig/Banner';
+import SiteConfigAbout from './components/siteconfig/About.jsx';
 
 function App () {
   return(
@@ -43,6 +48,9 @@ function App () {
                   <Route exact path="/add-blogs" element={<AddBlog/>} />
                   <Route exact path="/admin-blogs/:edit" element={<EditBlog/>} />
                   <Route exact path="/orders" element={< Orders/>} />
+                  <Route exact path="/site-config" element={< SiteConfig/>} />
+                  <Route exact path="/site-config/banner" element={< SiteConfigBanner/>} />
+                  <Route exact path="/site-config/about" element={< SiteConfigAbout/>} />
                   <Route exact path="/locations" element={<div>LOcations</div>} />
                   <Route exact path="/profile" element={<div>Profile</div>} />
                   <Route exact path="/login" element={<Login/>}/> 
@@ -50,14 +58,16 @@ function App () {
                   <Route exact path="/user-register" element={<UserRegister/>}/> 
                   <Route exact path="/forgot-password" element={<ForgotPassword/>}/> 
 
-                  <Route path='/' element={<Home />}/>
-                  <Route path='/about' element={<About />}/>
-                  <Route path='/menu' element={<Menu/>}/>
-                  <Route path='/menu/:id' element={<ProductDetails/>}/>
-                  <Route path='/book-table' element={<BookTable />}/>
-                  <Route path='/blog' element={<Blog />}/>
-                  <Route path='/blog/:slug' element={<BlogDetails />}/>
-                  <Route path='/contact-us' element={<Contact />}/>
+                  <Route exact path='/' element={<Home />}/>
+                  <Route exact path='/about' element={<About />}/>
+                  <Route exact path='/menu' element={<Menu/>}/>
+                  <Route exact path='/book-table' element={<BookTable />}/>
+                  <Route exact path='/blog' element={<Blog />}/>
+                  <Route exact path='/cart' element={<Cart/>}/>
+                  <Route exact path='/wishlist' element={<Wishlist/>}/>
+                  <Route exact path='/menu/:id' element={<ProductDetails/>}/>
+                  <Route exact path='/blog/:slug' element={<BlogDetails />}/>
+                  <Route exact path='/contact-us' element={<Contact />}/>
           </Routes>
     </Router>
   )

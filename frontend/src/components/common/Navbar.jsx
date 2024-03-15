@@ -54,18 +54,22 @@ const Navbar = () => {
                       <Link to='/contact-us'>Contact</Link>
                     </li>
                     <li>
-        <Badge count={5} /* Set your desired count here */>
-          <span className='badge-count' >
-            <ShoppingCartOutlined style={{fontSize:'20px'}} />
-          </span>
-        </Badge>
+                    <Link to='/cart'>
+                    <Badge count={5} /* Set your desired count here */>
+                              <span className='badge-count' >
+                                <ShoppingCartOutlined style={{fontSize:'20px'}} />
+                              </span>
+                            </Badge>
+                    </Link>
       </li>
       <li>
-        <Badge count={2} /* Add the 'dot' prop for a simple dot without a count */>
+       <Link to='/wishlist'>
+       <Badge count={2} /* Add the 'dot' prop for a simple dot without a count */>
           <span className='badge-count'>
             <HeartOutlined style={{fontSize:'20px'}} />
           </span>
         </Badge>
+       </Link>
       </li>
                  
                     <li>

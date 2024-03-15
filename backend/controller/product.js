@@ -324,20 +324,13 @@ router.post(
   '/requested-product', flushProducts, flushProductsByCategory,
   catchAsyncErrors(async (req, res, next) => {
     try {
-      const shopId = req.body.shopId;
-      const shop = await Shop.findById(shopId);
-
-      if (!shop) {
-        return next(new ErrorHandler('Shop Id is invalid!', 400));
-      }
-
       let images = [];
 
       if (req.body.images && req.body.images.length > 0) {
         const imagesLinks = await Promise.all(
           req.body.images.map(async (image) => {
             const result = await cloudinary.v2.uploader.upload(image, {
-              folder: 'products',
+              folder: 'chilly_kitchen/products',
             });
             return {
               public_id: result.public_id,
@@ -348,11 +341,11 @@ router.post(
         req.body.images = imagesLinks;
       }
 
-      if (req.body.mainImage && req.body.mainImage.url !== '') {
+      if (req.body.mainImage && req.body.mainImage?.url !== '') {
         const mainImageResult = await cloudinary.v2.uploader.upload(
           req.body.mainImage.url,
           {
-            folder: 'products',
+            folder: 'chilly_kitchen/products',
           }
         );
         req.body.mainImage = {
@@ -368,7 +361,7 @@ router.post(
               const colorImageResult = await cloudinary.v2.uploader.upload(
                 colorInput.image.url,
                 {
-                  folder: 'products',
+                  folder: 'chilly_kitchen/products',
                 }
               );
               colorInput.image = {
@@ -381,13 +374,13 @@ router.post(
         );
         req.body.colorInputs = await Promise.all(colorImagePromises);
       }
+
       if (req.body?.name) {
         req.body.slug = slugify(req.body?.name.toLowerCase());
       }
 
       const productData = {
         ...req.body,
-        shop: shop,
       };
 
       const product = await Product.create(productData);
@@ -396,19 +389,20 @@ router.post(
         product,
       });
 
-      const adminSide = {
-        subject: 'New Product Request Received',
-        message: 'Got new Product Request'
-      }
+      // const adminSide = {
+      //   subject: 'New Product Request Received',
+      //   message: 'Got new Product Request'
+      // }
 
-      const sellerSide = {
-        subject: 'New Product Added',
-        message: 'New Product Created Successfully'
-      }
+      // const sellerSide = {
+      //   subject: 'New Product Added',
+      //   message: 'New Product Created Successfully'
+      // }
 
-      await TwoSideMails(shop?.email, adminSide, sellerSide)
+      // await TwoSideMails(shop?.email, adminSide, sellerSide)
 
     } catch (error) {
+      console.log(error)
       return next(new ErrorHandler(error.message, 400));
     }
   })
@@ -1270,15 +1264,6 @@ router.put(
         colorInputsIndexUpdateImage,
         proId,
       } = req.body;
-      const shopId = formData.shopId;
-
-      // Input Validation: Check if required fields are present and in the expected format
-
-      if (!shopId || !proId) {
-        return next(
-          new ErrorHandler('Invalid request. Missing shopId or proId.', 400)
-        );
-      }
 
       if (!formData || !Array.isArray(formData.colorInputs)) {
         return next(
@@ -1289,11 +1274,6 @@ router.put(
         );
       }
 
-      // Find the shop by ID
-      const shop = await Shop.findById(shopId);
-      if (!shop) {
-        return next(new ErrorHandler('Shop Id is invalid!', 400));
-      }
 
       // Find the existing product by ID
       const productFind = await Product.findById(proId);
@@ -1797,8 +1777,6 @@ router.get(
   catchAsyncErrors(async (req, res, next) => {
     try {
       const products = await Product.find({
-        // shopId: req.params.id,
-        approved: true,
         draft: false,
       });
 
@@ -2026,11 +2004,10 @@ router.put(
 // delete main image
 router.put(
   '/delete-main-image',
-  isSeller, flushProducts, flushProductsByCategory,
+  flushProducts, flushProductsByCategory,
   catchAsyncErrors(async (req, res, next) => {
     try {
       const { id, _id } = req.body;
-      console.log(id, _id)
       await cloudinary.v2.uploader
         .destroy(id)
         .then(async (result) => {
@@ -2065,7 +2042,7 @@ router.put(
 // delete showInput image
 router.put(
   '/delete-showInput-image',
-  isSeller, flushProducts, flushProductsByCategory,
+  flushProducts, flushProductsByCategory,
   catchAsyncErrors(async (req, res, next) => {
     try {
       await cloudinary.v2.uploader
@@ -2106,7 +2083,7 @@ router.put(
 // delete product image
 router.put(
   '/delete-product-image',
-  isSeller, flushProducts, flushProductsByCategory,
+  flushProducts, flushProductsByCategory,
   catchAsyncErrors(async (req, res, next) => {
     try {
       await cloudinary.v2.uploader
