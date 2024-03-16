@@ -12,6 +12,7 @@
   "dependencies": {
     "@ckeditor/ckeditor5-build-classic": "^41.2.0",
     "@ckeditor/ckeditor5-react": "^6.2.0",
+    "@reduxjs/toolkit": "^1.9.3",
     "antd": "^5.15.2",
     "axios": "^1.6.7",
     "bootstrap": "^5.3.3",
@@ -20,9 +21,13 @@
     "react-bootstrap": "^2.10.1",
     "react-dom": "^18.2.0",
     "react-id-swiper": "^4.0.0",
+    "react-redux": "^8.0.5",
     "react-router": "^6.22.3",
     "react-router-dom": "^6.22.3",
     "react-slugify": "^3.0.3",
+    "redux": "^4.2.1",
+    "redux-thunk": "^2.4.2",
+    "redux-toolkit": "^1.1.2",
     "sass": "^1.71.1",
     "swiper": "^11.0.7"
   },

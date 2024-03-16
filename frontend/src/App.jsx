@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 // // eslint-disable-next-line no-unused-vars
-import React from 'react';
+import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 import Home from './pages/Home'
@@ -31,8 +31,28 @@ import Wishlist from './pages/Wishlist';
 import SiteConfig from './pages/admin/configuration/SiteConfig';
 import SiteConfigBanner from './components/siteconfig/Banner';
 import SiteConfigAbout from './components/siteconfig/About.jsx';
+import Store from './redux/store.js';
+import { getAllCategories } from './redux/actions/category.js';
+import { getPublishedProducts } from './redux/actions/product.js';
 
 function App() {
+
+  useEffect(() => {
+    // Store.dispatch(getAllSiteConfig());
+    // Store.dispatch(loadUser());
+    // Store.dispatch(loadSeller());
+    // Store.dispatch(getAllEvents());
+    Store.dispatch(getAllCategories());
+    Store.dispatch(getPublishedProducts())
+    // Store.dispatch(getAllProducts());
+    // myAction()
+    // setTimeout(() => {
+    //   Store.dispatch(getAllProducts());
+    // }, [500])
+    // getStripeApikey();
+  }, []);
+
+
   return (
     <Router>
 
