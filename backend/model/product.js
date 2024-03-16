@@ -10,12 +10,10 @@ const productSchema = new mongoose.Schema({
   slug: String,
   metaTitle: String,
   metaDescription: String,
-  productIdState: Boolean,
-  productId: String,
+
   description: {
     type: String,
   },
-  model: String,
   noItem: String,
   searchTerms: Array,
   category: {
@@ -25,11 +23,8 @@ const productSchema = new mongoose.Schema({
   SKU: String,
   specs: [
     {
-      heading: String,
-      key: {
-        name: String,
-        value: [String],
-      },
+      key: String,
+      value: String,
     },
   ],
   specs2: [
@@ -39,21 +34,6 @@ const productSchema = new mongoose.Schema({
         name: String,
         value: String,
       },
-    },
-  ],
-  haveAttributes: Boolean,
-  attributeStock: Boolean,
-  attributes: [
-    {
-      name: String,
-      values: [
-        {
-          valName: String,
-          stock: Number,
-          eventStock: Number,
-          sold_out: Number,
-        },
-      ],
     },
   ],
   showInputs: Boolean,
@@ -69,21 +49,6 @@ const productSchema = new mongoose.Schema({
       discountPrice: String,
       stock: Number,
       sold_out: Number,
-      haveAttributes: Boolean,
-      attributeStock: Boolean,
-      attributes: [
-        {
-          name: String,
-          values: [
-            {
-              valName: String,
-              stock: Number,
-              eventStock: Number,
-              sold_out: Number,
-            },
-          ],
-        },
-      ],
     },
   ],
   originalPrice: {
@@ -137,14 +102,6 @@ const productSchema = new mongoose.Schema({
   ],
   ratings: {
     type: Number,
-  },
-  shopId: {
-    type: String,
-    required: true,
-  },
-  shop: {
-    type: Object,
-    required: true,
   },
   sold_out: {
     type: Number,

@@ -11,17 +11,7 @@ const compression = require('compression')
 app.use(compression())
 
 const allowedOrigins = [
-  'https://ecom-hirola.netlify.app',
-  'https://playful-begonia-9ec628.netlify.app',
-  'https://64c4f83342477c5ec56722ac--playful-begonia-9ec628.netlify.app',
-  'https://ecom-client.onrender.com',
-  'http://localhost:3000',
-  'http://localhost:3001',
-  'http://localhost:3002',
   'http://localhost:5173',
-  'https://airbee.co.in',
-  'https://www.airbee.co.in',
-  'https://air-bee.netlify.app',
 ];
 
 
@@ -126,3 +116,5 @@ const EventsCheck = async (date) => {
 app.use(ErrorHandler);
 
 module.exports = app;
+
+

@@ -81,16 +81,31 @@ const sidebar_menu = [
     {
       id: 5,
       icon: UserIcon,
-      path: '/catering',
-      title: 'Catering',
+      path: '/site-config',
+      title: 'Site Config',
+      submenu: [
+        {
+          id: 21,
+         icon: ShippingIcon,
+          path: '/site-config/banner',
+          title: 'Banner',
+        },
+        {
+          id: 22,
+         icon: ShippingIcon,
+          path: '/site-config/menu',
+          title: 'Special Menu',
+        },
+        {
+          id: 23,
+         icon: ShippingIcon,
+          path: '/site-config/about',
+          title: 'About ',
+        },
+        
+      ],
   },
 
-    {
-        id: 6,
-        icon: UserIcon,
-        path: '/profile',
-        title: 'My account',
-    },
     {
         id: 7,
         icon: UserIcon,

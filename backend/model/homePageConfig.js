@@ -1,609 +1,72 @@
 const mongoose = require('mongoose');
 
 const homePageSchema = new mongoose.Schema({
-    header: {
-        logo: {
-            content: {
-                img: {
-                    public_id: "",
-                    url: "",
-                },
-            },
-        },
-        nav: {
-            navigation: {
-                content: {
-                    items: {
-                        structure: {
-                            title: "",
-                            url: "",
-                        },
-                    },
-                    items: [
-                        {
-                            title: "",
-                            url: "",
-                        },
-                        {
-                            title: "",
-                            url: "",
-                        },
-                        {
-                            title: "",
-                            url: "",
-                        },
-                        {
-                            title: "",
-                            url: "",
-                        },
-                        {
-                            title: "",
-                            url: "",
-                        },
-                        {
-                            title: "",
-                            url: "",
-                        },
-                    ],
-                },
-            },
-        },
-        number: {
-            content: {
-                phonenumber: {
-                    text: '',
-                }
-            },
-        },
+
+    // banner with header fields
+    mainLogo : {
+        public_id: String,
+        url: String
+    },
+    navLink : Array,
+    phoneNumber: Number,
+    bannerImages: Array,
+    bannerSubTitle: String,
+    bannerTitle: String,
+    bannerDescription: String,
+    bannerButtons: Array,
+
+    // special menu fields
+    menuSubTitle: String,
+    menuTitle: String,
+    menuCards: Array,
+
+    // aboutus section one
+    aboutUsImage: {
+        public_id: String,
+        url: String,
+    },
+    contactTitle: String,
+    email: String,
+    address: String,
+    aboutusTitle: String,
+    aboutUsDescriptionOne: String,    
+    aboutUsDescriptionTwo: String, 
+    aboutUsButton: {
+        title: String,
+        url: String,
     },
 
-    banner: {
-        backgroundImage: {
-            content: {
-                img: {
-                    public_id: "",
-                    url: "",
-                },
-            },
-        },
-        bannerSubTitle: {
-            content: {
-                text: "",
-            },
-        },
-        bannerTitle: {
-            content: {
-                text: "",
-            },
-        },
-        bannerDesignedTitle: {
-            content: {
-                text: "",
-            },
-        },
-        bannerDescription: {
-            content: {
-                text: "",
-            },
-        },
-        buttons: {
-            "button one": {
-                content: {
-                    title: "",
-                    url: "",
-                },
-            },
-            "button two": {
-                content: {
-                    title: "",
-                    url: "",
-                },
-            },
-        },
-        bannerMainImage: {
-            content: {
-                img: {
-                    public_id: "",
-                    url: "",
-                },
-            },
-        },
+    // service section
+    serviceSubTitle: String,
+    serviceTitle: String,
+    serviceCards: Array,
+
+    // about us section two
+    aboutUsSectionTwoImage: Array,
+    aboutusSectionTwoTitle: String,
+    aboutUsSectionTwoDescription: String,    
+    aboutUslists: Array,
+
+    // cclient imaages
+    clientImages: Array,
+
+    // footer
+    footerLogo: {
+        public_id: String,
+        url: String,
     },
-
-
-    menuCardsSection: {
-        menuCardSectionSubTitle: {
-            content: {
-                text: "",
-            },
-        },
-        menuCardSectionTitle: {
-            content: {
-                text: "",
-            },
-        },
-        menucards: {
-            cards: {
-                content: {
-                    items: {
-                        structure: {
-                            img: {
-                                public_id: "",
-                                url: "",
-                            },
-                            title: "",
-                            description: "",
-                            link: {
-                                title: "",
-                                url: "",
-                            },
-                        },
-                    },
-                    items: [
-                        {
-                            img: {
-                                public_id: "",
-                                url: "",
-                            },
-                            title: "",
-                            description: "",
-                            link: {
-                                title: "",
-                                url: "",
-                            },
-                        },
-                        {
-                            img: {
-                                public_id: "",
-                                url: "",
-                            },
-                            title: "",
-                            description: "",
-                            link: {
-                                title: "",
-                                url: "",
-                            },
-                        },
-                        {
-                            img: {
-                                public_id: "",
-                                url: "",
-                            },
-                            title: "",
-                            description: "",
-                            link: {
-                                title: "",
-                                url: "",
-                            },
-                        },
-                        {
-                            img: {
-                                public_id: "",
-                                url: "",
-                            },
-                            title: "",
-                            description: "",
-                            link: {
-                                title: "",
-                                url: "",
-                            },
-                        },
-                    ],
-                },
-            },
-        }, 
+    footerDescription: String,
+    footerSocialMedia: Array,
+    footerLinksOne: {
+        title: String,
+        links: Array,
     },
-
-
-    aboutUsSection: {
-        Image: {
-            content: {
-                img: {
-                    public_id: "",
-                    url: "",
-                },
-            },
-        },
-        contactDetails: {
-            title: {
-                content: {
-                    text: "",
-                },
-            },
-            phoneNumber: {
-                content: {
-                    text: "",
-                },
-            },
-            email: {
-                content: {
-                    text: "",
-                },
-            },
-            Address: {
-                content: {
-                    text: "",
-                },
-            },
-        },
-        aboutSectionTitle: {
-            content: {
-                text: "",
-            },
-        },
-        aboutSectionDescriptionOne: {
-            content: {
-                text: "",
-            },
-        },
-        aboutSectionDescriptionTwo: {
-            content: {
-                text: "",
-            },
-        },
-        button: {
-            content: {
-                title: "",
-                url: "",
-            },
-        },
+    footerLinksTwo: {
+        title: String,
+        links: Array,
     },
-
-
-
-    serviceSection: {
-        serviceSubTitle: {
-            content: {
-                text: "",
-            },
-        },
-        serviceTitle: {
-            content: {
-                text: "",
-            },
-        },
-        servicecards: {
-            cards: {
-                content: {
-                    items: {
-                        structure: {
-                            img: {
-                                public_id: "",
-                                url: "",
-                            },
-                            title: "",
-                            description: "",
-                        },
-                    },
-                    items: [
-                        {
-                            img: {
-                                public_id: "",
-                                url: "",
-                            },
-                            title: "",
-                            description: "",
-                        },
-                        {
-                            img: {
-                                public_id: "",
-                                url: "",
-                            },
-                            title: "",
-                            description: "",
-                        },
-                        {
-                            img: {
-                                public_id: "",
-                                url: "",
-                            },
-                            title: "",
-                            description: "",
-                        },
-                    ],
-                },
-            },
-        }, 
-    },
-
-
-
-    aboutUsSectionTwo: {
-        ImageOne: {
-            content: {
-                img: {
-                    public_id: "",
-                    url: "",
-                },
-            },
-        },
-        ImageTwo: {
-            content: {
-                img: {
-                    public_id: "",
-                    url: "",
-                },
-            },
-        },
-        ImageThree: {
-            content: {
-                img: {
-                    public_id: "",
-                    url: "",
-                },
-            },
-        },
-        aboutUsSectionTwoTitle: {
-            content: {
-                text: "",
-            },
-        },
-        aboutUsSectionTwoDescription: {
-            content: {
-                text: "",
-            },
-        },
-        Lists: {
-            listItems: {
-                content: {
-                    items: {
-                        structure: {
-                            text: "",
-                        }
-                    },
-                    limit: 3,
-                    items: [
-                        {
-                            text: "",
-                        },
-                        {
-                            text: "",
-                        },
-                        {
-                            text: "",
-                        },
-                    ],
-                },
-            },
-        },
-    },
-
-
-
-    clientImages: {
-        content: {
-            items: {
-                structure: {
-                    img: {
-                        public_id: "",
-                        url: "",
-                    },
-                },
-            },
-            items: [
-                {
-                    img: {
-                        public_id: "",
-                        url: "",
-                    },
-                },
-                {
-                    img: {
-                        public_id: "",
-                        url: "",
-                    },
-                },
-                {
-                    img: {
-                        public_id: "",
-                        url: "",
-                    },
-                },
-                {
-                    img: {
-                        public_id: "",
-                        url: "",
-                    },
-                },
-                {
-                    img: {
-                        public_id: "",
-                        url: "",
-                    },
-                },
-                {
-                    img: {
-                        public_id: "",
-                        url: "",
-                    },
-                },
-            ],
-        },
-    },
-
-
-
-    Footer: {
-        footerLogo: {
-            content: {
-                img: {
-                    public_id: "",
-                    url: "",
-                },
-            },
-        },
-        footerDescription: {
-            content: {
-                text: "",
-            },
-        },
-        socialMedia: {
-            content: {
-                items: {
-                    structure: {
-                        img: {
-                            public_id: "",
-                            url: "",
-                        },
-                        link: "",
-                    },
-                },
-                limit: 5,
-                items: [
-                    {
-                        img: {
-                            public_id: "",
-                            url: "",
-                        },
-                        link: "",
-                    },
-                    {
-                        img: {
-                            public_id: "",
-                            url: "",
-                        },
-                        link: "",
-                    },
-                    {
-                        img: {
-                            public_id: "",
-                            url: "",
-                        },
-                        link: "",
-                    },
-                    {
-                        img: {
-                            public_id: "",
-                            url: "",
-                        },
-                        link: "",
-                    },
-                    {
-                        img: {
-                            public_id: "",
-                            url: "",
-                        },
-                        link: "",
-                    },
-                ],
-            },
-        },
-        footerOneLinks: {
-            content: {
-                title: "",
-                items: {
-                    structure: {
-                        title: "",
-                        url: "",
-                    },
-                },
-                items: [
-                    {
-                        title: "",
-                        url: "", 
-                    },
-                    {
-                        title: "",
-                        url: "", 
-                    },
-                    {
-                        title: "",
-                        url: "", 
-                    },
-                    {
-                        title: "",
-                        url: "", 
-                    },
-                    {
-                        title: "",
-                        url: "", 
-                    },
-                    {
-                        title: "",
-                        url: "", 
-                    },
-                ]
-            },
-        },
-        footerTwoLinks: {
-            content: {
-                title: "",
-                items: {
-                    structure: {
-                        title: "",
-                        url: "",
-                    },
-                },
-                items: [
-                    {
-                        title: "",
-                        url: "", 
-                    },
-                    {
-                        title: "",
-                        url: "", 
-                    },
-                    {
-                        title: "",
-                        url: "", 
-                    },
-                    {
-                        title: "",
-                        url: "", 
-                    },
-                    {
-                        title: "",
-                        url: "", 
-                    },
-                    {
-                        title: "",
-                        url: "", 
-                    },
-                ]
-            },
-        },
-        footerImages: {
-            content: {
-                title: "",
-                items: {
-                    structure: {
-                        img: {
-                            public_id: "",
-                            url: "",
-                        },
-                    },
-                },
-                limit: 4,
-                items: [
-                    {
-                        img: {
-                            public_id: "",
-                            url: "",
-                        },
-                    },
-                    {
-                        img: {
-                            public_id: "",
-                            url: "",
-                        },
-                    },
-                    {
-                        img: {
-                            public_id: "",
-                            url: "",
-                        },
-                    },
-                    {
-                        img: {
-                            public_id: "",
-                            url: "",
-                        },
-                    },
-                ],
-            },
-        },
-    },
-
+    footerImages: Array,
+    footerImageTitle: String,
 
 });
 
