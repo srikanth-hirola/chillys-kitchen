@@ -46,4 +46,16 @@
 .forgot-password{
     margin: 150px auto 80px;
     width: 30%;
+
+    .forgetOtp {
+        display: flex;
+        justify-content: center;
+       input{
+        height: 4rem;
+        width: 3rem !important;
+        margin-inline: 13px;
+        border: 1px solid gray;
+        border-radius: 5px;
+       }
+    }
 }

@@ -85,22 +85,40 @@ const sidebar_menu = [
       title: 'Site Config',
       submenu: [
         {
-          id: 21,
+          id: 1,
+         icon: ShippingIcon,
+          path: '/site-config/header',
+          title: 'Header',
+        },
+        {
+          id: 2,
          icon: ShippingIcon,
           path: '/site-config/banner',
           title: 'Banner',
         },
         {
-          id: 22,
+          id: 3,
          icon: ShippingIcon,
           path: '/site-config/menu',
-          title: 'Special Menu',
+          title: 'Menu ',
         },
         {
-          id: 23,
+          id: 4,
          icon: ShippingIcon,
           path: '/site-config/about',
           title: 'About ',
+        },
+        {
+          id: 5,
+         icon: ShippingIcon,
+          path: '/site-config/services',
+          title: 'Services ',
+        },
+        {
+          id: 6,
+         icon: ShippingIcon,
+          path: '/site-config/delivery',
+          title: 'Delivery ',
         },
         
       ],
@@ -111,7 +129,7 @@ const sidebar_menu = [
         icon: UserIcon,
         path: '/login',
         title: 'Login',
-    }
+    },
 ]
 
 export default sidebar_menu;

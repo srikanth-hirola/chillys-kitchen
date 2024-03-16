@@ -6,7 +6,7 @@ import { MinusCircleOutlined, PlusOutlined } from '@ant-design/icons';
 import SideBar from '../Sidebar';
 import sidebar_menu from '../../constants/sidebar-menu';
 
-const SiteConfigAbout = () => {
+const SiteConfigServices = () => {
   const [form] = Form.useForm();
   const [contactFormKeys, setContactFormKeys] = useState(['contact1']);
   const [mainDescription, setMainDescription] = useState('');
@@ -34,46 +34,59 @@ const SiteConfigAbout = () => {
           <Form.Item label="Main Description" name="mainDescription">
             <Input.TextArea value={mainDescription} onChange={(e) => setMainDescription(e.target.value)} />
           </Form.Item>
-          <Form.Item label="Image" name="image">
-            <Input />
-          </Form.Item>
+         
           <Form.Item label="Title" name="title">
             <Input />
           </Form.Item>
-   
-       
+          
+         
           <Form.List name="contacts">
             {(fields, { add, remove }) => (
               <>
                 {fields.map(({ key, name, fieldKey, ...restField }) => (
                   <Space key={key} style={{ display: 'flex', marginBottom: 8 }} align="baseline">
+                  <div className="row">
+                    <div className="col-md-12">
                     <Form.Item
                       {...restField}
-                      name={[name, 'contactImage']}
-                      label="contactImage"
-                      fieldKey={[fieldKey, 'contactImage']}
+                      name={[name, 'image']}
+                      label="image"
+                      fieldKey={[fieldKey, 'image']}
                       rules={[{ required: true, message: 'Missing contact image' }]}
                     >
-                      <Input placeholder="Contact Image URL" />
+                      <input type="file" name="" id="" />
                     </Form.Item>
+                    </div>
+                    <div className="col-md-12">
                     <Form.Item
                       {...restField}
-                      name={[name, 'contactText']}
-                      label="contactText"
-                      fieldKey={[fieldKey, 'contactText']}
+                      name={[name, 'description']}
+                      label="description"
+                      fieldKey={[fieldKey, 'description']}
+                      rules={[{ required: true, message: 'Missing contact description' }]}
+                    >
+                     <Input placeholder="Description" />
+                    </Form.Item>
+                    </div>
+                    <div className="col-md-12">
+                    <Form.Item
+                      {...restField}
+                      name={[name, 'text']}
+                      label="text"
+                      fieldKey={[fieldKey, 'text']}
                       rules={[{ required: true, message: 'Missing contact text' }]}
                     >
                       <Input placeholder="Contact Text" />
                     </Form.Item>
-                    <Form.Item
-                      {...restField}
-                      name={[name, 'contactLink']}
-                      label="contactLink"
-                      fieldKey={[fieldKey, 'contactLink']}
-                      rules={[{ required: true, message: 'Missing contact link' }]}
-                    >
-                      <Input placeholder="Contact Link" />
-                    </Form.Item>
+                    </div>
+                    <div className="col-md-12">
+                   
+                    </div>
+                  </div>
+                  
+                  
+                    
+                   
                     <MinusCircleOutlined onClick={() => remove(name)} />
                   </Space>
                 ))}
@@ -100,4 +113,4 @@ const SiteConfigAbout = () => {
   );
 };
 
-export default SiteConfigAbout;
+export default SiteConfigServices;

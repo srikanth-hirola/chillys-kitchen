@@ -46,7 +46,7 @@ const Wishlist = () => {
                         <h3>Wishlist</h3>
                     </div>
                    <div className="row ">
-                    <div className="col-md-8">
+                    <div className="col-md-11 m-auto">
                     <div className="cart-body">
                     <div className="cart-items">
                 <div className="header">
@@ -79,22 +79,7 @@ const Wishlist = () => {
            
                     </div>
                     </div>
-                    <div className="col-md-4">
-                    <div className="cart-checkout">
-                        <h5>Have a coupon?</h5>
-                        <p>Add your code for an instant cart discount</p>
-                        <div style={{ display: 'flex', alignItems: 'center' }}>
-      <Input
-        placeholder="Search"
-        prefix={<SearchOutlined style={{ color: 'rgba(0, 0, 0, 0.25)' }} />}
-        style={{ width: '80%' }}
-      />
-      <Button type="primary" style={{ marginLeft: '8px' }}>
-        Search
-      </Button>
-    </div>
-                    </div>
-                    </div>
+                    
                    </div>
                 </div>
             </div>

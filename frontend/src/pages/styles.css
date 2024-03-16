@@ -154,3 +154,10 @@ td span {
     font-weight: 700;
     border-color: #FFFFFF;
 }
+.forgetOtp input {
+    height: 4rem;
+    width: 3rem !important;
+    margin-inline: 13px;
+    border: 1px solid gray;
+    border-radius: 5px;
+}

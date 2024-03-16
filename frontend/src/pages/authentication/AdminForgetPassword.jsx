@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-// ForgotPassword.js
+// AdminForgotPassword.js
 import React, { useEffect, useState } from "react";
 import { Form, Input, Button } from "antd";
 import { LockOutlined } from "@ant-design/icons";
@@ -12,7 +12,7 @@ import toast from "react-hot-toast";
 import OTPInput from "react-otp-input";
 import { server } from "../../server";
 
-function ForgotPassword() {
+function AdminForgotPassword() {
   const handleFinish = (values) => {};
 
   const [searchParams] = useSearchParams();
@@ -72,7 +72,7 @@ function ForgotPassword() {
   const handelSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post(`${server}/user/forget-password`, { email });
+      await axios.post(`${server}/shop/admin-forget-password`, { email });
       setEnterOtpScreen(true);
       timeCountDown();
     } catch (error) {
@@ -86,7 +86,7 @@ function ForgotPassword() {
     const otpVer = otpValidation(otp);
     if (otpVer) {
       try {
-        await axios.post(`${server}/user/otpVer`, {
+        await axios.post(`${server}/shop/admin-otpVer`, {
           email,
           otp,
         });
@@ -110,7 +110,7 @@ function ForgotPassword() {
 
   const handleDeleteOTP = async () => {
     try {
-      await axios.post(`${server}/user/resetOTP`, {
+      await axios.post(`${server}/shop/admin-resetOTP`, {
         email,
       });
       setResendBtn(true);
@@ -125,12 +125,12 @@ function ForgotPassword() {
       toast.error("Password and Confirm Password is not matching");
     }
     try {
-      await axios.post(`${server}/user/changePassword`, {
+      await axios.post(`${server}/shop/changeAdminPassword`, {
         email,
         password,
       });
       toast.success("password Changes Successfully");
-      navigate("/user-login");
+      navigate("/login");
     } catch (error) {
       toast.error(error.response.data.message);
     }
@@ -249,4 +249,4 @@ function ForgotPassword() {
   );
 }
 
-export default ForgotPassword;
+export default AdminForgotPassword;
