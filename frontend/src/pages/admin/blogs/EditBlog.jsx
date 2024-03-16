@@ -1,97 +1,80 @@
 /* eslint-disable no-unused-vars */
-import React from 'react';
+import React, { useEffect } from 'react';
 import sidebar_menu from '../../../constants/sidebar-menu';
 import SideBar from '../../../components/Sidebar';
 
-import  { useState } from 'react';
+import { useState } from 'react';
 import { Form, Input, Button, DatePicker, Select, Upload, message, Modal } from 'antd';
-import { UploadOutlined ,PlusOutlined} from '@ant-design/icons';
+import { UploadOutlined, PlusOutlined } from '@ant-design/icons';
 import PropTypes from 'prop-types';
 import DashboardHeader from '../../../components/DashboardHeader';
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+import BlogInputs from './BlogInputs';
+import { useParams } from 'react-router';
+import useAPI from '../../../customHooks/API/useAPI';
 const { Option } = Select;
 function EditBlog() {
-    const [modalVisible, setModalVisible] = useState(false);
-    const [categoryName, setCategoryName] = useState('');
-    const showModal = () => {
-        setModalVisible(true);
+    const { edit } = useParams();
+    const { putApi, getApi } = useAPI();
+    const [blogEdit, setBlogEdit] = useState({});
+    const [pagefound, setPageFound] = useState('');
+    const [isLoading, setLoading] = useState(false);
+
+    let API = `/api/v2/blogs/blog/edit/${edit}`;
+
+    const fetchBlog = async (url) => {
+        try {
+            setLoading(false);
+            const { data } = await getApi({ endpoint: url })
+            if (data) {
+                if (data === '') {
+                    setPageFound('Notfound');
+                } else {
+                    setBlogEdit({ ...data });
+                }
+            }
+        } catch (e) {
+            alert(e?.response?.data?.message);
+        } finally {
+            setLoading(true)
+        }
     };
 
-    const handleOk = () => {
-        // Add logic to handle category addition (e.g., API call to add category)
-        setModalVisible(false);
-        setCategoryName('');
-    };
+    useEffect(() => {
+        fetchBlog(API);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
 
-    const handleCancel = () => {
-        setModalVisible(false);
+    const submit = async () => {
+
+        try {
+            setLoading(true)
+            const { error, data } = await putApi({ endpoint: `/api/v2/blogs/update/${edit}`, postData: { blogEdit } })
+            if (data) {
+                alert("Updated Blog Successfully!")
+            }
+            if (error) {
+                alert(error?.response?.data?.message)
+            }
+        } catch (e) {
+            alert(e?.response?.data?.message)
+        } finally {
+            setLoading(false)
+        }
     };
     return (
-        
+
         <div className='dashboard-container'>
             <SideBar menu={sidebar_menu} />
             <div className='dashboard-content'>
-            <div className="dashboard-header">
-              
-              <h3>Edit Blog</h3>
-              <div className="add-btn">
-              <DashboardHeader/>
-              
-              </div>
-          </div>
-            <Form name="blogForm" layout="vertical">
-            <Form.Item label="Title" name="title" rules={[{ required: true, message: 'Please input the title!' }]}>
-                <Input />
-            </Form.Item>
-            <Form.Item label="Slug" name="slug" rules={[{ required: true, message: 'Please input the slug!' }]}>
-                <Input />
-            </Form.Item>
-            <Form.Item label="Description" name="description">
-                <Input.TextArea />
-            </Form.Item>
-            <Form.Item label="Date Posted" name="datePosted">
-                <DatePicker />
-            </Form.Item>
-            <Form.Item label="Posted By" name="postedBy">
-                <Input />
-            </Form.Item>
-            <Form.Item label="Read Time" name="readTime">
-                <Input />
-            </Form.Item>
-            <Form.Item label="Category" name="category">
-                <Select>
-                    <Option value="technology">Technology</Option>
-                    <Option value="lifestyle">Lifestyle</Option>
-                    <Option value="travel">Travel</Option>
-                    {/* Add more categories as needed */}
-                </Select>
-                <Button icon={<PlusOutlined />} onClick={showModal} />
-                <Modal
-                    title="Add Category"
-                    visible={modalVisible}
-                    onOk={handleOk}
-                    onCancel={handleCancel}
-                >
-                    <Form.Item label="Category Name">
-                        <Input value={categoryName} onChange={(e) => setCategoryName(e.target.value)} />
-                    </Form.Item>
-                </Modal>
-            </Form.Item>
-            <Form.Item label="Excerpt" name="excerpt">
-                <Input.TextArea />
-            </Form.Item>
-            
-           <Form.Item>
-           <CKEditor
-            editor={ClassicEditor}
-            
-        />
-           </Form.Item>
-            <Form.Item>
-                <Button type="primary" htmlType="submit">Submit</Button>
-            </Form.Item>
-        </Form>
+                <div className="dashboard-header">
+                    <h3>Edit Blog</h3>
+                    <div className="add-btn">
+                        <DashboardHeader />
+                    </div>
+                </div>
+                <BlogInputs blogData={blogEdit} onFinish={submit} setBlogData={setBlogEdit} _id={edit} />
             </div>
         </div>
     );

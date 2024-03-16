@@ -1,13 +1,54 @@
 /* eslint-disable no-unused-vars */
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Table, Tag, Button, Modal, Form, Input, message, Select } from 'antd';
 import { PlusOutlined, EditOutlined, DeleteOutlined, ExclamationCircleOutlined } from '@ant-design/icons';
 import SideBar from '../../../../components/Sidebar';
 import sidebar_menu from '../../../../constants/sidebar-menu';
 import DashboardHeader from '../../../../components/DashboardHeader';
+import useAPI from '../../../../customHooks/API/useAPI';
+import confirm from 'antd/es/modal/confirm';
 
 const { Option } = Select;
 function Category() {
+
+    const [categories, setCategories] = useState([]);
+    const { getApi, postApi, putApi, deleteApi } = useAPI();
+    const [selectedOption, setSelectedOption] = useState(null);
+    const [subCategoryData, setSubCategory] = useState({
+        subCategory: '',
+        category: '',
+        subCatImg: ''
+    })
+    const [subCategories, setSubCategories] = useState([]);
+    const [editActive, setEditActive] = useState(false);
+
+    useEffect(() => {
+        const fetchCategory = async () => {
+            try {
+                let { data } = await getApi({ endpoint: '/api/v2/category/get-all-categories' })
+                setCategories(data.categories)
+            } catch (error) {
+                console.log(error)
+            }
+        }
+        fetchCategory()
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
+
+    useEffect(() => {
+        const fetchSubCategory = async () => {
+            try {
+                let { data } = await getApi({ endpoint: '/api/v2/category/get-all-sub-categories' })
+                setSubCategories(data.categories)
+            } catch (error) {
+                console.log(error)
+            }
+        }
+        fetchSubCategory()
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
+
+
     const [dataSource, setDataSource] = useState([
         {
             key: '1',
@@ -31,8 +72,11 @@ function Category() {
 
     const showEditModal = (record) => {
         setEditRecord(record);
+        setSubCategory({ ...record, subCatImg: record?.subCatImg?.url ? record?.subCatImg : '' })
+        setSelectedOption(record?.category)
+        setEditActive(true)
         form.setFieldsValue({
-            categoryName: record.name
+            subCategory: record.subCategory
         });
         setModalVisible(true);
     };
@@ -53,17 +97,32 @@ function Category() {
         setModalVisible(false);
     };
 
+    const handleDeleteSubCategory = async (id) => {
+        const { data, error } = await deleteApi({ endpoint: `/api/v2/category/delete-sub-category/${id}` });
+        if (error) {
+            alert(error?.response?.data?.message)
+            message.error('Deleted Sub Category and related products successfully');
+        }
+        if (data) {
+            message.success('Deleted Sub Category and related products successfully');
+            let updatedState = [...subCategories];
+            updatedState = updatedState?.filter((item) => item?._id !== id);
+            setSubCategories(updatedState)
+        }
+    }
+
     const showDeleteConfirm = (record) => {
         confirm({
-            title: 'Are you sure you want to delete this category?',
+            title: 'Are you sure you want to delete this sub category?, All Products related to this sub category will be also deleted!',
             icon: <ExclamationCircleOutlined />,
-            content: `Category: ${record.name}`,
+            content: `Category: ${record.subCategory}`,
             okText: 'Yes',
             okType: 'danger',
             cancelText: 'No',
             onOk() {
+                handleDeleteSubCategory(record?._id)
                 // Logic to delete category goes here
-                message.success('Category deleted successfully');
+
             },
             onCancel() {
                 console.log('Cancel');
@@ -72,6 +131,7 @@ function Category() {
     };
     const showModal = () => {
         setModalVisible(true);
+        setEditActive(false);
     };
 
     const handleOk = () => {
@@ -83,36 +143,35 @@ function Category() {
         setModalVisible(false);
     };
 
+    const handleCloudinaryImageDelete = async (public_id, _id) => {
+        try {
+            const { error, data } = await deleteApi({ endpoint: `/api/v2/category/delete-subCat-Img/${_id}`, postData: { data: { public_id } } })
+            if (error) {
+                alert(error?.response?.data?.message)
+            }
+            if (data) {
+                let updatedState = { ...subCategoryData };
+                updatedState.subCatImg = '';
+                setSubCategory(updatedState);
+                alert('Image delete successfully!')
+            }
+        } catch (error) {
+            alert(error?.response?.data?.message)
+        }
+    }
+
     const columns = [
         {
-            title: 'Name',
-            dataIndex: 'name',
-            key: 'name',
+            title: 'Sub Category',
+            dataIndex: 'subCategory',
+            key: 'subCategory',
             render: text => <a>{text}</a>,
         },
         {
-            title: 'Age',
-            dataIndex: 'age',
-            key: 'age',
-        },
-        {
-            title: 'Address',
-            dataIndex: 'address',
-            key: 'address',
-        },
-        {
-            title: 'Tags',
-            key: 'tags',
-            dataIndex: 'tags',
-            render: tags => (
-                <>
-                    {tags.map(tag => (
-                        <Tag color="blue" key={tag}>
-                            {tag}
-                        </Tag>
-                    ))}
-                </>
-            ),
+            title: 'Category',
+            dataIndex: 'category',
+            key: 'category',
+            render: text => <a>{fetchCategoryName({ id: text, categories })}</a>,
         },
         {
             title: 'Action',
@@ -126,36 +185,78 @@ function Category() {
         },
     ];
 
-    const handleEdit = (record) => {
-        // Logic to edit category goes here
-        console.log('Edit', record);
+    const handleImageChange = (e) => {
+        const file = e.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onloadend = () => {
+                const base64Img = reader.result;
+                let updatedState = { ...subCategoryData };
+                updatedState.subCatImg = base64Img;
+                setSubCategory(updatedState);
+            }
+            reader.readAsDataURL(file);
+        }
+    }
+
+
+    const handleOptionChange = (value) => {
+        let categoryName = fetchCategoryName({ id: value, categories })
+        setSelectedOption(categoryName);
+        setSubCategory({ ...subCategoryData, category: value })
     };
 
-    const handleDelete = (record) => {
-        // Logic to delete category goes here
-        console.log('Delete', record);
-    };
+    const fetchCategoryName = ({ id, categories }) => {
+        let found = categories?.length > 0 && categories.find((item) => item._id === id);
+        if (found) {
+            return found?.category
+        }
+    }
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        const { data, error } = await postApi({ endpoint: `/api/v2/category/add-sub-category`, postData: subCategoryData });
+        if (error) {
+            alert(error?.response?.data?.message)
+        }
+        if (data) {
+            alert("Added SubCategory Successfully");
+        }
+    }
+
+    const handleEditSubmit = async (e) => {
+        e.preventDefault();
+        const { data, error } = await putApi({ endpoint: `/api/v2/category/edit-sub-category`, postData: subCategoryData });
+        if (error) {
+            alert(error?.response?.data?.message)
+        }
+        if (data) {
+            alert("Added SubCategory Successfully");
+        }
+    }
+
+
+
 
     return (
         <div className='dashboard-container'>
             <SideBar menu={sidebar_menu} />
             <div className='dashboard-content'>
-            <div className="dashboard-header">
-              
-                <h3>Category List</h3>
-                <div className="add-btn">
-                <DashboardHeader/>
-                <div >
-                    <Button type="primary" onClick={showModal} icon={<PlusOutlined />}>
-                        Add Category
-                    </Button>
+                <div className="dashboard-header">
+                    <h3>Category List</h3>
+                    <div className="add-btn">
+                        <DashboardHeader />
+                        <div >
+                            <Button type="primary" onClick={showModal} icon={<PlusOutlined />}>
+                                Add Category
+                            </Button>
+                        </div>
+                    </div>
                 </div>
-                </div>
-            </div>
-                
-                
+
+
                 <Table
-                    dataSource={dataSource}
+                    dataSource={subCategories}
                     columns={columns}
                     bordered={false}
                     pagination={false}
@@ -163,19 +264,70 @@ function Category() {
                 <Modal
                     title="Add Category"
                     visible={modalVisible}
-                    onOk={handleOk}
+                    onOk={editActive ? handleEditSubmit : handleSubmit}
                     onCancel={handleCancel}
                 >
                     <Form layout="vertical">
-                        <Form.Item label="Category Name" name="categoryName" rules={[{ required: true, message: 'Please input the category name!' }]}>
-                            <Input />
-                        </Form.Item>
                         <Form.Item label="Select Type" name="selectType" rules={[{ required: true, message: 'Please select the category type!' }]}>
-                            <Select>
-                                <Option value="cloudKitchen">Cloud Kitchen</Option>
-                                <Option value="corporateMeals">Corporate Meals</Option>
+                            <Select value={subCategoryData?.category} defaultValue={subCategoryData?.category} placeholder="Select an option" onChange={handleOptionChange} style={{ width: 200, marginBottom: '16px' }}>
+                                {categories?.map((category, index) => (
+                                    <Option value={category?._id} key={index}>{category?.category}</Option>
+                                ))}
                             </Select>
                         </Form.Item>
+                        <Form.Item label="Sub Category Name" name="categoryName" rules={[{ required: true, message: 'Please input the category name!' }]}>
+                            <input defaultValue={subCategoryData?.subCategory} value={subCategoryData?.subCategory} onChange={(e) => setSubCategory({ ...subCategoryData, subCategory: e.target.value })} disabled={selectedOption ? false : true} />
+                        </Form.Item>
+                        {subCategoryData?.subCatImg?.url ? <>
+                            <Form.Item label="Sub Category Image" name="subCatImg" rules={[{ required: true, message: 'Please select the sub category image!' }]}>
+                                <div className="w-full flex items-center flex-wrap">
+                                    {subCategoryData?.subCatImg?.url !== '' && (
+                                        <div className="image-div">
+                                            <img
+                                                src={subCategoryData?.subCatImg?.url}
+                                                alt="main"
+                                                className="h-[130px] w-[130px] object-cover"
+                                            />
+                                            <button
+                                                onClick={(e) => {
+                                                    e.preventDefault();
+                                                    handleCloudinaryImageDelete(subCategoryData?.subCatImg?.public_id, subCategoryData?._id)
+                                                }}
+                                                className="images-delete-btn"
+                                            >
+                                                {/* <FontAwesomeIcon icon={faTrash} style={{ color: 'red' }} /> */}
+                                            </button>
+                                        </div>
+                                    )}
+                                </div>
+                            </Form.Item>
+                        </> : <>
+                            <Form.Item label="Sub Category Image" name="subCatImg" rules={[{ required: true, message: 'Please select the sub category image!' }]}>
+                                <input type='file' value={subCategoryData?.subCatImg} onChange={handleImageChange} disabled={selectedOption ? false : true} />
+                            </Form.Item>
+                            <div className="w-full flex items-center flex-wrap">
+                                {subCategoryData?.subCatImg !== '' && (
+                                    <div className="image-div">
+                                        <img
+                                            src={subCategoryData?.subCatImg}
+                                            alt="main"
+                                            className="h-[130px] w-[130px] object-cover"
+                                        />
+                                        <button
+                                            onClick={(e) => {
+                                                e.preventDefault();
+                                                setSubCategory({ ...subCategoryData, subCatImg: '' })
+                                            }}
+                                            className="images-delete-btn"
+                                        >
+                                            {/* <FontAwesomeIcon icon={faTrash} style={{ color: 'red' }} /> */}
+                                        </button>
+                                    </div>
+                                )}
+                            </div>
+                        </>}
+
+
                     </Form>
                 </Modal>
             </div>

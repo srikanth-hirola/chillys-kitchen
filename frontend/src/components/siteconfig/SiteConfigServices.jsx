@@ -6,7 +6,7 @@ import { MinusCircleOutlined, PlusOutlined } from '@ant-design/icons';
 import SideBar from '../Sidebar';
 import sidebar_menu from '../../constants/sidebar-menu';
 
-const SiteConfigMenu = () => {
+const SiteConfigServices = () => {
   const [form] = Form.useForm();
   const [contactFormKeys, setContactFormKeys] = useState(['contact1']);
   const [mainDescription, setMainDescription] = useState('');
@@ -80,15 +80,7 @@ const SiteConfigMenu = () => {
                     </Form.Item>
                     </div>
                     <div className="col-md-12">
-                    <Form.Item
-                      {...restField}
-                      name={[name, 'link']}
-                      label="link"
-                      fieldKey={[fieldKey, 'link']}
-                      rules={[{ required: true, message: 'Missing contact link' }]}
-                    >
-                      <Input placeholder="Contact Link" />
-                    </Form.Item>
+                   
                     </div>
                   </div>
                   
@@ -121,4 +113,4 @@ const SiteConfigMenu = () => {
   );
 };
 
-export default SiteConfigMenu;
+export default SiteConfigServices;

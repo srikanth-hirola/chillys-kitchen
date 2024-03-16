@@ -16,11 +16,12 @@ function AddProduct() {
 
     //useStates data
     const [categories, setCategories] = useState([]);
+    const [subCategories, setSubCategories] = useState([]);
     const [productData, setProductData] = useState(ProductModal);
+    const [subCatOfSelectedCat, setSubOfSelectedCat] = useState([]);
     //useStates data
 
     const [selectedOption, setSelectedOption] = useState(null);
-
 
     useEffect(() => {
         const fetchCategory = async () => {
@@ -34,6 +35,26 @@ function AddProduct() {
         fetchCategory()
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
+
+    useEffect(() => {
+        const fetchSubCategory = async () => {
+            try {
+                let { data } = await getApi({ endpoint: '/api/v2/category/get-all-sub-categories' })
+                setSubCategories(data.categories)
+            } catch (error) {
+                console.log(error)
+            }
+        }
+        fetchSubCategory()
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
+
+    useEffect(() => {
+        if (productData?.category) {
+            let foundData = subCategories?.filter((item) => item?.category === productData?.category)
+            setSubOfSelectedCat(foundData)
+        }
+    }, [productData?.category, subCategories])
 
     const handleOptionChange = (value) => {
         let categoryName = fetchCategoryName({ id: value, categories })
@@ -69,10 +90,10 @@ function AddProduct() {
                     ))}
                 </Select>
                 {selectedOption === "Cloud Kitchen" && (
-                    <CloudKitchenForm onFinish={handleSubmit} productData={productData} setProductData={setProductData} />
+                    <CloudKitchenForm onFinish={handleSubmit} productData={productData} setProductData={setProductData} subCategories={subCatOfSelectedCat} />
                 )}
                 {selectedOption === "Corporate Meal" && (
-                    <CorporateMealForm onFinish={handleSubmit} productData={productData} setProductData={setProductData} />
+                    <CorporateMealForm onFinish={handleSubmit} productData={productData} setProductData={setProductData} subCategories={subCatOfSelectedCat} />
                 )}
             </div>
         </div>

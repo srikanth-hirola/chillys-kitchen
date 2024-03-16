@@ -13,6 +13,7 @@ const Shop = require('../model/shop');
 const { cacheMiddleware, flushCategories } = require('../middleware/cacheMiddleware');
 const { check } = require('express-validator');
 const { EmptyValidation } = require('../middleware/EmptyValidation');
+const SubCategory = require('../model/subCategory');
 
 
 
@@ -22,6 +23,22 @@ router.get(
   catchAsyncErrors(async (req, res, next) => {
     try {
       const categories = await Category.find({});
+      res.status(201).json({
+        success: true,
+        categories,
+      });
+    } catch (error) {
+      return next(new ErrorHandler(error, 400));
+    }
+  })
+);
+
+// get all sub categories of a category
+router.get(
+  '/get-all-sub-categories',
+  catchAsyncErrors(async (req, res, next) => {
+    try {
+      const categories = await SubCategory.find({});
       res.status(201).json({
         success: true,
         categories,
@@ -130,6 +147,86 @@ router.post(
   })
 );
 
+// Add Sub Category
+router.post(
+  '/add-sub-category', [
+  check('subCategory', 'Please enter a valid sub category').isLength({ min: 3 }),
+  check('category', 'Please select a valid category').isLength({ min: 3 }),
+], EmptyValidation, flushCategories,
+  catchAsyncErrors(async (req, res, next) => {
+    try {
+      const category = req.body;
+      let logoToUpload = category.subCatImg;
+      const myCloud = await cloudinary.v2.uploader.upload(logoToUpload, {
+        folder: 'chilly_kitchen/subCategories',
+      });
+
+      logoToUpload = {
+        public_id: myCloud.public_id,
+        url: myCloud.secure_url,
+      };
+
+      category.subCatImg = logoToUpload;
+      console.log(category)
+      const categoryNew = await SubCategory.create(category);
+      res.status(201).json({
+        success: true,
+        categoryNew,
+      });
+    } catch (error) {
+      return next(new ErrorHandler(error, 400));
+    }
+  })
+);
+
+// Edit Sub Category
+router.put(
+  '/edit-sub-category', [
+  check('subCategory', 'Please enter a valid sub category').isLength({ min: 3 }),
+  check('category', 'Please select a valid category').isLength({ min: 3 }),
+], EmptyValidation, flushCategories,
+  catchAsyncErrors(async (req, res, next) => {
+    try {
+      const category = req.body;
+      let logoToUpload = category.subCatImg;
+      if (!logoToUpload?.url) {
+        const myCloud = await cloudinary.v2.uploader.upload(logoToUpload, {
+          folder: 'chilly_kitchen/subCategories',
+        });
+
+        logoToUpload = {
+          public_id: myCloud.public_id,
+          url: myCloud.secure_url,
+        };
+
+        category.subCatImg = logoToUpload;
+      }
+
+      const categoryNew = await SubCategory.findOneAndUpdate(
+        { _id: category?._id },
+        {
+          $set: {
+            subCategory: category?.subCategory,
+            category: category?.category,
+            subCatImg: category?.subCatImg
+          }
+        }
+      )
+      console.log(categoryNew)
+
+
+      res.status(201).json({
+        success: true,
+        categoryNew,
+      });
+    } catch (error) {
+      return next(new ErrorHandler(error, 400));
+    }
+  })
+);
+
+
+
 // request Category
 router.post(
   '/request-category', flushCategories,
@@ -180,6 +277,24 @@ router.post(
     }
   })
 );
+
+router.delete('/delete-subCat-Img/:subId', flushCategories, catchAsyncErrors(async (req, res) => {
+  try {
+    const { subId } = req.params;
+    const { public_id } = req.body;
+    console.log(public_id, req.body)
+    await cloudinary.v2.uploader.destroy(public_id);
+    await SubCategory.updateOne(
+      { _id: subId },
+      { subCatImg: { public_id } }
+    )
+
+    res.status(200).json({ message: 'Deleted Image Successfully!' })
+
+  } catch (error) {
+    res.status(500).json({ error: error.message || 'Internal Server Error' });
+  }
+}));
 
 // Custom Category
 router.put(
@@ -274,14 +389,47 @@ router.delete(
         return;
       }
 
-      if (found?.CatImg) {
-        const imageId = found?.CatImg?.public_id;
-        await cloudinary.v2.uploader.destroy(imageId);
-      }
-
       await Product.deleteMany({ category: found?.name });
 
       await Category.findByIdAndDelete(id)
+        .then((result) => {
+          res.status(201).json({
+            Status: 'Success',
+          });
+        })
+        .catch((e) => {
+          return next(new ErrorHandler(error, 400));
+        });
+    } catch (error) {
+      return next(new ErrorHandler(error, 400));
+    }
+  })
+);
+
+// Delete Category
+router.delete(
+  '/delete-sub-category/:id', flushCategories,
+  catchAsyncErrors(async (req, res, next) => {
+    try {
+      const { id } = req.params;
+
+      const found = await SubCategory.findById(id)
+
+      if (!found) {
+        res.status(500).json({
+          Status: 'Failed',
+          message: "Sub Category Not Found"
+        });
+        return;
+      }
+
+      await Product.deleteMany({ subCategory: found?._id });
+
+      if (found?.subCatImg?.public_id) {
+        await cloudinary.v2.uploader.destroy(found?.subCatImg?.public_id);
+      }
+
+      await SubCategory.findByIdAndDelete(id)
         .then((result) => {
           res.status(201).json({
             Status: 'Success',
