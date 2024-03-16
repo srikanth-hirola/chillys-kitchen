@@ -1,16 +1,35 @@
 /* eslint-disable no-unused-vars */
-import React from 'react';
-import { Form, Input, Button } from 'antd';
+import React, { useState } from 'react';
+import { Form, Input, Button, Upload } from 'antd';
 import SideBar from '../Sidebar';
 import sidebar_menu from '../../constants/sidebar-menu';
 
 const { TextArea } = Input;
 
+
 const SiteConfigBanner = () => {
+
+  const [bannerImages, setbannerImages] = useState([]);
+  const [bannerSubTitle, setBannerSubTitle] = useState();
+
   const onFinish = (values) => {
     console.log('Received values:', values);
   };
 
+  const beforeUpload = (file) => {
+    const isJpgOrPng = file.type === 'image/jpeg' || file.type === 'image/png';
+    if (!isJpgOrPng) {
+      message.error('You can only upload JPG/PNG file types!');
+    }
+    const isLt2M = file.size / 1024 / 1024 < 2;
+    if (!isLt2M) {
+      message.error('Image must be smaller than 2MB!');
+    }
+    return isJpgOrPng && isLt2M;
+  };
+
+  console.log("first", beforeUpload)
+  
   return (
     <div className='dashboard-container'>
       <SideBar menu={sidebar_menu} />
@@ -73,9 +92,17 @@ const SiteConfigBanner = () => {
           <Form.Item
             label="Upload Image"
             name="image"
+            valuePropName="fileList"
+            getValueFromEvent={(e) => e.fileList}
             rules={[{ required: true, message: 'Please upload an image!' }]}
           >
-            <Input type="file" />
+            <Upload
+              beforeUpload={beforeUpload}
+              listType="picture-card"
+              multiple={true}
+            >
+              <Button>Click to upload</Button>
+            </Upload>
           </Form.Item>
           <Form.Item>
             <Button type="primary" htmlType="submit">
