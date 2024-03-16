@@ -2,7 +2,8 @@ import { createReducer } from '@reduxjs/toolkit';
 
 const initialState = {
   isLoading: true,
-  category: []
+  category: [],
+  subCategories: []
 };
 
 export const categoryReducer = createReducer(initialState, {
@@ -14,6 +15,18 @@ export const categoryReducer = createReducer(initialState, {
     state.category = action.payload
   },
   adminAllCategoriesFailed: (state, action) => {
+    state.isLoading = true
+    state.error = action.payload
+  },
+
+  allSubCategories: (state) => {
+    state.isLoading = true
+  },
+  allSubCategoriesSuccess: (state, action) => {
+    state.isLoading = false
+    state.subCategories = action.payload
+  },
+  allSubCategoriesFailed: (state, action) => {
     state.isLoading = true
     state.error = action.payload
   },

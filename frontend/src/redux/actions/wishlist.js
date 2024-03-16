@@ -1,4 +1,4 @@
-import toast from "react-hot-toast";
+import { message } from "antd";
 
 // add to wishlist
 export const addToWishlist = (data) => async (dispatch, getState) => {
@@ -6,7 +6,7 @@ export const addToWishlist = (data) => async (dispatch, getState) => {
     type: "addToWishlist",
     payload: data,
   });
-  toast.success("Added Product to wishlist")
+  message.success("Added Product to wishlist")
 
   localStorage.setItem("wishlistItems", JSON.stringify(getState().wishlist.wishlist));
   return data;
@@ -18,6 +18,7 @@ export const removeFromWishlist = (data) => async (dispatch, getState) => {
     type: "removeFromWishlist",
     payload: data._id,
   });
+  message.success("Removed Product from wishlist")
   localStorage.setItem("wishlistItems", JSON.stringify(getState().wishlist.wishlist));
   return data;
 };

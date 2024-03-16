@@ -1,69 +1,67 @@
 /* eslint-disable no-unused-vars */
-import React, { useState } from "react";
-import { StarFilled, StarOutlined } from "@ant-design/icons";
-import { Select } from "antd";
-import { Link } from "react-router-dom";
-const { Option } = Select; 
-const Details = () => {
+import React from "react";
+import PropTypes from 'prop-types';
+import Rating from "../Cards/Rating";
+import useData from "../../customHooks/getName/useData";
+import Sku from "./DetailsComponents/Sku";
+import Price from "./DetailsComponents/Price";
+import VarientSelect from "./DetailsComponents/VarientSelect";
+import Counter from "./DetailsComponents/Counter";
+import AddToCart from "./DetailsComponents/AddToCart";
+import WishList from "./DetailsComponents/WishList";
 
-const options = [
-    { id: 1, title: 'Option 1', description: 'Description for Option 1', price: '$10' },
-    { id: 2, title: 'Option 2', description: 'Description for Option 2', price: '$20' },
-    { id: 3, title: 'Option 3', description: 'Description for Option 3', price: '$30' }
-];
-const [selectedOption, setSelectedOption] = useState(null);
+const Details = ({ productData, selectedColor, soldOut, limited, getOriginalPrice, getDiscountPrice, setCount, setLimited, setMainImg, setSelectedColor, count, incrementCount, decrementCount, addToCartHandler, click, setClick }) => {
+  console.log(productData, "HE")
+  const { getSubCategory } = useData();
 
-    const handleOptionChange = (value) => {
-        const option = options.find(opt => opt.id === parseInt(value));
-        setSelectedOption(option);
-    };
+
+
   return (
     <>
       <div className="product-details-sec">
         <div className="product-details-main">
-          <h3>CORPORATE MEAL BOX</h3>
+          <h3>{productData?.name?.toUpperCase()}</h3>
           <ul>
             <li>
-              SkU<span>KJHKJN654</span>
+              <Sku sku={selectedColor?.SKU} />
             </li>
             <li>
-              Category<span>Meals</span>
+              {/* <StockAvailability soldOut={soldOut} limited={limited} /> */}
+              Category<span>{getSubCategory({ data: productData?.subCategory, name: "_id" })?.subCategory}</span>
             </li>
           </ul>
-          <div className="rating">
-            <StarFilled />
-            <StarFilled />
-            <StarFilled />
-            <StarFilled />
-            <StarOutlined />
-          </div>
+          <Rating rating={0} />
           <div className="price">
-            <h4>300 <span>-30%</span></h4>
-            <p>Healthy Vegetarian and Non Vegetarian thalis with everyday changing menu designed to give you wholesome nutrition and homemade taste delivered.</p>
+            <Price originalPrice={getOriginalPrice({ data: productData })} discountPrice={getDiscountPrice({ data: productData })} />
+            <p>{productData?.description}</p>
           </div>
-          <div className="select-variant" >
-          <h4>Select an Option</h4>
-            <Select  onChange={handleOptionChange} placeholder="Select an option">
-                {options.map(option => (
-                    <Option key={option.id} value={option.id}>{option.title}</Option>
-                ))}
-            </Select>
-            {selectedOption && (
-                <div className="variation-product" >
-                    <div className="var-title"><h3>{selectedOption.title}</h3></div>
-                    <div className="var-price"><p><strong>Price:</strong> {selectedOption.price}</p></div>
-                    <div className="var-desc"><p><strong>Description:</strong> {selectedOption.description}</p></div>
-                </div>
-            )}
-            
-        </div>
-        <div className="add-to-btn">
-        <Link to=''>ADD TO CART</Link>
-        </div>
+          <VarientSelect data={productData} setCount={setCount} setLimited={setLimited} setMainImage={setMainImg} setSelectedColor={setSelectedColor} key={3} />
+          <Counter count={count} incrementCount={incrementCount} decrementCount={decrementCount} />
+          <AddToCart addToCart={addToCartHandler} id={productData?._id} />
+          <WishList data={productData} click={click} setClick={setClick} />
         </div>
       </div>
     </>
   );
 };
+
+Details.propTypes = {
+  productData: PropTypes.object.isRequired,
+  selectedColor: PropTypes.object.isRequired,
+  soldOut: PropTypes.bool,
+  limited: PropTypes.string,
+  getOriginalPrice: PropTypes.func.isRequired,
+  getDiscountPrice: PropTypes.func.isRequired,
+  setCount: PropTypes.func.isRequired,
+  setLimited: PropTypes.func.isRequired,
+  setMainImg: PropTypes.func.isRequired,
+  setSelectedColor: PropTypes.func.isRequired,
+  count: PropTypes.number.isRequired,
+  incrementCount: PropTypes.func.isRequired,
+  decrementCount: PropTypes.func.isRequired,
+  addToCartHandler: PropTypes.func.isRequired,
+  click: PropTypes.bool.isRequired,
+  setClick: PropTypes.func.isRequired,
+}
 
 export default Details;

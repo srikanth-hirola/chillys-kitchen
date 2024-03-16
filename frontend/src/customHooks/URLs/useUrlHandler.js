@@ -17,7 +17,15 @@ const useUrlHandler = () => {
         return queryParams[paramKey];
     }
 
-    return { useQueryParam, useQueryParams }
+    const useAppendParam = ({ data }) => {
+        const location = window.location.href;
+        const paramsString = data.map(item => `${encodeURIComponent(item.param)}=${encodeURIComponent(item.value)}`).join('&');
+        const separator = location.includes('?') ? '&' : '?';
+        const newUrl = `${location}${separator}${paramsString}`;
+        return newUrl;
+    };
+
+    return { useQueryParam, useQueryParams, useAppendParam }
 }
 
 export default useUrlHandler
