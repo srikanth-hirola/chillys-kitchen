@@ -8,7 +8,7 @@ import useAPI from '../../../customHooks/API/useAPI';
 import { Link } from 'react-router-dom';
 function ProductList() {
 
-  const { getApi } = useAPI();
+  const { getApi, deleteApi } = useAPI();
   const [products, setAllProducts] = useState([]);
 
   useEffect(() => {
@@ -23,6 +23,18 @@ function ProductList() {
     fetchAllProducts()
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
+
+  const handleDeleteProduct = async ({ e, id }) => {
+    e.preventDefault();
+    console.log(id)
+    const { error } = deleteApi({ endpoint: `/api/v2/product/delete-shop-product/${id}`, });
+    if (error) {
+      alert(error?.response?.data?.message)
+    } else {
+      alert("Deleted Product Successfully");
+      setAllProducts((prev) => prev.filter((item) => item?._id !== id))
+    }
+  }
 
 
   const dataSource = [
@@ -67,8 +79,8 @@ function ProductList() {
     {
       title: 'Delete',
       key: 'action',
-      render: () => (
-        <Button type="button" icon={<DeleteOutlined />} />
+      render: (data) => (
+        <Button type="button" onClick={(e) => handleDeleteProduct({ e, id: data?._id })} icon={<DeleteOutlined />} />
       ),
     },
   ];
@@ -76,7 +88,6 @@ function ProductList() {
     <div className='dashboard-container'>
       <SideBar menu={sidebar_menu} />
       <div className='dashboard-content'>
-
         <h3>Products List</h3>
         <Table
           dataSource={products}

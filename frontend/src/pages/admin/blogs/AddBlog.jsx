@@ -3,95 +3,55 @@ import React from 'react';
 import sidebar_menu from '../../../constants/sidebar-menu';
 import SideBar from '../../../components/Sidebar';
 
-import  { useState } from 'react';
+import { useState } from 'react';
 import { Form, Input, Button, DatePicker, Select, Upload, message, Modal } from 'antd';
-import { UploadOutlined ,PlusOutlined} from '@ant-design/icons';
+import { UploadOutlined, PlusOutlined } from '@ant-design/icons';
 import PropTypes from 'prop-types';
 import DashboardHeader from '../../../components/DashboardHeader';
-import { CKEditor } from '@ckeditor/ckeditor5-react';
-import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
-const { Option } = Select;
+
+import BlogModal from '../../../utils/useStateModals/BlogModal';
+import BlogInputs from './BlogInputs';
+import useAPI from '../../../customHooks/API/useAPI';
+
+
 function AddBlog() {
-    const [modalVisible, setModalVisible] = useState(false);
-    const [categoryName, setCategoryName] = useState('');
-    const showModal = () => {
-        setModalVisible(true);
+    const { postApi } = useAPI();
+    //blog states
+    const [isLoading, setLoading] = useState(false);
+    const [blogData, setBlogData] = useState(BlogModal)
+    //blog states
+
+    const submit = async () => {
+
+        try {
+            setLoading(true)
+            const { error, data } = await postApi({ endpoint: "/api/v2/blogs/compose", postData: { blogData } })
+            if (data) {
+                alert("Published Blog Successfully!")
+            }
+            if (error) {
+                alert(error?.response?.data?.message)
+            }
+        } catch (e) {
+            alert(e?.response?.data?.message)
+        } finally {
+            setLoading(false)
+        }
     };
 
-    const handleOk = () => {
-        // Add logic to handle category addition (e.g., API call to add category)
-        setModalVisible(false);
-        setCategoryName('');
-    };
 
-    const handleCancel = () => {
-        setModalVisible(false);
-    };
     return (
-        
+
         <div className='dashboard-container'>
             <SideBar menu={sidebar_menu} />
             <div className='dashboard-content'>
-            <div className="dashboard-header">
-              
-              <h3>Add Blog</h3>
-              <div className="add-btn">
-              <DashboardHeader/>
-              
-              </div>
-          </div>
-            <Form name="blogForm" layout="vertical">
-            <Form.Item label="Title" name="title" rules={[{ required: true, message: 'Please input the title!' }]}>
-                <Input />
-            </Form.Item>
-            <Form.Item label="Slug" name="slug" rules={[{ required: true, message: 'Please input the slug!' }]}>
-                <Input />
-            </Form.Item>
-            <Form.Item label="Description" name="description">
-                <Input.TextArea />
-            </Form.Item>
-            <Form.Item label="Date Posted" name="datePosted">
-                <DatePicker />
-            </Form.Item>
-            <Form.Item label="Posted By" name="postedBy">
-                <Input />
-            </Form.Item>
-            <Form.Item label="Read Time" name="readTime">
-                <Input />
-            </Form.Item>
-            <Form.Item label="Category" name="category">
-                <Select>
-                    <Option value="technology">Technology</Option>
-                    <Option value="lifestyle">Lifestyle</Option>
-                    <Option value="travel">Travel</Option>
-                    {/* Add more categories as needed */}
-                </Select>
-                <Button icon={<PlusOutlined />} onClick={showModal} />
-                <Modal
-                    title="Add Category"
-                    visible={modalVisible}
-                    onOk={handleOk}
-                    onCancel={handleCancel}
-                >
-                    <Form.Item label="Category Name">
-                        <Input value={categoryName} onChange={(e) => setCategoryName(e.target.value)} />
-                    </Form.Item>
-                </Modal>
-            </Form.Item>
-            <Form.Item label="Excerpt" name="excerpt">
-                <Input.TextArea />
-            </Form.Item>
-            
-           <Form.Item>
-           <CKEditor
-            editor={ClassicEditor}
-            
-        />
-           </Form.Item>
-            <Form.Item>
-                <Button type="primary" htmlType="submit">Submit</Button>
-            </Form.Item>
-        </Form>
+                <div className="dashboard-header">
+                    <h3>Add Blog</h3>
+                    <div className="add-btn">
+                        <DashboardHeader />
+                    </div>
+                </div>
+                <BlogInputs blogData={blogData} onFinish={submit} setBlogData={setBlogData} />
             </div>
         </div>
     );

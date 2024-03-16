@@ -5,13 +5,15 @@ const useProductHandler = ({ productData, setProductData, variations, setVariati
 
 
     const handleInputChange = ({ index, event, inputs, setInputs }) => {
-        const values = [...inputs];
+        const values = JSON.parse(JSON.stringify(inputs));
         values[index][event.target.name] = event.target.value;
         setInputs(values);
     };
 
     const handleAddInput = ({ inputs, setInputs }) => {
-        setInputs([...inputs, { key: '', value: '' }]);
+        const updatedState = JSON.parse(JSON.stringify(inputs));
+        updatedState.push({ key: '', value: '' })
+        setInputs(updatedState);
     };
 
     const handleRemoveInput = ({ index, inputs, setInputs }) => {
@@ -77,12 +79,13 @@ const useProductHandler = ({ productData, setProductData, variations, setVariati
             updatedState.colorInputs = variations;
             mainImage && (updatedState.mainImage = mainImage);
             let postData = {
-                formData: dataParam,
+                formData: updatedState,
                 proId,
                 images,
                 mainImage,
                 colorInputsIndexUpdateImage
             }
+            console.log(postData)
             const { error } = await putApi({ endpoint: "/api/v2/product/update-product", postData });
             if (error) {
                 alert(error?.response?.data?.message)
@@ -165,6 +168,7 @@ const useProductHandler = ({ productData, setProductData, variations, setVariati
         console.log(updatedColorInputs, index, field)
         setVariations(updatedColorInputs);
     };
+
 
     return { handleInputChange, handleAddInput, handleRemoveInput, handleVariationsToggle, handleAddVariation, handleRemoveVariation, handleProductChange, handleProductNumberChange, handleSubmitProductData, handleMainImageChange, handleImageChange, handleVarientImageChange, handleVarientInputChange, handleVarientNumberInputChange, handleSubmitEditProductData }
 }

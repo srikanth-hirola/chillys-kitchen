@@ -22,7 +22,6 @@ const useAPI = () => {
 
     const deleteApi = async ({ endpoint, postData }) => {
         try {
-            console.log(endpoint, postData)
             let { data } = await axios.delete(`http://localhost:8000${endpoint}`, postData);
             return { data: data }
         } catch (error) {
@@ -32,10 +31,10 @@ const useAPI = () => {
 
     const getApi = async ({ endpoint }) => {
         try {
-            let data = await axios.get(`http://localhost:8000${endpoint}`);
-            return data
+            let { data } = await axios.get(`http://localhost:8000${endpoint}`);
+            return { data: data }
         } catch (error) {
-            return error
+            return { error: error }
         }
     }
 

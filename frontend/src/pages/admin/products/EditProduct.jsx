@@ -9,6 +9,7 @@ import CorporateMealForm from './category/productVariation/CorporateMealForm';
 import useAPI from '../../../customHooks/API/useAPI';
 import { useParams } from 'react-router';
 import EditCloudKitchen from './category/productVariation/EditCloudKitchen';
+import EditCorporateMealForm from './category/productVariation/EditCorporateMealForm';
 const { Option } = Select;
 
 function EditProduct() {
@@ -17,7 +18,9 @@ function EditProduct() {
 
     //useStates data
     const [categories, setCategories] = useState([]);
+    const [subCategories, setSubCategories] = useState([]);
     const [productData, setProductData] = useState({});
+    const [subCatOfSelectedCat, setSubOfSelectedCat] = useState([]);
     //useStates data
 
     const [selectedOption, setSelectedOption] = useState(null);
@@ -41,7 +44,6 @@ function EditProduct() {
             try {
                 let { data } = await getApi({ endpoint: `/api/v2/product/get-a-product-shop/${edit}` })
                 setProductData(data.products[0])
-                console.log(data.products[0])
                 let category = fetchCategoryName({ id: data.products[0]?.category, categories })
                 setSelectedOption(category)
             } catch (error) {
@@ -55,8 +57,24 @@ function EditProduct() {
     }, [edit, categories])
 
     useEffect(() => {
-        console.log(productData, "prod")
-    }, [productData])
+        const fetchSubCategory = async () => {
+            try {
+                let { data } = await getApi({ endpoint: '/api/v2/category/get-all-sub-categories' })
+                setSubCategories(data.categories)
+            } catch (error) {
+                console.log(error)
+            }
+        }
+        fetchSubCategory()
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
+
+    useEffect(() => {
+        if (productData?.category) {
+            let foundData = subCategories?.filter((item) => item?.category === productData?.category)
+            setSubOfSelectedCat(foundData)
+        }
+    }, [productData?.category, subCategories])
 
 
     const handleOptionChange = (value) => {
@@ -93,10 +111,10 @@ function EditProduct() {
                     ))}
                 </Select>
                 {selectedOption === "Cloud Kitchen" && (
-                    <EditCloudKitchen onFinish={handleSubmit} productData={productData} setProductData={setProductData} />
+                    <EditCloudKitchen onFinish={handleSubmit} productData={productData} setProductData={setProductData} subCategories={subCatOfSelectedCat} />
                 )}
                 {selectedOption === "Corporate Meal" && (
-                    <CorporateMealForm onFinish={handleSubmit} productData={productData} setProductData={setProductData} />
+                    <EditCorporateMealForm onFinish={handleSubmit} productData={productData} setProductData={setProductData} subCategories={subCatOfSelectedCat} />
                 )}
             </div>
         </div>

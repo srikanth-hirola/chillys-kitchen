@@ -1,24 +1,27 @@
 /* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
-import { Form, Input, Button, Switch, Upload, message, InputNumber } from 'antd';
-import { UploadOutlined, PlusOutlined, MinusCircleOutlined } from '@ant-design/icons';
+import { Form, Input, Button, Switch, Upload, message, InputNumber, Select } from 'antd';
+import { PlusOutlined, MinusCircleOutlined } from '@ant-design/icons';
 import PropTypes from 'prop-types';
-import useAPI from '../../../../../customHooks/API/useAPI';
 import useProductHandler from '../../../../../customHooks/Products/useProductHandlers';
+const { Option } = Select;
 
-function CloudKitchen({ onFinish, productData, setProductData }) {
-    const { postApi } = useAPI();
-    const [inputs, setInputs] = useState([{ key: '', value: '' }]);
+function CloudKitchen({ onFinish, productData, setProductData, subCategories }) {
     const [variations, setVariations] = useState([{ SKU: "", imageColor: '', originalPrice: null, stock: null, discountPrice: null, image: { public_id: '', url: '' } }]);
     const [variationsEnabled, setVariationsEnabled] = useState(false);
     const [multipleImagesEnabled, setMultipleImagesEnabled] = useState(false);
     const handleMultipleImagesToggle = (checked) => {
         setMultipleImagesEnabled(checked);
+        setProductData({ ...productData, isMultiImage: checked })
     };
     const [mainImage, setMainImage] = useState('');
     const [images, setImages] = useState([]);
 
     const { handleVariationsToggle, handleAddVariation, handleRemoveVariation, handleProductChange, handleProductNumberChange, handleSubmitProductData, handleMainImageChange, handleImageChange, handleVarientImageChange, handleVarientInputChange, handleVarientNumberInputChange } = useProductHandler({ productData, setProductData, variations, setVariations, setMainImage, setImages });
+
+    const handleOptionChange = (value) => {
+        setProductData({ ...productData, subCategory: value })
+    };
 
     return (
         <>
@@ -36,7 +39,17 @@ function CloudKitchen({ onFinish, productData, setProductData }) {
                 >
                     <Input value={productData?.name} onChange={handleProductChange} name='name' />
                 </Form.Item>
-
+                <Form.Item
+                    label="Sub Category"
+                    name="subCategory"
+                    rules={[{ required: true, message: 'Please input the product name!' }]}
+                >
+                    <Select placeholder="Select an option" value={productData?.subCategory} onChange={handleOptionChange} style={{ width: 200, marginBottom: '16px' }}>
+                        {subCategories?.map((category, index) => (
+                            <Option value={category?._id} key={index}>{category?.subCategory}</Option>
+                        ))}
+                    </Select>
+                </Form.Item>
                 <Form.Item
                     label="Image"
                     name="image"
@@ -271,6 +284,7 @@ function CloudKitchen({ onFinish, productData, setProductData }) {
 CloudKitchen.propTypes = {
     onFinish: PropTypes.func.isRequired,
     productData: PropTypes.object,
+    subCategories: PropTypes.object,
     setProductData: PropTypes.func.isRequired
 };
 

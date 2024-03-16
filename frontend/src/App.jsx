@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 // // eslint-disable-next-line no-unused-vars
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route  } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 import Home from './pages/Home'
 import About from './pages/About'
@@ -36,8 +36,8 @@ import SiteConfigServices from './components/siteconfig/SiteConfigServices.jsx';
 import SiteConfigDelivery from './components/siteconfig/Delivery.jsx';
 import SiteConfigHeader from './components/siteconfig/Header.jsx';
 
-function App () {
-  return(
+function App() {
+  return (
     <Router>
    
               <Routes>
@@ -66,17 +66,19 @@ function App () {
                   <Route exact path="/user-register" element={<UserRegister/>}/> 
                   <Route exact path="/forgot-password" element={<ForgotPassword/>}/> 
 
-                  <Route exact path='/' element={<Home />}/>
-                  <Route exact path='/about' element={<About />}/>
-                  <Route exact path='/menu' element={<Menu/>}/>
-                  <Route exact path='/book-table' element={<BookTable />}/>
-                  <Route exact path='/blog' element={<Blog />}/>
-                  <Route exact path='/cart' element={<Cart/>}/>
-                  <Route exact path='/wishlist' element={<Wishlist/>}/>
-                  <Route exact path='/menu/:id' element={<ProductDetails/>}/>
-                  <Route exact path='/blog/:slug' element={<BlogDetails />}/>
-                  <Route exact path='/contact-us' element={<Contact />}/>
-          </Routes>
+      
+
+        <Route exact path='/' element={<Home />} />
+        <Route exact path='/about' element={<About />} />
+        <Route exact path='/menu' element={<Menu />} />
+        <Route exact path='/book-table' element={<BookTable />} />
+        <Route exact path='/blog' element={<Blog />} />
+        <Route exact path='/cart' element={<Cart />} />
+        <Route exact path='/wishlist' element={<Wishlist />} />
+        <Route exact path='/menu/:id' element={<ProductDetails />} />
+        <Route exact path='/blog/:slug' element={<BlogDetails />} />
+        <Route exact path='/contact-us' element={<Contact />} />
+      </Routes>
     </Router>
   )
 }

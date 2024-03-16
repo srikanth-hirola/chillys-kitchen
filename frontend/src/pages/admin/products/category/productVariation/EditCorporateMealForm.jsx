@@ -8,22 +8,20 @@ import { useParams } from 'react-router';
 import useAPI from '../../../../../customHooks/API/useAPI';
 const { Option } = Select;
 
-const EditCloudKitchen = ({ onFinish, productData, setProductData, subCategories }) => {
+const EditCorporateMealForm = ({ onFinish, productData, setProductData, subCategories }) => {
     const { edit } = useParams();
     const { putApi, deleteApi } = useAPI();
-    const [inputs, setInputs] = useState(productData.specs);
     const [variations, setVariations] = useState(productData?.colorInputs || [{ SKU: "", imageColor: '', originalPrice: null, stock: null, discountPrice: null, image: { public_id: '', url: '' } }]);
     const [variationsEnabled, setVariationsEnabled] = useState(productData?.showInputs || false);
-    const [mainImage, setMainImage] = useState(productData?.mainImage?.url || '');
-    const [images, setImages] = useState([]);
     const [multipleImagesEnabled, setMultipleImagesEnabled] = useState(productData?.isMultiImage);
-
     const handleMultipleImagesToggle = (checked) => {
         setMultipleImagesEnabled(checked);
         setProductData({ ...productData, isMultiImage: checked })
     };
+    const [mainImage, setMainImage] = useState(productData?.mainImage?.url || '');
+    const [images, setImages] = useState([]);
 
-    const { handleInputChange, handleAddInput, handleRemoveInput, handleVariationsToggle, handleAddVariation, handleRemoveVariation, handleProductChange, handleProductNumberChange, handleSubmitProductData, handleMainImageChange, handleImageChange, handleVarientImageChange, handleVarientInputChange, handleVarientNumberInputChange, handleSubmitEditProductData } = useProductHandler({ productData, setProductData, variations, setVariations, setMainImage, setImages });
+    const { handleVariationsToggle, handleAddVariation, handleRemoveVariation, handleProductChange, handleProductNumberChange, handleSubmitEditProductData, handleMainImageChange, handleImageChange, handleVarientInputChange, handleVarientNumberInputChange } = useProductHandler({ productData, setProductData, variations, setVariations, setMainImage, setImages });
 
     const handleRemove = (e, index) => {
         e.preventDefault();
@@ -150,18 +148,17 @@ const EditCloudKitchen = ({ onFinish, productData, setProductData, subCategories
         setProductData({ ...productData, subCategory: value })
     };
 
-
     return (
         <>
-            <h3>Edit Product (Cloud Kitchen)</h3>
+            <h3>Add Product (Corporate Meal)</h3>
             <Form
                 name="addProductForm"
-                onFinish={(e) => handleSubmitEditProductData({ dataParam: productData, inputs, mainImage, images, proId: edit, colorInputsIndexUpdateImage })}
+                onFinish={() => handleSubmitEditProductData({ dataParam: productData, mainImage, images, proId: edit, colorInputsIndexUpdateImage })}
                 layout="vertical"
             >
                 {/* Main Product Information */}
                 <Form.Item
-                    label="Name"
+                    label="Product Name"
                     name="name"
                     rules={[{ required: true, message: 'Please input the product name!' }]}
                 >
@@ -230,7 +227,6 @@ const EditCloudKitchen = ({ onFinish, productData, setProductData, subCategories
                             </div>
                         </>
                     )}
-
                 </Form.Item>
                 <Form.Item>
                     <Switch checked={multipleImagesEnabled} onChange={handleMultipleImagesToggle} />
@@ -311,37 +307,7 @@ const EditCloudKitchen = ({ onFinish, productData, setProductData, subCategories
                 >
                     <Input.TextArea value={productData?.description} defaultValue={productData?.description} onChange={handleProductChange} name="description" />
                 </Form.Item>
-                <Form.Item
-                    label="Product Information"
-                    name="productinfo"
-                >
-                    {inputs.map((input, index) => (
-                        <div key={index} style={{ display: 'flex', marginBottom: '8px' }}>
-                            <Input
-                                placeholder="Key"
-                                name="key"
-                                value={input.key} defaultValue={input.key}
-                                onChange={(event) => handleInputChange({ index, event, inputs, setInputs })}
-                                style={{ marginRight: '8px', width: '50%' }}
-                            />
-                            <Input
-                                placeholder="Value"
-                                name="value"
-                                value={input.value} defaultValue={input.value}
-                                onChange={(event) => handleInputChange({ index, event, inputs, setInputs })}
-                                style={{ marginRight: '8px', width: '50%' }}
-                            />
-                            {inputs.length > 1 && (
-                                <Button type="danger" onClick={() => handleRemoveInput({ index, inputs, setInputs })} style={{ marginBottom: '8px' }}>
-                                    Remove
-                                </Button>
-                            )}
-                        </div>
-                    ))}
-                    <Button type="dashed" onClick={() => handleAddInput({ inputs, setInputs })} style={{ marginBottom: '8px' }}>
-                        Add Input
-                    </Button>
-                </Form.Item>
+
 
                 {/* Variations */}
                 <Form.Item>
@@ -459,6 +425,7 @@ const EditCloudKitchen = ({ onFinish, productData, setProductData, subCategories
                         </Button>
                     </>
                 )}
+
                 {/* Additional Fields */}
 
 
@@ -528,11 +495,11 @@ const EditCloudKitchen = ({ onFinish, productData, setProductData, subCategories
     );
 }
 
-EditCloudKitchen.propTypes = {
+EditCorporateMealForm.propTypes = {
     onFinish: PropTypes.func.isRequired,
     productData: PropTypes.object,
     subCategories: PropTypes.object,
     setProductData: PropTypes.func.isRequired
 };
 
-export default EditCloudKitchen
+export default EditCorporateMealForm
