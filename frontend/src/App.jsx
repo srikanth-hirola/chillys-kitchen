@@ -31,6 +31,10 @@ import Wishlist from './pages/Wishlist';
 import SiteConfig from './pages/admin/configuration/SiteConfig';
 import SiteConfigBanner from './components/siteconfig/Banner';
 import SiteConfigAbout from './components/siteconfig/About.jsx';
+import SiteConfigMenu from './components/siteconfig/Menu.jsx';
+import SiteConfigServices from './components/siteconfig/SiteConfigServices.jsx';
+import SiteConfigDelivery from './components/siteconfig/Delivery.jsx';
+import SiteConfigHeader from './components/siteconfig/Header.jsx';
 
 function App () {
   return(
@@ -51,6 +55,10 @@ function App () {
                   <Route exact path="/site-config" element={< SiteConfig/>} />
                   <Route exact path="/site-config/banner" element={< SiteConfigBanner/>} />
                   <Route exact path="/site-config/about" element={< SiteConfigAbout/>} />
+                  <Route exact path="/site-config/menu" element={< SiteConfigMenu/>} />
+                  <Route exact path="/site-config/services" element={< SiteConfigServices/>} />
+                  <Route exact path="/site-config/delivery" element={< SiteConfigDelivery/>} />
+                  <Route exact path="/site-config/header" element={< SiteConfigHeader/>} />
                   <Route exact path="/locations" element={<div>LOcations</div>} />
                   <Route exact path="/profile" element={<div>Profile</div>} />
                   <Route exact path="/login" element={<Login/>}/> 

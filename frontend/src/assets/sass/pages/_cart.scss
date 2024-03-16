@@ -11,6 +11,10 @@ h3{
     letter-spacing: -1px;
     margin-bottom: 70px;
 }
+.cart-body{
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 2px 14px 0px;
+    padding: 20px;
+
     .cart-items {
         border-radius: 5px;
         padding: 10px;
@@ -87,7 +91,7 @@ h3{
                 display: flex;
                 align-items: center;
                 justify-content: space-between;
-                border: 2px solid #00000063;
+                border: 1px solid #AD343E;
                 text-align: center;
                 font-size: 16px;
                 font-style: normal;
@@ -110,14 +114,30 @@ h3{
             }
         }
     }
-
+}
     .total {
         font-size: 1.2rem;
-        font-weight: bold;
+        font-weight: 700;
         margin-top: 20px;
         text-align: center;
+        margin: 0;
+        color: #AD343E;
     }
     .cart-checkout {
-        padding: 30px 18px;
+        box-shadow: rgba(100, 100, 111, 0.2) 0px 2px 14px 0px;
+        padding: 45px 20px;
+        height: 299px;
+        h5{
+            font-weight: 600;
+    font-size: 28px;
+        }
+        p{
+            font-size: 16px;
+    padding: 9px 2px 7px;
+    font-weight: 500;
+        }
+        button{
+            background: #AD343E;
+        }
     }
 }
