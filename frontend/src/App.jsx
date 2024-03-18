@@ -41,12 +41,13 @@ import SiteConfigDelivery from './components/siteconfig/Delivery.jsx';
 import SiteConfigHeader from './components/siteconfig/Header.jsx';
 import CheckOut from "./pages/Checkout.jsx";
 import OrderPlaced from "./pages/OrderPlaced.jsx";
+import { loadUser } from './redux/actions/user';
 
 function App() {
 
   useEffect(() => {
     // Store.dispatch(getAllSiteConfig());
-    // Store.dispatch(loadUser());
+    Store.dispatch(loadUser());
     // Store.dispatch(loadSeller());
     // Store.dispatch(getAllEvents());
     Store.dispatch(getAllCategories());
@@ -128,8 +129,6 @@ function App() {
         <Route exact path="/user-login" element={<UserLogin />} />
         <Route exact path="/user-register" element={<UserRegister />} />
         <Route exact path="/forgot-password" element={<ForgotPassword />} />
-
-
 
         <Route exact path='/' element={<Home />} />
         <Route exact path='/about' element={<About />} />

@@ -10,15 +10,15 @@ const orderSchema = new mongoose.Schema({
     type: Object,
     required: true,
   },
-  shippingAddress: {
-    type: Object,
-  },
+  // shippingAddress: {
+  //   type: Object,
+  // },
   BillingAddress: {
     type: Object,
     required: true,
   },
-  shipping_is_billing: Boolean,
-  shipping: Number,
+  // shipping_is_billing: Boolean,
+  // shipping: Number,
   user: {
     type: Object,
     required: true,
