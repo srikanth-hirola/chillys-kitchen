@@ -3,15 +3,22 @@ import React from 'react'
 import Navbar from '../components/common/Navbar'
 import Footer from '../components/common/Footer'
 import Banner from '../components/menu/Banner'
-import Products from '../components/menu/Products'
+import MenuMiddleware from '../components/menu/MenuMiddleware'
+import useUrlHandler from '../customHooks/URLs/useUrlHandler'
+import ProductDetails from './products/ProductDetails'
 
 const Menu = () => {
+  const { useQueryParam } = useUrlHandler();
+  let paramsProduct = useQueryParam("product");
+  console.log(paramsProduct)
+
   return (
     <>
-<Navbar/>
-<Banner/>
-<Products/>
-<Footer/>
+      <Navbar />
+
+      {paramsProduct ? <ProductDetails /> : <><Banner /><MenuMiddleware /></>}
+
+      <Footer />
     </>
   )
 }

@@ -6,7 +6,7 @@ import SideBar from '../../../components/Sidebar';
 import { useState } from 'react';
 import { Form, Input, Button, DatePicker, Select, Upload, message, Modal } from 'antd';
 import { UploadOutlined, PlusOutlined } from '@ant-design/icons';
-import PropTypes from 'prop-types';
+
 import DashboardHeader from '../../../components/DashboardHeader';
 
 import BlogModal from '../../../utils/useStateModals/BlogModal';

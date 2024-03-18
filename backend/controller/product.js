@@ -1797,7 +1797,6 @@ router.get(
     try {
       const slug = req.params?.slug
       const product = await Product.find({
-        approved: true,
         draft: false,
         slug: slug
       });
