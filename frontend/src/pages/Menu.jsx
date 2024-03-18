@@ -10,7 +10,6 @@ import ProductDetails from './products/ProductDetails'
 const Menu = () => {
   const { useQueryParam } = useUrlHandler();
   let paramsProduct = useQueryParam("product");
-  console.log(paramsProduct)
 
   return (
     <>

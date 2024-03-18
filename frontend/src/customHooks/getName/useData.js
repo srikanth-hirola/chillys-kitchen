@@ -18,9 +18,8 @@ const useData = () => {
     }
 
     const getSubCategory = ({ data, name }) => {
-        console.log(subCategories)
+        console.log(data, name, "sub")
         const found = subCategories?.find((item) => item?.[name] === data);
-        console.log(found, data, name, "sub")
         return found
     }
 

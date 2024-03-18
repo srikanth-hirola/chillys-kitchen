@@ -9,7 +9,11 @@ const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [categories, setCategories] = useState([]);
 
-  const { category } = useSelector((state) => state.category)
+  const { category } = useSelector((state) => state.category);
+  const { wishlist } = useSelector((state) => state.wishlist);
+  const { cart } = useSelector((state) => state.cart);
+
+  console.log(cart?.length, wishlist?.length)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -90,7 +94,7 @@ const Navbar = () => {
                     </li>
                     <li>
                       <Link to='/cart'>
-                        <Badge count={5} /* Set your desired count here */>
+                        <Badge count={cart?.length ?? 0} /* Set your desired count here */>
                           <span className='badge-count' >
                             <ShoppingCartOutlined style={{ fontSize: '20px' }} />
                           </span>
@@ -99,7 +103,7 @@ const Navbar = () => {
                     </li>
                     <li>
                       <Link to='/wishlist'>
-                        <Badge count={2} /* Add the 'dot' prop for a simple dot without a count */>
+                        <Badge count={wishlist?.length} /* Add the 'dot' prop for a simple dot without a count */>
                           <span className='badge-count'>
                             <HeartOutlined style={{ fontSize: '20px' }} />
                           </span>
