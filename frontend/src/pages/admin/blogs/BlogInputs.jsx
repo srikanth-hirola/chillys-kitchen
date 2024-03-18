@@ -3,12 +3,13 @@ import { Button, Select, Modal } from 'antd';
 import Form from 'react-bootstrap/Form';
 import { UploadOutlined, PlusOutlined } from '@ant-design/icons';
 import React, { useEffect, useMemo, useRef, useState } from 'react';
-const { Option } = Select;
 import useAPI from '../../../customHooks/API/useAPI';
 import PropTypes from 'prop-types';
 import slugify from 'react-slugify';
 import JoditEditor from 'jodit-react';
+import { Link } from 'react-router-dom';
 
+const { Option } = Select;
 const BlogInputs = ({ blogData, setBlogData, onFinish, _id }) => {
     const [modalVisible, setModalVisible] = useState(false);
     const [categoryName, setCategoryName] = useState('');
@@ -269,12 +270,19 @@ const BlogInputs = ({ blogData, setBlogData, onFinish, _id }) => {
                 <Form.Label>Category</Form.Label>
                 <div className='row'>
                     <div className='col-6'>
-                        <select value={blogData?.category} className='category-select-dropDown' name="category" onChange={handleBlogDataChange}>
-                            <option value='' disabled>Select a Category</option>
-                            {categoryDropDown?.map((category, index) => (
-                                <option key={index} value={category?.category}>{category?.category}</option>
-                            ))}
-                        </select>
+                            {/* <select value={blogData?.category} className='category-select-dropDown' name="category" onChange={handleBlogDataChange}>
+                                <option value='' disabled>Select a Category</option>
+                                {categoryDropDown?.map((category, index) => (
+                                    <option key={index} value={category?.category}>{category?.category}</option>
+                                ))}
+                            </select> */}
+                            <Select  value={blogData?.category} className='category-select-dropDown' name="category" onChange={handleBlogDataChange} width={200} >
+    <Option value='' disabled>Select a Category</Option>
+    {categoryDropDown?.map((category, index) => (
+        <Option key={index} value={category?.category}>{category?.category}</Option>
+    ))}
+</Select>
+
                     </div>
                     <div className='col-6 d-flex justify-between gap-2'>
                         <Form.Control
@@ -341,7 +349,10 @@ const BlogInputs = ({ blogData, setBlogData, onFinish, _id }) => {
                     }}
                 />
             </Form.Group>
-            <button onClick={(e) => onFinish(e)}>Submit</button>
+            {/* <button onClick={(e) => onFinish(e)}>Submit</button> */}
+            <Button type="primary"  onClick={(e) => onFinish(e)}>
+                               <Link className='text-decoration-none' to='/add-blogs'> Submit</Link>
+                            </Button>
         </Form>
     )
 }

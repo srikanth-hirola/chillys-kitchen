@@ -9,7 +9,7 @@ const Blogbanner = () => {
     <div className="menu-banner">
         <div className="menu-banner-sub " style={{backgroundImage:'url(images/menu/banner.png)'}}>
             <div className="menu-banner-sec">
-            <h2>Menu</h2>
+            <h2>Blogs</h2>
        
        <Breadcrumb>
      <Breadcrumb.Item className='bd-item' href="/">

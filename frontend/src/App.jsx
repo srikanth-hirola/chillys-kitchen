@@ -36,6 +36,8 @@ import SiteConfigMenu from './components/siteconfig/Menu.jsx';
 import SiteConfigServices from './components/siteconfig/SiteConfigServices.jsx';
 import SiteConfigDelivery from './components/siteconfig/Delivery.jsx';
 import SiteConfigHeader from './components/siteconfig/Header.jsx';
+import CheckOut from "./pages/Checkout.jsx";
+import OrderPlaced from "./pages/OrderPlaced.jsx";
 
 function App() {
   return (
@@ -51,35 +53,7 @@ function App() {
           }
         }}
       />
-      {/* <Routes>
-        <Route path="*" element={<div></div>} />
-        <Route exact path="/admin" element={<Dashboard />} />
-        <Route exact path="/products" element={<ProductList />} />
-        <Route exact path="/add-product" element={<AddProduct />} />
-        <Route exact path="/products/:edit" element={<EditProduct />} />
-        <Route exact path="/category" element={<Category />} />
-        <Route exact path="/catering" element={<Catering />} />
-        <Route exact path="/admin-blogs" element={<BlogList />} />
-        <Route exact path="/add-blogs" element={<AddBlog />} />
-        <Route exact path="/admin-blogs/:edit" element={<EditBlog />} />
-        <Route exact path="/orders" element={<Orders />} />
-        <Route exact path="/locations" element={<div>LOcations</div>} />
-        <Route exact path="/profile" element={<div>Profile</div>} />
-        <Route exact path="/login" element={<Login />} />
-        <Route exact path="/user-login" element={<UserLogin />} />
-        <Route exact path="/user-register" element={<UserRegister />} />
-        <Route exact path="/forgot-password" element={<ForgotPassword />} />
-        <Route exact path="/admin-forgot-password" element={<AdminForgotPassword />} />
-        <Route exact path="/activation/:activation_token" element={<ActivationPage />} />
-
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/menu" element={<Menu />} />
-        <Route path="/book-table" element={<BookTable />} />
-        <Route path="/blog" element={<Blog />} />
-        <Route path="/blog/:slug" element={<BlogDetails />} />
-        <Route path="/contact-us" element={<Contact />} />
-      </Routes> */}
+     
    
               <Routes>
                   <Route path="*" element={<div></div>} />
@@ -115,7 +89,9 @@ function App() {
         <Route exact path='/book-table' element={<BookTable />} />
         <Route exact path='/blog' element={<Blog />} />
         <Route exact path='/cart' element={<Cart />} />
+        <Route exact path='/checkout' element={<CheckOut />} />
         <Route exact path='/wishlist' element={<Wishlist />} />
+        <Route exact path='/order-placed' element={<OrderPlaced />} />
         <Route exact path='/menu/:id' element={<ProductDetails />} />
         <Route exact path='/blog/:slug' element={<BlogDetails />} />
         <Route exact path='/contact-us' element={<Contact />} />

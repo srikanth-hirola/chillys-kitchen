@@ -4,6 +4,7 @@ import { Form, Input, Button, Space } from 'antd';
 import { PlusOutlined, MinusCircleOutlined } from '@ant-design/icons';
 import SideBar from '../Sidebar';
 import sidebar_menu from '../../constants/sidebar-menu';
+import DashboardHeader from '../DashboardHeader';
 
 const { TextArea } = Input;
 
@@ -16,6 +17,12 @@ const SiteConfigDelivery = () => {
     <div className='dashboard-container'>
       <SideBar menu={sidebar_menu} />
       <div className='dashboard-content'>
+      <div className="dashboard-header">
+                    <h3>Delivery Configuration Settings</h3>
+                    <div className="add-btn">
+                        <DashboardHeader />
+                    </div>
+                </div>
         <Form
           name="customForm"
           initialValues={{ remember: true }}

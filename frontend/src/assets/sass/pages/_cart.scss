@@ -77,7 +77,7 @@ h3{
                     a{
                         text-decoration: none;
                         color: #fff;
-                        background: #AD343E;
+                        background: #0c2c64;
                         padding: 5px 18px;
                         font-size: 13px;
                         font-weight: 500;
@@ -91,7 +91,7 @@ h3{
                 display: flex;
                 align-items: center;
                 justify-content: space-between;
-                border: 1px solid #AD343E;
+                border: 1px solid #0c2c64;
                 text-align: center;
                 font-size: 16px;
                 font-style: normal;
@@ -121,7 +121,7 @@ h3{
         margin-top: 20px;
         text-align: center;
         margin: 0;
-        color: #AD343E;
+        color: #0c2c64;
     }
     .cart-checkout {
         box-shadow: rgba(100, 100, 111, 0.2) 0px 2px 14px 0px;
@@ -137,7 +137,58 @@ h3{
     font-weight: 500;
         }
         button{
-            background: #AD343E;
+            background: #0c2c64;
+        }
+    }
+}
+
+.order-placed {
+    margin: 150px 0px 100px;
+    .order-confirm{
+        text-align: center;
+        width: 60%;
+        margin: auto;
+        box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+        padding: 50px;
+        p{
+            font-size: 50px;
+        }
+        h4{
+            font-size: 30px;
+            margin-bottom: 42px;
+        }
+        .order-list{
+            ul{
+                padding: 0;
+                margin: 20px 0px;
+                li {
+                    display: flex;
+                    width: 70%;
+                    margin: auto;
+                    justify-content: space-between;
+                    padding: 4px 0px;
+                    p{
+                        font-size: 16px;
+                    }
+                }
+            }
+        }
+        .redirect-btns{
+            display: flex;
+    justify-content: space-between;
+    width: 71%;
+    margin: auto;
+    gap: 12px;
+    a{
+        width: 100%;
+        padding-top: 12px;
+        text-decoration: none;
+        border-radius: 8px;
+        height: 49px;
+        font-size: 16px;
+        background: #0c2c64;
+        color: #fff;
+    }
         }
     }
 }
