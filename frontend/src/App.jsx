@@ -39,6 +39,8 @@ import SiteConfigMenu from './components/siteconfig/Menu.jsx';
 import SiteConfigServices from './components/siteconfig/SiteConfigServices.jsx';
 import SiteConfigDelivery from './components/siteconfig/Delivery.jsx';
 import SiteConfigHeader from './components/siteconfig/Header.jsx';
+import CheckOut from "./pages/Checkout.jsx";
+import OrderPlaced from "./pages/OrderPlaced.jsx";
 
 function App() {
 
@@ -135,7 +137,9 @@ function App() {
         <Route exact path='/book-table' element={<BookTable />} />
         <Route exact path='/blog' element={<Blog />} />
         <Route exact path='/cart' element={<Cart />} />
+        <Route exact path='/checkout' element={<CheckOut />} />
         <Route exact path='/wishlist' element={<Wishlist />} />
+        <Route exact path='/order-placed' element={<OrderPlaced />} />
         <Route exact path='/menu/:id' element={<ProductDetails />} />
         <Route exact path='/blog/:slug' element={<BlogDetails />} />
         <Route exact path='/contact-us' element={<Contact />} />

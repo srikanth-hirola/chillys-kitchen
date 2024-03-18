@@ -3,6 +3,7 @@ import React from 'react';
 import { Form, Input, Button } from 'antd';
 import SideBar from '../Sidebar';
 import sidebar_menu from '../../constants/sidebar-menu';
+import DashboardHeader from '../DashboardHeader';
 
 const { TextArea } = Input;
 
@@ -15,6 +16,12 @@ const SiteConfigBanner = () => {
     <div className='dashboard-container'>
       <SideBar menu={sidebar_menu} />
       <div className='dashboard-content'>
+      <div className="dashboard-header">
+                    <h3>Banner Configuraion Settings</h3>
+                    <div className="add-btn">
+                        <DashboardHeader />
+                    </div>
+                </div>
         <Form
           name="customForm"
           initialValues={{ remember: true }}

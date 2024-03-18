@@ -144,16 +144,16 @@
         }
       }
     }
-  }
-  .header-book-btn {
-    text-align: end;
-    a {
-      padding: 12px 24px;
-      border-radius: 118px;
-      border: 1.5px solid var(--Neutral-07, #2c2f24);
-      color: #000;
-      text-decoration: none;
-      font-weight: 500;
+    .header-book-btn{
+        text-align: end;
+        a{
+            padding: 12px 24px;
+            border-radius: 118px;
+            border: 1.5px solid var(--Neutral-07, #0c2c64);
+            color: #000;
+            text-decoration: none;
+            font-weight: 500;
+        }
     }
   }
 }

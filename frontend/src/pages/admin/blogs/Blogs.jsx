@@ -3,12 +3,13 @@ import React, { useEffect, useRef, useState } from 'react';
 import sidebar_menu from '../../../constants/sidebar-menu';
 import SideBar from '../../../components/Sidebar';
 import { Link } from 'react-router-dom';
-import { EditOutlined, DeleteOutlined } from '@ant-design/icons';
+import { EditOutlined, DeleteOutlined ,PlusOutlined} from '@ant-design/icons';
 import { Button, Input, Space, Table, Typography } from 'antd';
 import useAPI from '../../../customHooks/API/useAPI';
 import EditButton from './Buttons/EditButton';
 import DeleteButton from './Buttons/DeleteButton';
 import { SearchOutlined } from "@ant-design/icons";
+import DashboardHeader from '../../../components/DashboardHeader';
 
 function BlogList() {
     const { getApi, deleteApi } = useAPI();
@@ -209,7 +210,17 @@ function BlogList() {
             <div className='dashboard-container'>
                 <SideBar menu={sidebar_menu} />
                 <div className='dashboard-content'>
-                    <h3>Blogs</h3>
+                <div className="dashboard-header">
+                    <h3>Products List</h3>
+                    <div className="add-btn">
+                        <DashboardHeader />
+                        <div >
+                            <Button type="primary" icon={<PlusOutlined />}>
+                               <Link className='text-decoration-none' to='/add-blogs'> Add Blog</Link>
+                            </Button>
+                        </div>
+                    </div>
+                </div>
                     <div className="custom-cursor__cursor" style={{ transform: 'translate3d(calc(492px - 50%), calc(172px - 50%), 0px)' }}></div>
                     <div className="custom-cursor__cursor-two" style={{ left: '591px', top: '181px' }}></div>
                     {loading ? (

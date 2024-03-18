@@ -5,6 +5,7 @@ import { Form, Input, Button, Space } from 'antd';
 import { MinusCircleOutlined, PlusOutlined } from '@ant-design/icons';
 import SideBar from '../Sidebar';
 import sidebar_menu from '../../constants/sidebar-menu';
+import DashboardHeader from '../DashboardHeader';
 
 const SiteConfigServices = () => {
   const [form] = Form.useForm();
@@ -30,6 +31,12 @@ const SiteConfigServices = () => {
     <div className='dashboard-container'>
       <SideBar menu={sidebar_menu} />
       <div className='dashboard-content'>
+      <div className="dashboard-header">
+                    <h3>Services Configuration Settings</h3>
+                    <div className="add-btn">
+                        <DashboardHeader />
+                    </div>
+                </div>
         <Form form={form} name="dynamic_form" onFinish={onFinish}>
           <Form.Item label="Main Description" name="mainDescription">
             <Input.TextArea value={mainDescription} onChange={(e) => setMainDescription(e.target.value)} />
