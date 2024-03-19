@@ -28,11 +28,7 @@ const Checkout = () => {
   const [totalPriceFinal, setTotalPriceFinal] = useState(0);
 
   const subTotalPrice = cartData?.reduce((acc, item) => {
-    if (item.active) {
-      return acc + item.qty * item.selectedColor.eventPrice;
-    } else {
-      return acc + item.qty * item.selectedColor.discountPrice;
-    }
+    return acc + item.qty * item.selectedColor.discountPrice;
   }, 0);
 
   // const handleSubmit = async (e, totalPrice) => {

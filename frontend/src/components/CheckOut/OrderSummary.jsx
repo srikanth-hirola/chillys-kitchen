@@ -13,7 +13,6 @@ import { useNavigate } from "react-router";
 const OrderSummary = () => {
     const { cart } = useSelector((state) => state.cart);
     const [cartData, setCartData] = useState(cart);
-    console.log(cartData, "cartData")
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
@@ -36,6 +35,10 @@ const OrderSummary = () => {
         }, 0);
         setTotalPriceFinal(totalPrice)
     }, [cart])
+
+    const subTotalPrice = cart?.reduce((acc, item) => {
+        return acc + item.qty * item.selectedColor.discountPrice;
+    }, 0);
 
 
 
@@ -156,7 +159,7 @@ const OrderSummary = () => {
                     </div>
                     <div className="bill-details">
                         <div className="name">Product Price</div>
-                        {/* <div className="value">₹ {totalPrice}</div> */}
+                        <div className="value">₹ {subTotalPrice}</div>
                     </div>
                     <div className="bill-details">
                         <div className="name">Discount Price</div>

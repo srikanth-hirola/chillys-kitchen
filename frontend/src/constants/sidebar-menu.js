@@ -146,6 +146,12 @@ const sidebar_menu = [
     {
         id: 7,
         icon: UserIcon,
+        path: '/coupons',
+        title: 'Coupons',
+    },
+    {
+        id: 8,
+        icon: UserIcon,
         path: '/login',
         title: 'Login',
     },

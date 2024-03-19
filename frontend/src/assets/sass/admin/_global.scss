@@ -17,3 +17,24 @@
   height: 39px;
   width: 48%;
 }
+
+
+// coupon code 
+/* CouponsList.css */
+
+  .formfiels {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+    padding: 15px 0px;
+    label{
+      font-weight: 600;
+    }
+    input{
+      width: 65%;
+      height: 40px;
+    }
+}
+
+// coupon code 
