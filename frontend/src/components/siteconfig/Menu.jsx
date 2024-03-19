@@ -1,13 +1,13 @@
 /* eslint-disable no-unused-vars */
 // Import necessary components and icons
 import React, { useState } from 'react';
-import { Form, Input, Button, Space } from 'antd';
 import { MinusCircleOutlined, PlusOutlined } from '@ant-design/icons';
 import SideBar from '../Sidebar';
 import sidebar_menu from '../../constants/sidebar-menu';
+import DashboardHeader from '../DashboardHeader';
+import Form from 'react-bootstrap/Form';
 
 const SiteConfigMenu = () => {
-  const [form] = Form.useForm();
   const [contactFormKeys, setContactFormKeys] = useState(['contact1']);
   const [mainDescription, setMainDescription] = useState('');
 
@@ -30,7 +30,23 @@ const SiteConfigMenu = () => {
     <div className='dashboard-container'>
       <SideBar menu={sidebar_menu} />
       <div className='dashboard-content'>
-        <Form form={form} name="dynamic_form" onFinish={onFinish}>
+      <div className="dashboard-header">
+                    <h3>Menu Section Configuration Settings</h3>
+                    <div className="add-btn">
+                        <DashboardHeader />
+                    </div>
+                </div>
+                <Form>
+                  <Form.Group>
+                    <Form.Label>Title</Form.Label>
+                    <Form.Control  />
+                  </Form.Group>
+                  <Form.Group>
+                    <Form.Label>Sub Title</Form.Label>
+                    <Form.Control  />
+                  </Form.Group>
+                </Form>
+        {/* <Form form={form} name="dynamic_form" onFinish={onFinish}>
           <Form.Item label="Main Description" name="mainDescription">
             <Input.TextArea value={mainDescription} onChange={(e) => setMainDescription(e.target.value)} />
           </Form.Item>
@@ -115,7 +131,7 @@ const SiteConfigMenu = () => {
               Submit
             </Button>
           </Form.Item>
-        </Form>
+        </Form> */}
       </div>
     </div>
   );

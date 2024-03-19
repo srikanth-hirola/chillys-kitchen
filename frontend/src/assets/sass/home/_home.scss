@@ -4,7 +4,7 @@
         padding: 0px 0px 60px;
         text-align: center;
         strong{
-            color: var(--cafeu-vercel-app-persian-red, #C33);
+            color: #0c2c64;
             text-align: center;
             font-family: "Lobster Two";
             font-size: 20px;
@@ -15,7 +15,7 @@
         }
         h2{
             text-align: center;
-    font-family: "DM sans";
+      font-family: "Poppins", sans-serif;
     font-size: 36px;
     font-style: normal;
     font-weight: 700;
@@ -36,31 +36,31 @@
             text-align: center;
             h3{
                 margin: 30px 0px 15px;
-                color: #2C2F24;
+                color: #0c2c64;
                 text-align: center;
-                font-family: "DM Sans";
+                  font-family: "Poppins", sans-serif;
                 font-size: 24px;
                 font-style: normal;
                 font-weight: 700;
                 line-height: 30px;
                 letter-spacing: -0.72px;
                 strong{
-                    color: #333;
+                    color: #0c2c64;
                 }
             }
             p{
                 color: var(--Neutral-06, #414536);
     text-align: center;
-    font-family: "DM Sans";
+      font-family: "Poppins", sans-serif;
     font-size: 16px;
     font-style: normal;
     font-weight: 400;
     line-height: 24px;
             }
             a{
-                color: #AD343E;
+                color: #0c2c64;
                 text-align: center;
-                font-family: "DM Sans";
+                  font-family: "Poppins", sans-serif;
                 font-size: 16px;
                 font-style: normal;
                 font-weight: 700;
@@ -97,7 +97,7 @@
             .home-about-img-text-sec-sub{
                 h4{
                     color: var(--Neutral-01, #FFF);
-    font-family: "DM Sans";
+      font-family: "Poppins", sans-serif;
     font-size: 24px;
     font-style: normal;
     font-weight: 700;
@@ -117,7 +117,7 @@
                         }
                         p{
                             padding: 0px 15px;
-                            font-family: "DM Sans";
+                              font-family: "Poppins", sans-serif;
                             font-size: 16px;
                             font-style: normal;
                             font-weight: 400;
@@ -126,7 +126,7 @@
                             color: #fff;
                             a{
                                 color: var(--Neutral-02, #F9F9F7);
-    font-family: "DM Sans";
+      font-family: "Poppins", sans-serif;
     font-size: 16px;
     font-style: normal;
     font-weight: 400;
@@ -143,8 +143,8 @@
         width: 80%;
         margin: auto;
         h3{
-            color: var(--Neutral-07, #2C2F24);
-            font-family: 'DM Sans';
+            color: var(--Neutral-07, #0c2c64);
+            font-family: "Poppins", sans-serif;;
             font-size: 55px;
             font-style: normal;
             font-weight: 500;
@@ -152,7 +152,7 @@
         }
         .text-p-one{
             color: var(--Neutral-06, #414536);
-            font-family: "DM Sans";
+              font-family: "Poppins", sans-serif;
             font-size: 16px;
             font-style: normal;
             font-weight: 400;
@@ -163,7 +163,7 @@
         }
         .text-p-two{
             color: var(--Neutral-06, #414536);
-            font-family: "DM Sans";
+              font-family: "Poppins", sans-serif;
             font-size: 16px;
             font-style: normal;
             font-weight: 400;
@@ -172,15 +172,15 @@
         }
         button{
             border-radius: 118px;
-    border: 1.5px solid var(--Neutral-07, #2C2F24);
+    border: 1.5px solid var(--Neutral-07, #0c2c64);
     padding: 17px 30px;
     background: #fff;
     color: var(--Neutral-07, #182226);
     text-align: right;
-    font-family: "DM Sans";
+      font-family: "Poppins", sans-serif;
     font-size: 16px;
     font-style: normal;
-    font-weight: 700;
+    font-weight: 500;
     line-height: 24px;
         }
     }
@@ -193,7 +193,7 @@
         width: 100%;
         text-align: center;
         strong{
-            color: var(--cafeu-vercel-app-persian-red, #C33);
+            color: #0c2c64;
             text-align: center;
             font-family: "Lobster Two";
             font-size: 20px;
@@ -202,9 +202,9 @@
             line-height: 25px;
         }
         h3{
-            color: var(--cafeu-vercel-app-mine-shaft, #292929);
+            color: var(--cafeu-vercel-app-mine-shaft, #0c2c64);
             text-align: center;
-            font-family: 'DM Sans';
+            font-family: "Poppins", sans-serif;;
             font-size: 36px;
             font-style: normal;
             font-weight: 700;
@@ -233,7 +233,7 @@
         .home-services-sec-card-text{
             h3{
                 font-family: 'Lobster Two';
-                color: #AD343E;
+                color: #0c2c64;
                 text-align: center;
                 font-size: 20px;
                 font-style: normal;
@@ -243,7 +243,7 @@
                 letter-spacing: 1px;
             }
             p{
-                font-family: "DM Sans";
+                  font-family: "Poppins", sans-serif;
                 color: rgba(0, 0, 0, 0.75);
                 text-align: center;
                 font-size: 16px;
@@ -288,8 +288,8 @@
     }
     .home-delivery-sec-text{
         h3{
-            color: var(--Neutral-07, #2C2F24);
-    font-family: 'DM Sans';
+            color: var(--Neutral-07, #0c2c64);
+    font-family: "Poppins", sans-serif;;
     font-size: 55px;
     font-style: normal;
     font-weight: 500;
@@ -297,7 +297,7 @@
         }
         p{
             color: var(--Neutral-06, #414536);
-            font-family: "DM Sans";
+              font-family: "Poppins", sans-serif;
             font-size: 16px;
             font-style: normal;
             font-weight: 400;
@@ -317,7 +317,7 @@
                     height: 30px;
                     flex-shrink: 0;
                     border-radius: 65px;
-                    background: #AD343E;
+                    background: #0c2c64;
                     display: flex;
                     justify-content: center;
                     align-items: center;
@@ -327,8 +327,8 @@
                 }
                 p{
                     margin: 0px;
-    color: var(--Neutral-07, #2C2F24);
-    font-family: "DM Sans";
+    color: var(--Neutral-07, #0c2c64);
+      font-family: "Poppins", sans-serif;
     font-size: 20px;
     font-style: normal;
     font-weight: 500;
@@ -348,9 +348,9 @@
     .title-testimonal {
         padding: 0px 0px 80px;
         h3{
-            color: var(--Neutral-07, #2C2F24);
+            color: var(--Neutral-07, #0c2c64);
             text-align: center;
-            font-family: 'DM Sans';
+            font-family: "Poppins", sans-serif;;
             font-size: 55px;
             font-style: normal;
             font-weight: 500;
@@ -368,8 +368,8 @@
                 padding: 25px 0px;
                 border-bottom: 1px solid #DBDFD0;
                 h3{
-                    color: #AD343E;
-                    font-family: "DM Sans";
+                    color: #0c2c64;
+                      font-family: "Poppins", sans-serif;
                     font-size: 24px;
                     font-style: normal;
                     font-weight: 700;
@@ -378,7 +378,7 @@
                 }
                 p{
                     color: var(--Neutral-06, #414536);
-                    font-family: "DM Sans";
+                      font-family: "Poppins", sans-serif;
                     font-size: 18px;
                     font-style: normal;
                     font-weight: 400;
@@ -388,8 +388,8 @@
             .testi-sec-user {
                 padding: 41px 0px 0px;
                 .testi-user-role{
-                    color: var(--Neutral-07, #2C2F24);
-                    font-family: "DM Sans";
+                    color: var(--Neutral-07, #0c2c64);
+                      font-family: "Poppins", sans-serif;
                     font-size: 16px;
                     font-style: normal;
                     font-weight: 700;
@@ -397,7 +397,7 @@
                 }
                 p{
                     color: var(--Neutral-06, #414536);
-    font-family: "DM Sans";
+      font-family: "Poppins", sans-serif;
     font-size: 16px;
     font-style: normal;
     font-weight: 400;
@@ -419,8 +419,8 @@
         justify-content: space-between;
         padding: 0px 0px 80px;
         h2{
-            color: var(--Neutral-07, #2C2F24);
-            font-family: 'DM Sans';
+            color: var(--Neutral-07, #0c2c64);
+            font-family: "Poppins", sans-serif;;
             font-size: 55px;
             font-style: normal;
             font-weight: 500;
@@ -428,10 +428,10 @@
         }
         button{
             border-radius: 118px;
-    background: #AD343E;
+    background: #0c2c64;
     color: var(--Neutral-01, #FFF);
     text-align: right;
-    font-family: "DM Sans";
+      font-family: "Poppins", sans-serif;
     border: none;
     font-size: 16px;
     font-style: normal;
@@ -467,7 +467,7 @@
                 padding: 20px;
                 strong{
                     color: var(--Neutral-05, #737865);
-                    font-family: "DM Sans";
+                      font-family: "Poppins", sans-serif;
                     font-size: 16px;
                     font-style: normal;
                     font-weight: 500;
@@ -475,8 +475,8 @@
                     text-decoration: none;
                 }
                 h3{
-                    color: var(--Neutral-07, #2C2F24);
-                    font-family: "DM Sans";
+                    color: var(--Neutral-07, #0c2c64);
+                      font-family: "Poppins", sans-serif;
                     font-size: 20px;
                     font-style: normal;
                     font-weight: 500;
@@ -491,7 +491,7 @@
                 }
                 p{
                     color: var(--Neutral-06, #414536);
-                    font-family: "DM Sans";
+                      font-family: "Poppins", sans-serif;
                     font-size: 16px;
                     font-style: normal;
                     font-weight: 400;
@@ -535,7 +535,7 @@
         padding: 20px 0px;
         p{
             color: var(--Neutral-04, #ffffff);
-    font-family: "DM Sans";
+      font-family: "Poppins", sans-serif;
     font-size: 16px;
     font-style: normal;
     font-weight: 400;
@@ -549,7 +549,7 @@
             width: 70%;
             justify-content: space-between;
             li{
-                background: #AD343E;
+                background: #0c2c64;
                 display: flex;
                 justify-content: center;
                 align-items: center;
@@ -558,6 +558,8 @@
                 border-radius: 20px;
                 span{
                     color: #fff;
+                    position: relative;
+                    top: 2px;   
                     svg{
                         position: relative;
                         bottom: 4px;
@@ -571,7 +573,7 @@
     padding: 20px 40px;
     h2{
         color: var(--Neutral-01, #FFF);
-        font-family: "DM Sans";
+          font-family: "Poppins", sans-serif;
         font-size: 20px;
         font-style: normal;
         font-weight: 700;
@@ -585,7 +587,7 @@
             padding: 10px 0px;
             a{
                 color: var(--Neutral-03, #DBDFD0);
-                font-family: "DM Sans";
+                  font-family: "Poppins", sans-serif;
                 font-size: 16px;
                 font-style: normal;
                 font-weight: 400;
@@ -599,7 +601,7 @@
     padding: 20px 30px;
     h2{
         color: var(--Neutral-01, #FFF);
-        font-family: "DM Sans";
+          font-family: "Poppins", sans-serif;
         font-size: 20px;
         font-style: normal;
         font-weight: 700;
@@ -613,7 +615,7 @@
             padding: 10px 0px;
             a{
                 color: var(--Neutral-03, #DBDFD0);
-                font-family: "DM Sans";
+                  font-family: "Poppins", sans-serif;
                 font-size: 16px;
                 font-style: normal;
                 font-weight: 400;
@@ -627,7 +629,7 @@
     padding: 20px 0px;
     h2{
         color: var(--Neutral-01, #FFF);
-        font-family: "DM Sans";
+          font-family: "Poppins", sans-serif;
         font-size: 20px;
         font-style: normal;
         font-weight: 700;
@@ -684,8 +686,8 @@
                 background: #fff;
                 padding: 20px;
                 h3{
-                    color: var(--cafeu-vercel-app-mine-shaft, #292929);
-                    font-family: 'DM Sans';
+                    color: var(--cafeu-vercel-app-mine-shaft, #0c2c64);
+                    font-family: "Poppins", sans-serif;;
                     font-size: 17px;
                     font-style: normal;
                     font-weight: 600;
@@ -693,7 +695,7 @@
                 }
                 p{
                     color: var(--cafeu-vercel-app-dove-gray, #666);
-    font-family: 'DM Sans';
+    font-family: "Poppins", sans-serif;;
     font-size: 15px;
     font-style: normal;
     font-weight: 400;
@@ -705,8 +707,8 @@
                     justify-content: space-between;
                     align-items: center;
                     span{
-                        color: var(--cafeu-vercel-app-persian-red, #C33);
-                        font-family: 'DM Sans';
+                        color: #0c2c64;
+                        font-family: "Poppins", sans-serif;;
                         font-size: 15px;
                         font-style: normal;
                         font-weight: 600;
@@ -714,7 +716,7 @@
                         
                     }
                     a{
-                        background: #292929;
+                        background: #0c2c64;
                         padding: 12px 13px;
                         border-radius: 4px;
                         span{

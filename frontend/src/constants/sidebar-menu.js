@@ -15,14 +15,33 @@ const sidebar_menu = [
     {
         id: 2,
         icon: ProductIcon,
-        path: '/orders',
         title: 'Orders',
+        submenu: [
+          {
+            id: 1,
+           icon: ShippingIcon,
+            path: '/orders',
+            title: 'Total Orders',
+          },
+          {
+            id: 2,
+           icon: ShippingIcon,
+            path: '/pending-orders',
+            title: 'Pending Orders',
+          },
+          {
+            id: 1,
+           icon: ShippingIcon,
+            path: '/delivered-orders',
+            title: 'Delivered Orders',
+          },
+        ]
         
     },
     {
         id: 3,
         icon: ShippingIcon,
-        path: '/products',
+        
         title: 'Products',
         submenu: [
             {
@@ -54,7 +73,7 @@ const sidebar_menu = [
     {
       id: 4,
       icon: UserIcon,
-      path: '/admin-blogs',
+    
       title: 'Blogs',
       submenu: [
         {
@@ -81,7 +100,7 @@ const sidebar_menu = [
     {
       id: 5,
       icon: UserIcon,
-      path: '/site-config',
+   
       title: 'Site Config',
       submenu: [
         {
@@ -126,6 +145,12 @@ const sidebar_menu = [
 
     {
         id: 7,
+        icon: UserIcon,
+        path: '/coupons',
+        title: 'Coupons',
+    },
+    {
+        id: 8,
         icon: UserIcon,
         path: '/login',
         title: 'Login',

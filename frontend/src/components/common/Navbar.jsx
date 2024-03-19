@@ -9,20 +9,24 @@ const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [categories, setCategories] = useState([]);
 
-  const { category } = useSelector((state) => state.category)
+  const { category } = useSelector((state) => state.category);
+  const { wishlist } = useSelector((state) => state.wishlist);
+  const { cart } = useSelector((state) => state.cart);
+
+  console.log(cart?.length, wishlist?.length)
 
   useEffect(() => {
     const handleScroll = () => {
-      const bannerHeight = document.getElementById('banner-sec').offsetHeight;
+      const bannerHeight = document.getElementById("banner-sec").offsetHeight;
       const scrollTop = window.scrollY;
       const scrolled = scrollTop > bannerHeight;
       setIsScrolled(scrolled);
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
 
     return () => {
-      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener("scroll", handleScroll);
     };
   }, []);
 
@@ -55,7 +59,7 @@ const Navbar = () => {
 
   return (
     <>
-      <div className={`header-sec ${isScrolled ? 'solid' : 'transparent'}`}>
+      <div className={`header-sec ${isScrolled ? "solid" : "transparent"}`}>
         <div className="header-sec-sub">
           <div className="container">
             <div className="row align-items-center">
@@ -68,10 +72,10 @@ const Navbar = () => {
                 <div className="header-menu">
                   <ul>
                     <li>
-                      <Link to='/'>Home</Link>
+                      <Link to="/">Home</Link>
                     </li>
                     <li>
-                      <Link to='/about'>About</Link>
+                      <Link to="/about">About</Link>
                     </li>
                     <li>
                       {/* <Link to='/menu'>Menu</Link> */}
@@ -80,17 +84,17 @@ const Navbar = () => {
                       </Dropdown>
                     </li>
                     <li>
-                      <Link to='/services'>Services</Link>
+                      <Link to="/services">Services</Link>
                     </li>
                     <li>
-                      <Link to='/blog'>Blog</Link>
+                      <Link to="/blog">Blog</Link>
                     </li>
                     <li>
-                      <Link to='/contact-us'>Contact</Link>
+                      <Link to="/contact-us">Contact</Link>
                     </li>
                     <li>
                       <Link to='/cart'>
-                        <Badge count={5} /* Set your desired count here */>
+                        <Badge count={cart?.length ?? 0} /* Set your desired count here */>
                           <span className='badge-count' >
                             <ShoppingCartOutlined style={{ fontSize: '20px' }} />
                           </span>
@@ -99,7 +103,7 @@ const Navbar = () => {
                     </li>
                     <li>
                       <Link to='/wishlist'>
-                        <Badge count={2} /* Add the 'dot' prop for a simple dot without a count */>
+                        <Badge count={wishlist?.length} /* Add the 'dot' prop for a simple dot without a count */>
                           <span className='badge-count'>
                             <HeartOutlined style={{ fontSize: '20px' }} />
                           </span>
@@ -120,7 +124,6 @@ const Navbar = () => {
                   </ul>
                 </div>
               </div>
-
             </div>
           </div>
         </div>

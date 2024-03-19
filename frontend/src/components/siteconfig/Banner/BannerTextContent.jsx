@@ -4,8 +4,6 @@ import Form from 'react-bootstrap/Form';
 
 const BannerTextContent = ({ bannerContent, setBannerContent, handleChange }) => {
 
-  console.log("bannerContent in BannerTextContent", bannerContent)
-
   return (
     <>
         <Form>

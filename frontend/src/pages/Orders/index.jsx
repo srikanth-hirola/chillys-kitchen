@@ -4,6 +4,7 @@ import SideBar from '../../components/Sidebar';
 import sidebar_menu from '../../constants/sidebar-menu';
 import { Table, Tag, Button } from 'antd';
 import { PlusOutlined } from '@ant-design/icons';
+import DashboardHeader from '../../components/DashboardHeader';
 function Orders() {
     const dataSource = [
   {
@@ -63,7 +64,14 @@ const columns = [
     return (
         <div className='dashboard-container'>
             <SideBar menu={sidebar_menu} />
+            
             <div className='dashboard-content'>
+            <div className="dashboard-header">
+                    <h3>All Orders</h3>
+                    <div className="add-btn">
+                        <DashboardHeader />
+                    </div>
+                </div>
                 <h3>orders</h3>
                 <Table
       dataSource={dataSource}

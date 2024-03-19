@@ -1,9 +1,6 @@
 import axios from "axios";
 import { server } from "../../server";
 import toast from "react-hot-toast";
-import WorkerFactory from '../../WorkerFactory';
-import myWorker from '../../workers/myWorker.worker'
-const workerInstance = new WorkerFactory(myWorker);
 
 // load user
 export const loadUser = () => async (dispatch) => {
@@ -14,22 +11,17 @@ export const loadUser = () => async (dispatch) => {
     const { data } = await axios.get(`${server}/user/getuser`, {
       withCredentials: true,
     });
-    workerInstance.postMessage(data);
 
-    workerInstance.onmessage = (res) => {
-      dispatch({
-        type: "LoadUserSuccess",
-        payload: data.user,
-      });
-    };
+    dispatch({
+      type: "LoadUserSuccess",
+      payload: data.user,
+    });
 
   } catch (error) {
-    workerInstance.onerror = (err) => {
-      dispatch({
-        type: "LoadUserFail",
-        payload: error.response.data.message,
-      });
-    };
+    dispatch({
+      type: "LoadUserFail",
+      payload: error.response.data.message,
+    });
   }
 };
 
@@ -42,21 +34,16 @@ export const loadSeller = () => async (dispatch) => {
     const { data } = await axios.get(`${server}/shop/getSeller`, {
       withCredentials: true,
     });
-    workerInstance.postMessage(data);
-    workerInstance.onmessage = (res) => {
-      dispatch({
-        type: "LoadSellerSuccess",
-        payload: data.seller,
-      });
-    };
+    dispatch({
+      type: "LoadSellerSuccess",
+      payload: data.seller,
+    });
 
   } catch (error) {
-    workerInstance.onerror = (err) => {
-      dispatch({
-        type: "LoadSellerFail",
-        payload: error.response.data.message,
-      });
-    };
+    dispatch({
+      type: "LoadSellerFail",
+      payload: error.response.data.message,
+    });
 
   }
 };

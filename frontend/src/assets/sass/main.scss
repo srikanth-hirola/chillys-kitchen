@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Lobster+Two:ital,wght@0,400;0,700;1,400;1,700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
 @import url(./home/_home.scss);
@@ -10,7 +10,9 @@
 @import url(./blog/_blog.scss);
 @import url(./products/_products.scss);
 @import url(./pages/_cart.scss);
-
+@import url(./contact/_contact.scss);
+@import url(./contact/_checkout.scss);
+@import url(./pages/_catering.scss);
 
 
 // admin styles
@@ -29,7 +31,8 @@ $card-bg-1:#474747;
 $card-bg-2:#F9F9F7;
 
 $button-bg-1:#DBDFD0;
-$button-bg-2:#AD343E;
+$button-bg-2:#0c2c64;
+// $button-bg-2:#0c2c64;
 
 $h1-font:96px;
 $h2-font:55px;
@@ -44,7 +47,7 @@ $p-font-three:12px;
 
 
 
-$button-actibe-bg-1:#AD343E;
+$button-actibe-bg-1:#0c2c64;
 
 
 
@@ -54,8 +57,8 @@ $button-actibe-bg-1:#AD343E;
 
 
 body{
-    font-family: "DM Sans", sans-serif;
+    font-family: "Poppins", sans-serif;
 }
 *{
-    padding: 0;margin: 0;box-sizing: border-box;
+    padding: 0;margin: 0;box-sizing: border-box;  font-family: "Poppins", sans-serif;
 }

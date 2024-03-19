@@ -1,26 +1,52 @@
 // eslint-disable-next-line no-unused-vars
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import useUrlHandler from '../../customHooks/URLs/useUrlHandler'
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import Loader from '../Loader';
+import Products from './Products';
+import useData from '../../customHooks/getName/useData';
+import { getAllCategories, getAllSubCategories } from '../../redux/actions/category';
+import { getPublishedProducts } from '../../redux/actions/product';
 
 const MenuMiddleware = () => {
-    const { category } = useSelector((state) => state.category);
-    const { allPublishedProducts } = useSelector((state) => state.products);
-    const { useQueryParam } = useUrlHandler();
-    let params = useQueryParam("category")
+    const { isLoading } = useSelector((state) => state.products);
 
+    const { getCategory, getFilteredProducts } = useData();
+    const { useQueryParam } = useUrlHandler();
+    let params = useQueryParam("category");
+    const [products, setProducts] = useState([]);
+
+    const dispatch = useDispatch();
 
     useEffect(() => {
-        const found = category?.find((item) => item?.category === params);
+        dispatch(getAllSubCategories());
+        dispatch(getPublishedProducts());
+        dispatch(getAllCategories())
+    }, [dispatch])
+
+    const found = getCategory({ data: params, name: 'category' });
+
+    useEffect(() => {
         if (found) {
-            const relatedProducts = allPublishedProducts?.find((product) => product?.category === found?._id);
-            console.log(relatedProducts)
+            const relatedProducts = getFilteredProducts({ data: found?._id, name: 'category' });
+            setProducts(relatedProducts)
         }
-    }, [params, category, allPublishedProducts])
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [params, found])
 
     return (
         <>
-            {params === ""}
+            {isLoading ?
+                <Loader />
+                : <>
+                    {products?.length === 0 ?
+                        <p>No Products found!</p>
+                        :
+                        <>
+                            <Products productData={products} />
+                        </>
+                    }
+                </>}
         </>
     )
 }

@@ -31,7 +31,7 @@
           padding: 16px 0px;
           span {
             border-radius: 4px;
-            background: #ad343e;
+            background: #0c2c64;
             color: #fff;
             font-size: 14px;
             font-style: normal;
@@ -61,7 +61,7 @@
         line-height: 26px;
         span {
           border-radius: 4px;
-          background: #ad343e;
+          background: #0c2c64;
           color: #fff;
           font-size: 14px;
           font-style: normal;
@@ -96,7 +96,7 @@
         height: 50px;
         .ant-select-selector {
           border: 1px solid #d9d9d9;
-          background: #ad343e;
+          background: #0c2c64;
           width: 100%;
           .ant-select-selection-placeholder {
             color: #fff;
@@ -126,7 +126,7 @@
     .add-to-btn {
       margin-top: 20px;
       border-radius: 4px;
-      background: #ad343e;
+      background: #0c2c64;
       width: fit-content;
       padding: 10px 10px;
       a {
@@ -144,20 +144,20 @@
         .ant-tabs-nav-list {
           .ant-tabs-tab {
 
-            border: 1px solid #ad343e;
+            border: 1px solid #0c2c64;
             padding: 15px 43px;
            &:hover {
-            background: #ad343e  !important;
+            background: #0c2c64  !important;
             color: #fff !important;
            }
            &:hover .ant-tabs-tab-btn{
-            background: #ad343e  !important;
+            background: #0c2c64  !important;
             color: #fff !important;
            }
           
           }
           .ant-tabs-tab.ant-tabs-tab-active {
-            background: #ad343e;
+            background: #0c2c64;
             color: #fff !important;
             border-bottom: none !important;
             .ant-tabs-tab-btn {
@@ -187,7 +187,7 @@
     .header {
         display: flex;
         justify-content: start;
-        background-color: #ad343e;
+        background-color: #0c2c64;
         padding: 13px 10px;
         border-bottom: 1px solid #ccc;
         font-weight: bold;
@@ -270,7 +270,7 @@ padding: 30px 0;
         }
     }
     .main-review {
-        border-bottom: 1px solid #ad343e;
+        border-bottom: 1px solid #0c2c64;
         display: flex;
         justify-content: start;
         width: 75%;
