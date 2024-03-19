@@ -8,6 +8,7 @@ import axios from "axios";
 import { useNavigate } from 'react-router';
 import { Link } from 'react-router-dom';
 import toast from 'react-hot-toast';
+import { server } from '../../server';
 
 function Login() {
     const navigate = useNavigate();
@@ -32,18 +33,24 @@ function Login() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-
-        try {
-            const response = await axios.post("http://localhost:8000/api/v2/shop/login-shop", logindata);
-            console.log("response", response)
-            if(response.status === 201) {
-                navigate("/admin");
-            }
-        } catch (error) {
-            console.log("login error",error)
-            alert(error.response.data.message)
-        }
-    }
+        await axios
+            .post(
+                `${server}/shop/login-shop`,
+                {
+                    email: logindata?.email,
+                    password: logindata?.password,
+                },
+                { withCredentials: true }
+            )
+            .then((res) => {
+                toast.success("Login Success!");
+                navigate("/dashboard");
+                window.location.reload(true);
+            })
+            .catch((err) => {
+                toast.error(err.response.data.message);
+            });
+    };
 
     const handleForgetPassword = (e) => {
         e.preventDefault();
@@ -55,50 +62,50 @@ function Login() {
     }
 
     return (
-       <>
-         <Navbar/>
-        <div className="login-container">
-            <Row className='login-container-login'>
-               
-                <div  className="login-form-container">
-                    {/* Login details on the other side */}
-                    <Form
-                        name="normal_login"
-                        className="login-form"
-                        initialValues={{ remember: true }}
-                        onFinish={onFinish}
-                    >
-                        <h2>Login to Dashboard</h2>
-                        <Form.Item
-                            name="email" 
-                            rules={[{ required: true, message: 'Please input your email!' }]}
+        <>
+            <Navbar />
+            <div className="login-container">
+                <Row className='login-container-login'>
+
+                    <div className="login-form-container">
+                        {/* Login details on the other side */}
+                        <Form
+                            name="normal_login"
+                            className="login-form"
+                            initialValues={{ remember: true }}
+                            onFinish={onFinish}
                         >
-                            <Input onChange={(e) => handleInputChange(e.target.value, "email")} value={logindata.email} prefix={<UserOutlined className="site-form-item-icon" />} placeholder="Email" />
-                        </Form.Item>
-                        <Form.Item
-                            name="password"
-                            rules={[{ required: true, message: 'Please input your password!' }]}
-                        >
-                            <Input
-                                onChange={(e) => handleInputChange(e.target.value, "password")}
-                                value={logindata.password}
-                                prefix={<LockOutlined className="site-form-item-icon" />}
-                                type="password"
-                                placeholder="Password"
-                            />
-                        </Form.Item>
-                        <Form.Item>
-                            <Button onClick={(e) => handleSubmit(e)} type="primary" htmlType="submit" className="login-form-button">
-                                Log in
-                            </Button>
-                        </Form.Item>
-                        <Link to={''} onClick={handleForgetPassword}>Forget Your Password?</Link>
-                    </Form>
-                </div>
-            </Row>
-        </div>
-        <Footer/>
-       </>
+                            <h2>Login to Dashboard</h2>
+                            <Form.Item
+                                name="email"
+                                rules={[{ required: true, message: 'Please input your email!' }]}
+                            >
+                                <Input onChange={(e) => handleInputChange(e.target.value, "email")} value={logindata.email} prefix={<UserOutlined className="site-form-item-icon" />} placeholder="Email" />
+                            </Form.Item>
+                            <Form.Item
+                                name="password"
+                                rules={[{ required: true, message: 'Please input your password!' }]}
+                            >
+                                <Input
+                                    onChange={(e) => handleInputChange(e.target.value, "password")}
+                                    value={logindata.password}
+                                    prefix={<LockOutlined className="site-form-item-icon" />}
+                                    type="password"
+                                    placeholder="Password"
+                                />
+                            </Form.Item>
+                            <Form.Item>
+                                <Button onClick={(e) => handleSubmit(e)} type="primary" htmlType="submit" className="login-form-button">
+                                    Log in
+                                </Button>
+                            </Form.Item>
+                            <Link to={''} onClick={handleForgetPassword}>Forget Your Password?</Link>
+                        </Form>
+                    </div>
+                </Row>
+            </div>
+            <Footer />
+        </>
     );
 }
 

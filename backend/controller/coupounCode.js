@@ -32,6 +32,41 @@ router.post(
   })
 );
 
+
+// Update coupon code
+router.put(
+  "/update-coupon/:id",
+  isSeller,
+  catchAsyncErrors(async (req, res, next) => {
+    try {
+      const { id } = req.params;
+
+      const existingCoupon = await CoupounCode.findById(id);
+      if (!existingCoupon) {
+        return next(new ErrorHandler("Coupon code not found", 404));
+      }
+
+      const isCouponCodeExists = await CoupounCode.findOne({
+        name: req.body.name,
+        _id: { $ne: id }
+      });
+      if (isCouponCodeExists) {
+        return next(new ErrorHandler("Coupon code already exists!", 400));
+      }
+
+      await CoupounCode.findByIdAndUpdate(id, req.body, { new: true });
+
+      res.status(200).json({
+        success: true,
+        message: "Coupon code updated successfully",
+      });
+    } catch (error) {
+      return next(new ErrorHandler(error, 400));
+    }
+  })
+);
+
+
 // get all coupons of a shop
 router.get(
   "/get-coupon/:id",

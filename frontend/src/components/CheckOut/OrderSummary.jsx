@@ -10,8 +10,9 @@ import axios from "axios";
 import { server } from "../../server";
 import { useNavigate } from "react-router";
 
-const OrderSummary = () => {
+const OrderSummary = ({ addressData }) => {
     const { cart } = useSelector((state) => state.cart);
+    const { user } = useSelector((state) => state.user);
     const [cartData, setCartData] = useState(cart);
     const dispatch = useDispatch();
     const navigate = useNavigate();
@@ -34,6 +35,9 @@ const OrderSummary = () => {
             return acc + item.qty * item?.selectedColor?.discountPrice;
         }, 0);
         setTotalPriceFinal(totalPrice)
+
+        setDiscountPrice(0);
+        setCouponCodeData(null);
     }, [cart])
 
     const subTotalPrice = cart?.reduce((acc, item) => {
@@ -60,33 +64,27 @@ const OrderSummary = () => {
             const shopId = res.data.couponCode?.shopId;
             const couponCodeValue = res.data.couponCode?.value;
             if (res.data.couponCode !== null) {
-                const isCouponValid =
-                    cartData && cartData.filter((item) => item.shopId === shopId);
 
-                if (isCouponValid.length === 0) {
-                    message.error('Coupon code is not valid for this shop');
+                // const eligiblePrice = isCouponValid.reduce(
+                //   (acc, item) => acc + item.qty * item.discountPrice,
+                //   0
+                // );
+                const eligiblePrice = totalPrice;
+
+                if (eligiblePrice <= res.data.couponCode?.maxAmount && eligiblePrice >= res.data.couponCode?.minAmount) {
+                    const discountPrice = (eligiblePrice * couponCodeValue) / 100;
+
+                    setDiscountPrice(discountPrice.toFixed(2));
+                    setCouponCodeData(res.data.couponCode);
                     setCouponCode('');
+                    setTotalPriceFinal(Number(totalPrice) - Number(discountPrice))
+                    setCoupanRefTotal(Number(totalPrice) - Number(discountPrice))
                 } else {
-                    // const eligiblePrice = isCouponValid.reduce(
-                    //   (acc, item) => acc + item.qty * item.discountPrice,
-                    //   0
-                    // );
-                    const eligiblePrice = totalPrice;
-
-                    if (eligiblePrice <= res.data.couponCode?.maxAmount && eligiblePrice >= res.data.couponCode?.minAmount) {
-                        const discountPrice = (eligiblePrice * couponCodeValue) / 100;
-
-                        setDiscountPrice(discountPrice.toFixed(2));
-                        setCouponCodeData(res.data.couponCode);
-                        setCouponCode('');
-                        setTotalPriceFinal(Number(totalPrice) - Number(discountPrice))
-                        setCoupanRefTotal(Number(totalPrice) - Number(discountPrice))
-                    } else {
-                        message.error('Coupon is not applicable!')
-                    }
-
-
+                    message.error('Coupon is not applicable!')
                 }
+
+
+
             }
             if (res.data.couponCode === null) {
                 message.error("Coupon code doesn't exists!");
@@ -108,16 +106,56 @@ const OrderSummary = () => {
 
     const discountPercentenge = couponCodeData ? discountPrice : '';
 
+    const validationFun = (addresDetails) => {
+        if (
+            addresDetails?.firstName === "" ||
+            addresDetails?.lastName === "" ||
+            addresDetails?.email === "" ||
+            addresDetails?.mobile === "" ||
+            addresDetails?.flatBuildingNumber === "" ||
+            addresDetails?.pincode === "" ||
+            addresDetails?.nearbyLocation === "" ||
+            addresDetails?.areaName === "" ||
+            addresDetails?.deliveryTypes?.length === 0
+        ) {
+            message.error("All Address Field's are required!");
+            return false;
+        } else {
+            return true;
+        }
+
+    };
+
     const paymentSubmit = (e) => {
         e.preventDefault();
-        let finalData = {
-            ...cartData,
-            totalPrice: totalPriceFinal,
-            discountPrice: discountPercentenge
+        console.log(addressData, "address")
+        const val = validationFun(addressData);
+        if (val) {
+            const finalData = {
+                cart: cartData,
+                totalPrice: totalPriceFinal,
+                subTotalPrice,
+                discountPrice,
+                shippingAddress: addressData,
+                user,
+            }
+            localStorage.setItem('latestOrder', JSON.stringify(finalData));
+            navigate('/payment');
+            console.log(finalData)
         }
-        localStorage.setItem('latestOrder', JSON.stringify(finalData));
-        navigate('/payment');
+
+        // let finalData = {
+        //     ...cartData,
+        // shippingAddress:addressData,
+        // subTotalPrice,
+        //     totalPrice: totalPriceFinal,
+        //     discountPrice: discountPercentenge
+        // }
+        // localStorage.setItem('latestOrder', JSON.stringify(finalData));
+        // navigate('/payment');
     };
+
+
 
     return (
         <div className="col-md-5">
@@ -137,7 +175,7 @@ const OrderSummary = () => {
                 {/* Coupon Code Input */}
                 <div className="coupon-section">
                     <h4>Apply Coupon</h4>
-                    <Form layout="horizontal" onFinish={(e) => handleSubmit(e, couponRefTotal)}>
+                    <Form layout="horizontal" >
                         <Item>
                             <Input
                                 value={couponCode}
@@ -146,7 +184,7 @@ const OrderSummary = () => {
                             />
                         </Item>
                         <Item>
-                            <Button >Apply</Button>
+                            <Button onClick={(e) => handleSubmit(e, totalPriceFinal)}>Apply</Button>
                         </Item>
                     </Form>
                 </div>
@@ -169,7 +207,7 @@ const OrderSummary = () => {
                         <div className="name">Total Amount</div>
                         <div className="value">₹ {totalPriceFinal}</div>
                     </div>
-                    <Button type="primary" block>Final Checkout</Button>
+                    <Button type="primary" block onClick={paymentSubmit}>Final Checkout</Button>
                 </div>
             </div>
         </div>
@@ -177,9 +215,7 @@ const OrderSummary = () => {
 }
 
 OrderSummary.propTypes = {
-    quantity: PropTypes.number.isRequired,
-    setQuantity: PropTypes.func.isRequired,
-    cartData: PropTypes.object
+    addressData: PropTypes.object.isRequired,
 }
 
 export default OrderSummary

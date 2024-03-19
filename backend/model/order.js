@@ -5,18 +5,19 @@ const orderSchema = new mongoose.Schema({
     type: Array,
     required: true,
   },
-  cod: Number,
-  sellerCart: {
-    type: Object,
-    required: true,
-  },
-  // shippingAddress: {
+  // cod: Number,
+  // sellerCart: {
   //   type: Object,
+  //   required: true,
   // },
-  BillingAddress: {
+  shippingAddress: {
     type: Object,
     required: true,
   },
+  // BillingAddress: {
+  //   type: Object,
+  //   required: true,
+  // },
   // shipping_is_billing: Boolean,
   // shipping: Number,
   user: {
@@ -33,7 +34,7 @@ const orderSchema = new mongoose.Schema({
     type: String,
     default: 'Processing',
   },
-  refund: Array,
+  // refund: Array,
   paymentInfo: {
     id: {
       type: String,

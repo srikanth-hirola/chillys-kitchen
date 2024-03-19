@@ -1,8 +1,13 @@
 /* eslint-disable no-unused-vars */
 // // eslint-disable-next-line no-unused-vars
-import React, { useEffect } from "react";
+
+
+
+import React, { useEffect, useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Toaster } from 'react-hot-toast';
+import { Elements } from '@stripe/react-stripe-js';
+import { loadStripe } from '@stripe/stripe-js';
 
 import Home from './pages/Home'
 import About from './pages/About'
@@ -45,11 +50,25 @@ import { loadSeller, loadUser } from './redux/actions/user';
 import CateringMain from "./pages/Catering.jsx";
 import CouponsList from "./pages/admin/coupons/CouponsList.jsx";
 import ActivationPage from "./pages/user/ActivationPage.jsx";
+import SellerProtectedRoute from "./ProtectedRoutes/SellerProtectedRoute.jsx";
+import { server } from "./server.js";
+import axios from "axios";
+import ProtectedRoute from "./ProtectedRoutes/ProtectedRoutes.jsx";
+import PaymentPage from "./pages/PaymentPage.jsx";
+import { getAllSiteConfig } from "./redux/actions/siteConfig.js";
+import OrderSuccessPage from "./pages/OrderSuccessPage.jsx";
 
 function App() {
 
+  const [stripeApikey, setStripeApiKey] = useState('');
+
+  async function getStripeApikey() {
+    const { data } = await axios.get(`${server}/payment/stripeapikey`);
+    setStripeApiKey(data.stripeApikey);
+  }
+
   useEffect(() => {
-    // Store.dispatch(getAllSiteConfig());
+    Store.dispatch(getAllSiteConfig());
     Store.dispatch(loadUser());
     Store.dispatch(loadSeller());
     // Store.dispatch(getAllEvents());
@@ -60,7 +79,7 @@ function App() {
     // setTimeout(() => {
     //   Store.dispatch(getAllProducts());
     // }, [500])
-    // getStripeApikey();
+    getStripeApikey();
   }, []);
 
 
@@ -77,6 +96,21 @@ function App() {
           }
         }}
       />
+
+      {stripeApikey && (
+        <Elements stripe={loadStripe(stripeApikey)}>
+          <Routes>
+            <Route
+              path="/payment"
+              element={
+                <ProtectedRoute>
+                  <PaymentPage />
+                </ProtectedRoute>
+              }
+            />
+          </Routes>
+        </Elements>
+      )}
 
 
       <Routes>
@@ -98,7 +132,7 @@ function App() {
         <Route exact path="/site-config/services" element={< SiteConfigServices />} />
         <Route exact path="/site-config/delivery" element={< SiteConfigDelivery />} />
         <Route exact path="/site-config/header" element={< SiteConfigHeader />} />
-        <Route exact path="/coupons" element={< CouponsList />} />
+        <Route exact path="/coupons" element={<SellerProtectedRoute><CouponsList /></SellerProtectedRoute>} />
         <Route exact path="/locations" element={<div>LOcations</div>} />
         <Route exact path="/profile" element={<div>Profile</div>} />
         <Route exact path="/login" element={<Login />} />
@@ -114,12 +148,18 @@ function App() {
         <Route exact path='/book-table' element={<BookTable />} />
         <Route exact path='/blog' element={<Blog />} />
         <Route exact path='/cart' element={<Cart />} />
-        <Route exact path='/checkout' element={<CheckOut />} />
+
+        <Route path="/checkout" element={
+          <ProtectedRoute>
+            <CheckOut />
+          </ProtectedRoute>
+        } />
         <Route exact path='/wishlist' element={<Wishlist />} />
         <Route exact path='/order-placed' element={<OrderPlaced />} />
         <Route exact path='/menu/:id' element={<ProductDetails />} />
         <Route exact path='/blog/:slug' element={<BlogDetails />} />
         <Route exact path='/contact-us' element={<Contact />} />
+        <Route path="/order/success" element={<OrderSuccessPage />} />
       </Routes>
     </Router>
   );

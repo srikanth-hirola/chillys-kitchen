@@ -364,6 +364,7 @@ router.get(
   isSeller,
   catchAsyncErrors(async (req, res, next) => {
     try {
+      console.log(req.seller._id)
       const seller = await Shop.findById(req.seller._id);
 
       if (!seller) {

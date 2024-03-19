@@ -8,86 +8,24 @@ import { UserOutlined } from "@ant-design/icons";
 import { Form, Input, Checkbox, Button, Card } from "antd";
 import { useSelector } from "react-redux";
 import OrderSummary from "../components/CheckOut/OrderSummary";
+import { useNavigate } from "react-router";
 
 const { Item } = Form;
 
 const Checkout = () => {
   const { user } = useSelector((state) => state.user);
   const { cart } = useSelector((state) => state.cart);
-  const [cartData, setCartData] = useState(cart);
-  const [couponCode, setCouponCode] = useState('');
-  const [couponCodeData, setCouponCodeData] = useState(null);
-  const [discountPrice, setDiscountPrice] = useState(null);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, []);
-
-  const [showCoupan, setCoupan] = useState(true);
-
-  const [totalPriceFinal, setTotalPriceFinal] = useState(0);
-
-  const subTotalPrice = cartData?.reduce((acc, item) => {
-    return acc + item.qty * item.selectedColor.discountPrice;
-  }, 0);
-
-  // const handleSubmit = async (e, totalPrice) => {
-  //   e.preventDefault();
-  //   const name = couponCode;
-
-  //   await axios.get(`${server}/coupon/get-coupon-value/${name}`).then((res) => {
-  //     const shopId = res.data.couponCode?.shopId;
-  //     const couponCodeValue = res.data.couponCode?.value;
-  //     if (res.data.couponCode !== null) {
-  //       const isCouponValid =
-  //         cartData && cartData.filter((item) => item.shopId === shopId);
-
-  //       if (isCouponValid.length === 0) {
-  //         toast.error('Coupon code is not valid for this shop');
-  //         setCouponCode('');
-  //       } else {
-  //         // const eligiblePrice = isCouponValid.reduce(
-  //         //   (acc, item) => acc + item.qty * item.discountPrice,
-  //         //   0
-  //         // );
-  //         const eligiblePrice = totalPrice;
-
-  //         if (eligiblePrice <= res.data.couponCode?.maxAmount && eligiblePrice >= res.data.couponCode?.minAmount) {
-  //           const discountPrice = (eligiblePrice * couponCodeValue) / 100;
-
-  //           setDiscountPrice(discountPrice.toFixed(2));
-  //           setCouponCodeData(res.data.couponCode);
-  //           setCouponCode('');
-  //           setTotalPriceFinal(Number(totalPrice) - Number(discountPrice))
-  //         } else {
-  //           toast.error('Coupon is not applicable!')
-  //         }
+    if (cart?.length === 0) {
+      navigate('/')
+    }
+  }, [cart, navigate]);
 
 
-  //       }
-  //     }
-  //     if (res.data.couponCode === null) {
-  //       toast.error("Coupon code doesn't exists!");
-  //       setCouponCode('');
-  //     }
-  //   });
-  // };
-
-  const handleCoupanFinal = (total) => {
-    const discountPercentenge = couponCodeData ? discountPrice : '';
-
-    const totalPriceCoupan = couponCodeData
-      ? (total - discountPercentenge).toFixed(2)
-      : (total);
-
-    return totalPriceCoupan
-  }
-
-
-  const discountPercentenge = couponCodeData ? discountPrice : '';
-
-
-  const [quantity, setQuantity] = useState(1);
   const [selectedAddress, setSelectedAddress] = useState(null);
   const [showAddressForm, setShowAddressForm] = useState(false);
 
@@ -379,7 +317,7 @@ const Checkout = () => {
 
                 </div>
               </div>
-              <OrderSummary quantity={quantity} setQuantity={setQuantity} cartData={cartData} />
+              <OrderSummary addressData={formData} />
             </div>
           </div>
           <Footer />

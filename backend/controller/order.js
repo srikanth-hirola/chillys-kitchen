@@ -20,21 +20,21 @@ router.post(
     try {
       const {
         cart,
-        cod,
-        sellerCart,
+        // cod,
+        // sellerCart,
         shippingAddress,
-        BillingAddress,
-        shipping_is_billing,
+        // BillingAddress,
+        // shipping_is_billing,
         user,
         totalPrice,
         paymentInfo,
-        shipping,
+        // shipping,
         discountPrice
       } = req.body;
 
       for (const val of cart) {
         try {
-          if (val.active) {
+          if (val?.active) {
             const allEvents = await Event.find();
             const event = allEvents?.find((event) =>
               event.productArray.some((item) => item._id === val._id)
@@ -66,8 +66,8 @@ router.post(
         const product = await Product.findById(id);
 
         if (
-          val.selectedColor.haveAttributes &&
-          val.selectedColor.attributeStock
+          val?.selectedColor?.haveAttributes &&
+          val?.selectedColor?.attributeStock
         ) {
           product.attributes[0].values.forEach((i) => {
             if (i._id.toString() === val.attrId) {
@@ -98,8 +98,8 @@ router.post(
           const product = await Product.findById(id);
 
           if (
-            val.selectedColor.haveAttributes &&
-            val.selectedColor.attributeStock
+            val?.selectedColor?.haveAttributes &&
+            val?.selectedColor?.attributeStock
           ) {
             product.colorInputs.forEach((color) => {
               if (color._id.toString() === val.selectedColor._id) {
@@ -225,11 +225,11 @@ router.post(
         const order = await Order.create({
           cart: items,
           shippingAddress,
-          cod,
-          sellerCart,
-          BillingAddress,
-          shipping_is_billing,
-          shipping,
+          // cod,
+          // sellerCart,
+          // BillingAddress,
+          // shipping_is_billing,
+          // shipping,
           user,
           totalPrice,
           paymentInfo,
@@ -246,19 +246,17 @@ router.post(
 
       await sendMail(optionUser)
 
-      await sellerCart?.forEach(async (seller) => {
-        const found = await Shop.findById(seller?.sellerID)
-        if (found) {
-          const sellerSide = {
-            email: found?.email,
-            subject: 'New Order Received',
-            message: 'New Order Received Confirm the order'
-          }
-          await sendMail(sellerSide)
-        }
-      })
-
-
+      // await sellerCart?.forEach(async (seller) => {
+      //   const found = await Shop.findById(seller?.sellerID)
+      //   if (found) {
+      //     const sellerSide = {
+      //       email: found?.email,
+      //       subject: 'New Order Received',
+      //       message: 'New Order Received Confirm the order'
+      //     }
+      //     await sendMail(sellerSide)
+      //   }
+      // })
 
       res.status(201).json({
         success: true,
