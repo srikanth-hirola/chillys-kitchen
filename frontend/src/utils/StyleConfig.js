@@ -183,7 +183,9 @@ export const StyleConfig = () => {
         footerContent: siteConfigData?.footerContent,
         headingsContent: siteConfigData?.headingsContent,
 
-        allPagesSEODetails: siteConfigData?.allPagesSEODetails
+        allPagesSEODetails: siteConfigData?.allPagesSEODetails,
+        bannerContent: siteConfigData?.bannerContent,
+
     };
 
     return styles;

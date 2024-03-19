@@ -44,18 +44,19 @@ import SiteConfigMenu from './components/siteconfig/Menu.jsx';
 import SiteConfigServices from './components/siteconfig/SiteConfigServices.jsx';
 import SiteConfigDelivery from './components/siteconfig/Delivery.jsx';
 import SiteConfigHeader from './components/siteconfig/Header.jsx';
+import { getAllSiteConfig } from "./redux/actions/siteConfig.js";
+import ActivationPage from "./pages/user/ActivationPage.jsx";
+import AdminForgotPassword from "./pages/authentication/AdminForgetPassword.jsx";
 import CheckOut from "./pages/Checkout.jsx";
 import OrderPlaced from "./pages/OrderPlaced.jsx";
 import { loadSeller, loadUser } from './redux/actions/user';
 import CateringMain from "./pages/Catering.jsx";
 import CouponsList from "./pages/admin/coupons/CouponsList.jsx";
-import ActivationPage from "./pages/user/ActivationPage.jsx";
 import SellerProtectedRoute from "./ProtectedRoutes/SellerProtectedRoute.jsx";
 import { server } from "./server.js";
 import axios from "axios";
 import ProtectedRoute from "./ProtectedRoutes/ProtectedRoutes.jsx";
 import PaymentPage from "./pages/PaymentPage.jsx";
-import { getAllSiteConfig } from "./redux/actions/siteConfig.js";
 import OrderSuccessPage from "./pages/OrderSuccessPage.jsx";
 
 function App() {
@@ -140,6 +141,9 @@ function App() {
         <Route exact path="/user-register" element={<UserRegister />} />
         <Route exact path="/forgot-password" element={<ForgotPassword />} />
         <Route exact path="/activation/:activation_token" element={<ActivationPage />} />
+        <Route exact path="/admin-forgot-password" element={<AdminForgotPassword />} />
+
+
 
         <Route exact path='/' element={<Home />} />
         <Route exact path='/about' element={<About />} />
