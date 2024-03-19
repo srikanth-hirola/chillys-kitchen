@@ -1,115 +1,74 @@
 /* eslint-disable no-unused-vars */
-import React, { useState } from 'react';
-import { Form, Input, Button, Upload } from 'antd';
+import React, { useEffect, useState } from 'react';
 import SideBar from '../Sidebar';
 import sidebar_menu from '../../constants/sidebar-menu';
+import { useDispatch, useSelector } from 'react-redux';
+import HomePageImage from './ImageUpload/HomePageImage';
+import toast from 'react-hot-toast';
+import { getAllSiteConfig } from '../../redux/actions/siteConfig';
+import BannerTextContent from './Banner/BannerTextContent';
+import useHandleChange from '../../hooks/site-Config/UseHandleChange';
+import { Button } from 'antd';
+import { StyleConfig } from '../../utils/StyleConfig';
+import useSaveLayoutContent from '../../hooks/site-Config/UseSaveLayoutContent';
 
-const { TextArea } = Input;
 
 
 const SiteConfigBanner = () => {
 
-  const [bannerImages, setbannerImages] = useState([]);
-  const [bannerSubTitle, setBannerSubTitle] = useState();
+  const { success, error, siteConfigData } = useSelector((state) => state.siteConfig);
+  const { handleChange } = useHandleChange();
+  const { hanldeSubmit } = useSaveLayoutContent();
+  const styles = StyleConfig();
+  console.log("siteConfigData", siteConfigData)
 
-  const onFinish = (values) => {
-    console.log('Received values:', values);
-  };
+  const [uploadedImages, setUploadedImages] = useState([]);
+  const [logoLoading, setLogoLoading] = useState(false);
 
-  const beforeUpload = (file) => {
-    const isJpgOrPng = file.type === 'image/jpeg' || file.type === 'image/png';
-    if (!isJpgOrPng) {
-      message.error('You can only upload JPG/PNG file types!');
-    }
-    const isLt2M = file.size / 1024 / 1024 < 2;
-    if (!isLt2M) {
-      message.error('Image must be smaller than 2MB!');
-    }
-    return isJpgOrPng && isLt2M;
-  };
+  useEffect(() => {
+    setUploadedImages(siteConfigData?.bannerImages);
+}, [siteConfigData])
 
-  console.log("first", beforeUpload)
+const [bannerContent, setBannerContent] = useState({})
+
+console.log("bannerContent", bannerContent)
+
+const handleUpdateContent = async (e, layoutContent, layoutName, setLogoLoading) => {
+  e.preventDefault();
+  if (layoutContent) {
+      await hanldeSubmit(e, layoutContent, layoutName, setLogoLoading)
+  }
+}
+
+    useEffect(() => {
+        setBannerContent(styles?.bannerContent)
+    }, [styles?.bannerContent])
+
+  const dispatch = useDispatch();
+
+    useEffect(() => {
+        if (success) {
+            toast.success("Site Configuration Updated Successfully")
+        }
+        if (error) {
+            toast.error(error.response.data.message)
+        }
+        dispatch(getAllSiteConfig())
+    }, [success, error, dispatch])
   
   return (
     <div className='dashboard-container'>
       <SideBar menu={sidebar_menu} />
       <div className='dashboard-content'>
-        <Form
-          name="customForm"
-          initialValues={{ remember: true }}
-          onFinish={onFinish}
-          layout="vertical"
-        >
-          <Form.Item
-            label="Title"
-            name="title"
-            rules={[{ required: true, message: 'Please input the title!' }]}
-          >
-            <Input />
-          </Form.Item>
-          <Form.Item
-            label="Main Title"
-            name="mainTitle"
-            rules={[{ required: true, message: 'Please input the main title!' }]}
-          >
-            <Input />
-          </Form.Item>
-          <Form.Item
-            label="Description"
-            name="description"
-            rules={[{ required: true, message: 'Please input the description!' }]}
-          >
-            <TextArea rows={4} />
-          </Form.Item>
-          <Form.Item
-            label="Button One"
-            name="buttonOne"
-            rules={[{ required: true, message: 'Please input the button one!' }]}
-          >
-            <Input />
-          </Form.Item>
-          <Form.Item
-            label="Button One Link"
-            name="buttonOneLink"
-            rules={[{ required: true, message: 'Please input the button one link!' }]}
-          >
-            <Input />
-          </Form.Item>
-          <Form.Item
-            label="Button Two"
-            name="buttonTwo"
-            rules={[{ required: true, message: 'Please input the button two!' }]}
-          >
-            <Input />
-          </Form.Item>
-          <Form.Item
-            label="Button Two Link"
-            name="buttonTwoLink"
-            rules={[{ required: true, message: 'Please input the button two link!' }]}
-          >
-            <Input />
-          </Form.Item>
-          <Form.Item
-            label="Upload Image"
-            name="image"
-            valuePropName="fileList"
-            getValueFromEvent={(e) => e.fileList}
-            rules={[{ required: true, message: 'Please upload an image!' }]}
-          >
-            <Upload
-              beforeUpload={beforeUpload}
-              listType="picture-card"
-              multiple={true}
-            >
-              <Button>Click to upload</Button>
-            </Upload>
-          </Form.Item>
-          <Form.Item>
-            <Button type="primary" htmlType="submit">
-              Submit
-            </Button>
-          </Form.Item>
-        </Form>
+      <HomePageImage name={"bannerImages"} logoLoading={logoLoading} setLogoLoading={setLogoLoading} uploadedImages={uploadedImages} key={1} />
+        <BannerTextContent bannerContent={bannerContent} setBannerContent={setBannerContent} handleChange={handleChange} key={2} />
+        {logoLoading ?
+            <Button  type="primary" htmlType="submit">
+              {logoLoading ? "Loading..." : "Update"}
+            </Button> : 
+            <Button onClick={(e) => handleUpdateContent(e, bannerContent, "bannerContent", setLogoLoading)}  type="primary" htmlType="submit">
+            {logoLoading ? "Loading..." : "Update"}
+          </Button>}
       </div>
     </div>
   );
