@@ -23,30 +23,7 @@ const userSchema = new mongoose.Schema({
   },
   addresses: [
     {
-      country: {
-        type: String,
-      },
-      state: {
-        type: String
-      },
-      city: {
-        type: String,
-      },
-      billinguserName: String,
-      billinguserEmail: String,
-      billinguserphonenumber: Number,
-      billingaddress1: {
-        type: String,
-      },
-      billingaddress2: {
-        type: String,
-      },
-      billingzipCode: {
-        type: Number,
-      },
-      addressType: {
-        type: String,
-      },
+      type: Object
     }
   ],
   // addresses: [

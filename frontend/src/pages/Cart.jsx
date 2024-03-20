@@ -31,7 +31,6 @@ const Cart = () => {
     }, 0);
 
     const quantityChangeHandler = (data) => {
-
         let curPrice = Number(data?.selectedColor?.discountPrice) * data?.qty;
         const updatedData = {
             ...data,
@@ -72,9 +71,17 @@ const Cart = () => {
                                             </React.Fragment>
                                         ))}
                                     </div>
-                                    <div className="row ">
-                                        <div className="header-item product">Total</div>
-                                        <div className="header-item product">₹ {totalPrice}</div>
+                                    <div className="px-5 mb-3 bg-[#fa8232] rounded">
+                                        {/* checkout buttons */}
+                                        <Link to="/checkout">
+                                            <div
+                                                className={`h-[45px] flex items-center justify-center w-[100%] rounded-[5px]`}
+                                            >
+                                                <h1 className=" text-[18px] mb-0 font-[600] text-white"  >
+                                                    Checkout Now (₹ {totalPrice})
+                                                </h1>
+                                            </div>
+                                        </Link>
                                     </div>
                                 </div>
 

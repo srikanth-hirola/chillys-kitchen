@@ -291,11 +291,10 @@ router.get(
 
 // get all orders of seller
 router.get(
-  '/get-seller-all-orders/:shopId',
+  '/get-seller-all-orders',
   catchAsyncErrors(async (req, res, next) => {
     try {
       const orders = await Order.find({
-        'cart.shopId': req.params.shopId,
       }).sort({
         createdAt: -1,
       });

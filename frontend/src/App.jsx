@@ -58,6 +58,14 @@ import axios from "axios";
 import ProtectedRoute from "./ProtectedRoutes/ProtectedRoutes.jsx";
 import PaymentPage from "./pages/PaymentPage.jsx";
 import OrderSuccessPage from "./pages/OrderSuccessPage.jsx";
+import PendingOrders from "./pages/Orders/PendingOrders.jsx";
+import DeliveredOrders from "./pages/Orders/DeliveredOrders.jsx";
+import ShippedOrders from "./pages/Orders/ShippedOrders.jsx";
+import OrderDetails from "./pages/Orders/OrderDetails.jsx";
+import NewsLetter from "./pages/NewsLetter.jsx";
+import ProfilePage from "./pages/user/ProfilePage.jsx";
+import OrdersPageProfile from "./pages/user/OrdersPageProfile.jsx";
+import ContactDetailsPage from "./pages/user/ContactDetailsPage.jsx";
 
 function App() {
 
@@ -125,7 +133,39 @@ function App() {
         <Route exact path="/admin-blogs" element={<BlogList />} />
         <Route exact path="/add-blogs" element={<AddBlog />} />
         <Route exact path="/admin-blogs/:edit" element={<EditBlog />} />
-        <Route exact path="/orders" element={< Orders />} />
+        <Route exact path="/orders" element={
+          <SellerProtectedRoute>
+            <Orders />
+          </SellerProtectedRoute>
+        } />
+        <Route exact path="/pending-orders" element={
+          <SellerProtectedRoute>
+            <PendingOrders />
+          </SellerProtectedRoute>
+        } />
+        <Route exact path="/shipped-orders" element={
+          <SellerProtectedRoute>
+            <ShippedOrders />
+          </SellerProtectedRoute>
+        } />
+        <Route exact path="/delivered-orders" element={
+          <SellerProtectedRoute>
+            <DeliveredOrders />
+          </SellerProtectedRoute>
+        } />
+        <Route exact path="/admin/order-details/:id" element={
+          <SellerProtectedRoute>
+            <OrderDetails />
+          </SellerProtectedRoute>
+        } />
+        <Route
+          path="/create-newsletter"
+          element={
+            <SellerProtectedRoute>
+              <NewsLetter />
+            </SellerProtectedRoute>
+          }
+        />
         <Route exact path="/site-config" element={< SiteConfig />} />
         <Route exact path="/site-config/banner" element={< SiteConfigBanner />} />
         <Route exact path="/site-config/about" element={< SiteConfigAbout />} />
@@ -133,12 +173,28 @@ function App() {
         <Route exact path="/site-config/services" element={< SiteConfigServices />} />
         <Route exact path="/site-config/delivery" element={< SiteConfigDelivery />} />
         <Route exact path="/site-config/header" element={< SiteConfigHeader />} />
-        <Route exact path="/coupons" element={<SellerProtectedRoute><CouponsList /></SellerProtectedRoute>} />
+        <Route exact path="/coupons" element={
+          <SellerProtectedRoute>
+            <CouponsList />
+          </SellerProtectedRoute>} />
         <Route exact path="/locations" element={<div>LOcations</div>} />
-        <Route exact path="/profile" element={<div>Profile</div>} />
+        <Route exact path="/profile" element={<ProtectedRoute>
+          <ProfilePage />
+        </ProtectedRoute>} />
+        <Route path='/orderspage' element={
+          <ProtectedRoute>
+            <OrdersPageProfile />
+          </ProtectedRoute>
+        } />
+        <Route path='/contactDetailsPage' element={
+          <ProtectedRoute>
+            <ContactDetailsPage />
+          </ProtectedRoute>
+        } />
         <Route exact path="/login" element={<Login />} />
         <Route exact path="/user-login" element={<UserLogin />} />
         <Route exact path="/user-register" element={<UserRegister />} />
+
         <Route exact path="/forgot-password" element={<ForgotPassword />} />
         <Route exact path="/activation/:activation_token" element={<ActivationPage />} />
         <Route exact path="/admin-forgot-password" element={<AdminForgotPassword />} />

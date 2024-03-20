@@ -384,17 +384,17 @@ router.put(
     try {
       const user = await User.findById(req.user.id);
 
-      const sameTypeAddress = user.addresses.find(
-        (address) => address.addressType === req.body.addressType
-      );
-      if (sameTypeAddress) {
-        return next(
-          new ErrorHandler(`${req.body.addressType} address already exists`)
-        );
-      }
+      // const sameTypeAddress = user.addresses.find(
+      //   (address) => address.addressType === req.body.addressType
+      // );
+      // if (sameTypeAddress) {
+      //   return next(
+      //     new ErrorHandler(`${req.body.addressType} address already exists`)
+      //   );
+      // }
 
       const existsAddress = user.addresses.find(
-        (address) => address._id === req.body._id
+        (address) => address._id === req.body?._id
       );
 
       if (existsAddress) {
