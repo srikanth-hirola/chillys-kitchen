@@ -1,8 +1,13 @@
 /* eslint-disable no-unused-vars */
 // // eslint-disable-next-line no-unused-vars
-import React, { useEffect } from "react";
+
+
+
+import React, { useEffect, useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Toaster } from 'react-hot-toast';
+import { Elements } from '@stripe/react-stripe-js';
+import { loadStripe } from '@stripe/stripe-js';
 
 import Home from './pages/Home'
 import About from './pages/About'
@@ -47,8 +52,29 @@ import OrderPlaced from "./pages/OrderPlaced.jsx";
 import { loadSeller, loadUser } from './redux/actions/user';
 import CateringMain from "./pages/Catering.jsx";
 import CouponsList from "./pages/admin/coupons/CouponsList.jsx";
+import SellerProtectedRoute from "./ProtectedRoutes/SellerProtectedRoute.jsx";
+import { server } from "./server.js";
+import axios from "axios";
+import ProtectedRoute from "./ProtectedRoutes/ProtectedRoutes.jsx";
+import PaymentPage from "./pages/PaymentPage.jsx";
+import OrderSuccessPage from "./pages/OrderSuccessPage.jsx";
+import PendingOrders from "./pages/Orders/PendingOrders.jsx";
+import DeliveredOrders from "./pages/Orders/DeliveredOrders.jsx";
+import ShippedOrders from "./pages/Orders/ShippedOrders.jsx";
+import OrderDetails from "./pages/Orders/OrderDetails.jsx";
+import NewsLetter from "./pages/NewsLetter.jsx";
+import ProfilePage from "./pages/user/ProfilePage.jsx";
+import OrdersPageProfile from "./pages/user/OrdersPageProfile.jsx";
+import ContactDetailsPage from "./pages/user/ContactDetailsPage.jsx";
 
 function App() {
+
+  const [stripeApikey, setStripeApiKey] = useState('');
+
+  async function getStripeApikey() {
+    const { data } = await axios.get(`${server}/payment/stripeapikey`);
+    setStripeApiKey(data.stripeApikey);
+  }
 
   useEffect(() => {
     Store.dispatch(getAllSiteConfig());
@@ -62,7 +88,7 @@ function App() {
     // setTimeout(() => {
     //   Store.dispatch(getAllProducts());
     // }, [500])
-    // getStripeApikey();
+    getStripeApikey();
   }, []);
 
 
@@ -80,6 +106,21 @@ function App() {
         }}
       />
 
+      {stripeApikey && (
+        <Elements stripe={loadStripe(stripeApikey)}>
+          <Routes>
+            <Route
+              path="/payment"
+              element={
+                <ProtectedRoute>
+                  <PaymentPage />
+                </ProtectedRoute>
+              }
+            />
+          </Routes>
+        </Elements>
+      )}
+
 
       <Routes>
         <Route path="*" element={<div></div>} />
@@ -92,7 +133,39 @@ function App() {
         <Route exact path="/admin-blogs" element={<BlogList />} />
         <Route exact path="/add-blogs" element={<AddBlog />} />
         <Route exact path="/admin-blogs/:edit" element={<EditBlog />} />
-        <Route exact path="/orders" element={< Orders />} />
+        <Route exact path="/orders" element={
+          <SellerProtectedRoute>
+            <Orders />
+          </SellerProtectedRoute>
+        } />
+        <Route exact path="/pending-orders" element={
+          <SellerProtectedRoute>
+            <PendingOrders />
+          </SellerProtectedRoute>
+        } />
+        <Route exact path="/shipped-orders" element={
+          <SellerProtectedRoute>
+            <ShippedOrders />
+          </SellerProtectedRoute>
+        } />
+        <Route exact path="/delivered-orders" element={
+          <SellerProtectedRoute>
+            <DeliveredOrders />
+          </SellerProtectedRoute>
+        } />
+        <Route exact path="/admin/order-details/:id" element={
+          <SellerProtectedRoute>
+            <OrderDetails />
+          </SellerProtectedRoute>
+        } />
+        <Route
+          path="/create-newsletter"
+          element={
+            <SellerProtectedRoute>
+              <NewsLetter />
+            </SellerProtectedRoute>
+          }
+        />
         <Route exact path="/site-config" element={< SiteConfig />} />
         <Route exact path="/site-config/banner" element={< SiteConfigBanner />} />
         <Route exact path="/site-config/about" element={< SiteConfigAbout />} />
@@ -100,12 +173,28 @@ function App() {
         <Route exact path="/site-config/services" element={< SiteConfigServices />} />
         <Route exact path="/site-config/delivery" element={< SiteConfigDelivery />} />
         <Route exact path="/site-config/header" element={< SiteConfigHeader />} />
-        <Route exact path="/coupons" element={< CouponsList />} />
+        <Route exact path="/coupons" element={
+          <SellerProtectedRoute>
+            <CouponsList />
+          </SellerProtectedRoute>} />
         <Route exact path="/locations" element={<div>LOcations</div>} />
-        <Route exact path="/profile" element={<div>Profile</div>} />
+        <Route exact path="/profile" element={<ProtectedRoute>
+          <ProfilePage />
+        </ProtectedRoute>} />
+        <Route path='/orderspage' element={
+          <ProtectedRoute>
+            <OrdersPageProfile />
+          </ProtectedRoute>
+        } />
+        <Route path='/contactDetailsPage' element={
+          <ProtectedRoute>
+            <ContactDetailsPage />
+          </ProtectedRoute>
+        } />
         <Route exact path="/login" element={<Login />} />
         <Route exact path="/user-login" element={<UserLogin />} />
         <Route exact path="/user-register" element={<UserRegister />} />
+
         <Route exact path="/forgot-password" element={<ForgotPassword />} />
         <Route exact path="/activation/:activation_token" element={<ActivationPage />} />
         <Route exact path="/admin-forgot-password" element={<AdminForgotPassword />} />
@@ -119,12 +208,18 @@ function App() {
         <Route exact path='/book-table' element={<BookTable />} />
         <Route exact path='/blog' element={<Blog />} />
         <Route exact path='/cart' element={<Cart />} />
-        <Route exact path='/checkout' element={<CheckOut />} />
+
+        <Route path="/checkout" element={
+          <ProtectedRoute>
+            <CheckOut />
+          </ProtectedRoute>
+        } />
         <Route exact path='/wishlist' element={<Wishlist />} />
         <Route exact path='/order-placed' element={<OrderPlaced />} />
         <Route exact path='/menu/:id' element={<ProductDetails />} />
         <Route exact path='/blog/:slug' element={<BlogDetails />} />
         <Route exact path='/contact-us' element={<Contact />} />
+        <Route path="/order/success" element={<OrderSuccessPage />} />
       </Routes>
     </Router>
   );

@@ -2,7 +2,6 @@ import axios from 'axios';
 import { server } from '../../server';
 
 
-
 export const getAllSiteConfig = () => async (dispatch) => {
     try {
         dispatch({
@@ -15,17 +14,19 @@ export const getAllSiteConfig = () => async (dispatch) => {
             }
         );
 
-            const site = data.siteConfig
-            dispatch({
-                type: 'getAllSiteConfigSuccess',
-                payload: site,
-            });
+        const site = data.siteConfig
+        dispatch({
+            type: 'getAllSiteConfigSuccess',
+            payload: site,
+        });
+
 
     } catch (error) {
-            dispatch({
-                type: 'getAllSitConfigFailed',
-                payload: error.response.data.message,
-            });
+        dispatch({
+            type: 'getAllSitConfigFailed',
+            payload: error.response.data.message,
+        });
+
     }
 };
 

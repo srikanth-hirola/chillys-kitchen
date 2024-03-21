@@ -23,6 +23,7 @@ const CouponsList = () => {
   const { seller } = useSelector((state) => state.seller);
 
   useEffect(() => {
+    console.log(seller, "Seller")
     if (seller?._id) {
       setIsLoading(true);
       axios
@@ -31,6 +32,7 @@ const CouponsList = () => {
         })
         .then((res) => {
           setIsLoading(false);
+          console.log(res.data.couponCodes, "coupans")
           setCoupouns(res.data.couponCodes);
         })
         .catch((error) => {
@@ -38,17 +40,31 @@ const CouponsList = () => {
         });
     }
 
-  }, [seller?._id]);
+  }, [seller, seller?._id]);
 
   const handleDelete = async (id) => {
-    axios.delete(`${server}/coupon/delete-coupon/${id}`, { withCredentials: true }).then((res) => {
-      message.success("Coupon code deleted succesfully!")
-    })
-    window.location.reload();
+    try {
+      await axios.delete(`${server}/coupon/delete-coupon/${id}`, { withCredentials: true }).then((res) => {
+        message.success("Coupon code deleted succesfully!")
+      })
+      setTimeout(() => {
+        window.location.reload();
+      }, [2000])
+    } catch (error) {
+      message.error(error?.response?.data?.message)
+    }
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const showModal = (coupon) => {
+    setMinAmout(coupon?.minAmount);
+    setMaxAmount(coupon?.maxAmount)
+    setValue(coupon?.value);
+    setName(coupon?.name)
+    setEditingCoupon(coupon);
+    setModalVisible(true);
+  };
+
+  const handleOk = async () => {
 
     await axios
       .post(
@@ -58,30 +74,66 @@ const CouponsList = () => {
           minAmount,
           maxAmount,
           value,
+          shopId: seller._id,
         },
         { withCredentials: true }
       )
       .then((res) => {
+        setModalVisible(false);
+        setEditingCoupon(null);
         message.success("Coupon code created successfully!");
-        // setOpen(false);
-        window.location.reload();
+        setTimeout(() => {
+          window.location.reload();
+        }, [2000])
       })
       .catch((error) => {
         message.error(error.response.data.message);
       });
+
   };
 
-  const showModal = (coupon) => {
-    setEditingCoupon(coupon);
-    setModalVisible(true);
-  };
 
-  const handleOk = () => {
-    setModalVisible(false);
-    setEditingCoupon(null);
+  const handleUpdate = async () => {
+    const id = editingCoupon?._id;
+    if (id) {
+      await axios
+        .put(
+          `${server}/coupon/update-coupon/${id}`,
+          {
+            name,
+            minAmount,
+            maxAmount,
+            value,
+            shopId: seller._id,
+          },
+          { withCredentials: true }
+        )
+        .then((res) => {
+          message.success("Coupon code updated successfully!");
+          setModalVisible(false);
+          setEditingCoupon(null);
+          setTimeout(() => {
+            window.location.reload();
+          }, [2000])
+        })
+        .catch((error) => {
+          message.error(error.response.data.message);
+        });
+    } else {
+      message.error("Coupan is not selected!")
+    }
+
+
   };
 
   const handleCancel = () => {
+    if (editingCoupon) {
+      console.log("Editing")
+      setMinAmout(null);
+      setMaxAmount(null)
+      setValue(null);
+      setName("")
+    }
     setModalVisible(false);
     setEditingCoupon(null);
   };
@@ -113,11 +165,6 @@ const CouponsList = () => {
       key: 'maxAmount',
     },
     {
-      title: 'Selected Products',
-      dataIndex: 'selectedProducts',
-      key: 'selectedProducts',
-    },
-    {
       title: 'Actions',
       key: 'actions',
       render: (text, record) => (
@@ -134,7 +181,6 @@ const CouponsList = () => {
         <SideBar menu={sidebar_menu} />
         <div className='dashboard-content'>
           <div className="dashboard-header">
-
             <h3>Category List</h3>
             <div className="add-btn">
               <DashboardHeader />
@@ -151,14 +197,14 @@ const CouponsList = () => {
           </div>
           <div className="coupon-code">
             <div className="coupons-list-container">
-              <Table dataSource={coupons} columns={columns} />
+              <Table dataSource={coupouns} columns={columns} />
               <Modal
                 title={editingCoupon ? 'Edit Coupon' : 'Add Coupon'}
                 visible={modalVisible}
-                onOk={handleOk}
+                onOk={editingCoupon ? handleUpdate : handleOk}
                 onCancel={handleCancel}
               >
-                <form onSubmit={handleSubmit}>
+                <form>
                   <div className="formfiels">
                     <label htmlFor="name">Name:</label>
                     <input type="text" id="name" name="name" value={name} required onChange={(e) => setName(e.target.value)} />

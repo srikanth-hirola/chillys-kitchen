@@ -1,87 +1,78 @@
 /* eslint-disable no-unused-vars */
-import React from 'react';
+import React, { useEffect } from 'react';
 import SideBar from '../../components/Sidebar';
 import sidebar_menu from '../../constants/sidebar-menu';
 import { Table, Tag, Button } from 'antd';
-import { PlusOutlined } from '@ant-design/icons';
+import { RightOutlined } from '@ant-design/icons';
 import DashboardHeader from '../../components/DashboardHeader';
+import { useDispatch, useSelector } from 'react-redux';
+import { getAllOrdersOfShop } from '../../redux/actions/order';
+
 function Orders() {
-    const dataSource = [
-  {
-    key: '1',
-    name: 'John Doe',
-    age: 32,
-    address: 'New York',
-    tags: ['developer', 'react'],
-  },
-  {
-    key: '2',
-    name: 'Jane Smith',
-    age: 28,
-    address: 'Los Angeles',
-    tags: ['designer', 'ui/ux'],
-  },
-];
-const columns = [
-  {
-    title: 'Name',
-    dataIndex: 'name',
-    key: 'name',
-    render: text => <a>{text}</a>,
-  },
-  {
-    title: 'Age',
-    dataIndex: 'age',
-    key: 'age',
-  },
-  {
-    title: 'Address',
-    dataIndex: 'address',
-    key: 'address',
-  },
-  {
-    title: 'Tags',
-    key: 'tags',
-    dataIndex: 'tags',
-    render: tags => (
-      <>
-        {tags.map(tag => (
-          <Tag color="blue" key={tag}>
-            {tag}
-          </Tag>
-        ))}
-      </>
-    ),
-  },
-  {
-    title: 'Action',
-    key: 'action',
-    render: () => (
-      <Button type="link" icon={<PlusOutlined />} />
-    ),
-  },
-];
-    return (
-        <div className='dashboard-container'>
-            <SideBar menu={sidebar_menu} />
-            
-            <div className='dashboard-content'>
-            <div className="dashboard-header">
-                    <h3>All Orders</h3>
-                    <div className="add-btn">
-                        <DashboardHeader />
-                    </div>
-                </div>
-                <h3>orders</h3>
-                <Table
-      dataSource={dataSource}
-      columns={columns}
-      bordered={false}
-      pagination={false}
-    />
-            </div>
+
+  const { orders, isLoading } = useSelector((state) => state.order);
+
+  const columns = [
+    {
+      title: 'OrderID',
+      dataIndex: '_id',
+      key: '_id',
+      render: text => <span>#{text.slice(0, 8)}</span>,
+    },
+    {
+      title: 'Status',
+      dataIndex: 'status',
+      key: 'status',
+    },
+    {
+      title: 'Items Qty',
+      dataIndex: 'cart',
+      key: 'cart',
+      render: text => <span>{text.length}</span>,
+    },
+    {
+      title: 'Total',
+      key: 'totalPrice',
+      dataIndex: 'totalPrice',
+      render: text => <span>{text}</span>
+    },
+    {
+      title: 'Action',
+      key: 'action',
+      render: (_, data) => (
+        <Button type="link" href={`/admin/order-details/${data?._id}`} icon={<RightOutlined />} />
+      ),
+    },
+  ];
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getAllOrdersOfShop());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [dispatch]);
+
+  return (
+    <div className='dashboard-container'>
+      <SideBar menu={sidebar_menu} />
+
+      <div className='dashboard-content'>
+        <div className="dashboard-header">
+          <h3>All Orders</h3>
+          <div className="add-btn">
+            <DashboardHeader />
+          </div>
         </div>
-    );
+        <h3>orders</h3>
+        <Table
+          dataSource={orders}
+          columns={columns}
+          bordered={false}
+          pagination={false}
+        />
+      </div>
+    </div>
+  );
 }
 
 export default Orders;

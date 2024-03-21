@@ -88,16 +88,7 @@ export const updateUserInformation =
 
 // update user address
 export const updatUserAddress =
-  (country,
-    state,
-    city,
-    billingaddress1,
-    billingaddress2,
-    billinguserName,
-    billinguserEmail,
-    billinguserphonenumber,
-    billingzipCode,
-    addressType) =>
+  (formData) =>
     async (dispatch) => {
       try {
         dispatch({
@@ -106,18 +97,7 @@ export const updatUserAddress =
 
         const { data } = await axios.put(
           `${server}/user/update-user-addresses`,
-          {
-            country,
-            state,
-            city,
-            billingaddress1,
-            billingaddress2,
-            billinguserName,
-            billinguserEmail,
-            billinguserphonenumber,
-            billingzipCode,
-            addressType
-          },
+          formData,
           { withCredentials: true }
         );
 
