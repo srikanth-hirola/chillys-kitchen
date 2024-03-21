@@ -324,8 +324,6 @@ router.put(
                 ? siteInfo[name].concat(uploadedImages)
                 : uploadedImages;
 
-                console.log(mergedImages, 'hy')
-
             await Site.updateMany({}, { [name]: mergedImages });
 
             res.status(200).json({ success: true });

@@ -11,6 +11,7 @@ const homePageSchema = new mongoose.Schema({
     headerContent: Object,
     bannerImages: Array,
     bannerContent: Object,
+    cardsImages: Array,
     menuContent: Object,
 
     // aboutus section one
@@ -19,6 +20,7 @@ const homePageSchema = new mongoose.Schema({
         url: String,
     },
     aboutUsContent: Object,
+    serviceImages: Array,
     serviceContent: Object,
 
     // about us section two

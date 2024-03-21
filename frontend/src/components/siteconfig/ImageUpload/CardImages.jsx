@@ -6,7 +6,7 @@ import { useDispatch } from 'react-redux';
 import { server } from '../../../server';
 import { DeleteImageModal } from './DeleteImageModal';
 
-const HomePageImage = ({ logoLoading, setLogoLoading, uploadedImages, name }) => {
+const cardImages = ({ logoLoading, setLogoLoading, uploadedImages, name }) => {
     // const { handleImageUploadAPI, handleLogoChange, handleRemoveImage } = useImagesHandler()
     const [allImages, setAllImages] = useState([]);
     const [modalShow, setModalShow] = useState(false);
@@ -73,25 +73,25 @@ const HomePageImage = ({ logoLoading, setLogoLoading, uploadedImages, name }) =>
 
     return (
         <>
-            <div className='row gap-3 my-4'>
+            <div className='row gap-3 my-4 mb-5'>
                 {uploadedImages?.length > 0 && uploadedImages.map((val, index) => (
                     <div className='w-[130px] h-[80px] rounded overflow-hidden object-contain group relative border-1'>
                         <button onClick={(e) => handleDeleteConfirmModel(e, val.public_id)} className=' btn btn-primary hidden group-hover:flex absolute inset-0 space-x-3 z-50 group-hover:h-full w-full justify-center items-center transition-transform transform-gpu filter-blur-[5px]' >
                             {/* <FontAwesomeIcon icon={faTrash} style={{ color: "red" }} /> */}delete icon
                         </button>
-                        <img src={val?.url} alt='bannerImage' className='w-full h-full group-hover:opacity-20' width="100px" />
+                        <img src={val?.url} alt='cardsImages' className='w-full h-full group-hover:opacity-20' width="100px" />
                     </div>))}
             </div>
 
             <div>
                 <input type='file' multiple onChange={(e) => handleLogoChange({ e, setAllImages })} />
-                <div className='flex row flex-wrap gap-3 my-4'>
+                <div className='flex flex-row row flex-wrap gap-3 my-4'>
                     {allImages?.length > 0 && allImages.map((val, index) => (
                         <div key={index} className='w-[130px] h-[80px] rounded overflow-hidden object-contain group relative border-1'>
                             <button onClick={(e) => handleRemoveImage({ e, index, allImages, setAllImages })} className='btn btn-primary hidden group-hover:flex absolute inset-0 space-x-3 z-50 group-hover:h-full w-full justify-center items-center transition-transform transform-gpu filter-blur-[5px]' >
                                 {/* <FontAwesomeIcon icon={faTrash} style={{ color: "red" }} /> */}delete Icon
                             </button>
-                            <img src={val} alt='bannerImage' className='w-full h-full group-hover:opacity-20' width="100px"/>
+                            <img src={val} alt='cardsImages' className='w-full h-full group-hover:opacity-20' width="100px"/>
                         </div>
                     ))}
                 </div>
@@ -111,4 +111,4 @@ const HomePageImage = ({ logoLoading, setLogoLoading, uploadedImages, name }) =>
     )
 }
 
-export default HomePageImage
+export default cardImages
