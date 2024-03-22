@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from "react";
-import { MinusCircleOutlined, PlusOutlined } from "@ant-design/icons";
 import SideBar from "../Sidebar";
 import sidebar_menu from "../../constants/sidebar-menu";
 import DashboardHeader from "../DashboardHeader";
-import CardsImages from "../siteconfig/ImageUpload/CardImages";
 import Form from "react-bootstrap/Form";
 import useHandleChange from "../../hooks/site-Config/UseHandleChange";
 import useSaveLayoutContent from "../../hooks/site-Config/UseSaveLayoutContent";
 import { useSelector } from "react-redux";
 import { SelectContentImgModal } from "./Modals/SiteContentImgModal";
+import CardImages from "../siteconfig/ImageUpload/CardImages";
+import { DeleteOutlined, UploadOutlined } from '@ant-design/icons'
+import toast from "react-hot-toast";
 
 const SiteConfigMenu = () => {
   const { success, error, siteConfigData } = useSelector(
@@ -34,19 +35,29 @@ const SiteConfigMenu = () => {
     setMenuContent(siteConfigData?.menuContent);
   }, [siteConfigData]);
 
+  // const handleAddMenuCard = () => {
+  //   setMenuContent({
+  //     ...menuContent,
+  //     menuCards: [
+  //       ...menuContent.menuCards,
+  //       {
+  //         image: { public_id: "", url: "" },
+  //         cardtitle: "",
+  //         description: "",
+  //         link: { text: "", url: "" },
+  //       },
+  //     ],
+  //   });
+  // };
+
   const handleAddMenuCard = () => {
-    setMenuContent({
-      ...menuContent,
-      menuCards: [
-        ...menuContent.menuCards,
-        {
-          image: { public_id: "", url: "" },
-          cardtitle: "",
-          description: "",
-          link: { text: "", url: "" },
-        },
-      ],
-    });
+    const { menuCards } = menuContent;
+    if (menuCards.length >= 4) {
+      toast.error('Cannot add more than 4 menu cards!');
+    } else {
+      const neMenuCards = [...menuCards, { image: { public_id: "", url: "" }, cardtitle: "", description: "", link: { text: "", url: "" },}];
+      setMenuContent({ ...menuContent, menuCards: neMenuCards });
+    }
   };
 
 const handleSelectImgModal = (e, name, index) => {
@@ -66,7 +77,7 @@ const handleSelectImgModal = (e, name, index) => {
             <DashboardHeader />
           </div>
         </div>
-        <CardsImages
+        <CardImages
           name={"cardsImages"}
           logoLoading={logoLoading}
           setLogoLoading={setLogoLoading}
@@ -105,7 +116,7 @@ const handleSelectImgModal = (e, name, index) => {
           {menuContent?.menuCards?.length > 0 && menuContent?.menuCards?.map((menucard, i) => (
             <div className="menu-cards mt-5" key={i}>
               <h5>Menu Card {i + 1}</h5>
-              <div className="image-div flex row justify-between items-start h-[100px] w-[180px] relative group border-1 rounded">
+              <div className="flex justify-between items-start h-[100px] w-[180px] relative group border-1 rounded">
                 {logoLoading ? (
                   <>
                     <p className="absolute inset-0 flex justify-center items-center ">
@@ -114,9 +125,8 @@ const handleSelectImgModal = (e, name, index) => {
                     {menucard?.image?.url && (
                       <img
                         src={menucard?.image?.url}
-                        width='100px'
                         alt="icon"
-                        className="selected-image-index"
+                        className="w-full h-full opacity-10"
                       />
                     )}
                   </>
@@ -129,15 +139,15 @@ const handleSelectImgModal = (e, name, index) => {
                           handleSelectImgModal(e, "menuCards", i);
                         }}
                       >
-                        {/* <FontAwesomeIcon icon={faUpload} /> */} upload icon
+                        {/* <FontAwesomeIcon icon={faUpload} /> */}
+                        <UploadOutlined style={{ fontSize: '20px' }} />
                       </label>
                     </div>
                     {menucard?.image?.url && (
                       <img
-                        style={{ width: '100px !important' }}
                         src={menucard?.image?.url}
                         alt="icon"
-                        className="selected-image-index"
+                        className="w-full h-full opacity-10"
                       />
                     )}
                   </>
@@ -151,9 +161,10 @@ const handleSelectImgModal = (e, name, index) => {
                       key: "menuCards",
                     })
                   }
-                  className="btn btn-sm btn-primary delete-img-button bg-red-200 p-2 rounded-tr rounded-br absolute rounded-tl-none  mb-[2px] cursor-pointer z-50"
+                  className="bg-red-200 p-2 rounded-tr rounded-br absolute rounded-tl-none  mb-[2px] cursor-pointer z-50"
                 >
-                  {/* <FontAwesomeIcon icon={faTrash} style={{ color: "red" }} /> */}delete icon
+                  {/* <FontAwesomeIcon icon={faTrash} style={{ color: "red" }} /> */}
+                  <DeleteOutlined /> delete card
                 </button>
               </div>
               <Form.Group>
@@ -196,7 +207,7 @@ const handleSelectImgModal = (e, name, index) => {
         </Form>
         <button
           className="btn btn-primary btn-md mt-4"
-          type="button"
+          type="submit"
           onClick={(e) =>
             hanldeSubmit(e, menuContent, "menuContent", setLogoLoading)
           }

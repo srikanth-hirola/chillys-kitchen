@@ -104,7 +104,7 @@ export const SelectContentImgModal = (props) => {
             </Modal.Header>
             <Modal.Body>
                 {props?.uploadedImages?.length > 0 ?
-                    <div className='flex row flex-wrap gap-3 my-4'>
+                    <div className='flex flex-wrap gap-3 my-4'>
                         {props?.uploadedImages?.map((val, index) => (
                             props?.multiple ? (imageIndexes?.includes(index) ?
                                 <div className='w-[130px] h-[80px] rounded overflow-hidden object-contain group relative border-2 border-green-600' onClick={(e) => handleUnSelectMultipleImage(e, val?.url, index)}>

@@ -73,10 +73,10 @@ const HomePageImage = ({ logoLoading, setLogoLoading, uploadedImages, name }) =>
 
     return (
         <>
-            <div className='row gap-3 my-4'>
+            <div className='gap-3 my-4'>
                 {uploadedImages?.length > 0 && uploadedImages.map((val, index) => (
                     <div className='w-[130px] h-[80px] rounded overflow-hidden object-contain group relative border-1'>
-                        <button onClick={(e) => handleDeleteConfirmModel(e, val.public_id)} className=' btn btn-primary hidden group-hover:flex absolute inset-0 space-x-3 z-50 group-hover:h-full w-full justify-center items-center transition-transform transform-gpu filter-blur-[5px]' >
+                        <button onClick={(e) => handleDeleteConfirmModel(e, val.public_id)} className='hidden group-hover:flex absolute inset-0 space-x-3 z-50 group-hover:h-full w-full justify-center items-center transition-transform transform-gpu filter-blur-[5px]' >
                             {/* <FontAwesomeIcon icon={faTrash} style={{ color: "red" }} /> */}delete icon
                         </button>
                         <img src={val?.url} alt='bannerImage' className='w-full h-full group-hover:opacity-20' width="100px" />
@@ -85,10 +85,10 @@ const HomePageImage = ({ logoLoading, setLogoLoading, uploadedImages, name }) =>
 
             <div>
                 <input type='file' multiple onChange={(e) => handleLogoChange({ e, setAllImages })} />
-                <div className='flex row flex-wrap gap-3 my-4'>
+                <div className='flex flex-wrap gap-3 my-4'>
                     {allImages?.length > 0 && allImages.map((val, index) => (
                         <div key={index} className='w-[130px] h-[80px] rounded overflow-hidden object-contain group relative border-1'>
-                            <button onClick={(e) => handleRemoveImage({ e, index, allImages, setAllImages })} className='btn btn-primary hidden group-hover:flex absolute inset-0 space-x-3 z-50 group-hover:h-full w-full justify-center items-center transition-transform transform-gpu filter-blur-[5px]' >
+                            <button onClick={(e) => handleRemoveImage({ e, index, allImages, setAllImages })} className='hidden group-hover:flex absolute inset-0 space-x-3 z-50 group-hover:h-full w-full justify-center items-center transition-transform transform-gpu filter-blur-[5px]' >
                                 {/* <FontAwesomeIcon icon={faTrash} style={{ color: "red" }} /> */}delete Icon
                             </button>
                             <img src={val} alt='bannerImage' className='w-full h-full group-hover:opacity-20' width="100px"/>
@@ -96,9 +96,10 @@ const HomePageImage = ({ logoLoading, setLogoLoading, uploadedImages, name }) =>
                     ))}
                 </div>
                 {logoLoading ? <button
-                    className=' btn btn-primary w-[150px] h-[40px] rounded bg-green-500 text-white'>Loading...</button> : <button
-                        className='btn btn-primary w-[150px] h-[40px] rounded bg-green-500 text-white' onClick={() => handleImageUploadAPI({ allImages, name: name, setAllImages, setLogoLoading })}>Upload Images</button>}
+                    className='w-[150px] h-[40px] rounded bg-green-500 text-white'>Loading...</button> : <button
+                        className='w-[150px] h-[40px] rounded bg-green-500 text-white' onClick={() => handleImageUploadAPI({ allImages, name: name, setAllImages, setLogoLoading })}>Upload Images</button>}
             </div>
+            {modalShow && 
             <DeleteImageModal
                 show={modalShow}
                 onHide={() => setModalShow(false)}
@@ -107,6 +108,7 @@ const HomePageImage = ({ logoLoading, setLogoLoading, uploadedImages, name }) =>
                 setModalShow={setModalShow}
                 objName={name}
             />
+            }
         </>
     )
 }

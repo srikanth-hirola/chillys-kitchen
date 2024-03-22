@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Layout, Menu, Dropdown } from 'antd';
 import { DownOutlined } from '@ant-design/icons';
 import logo from '/images/logo.png';
@@ -8,12 +8,29 @@ import LogoutIcon from '../../assets/icons/logout.svg';
 import sidebar_menu from '../../constants/sidebar-menu';
 
 import './styles.css';
+import axios from 'axios';
+import { server } from '../../server';
+import toast from 'react-hot-toast';
 
 const { Sider } = Layout;
 
 const SideBar = () => {
     const location = useLocation();
     const [openKeys, setOpenKeys] = useState([]);
+    const navigate = useNavigate();
+
+    const handleLogout = () => {
+        axios
+            .get(`${server}/shop/logout-admin`, { withCredentials: true })
+            .then((res) => {
+                toast.success(res.data.message);
+                window.location.reload(true);
+                navigate("/login");
+            })
+            .catch((error) => {
+                console.log(error.response.data.message);
+            });
+    };
 
     useEffect(() => {
         const findOpenKeys = (menuItems) => {
@@ -80,7 +97,11 @@ const SideBar = () => {
                 {renderMenu(sidebar_menu)}
             </Menu>
             <div className="sidebar-footer">
-                <span className="sidebar-item-label">Logout</span>
+                <span className="sidebar-item-label">
+                    <Link onClick={handleLogout}>
+                    Logout
+                    </Link>
+                </span>
                 <img src={LogoutIcon} alt="icon-logout" className="sidebar-item-icon" />
             </div>
         </Sider>
