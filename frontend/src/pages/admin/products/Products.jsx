@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from 'react';
 import { Table, Tag, Button } from 'antd';
-import { EditOutlined, DeleteOutlined,PlusOutlined } from '@ant-design/icons';
+import { EditOutlined, DeleteOutlined, PlusOutlined } from '@ant-design/icons';
 import SideBar from '../../../components/Sidebar';
 import sidebar_menu from '../../../constants/sidebar-menu';
 import useAPI from '../../../customHooks/API/useAPI';
@@ -89,17 +89,17 @@ function ProductList() {
     <div className='dashboard-container'>
       <SideBar menu={sidebar_menu} />
       <div className='dashboard-content'>
-      <div className="dashboard-header">
-                    <h3>Products List</h3>
-                    <div className="add-btn">
-                        <DashboardHeader />
-                        <div >
-                            <Button type="primary" icon={<PlusOutlined />}>
-                               <Link className='text-decoration-none' to='/add-product'> Add Product</Link>
-                            </Button>
-                        </div>
-                    </div>
-                </div>
+        <div className="dashboard-header">
+          <h3>Products List</h3>
+          <div className="add-btn">
+            <DashboardHeader />
+            <div >
+              <Button type="primary" icon={<PlusOutlined />}>
+                <Link className='text-decoration-none' to='/add-product'> Add Product</Link>
+              </Button>
+            </div>
+          </div>
+        </div>
         <Table
           dataSource={products}
           columns={columns}
