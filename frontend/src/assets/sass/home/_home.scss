@@ -30,7 +30,8 @@
         box-shadow: rgba(100, 100, 111, 0.2) 4px 1px 22px -2px;
     
         .home-browse-cards-sec-img {
-            text-align: center;
+            display: flex;
+            justify-content: center;
         }
         .home-browse-cards-sec-text {
             text-align: center;

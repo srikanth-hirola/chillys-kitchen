@@ -418,18 +418,20 @@ router.put(
 
 // delete user address
 router.delete(
-  "/delete-user-address/:id",
+  "/delete-user-address/:index",
   isAuthenticated,
   catchAsyncErrors(async (req, res, next) => {
     try {
       const userId = req.user._id;
-      const addressId = req.params.id;
+      console.log("userId", userId)
+      const addressId = req.params.index;
 
       await User.updateOne(
         {
           _id: userId,
         },
-        { $pull: { addresses: { _id: addressId } } }
+        { $pull: { addresses: { $exists: true } } },
+        { multi: true }
       );
 
       const user = await User.findById(userId);
@@ -545,3 +547,4 @@ router.delete(
 );
 
 module.exports = router;
+

@@ -1,6 +1,6 @@
+import Navbar from '../../components/common/Navbar'
 import OrderspageTabs from './OrderspageTabs'
-import SideBar from './SideBar'
-
+import UserProfileModal from './UserProfileModal'
 
 const OrdersPageProfile = () => {
 
@@ -8,17 +8,13 @@ const OrdersPageProfile = () => {
     return (
         <>
             <div className='Orderspage-parent'>
-                {/* <div className='Orderspage-sub1'>
-                    <p>Home</p>
-                    <p>My Account</p>
-                    <p>Personal Info </p>
-                </div> */}
-                <div className='Orderspage-main-content'>
+               <Navbar />
+                <div className='Orderspage-main-content overflow-hidden'>
                     <div className="row">
-                        <div className="col-md-12 col-lg-3">
-                            <SideBar />
+                        <div className="col-md-3 col-lg-3">
+                            <UserProfileModal/>
                         </div>
-                        <div className='col-md-12 col-lg-9'>
+                        <div className='col-md-9 col-lg-9'>
                             <OrderspageTabs />
                         </div>
                     </div>

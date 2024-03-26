@@ -15,7 +15,7 @@ const Contact = () => {
           <h3>Contact Us</h3>
           <p>Any question or remarks? Just write us a message!</p>
         </div>
-        <div className="container">
+        <div className="container-lg container-xl container-xxl">
           <div className="row">
             <div className="col-md-6">
               <ContactBanner/>
