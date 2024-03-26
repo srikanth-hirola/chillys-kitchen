@@ -52,6 +52,8 @@
                 padding: 10px 0px;
                 width: 62%;
                 text-align: left;
+                display: flex;
+                align-items: center;
                 span{
                     margin: 3px 14px 10px 0px;
                 }
@@ -128,8 +130,8 @@
                 width: 100%;
                 display: flex;
                 .ant-checkbox-wrapper {
-                    margin: 20px 0px;
-                    width: 22%;
+                    margin: 15px 0px;
+                    width: fit-content;
                     justify-content: start;
                     display: flex;
                 }
@@ -161,4 +163,140 @@
           }
           
     }
+}
+
+@media only screen and (min-width: 992px) and (max-width: 1200px) {
+  .contact-us .contact-us-text{
+    padding: 0;
+  }
+  .contact-us .contact-us-text h3{
+    font-size: 26px;
+  }
+  .contact-us .contact-us-text p{
+    margin: 6px 0 20px 0;
+    font-size: 14px;
+    font-weight: 400;
+  }
+  .contact-us .contact-banner .contact-banner-sub .contact-banner-info h3{
+    font-size: 18px;
+  }
+  .contact-us .contact-banner .contact-banner-sub .contact-banner-info p{
+    font-size: 14px;
+  }
+  .contact-us .contact-banner .contact-banner-sub{
+    height: 410px;
+  }
+  .contact-us .contact-banner{
+    height: 410px;
+    margin-bottom: 20px;
+  }
+  .contact-us .contact-banner .contact-banner-sub .banner-contact-info ul li{
+    width: 100%;
+  }
+  .contact-us .contact-form{
+    padding: 0 10px;
+  }
+  .contact-form-sub h3{
+    font-size: 18px;
+  }
+  .contact-form-sub form .col-md-6{
+    margin: 0 !important;
+  }
+  .contact-form-sub form .ant-form-item {
+    margin-bottom: 5px;
+  }
+  .contact-us .contact-form .ant-form-item-control-input #options .ant-checkbox-wrapper{
+    margin: 5px 0;
+  }
+  .contact-us{
+    margin: 100px 0 90px;
+  }
+}
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+  .contact-us .contact-us-text{
+    padding: 0;
+  }
+  .contact-us .contact-us-text h3{
+    font-size: 24px;
+  }
+  .contact-us .contact-us-text p{
+    margin: 6px 0 20px 0;
+    font-size: 12px;
+    font-weight: 400;
+  }
+  .contact-us .contact-banner .contact-banner-sub .contact-banner-info h3{
+    font-size: 18px;
+  }
+  .contact-us .contact-banner .contact-banner-sub .contact-banner-info p{
+    font-size: 14px;
+  }
+  .contact-us .contact-banner .contact-banner-sub{
+    height: 410px;
+  }
+  .contact-us .contact-banner{
+    height: 410px;
+    margin-bottom: 20px;
+  }
+  .contact-us .contact-banner .contact-banner-sub .banner-contact-info ul li{
+    width: 100%;
+  }
+  .contact-us .contact-form{
+    padding: 0 10px;
+  }
+  .contact-form-sub h3{
+    font-size: 18px;
+  }
+  .contact-form-sub form .col-md-6{
+    margin: 0 !important;
+  }
+  .contact-form-sub form .ant-form-item {
+    margin-bottom: 5px;
+  }
+  .contact-us .contact-form .ant-form-item-control-input #options .ant-checkbox-wrapper{
+    margin: 5px 0;
+  }
+  .contact-us{
+    margin: 100px 0 90px;
+  }
+}
+@media only screen and (max-width: 767px) {
+.contact-us .contact-us-text{
+  padding: 0;
+}
+.contact-us .contact-us-text h3{
+  font-size: 24px;
+}
+.contact-us .contact-us-text p{
+  margin: 6px 0 20px 0;
+  font-size: 12px;
+  font-weight: 400;
+}
+.contact-us .contact-banner .contact-banner-sub .contact-banner-info h3{
+  font-size: 18px;
+}
+.contact-us .contact-banner .contact-banner-sub .contact-banner-info p{
+  font-size: 14px;
+}
+.contact-us .contact-banner .contact-banner-sub{
+  height: 400px;
+}
+.contact-us .contact-banner{
+  height: 400px;
+  margin-bottom: 20px;
+}
+.contact-us .contact-banner .contact-banner-sub .banner-contact-info ul li{
+  width: 100%;
+}
+.contact-us .contact-form{
+  padding: 0 10px;
+}
+.contact-form-sub h3{
+  font-size: 18px;
+}
+.contact-form-sub form .col-md-6{
+  margin: 0 !important;
+}
+.contact-us .contact-form .ant-form-item-control-input #options .ant-checkbox-wrapper{
+  margin: 8px 0;
+}
 }

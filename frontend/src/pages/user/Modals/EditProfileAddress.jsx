@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Form, Input, Checkbox, Modal } from "antd";
 // import { Country, State, City } from 'country-state-city';
 import toast from 'react-hot-toast';
@@ -7,7 +7,8 @@ import PropTypes from 'prop-types';
 import { updatUserAddress } from '../../../redux/actions/user';
 const { Item } = Form;
 
-const AddNewAddress = ({ open, setOpen }) => {
+const EditProfileAddress = ({ open, setOpen }) => {
+
     const [confirmLoading, setConfirmLoading] = useState(false);
 
     const handleOk = () => {
@@ -47,8 +48,8 @@ const AddNewAddress = ({ open, setOpen }) => {
             deliveryTypes: checkedValues,
         });
     };
-    const dispatch = useDispatch();
 
+    const dispatch = useDispatch();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -96,12 +97,25 @@ const AddNewAddress = ({ open, setOpen }) => {
 
     };
 
+    //   const [editProfileAddress, setEditProfileAddress] = useState("");
+    // useEffect(() => {
+    //     if (editProfileAddress) {
+    //       const fetchEditProfileAddress = async () => {
+    //         try {
+    //           const response = await axios.get(
+    //             `http://localhost:8000/api/BankDeatils/transactions/${editProfileAddress}`
+    //           );
+    //           setTransactions(response.data);
+    //         } catch (error) {
+    //           console.error("Error:", error);
+    //         }
+    //       };
+    //       fetchEditProfileAddress();
+    //     }
+    //   }, [editProfileAddress]);
 
     return (
         <>
-            {/* <Button type="primary" onClick={showModal}>
-                pop up 1 - congratulations
-            </Button> */}
             <Modal
                 title=""
                 open={open}
@@ -112,7 +126,7 @@ const AddNewAddress = ({ open, setOpen }) => {
                 className='AddNewAddress-popup-Modal'
             >
                 <div className='AddNewAddress-parent'>
-                    <h2>Add New Address</h2>
+                    <h3 className='pb-3'>Edit Address</h3>
                     <Form layout="vertical" >
                         <Item label="First Name">
                             <Input
@@ -188,9 +202,9 @@ const AddNewAddress = ({ open, setOpen }) => {
     );
 };
 
-AddNewAddress.propTypes = {
+EditProfileAddress.propTypes = {
     open: PropTypes.bool,
     setOpen: PropTypes.func
 }
 
-export default AddNewAddress;
+export default EditProfileAddress;

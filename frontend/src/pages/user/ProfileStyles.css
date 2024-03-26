@@ -1,0 +1,509 @@
+.sidebar.siderbar-page-profile {
+    top: 0;
+    left: 0;
+    max-width: 90% !important;
+    width: 100% !important;
+    max-height: fit-content;
+    overflow: scroll;
+    display: flex;
+    justify-content: center;
+    position: sticky;
+    background-color: #faf5f6 !important;
+    background-image: none;
+}
+
+.sidebar.siderbar-page-profile .ant-layout-sider-children ul li a {
+    color: #000;
+    text-decoration: none;
+    font-size: 15px;
+}
+.sidebar.siderbar-page-profile .ant-layout-sider-children ul li a:hover{
+    color: white;
+}
+.profile-data-in-chilly {
+    padding: 10px;
+}
+
+.my-info-padding h3 {
+    padding: 15px 0;
+}
+
+.Profile-details-sub1-text.relative .cursor-pointer {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 10px;
+}
+
+.sidebar.siderbar-page-profile .ant-layout-sider-children ul li:hover {
+    background-color: #0c2c64;
+}
+
+.sidebar.siderbar-page-profile .ant-layout-sider-children ul li.ant-menu-item.ant-menu-item-only-child:active {
+    background-color: #0c2c64;
+}
+
+.sidebar .ant-layout-sider-children {
+    max-width: 90% !important;
+    width: 95% !important;
+}
+
+.sidebar::-webkit-scrollbar {
+    display: none;
+}
+
+.sidebar-logo-container {
+    display: 'flex';
+    align-items: center;
+}
+
+.sidebar-logo-container img {
+    width: 100%;
+    padding: 2em;
+}
+
+.sidebar .logo {
+    width: 150px;
+    height: 120px;
+}
+
+.sidebar .logo img {
+    width: 100%;
+    height: 100%;
+}
+
+.sidebar-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.sidebar-items {
+    height: 100%;
+    width: 100%;
+}
+
+ul.ant-menu.ant-menu-root.ant-menu-inline.ant-menu-dark.css-dev-only-do-not-override-1ae8k9u {
+    background: #000;
+}
+
+aside.ant-layout-sider.ant-layout-sider-dark.sidebarProfile-details-sub1-text {
+    max-width: 300px;
+    height: 700px;
+}
+.sidebar.siderbar-page-profile .sidebar-item-label {
+    font-size: small;
+    font-weight: 600;
+    margin-left: 15px;
+}
+/* Footer */
+.sidebar-footer.picture-data {
+    padding: 1.0em;
+    color: #000;
+    display: flex;
+    align-items: center;
+    border: 1px solid #0c2c64;
+    margin: 7px 19px;
+    border-radius: 10px;
+    justify-content: space-between;
+    cursor: pointer;
+}
+
+.sidebar-footer.picture-data:hover {
+    background-color: #0c2c64;
+    color: white;
+}
+
+.OrderspageTabs-parent #controlled-tab-example table tbody tr td {
+    vertical-align: middle;
+}
+.OrderspageTabs-parent #controlled-tab-example table thead tr th{
+    vertical-align: middle !important;
+    font-weight: 500;
+    margin: 10px 0 !important;
+}
+.OrderspageTabs-parent #controlled-tab-example table tbody tr td a {
+    padding: 4px 10px;
+    background-color: #0c2c64;
+    color: white;
+    border-radius: 5px;
+}
+.profile-button-hover:hover {
+    background-color: #0c2c64;
+    color: white;
+    border-radius: 5px;
+}
+.toggle-close-button {
+    display: none;
+}
+aside.ant-layout-sider.ant-layout-sider-dark.sidebar{
+    height: 700px;
+}
+.profile-based-details .header-sec{
+    position: static;
+}
+.OrderspageTabs-parent{
+    margin-right: 30px !important;
+}
+.side-toggle-button{
+    padding: 20px 10px;
+}
+.Orderspage-parent .header-sec{
+    position: static;
+}
+.ContactDetails-parent .header-sec{
+    position: static;
+} 
+li.ant-menu-item.ant-menu-item-only-child.active{
+    background-color: #0c2c64 !important;
+}
+ li.ant-menu-item.ant-menu-item-only-child a.active{
+    color: white !important;
+}
+.order-tr{
+    height: 70px;
+}
+.my-orders-page-details{
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+        padding: 15px;
+    border-radius: 10px;
+}
+.Orderspage-product-button a{
+ padding: 5px 10px;
+ background-color: #0c2c64;
+ color: #faf5f6;
+ border-radius: 5px;
+}
+.Orderspage-product-button a:hover{
+    background-color: white;
+    color: #0c2c64;
+    font-weight: 600;
+    border: 1px solid #0c2c64;
+}
+.Orderspage-tabs-active-text1 strong{
+    font-weight: 500;
+}
+.Orderspage-tabs-active-text2 strong{
+    font-weight: 500;
+}
+.Orderspage-product-text strong{
+    font-weight: 500;
+}
+@media only screen and (max-width: 767px) {
+    .my-orders-page-details{
+        margin: 0 0 15px 0px;
+    }
+    aside.ant-layout-sider.ant-layout-sider-dark.sidebar {
+        height: fit-content;
+    }
+
+    .sidebar.siderbar-page-profile {
+        max-width: 100% !important;
+    }
+
+    .ContactDetails-sub1-text {
+        margin: auto;
+        padding:10px;
+    }
+    .ContactDetails-sub1-text h3 {
+        padding: 10px 0 !important;
+        font-size: 16px;
+        margin: 0;
+    }
+    .ContactDetails-sub1-text .add-contact-details button {
+        font-size: 13px;
+    }
+    .ContactDetails-Address-details-parent {
+        width: 94%;
+        margin: auto;
+    }
+
+    .ContactDetails-Address-details-sub .edit-button h5 {
+        font-size: 15px;
+    }
+
+    .side-toggle-button {
+        display: none;
+    }
+
+    .sidebar .ant-layout-sider-children {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .toggle-close-button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    /* .toggle-close-button{
+        display: block;
+    } */
+    .OrderspageTabs-parent {
+        margin: 10px!important;
+    }
+
+    .OrderspageTabs-parent h3 {
+        padding: 10px 0 !important;
+        font-size: 18px;
+    }
+
+    .profile-data-in-chilly {
+        padding: 15px 12px;
+    }
+
+    .my-info-padding h3 {
+        padding: 5px 0;
+        font-size: 20px;
+    }
+
+    .Profile-details-sub1 label {
+        font-size: 13px;
+    }
+
+    .Profile-details-sub1 .Profile-details-sub1-text input {
+        font-size: 12px;
+    }
+
+    .sidebar .logo {
+        width: 137px;
+        height: 100px;
+    }
+
+    hr {
+        display: none;
+    }
+
+    .profile-button-hover {
+        font-size: 14px !important;
+        width: 160px !important;
+        height: 34px !important;
+        margin-top: 19px !important;
+    }
+
+    .table-context-line tr th {
+        font-weight: 500;
+        font-size: 14px;
+    }
+    .table-data-to-display tr td{
+        font-size: 12px;
+    }
+    .ContactDetails-sub1-text .add-contact-details{
+        padding: 4px 15px;
+    }
+    .ContactDetails-Address-details-sub{
+        font-size: 12px;
+    }
+    :where(.css-dev-only-do-not-override-1ae8k9u).ant-form-item{
+        margin-bottom: 8px;
+    }
+    :where(.css-dev-only-do-not-override-1ae8k9u).ant-modal .ant-modal-content{
+        padding: 18px 14px;
+    }
+    .d-flex.align-items-center.add-footer-submit button{
+        padding: 3px 10px !important;
+        margin: 10px 0;
+    }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+    .my-orders-page-details{
+        margin: 0 0 15px 0px;
+    }
+    aside.ant-layout-sider.ant-layout-sider-dark.sidebar {
+        height: fit-content;
+    }
+
+    .sidebar.siderbar-page-profile {
+        max-width: 100% !important;
+    }
+
+    .ContactDetails-sub1-text {
+        margin: auto;
+        padding:10px;
+    }
+
+    .ContactDetails-sub1-text h3 {
+        padding: 10px 0 !important;
+        font-size: 16px;
+        margin: 0;
+    }
+
+    .ContactDetails-sub1-text .add-contact-details button {
+        font-size: 13px;
+    }
+
+    .ContactDetails-Address-details-parent {
+        width: 94%;
+        margin: auto;
+    }
+    .sidebar .logo {
+        width: 142px;
+        height: 97px;
+    }
+    .OrderspageTabs-parent h3 {
+        padding: 10px 0 !important;
+        font-size: 18px;
+    }
+    .table-context-line tr th {
+        font-weight: 500;
+        font-size: 14px;
+    }
+    .table-data-to-display tr td{
+        font-size: 12px;
+    }
+    .profile-data-in-chilly {
+        padding: 15px 12px;
+    }
+    .OrderspageTabs-parent h3 {
+        padding: 10px 0 !important;
+        font-size: 18px;
+    }
+    hr {
+        display: none;
+    }
+    .profile-data-in-chilly {
+        padding: 15px 12px;
+    }
+
+    .my-info-padding h3 {
+        padding: 5px 0;
+        font-size: 20px;
+    }
+
+    .Profile-details-sub1 label {
+        font-size: 13px;
+    }
+
+    .Profile-details-sub1 .Profile-details-sub1-text input {
+        font-size: 12px;
+    }
+    .profile-button-hover {
+        font-size: 14px !important;
+        width: 160px !important;
+        height: 34px !important;
+        margin-top: 19px !important;
+    }
+    .sidebar.siderbar-page-profile .ant-layout-sider-children ul li a{
+        font-size: 13px;
+    }
+    .sidebar-footer.picture-data{
+        margin: 5px 12px;
+        padding: 10px;
+    }
+    .ContactDetails-Address-details-sub .edit-button h5 {
+        font-size: 15px;
+    }
+    .ContactDetails-Address-details-sub p{
+        font-size: 13px;
+    }
+    .ContactDetails-Address-details-sub-buttons1{
+        font-size: 13px;
+    }
+    .ContactDetails-Address-details-sub-footer .footer-change{
+        font-size: 14px !important;
+    }
+}
+
+@media only screen and (min-width: 992px) and (max-width: 1200px) {
+    .my-orders-page-details{
+        margin: 0 0 15px 0px;
+    }
+    .my-orders-page-details {
+        padding: 8px;
+    }
+    aside.ant-layout-sider.ant-layout-sider-dark.sidebar {
+        height: fit-content;
+        padding: 20px 0 !important;
+    }
+
+    .sidebar.siderbar-page-profile {
+        max-width: 100% !important;
+    }
+
+    .ContactDetails-sub1-text {
+        margin: auto;
+        padding:10px;
+    }
+
+    .ContactDetails-sub1-text h3 {
+        padding: 10px 0 !important;
+        font-size: 19px;
+        margin: 0;
+    }
+
+    .ContactDetails-sub1-text .add-contact-details button {
+        font-size: 13px;
+    }
+
+    .ContactDetails-Address-details-parent {
+        width: 94%;
+        margin: auto;
+    }
+    .sidebar .logo {
+        width: 142px;
+        height: 97px;
+    }
+    .OrderspageTabs-parent h3 {
+        padding: 10px 0 !important;
+        font-size: 18px;
+    }
+    .table-context-line tr th {
+        font-weight: 500;
+        font-size: 14px;
+    }
+    .table-data-to-display tr td{
+        font-size: 12px;
+    }
+    .profile-data-in-chilly {
+        padding: 15px 12px;
+    }
+    .OrderspageTabs-parent h3 {
+        padding: 10px 0 !important;
+        font-size: 18px;
+    }
+
+    .profile-data-in-chilly {
+        padding: 15px 12px;
+    }
+
+    .my-info-padding h3 {
+        padding: 5px 0;
+        font-size: 20px;
+    }
+
+    .Profile-details-sub1 label {
+        font-size: 13px;
+    }
+
+    .Profile-details-sub1 .Profile-details-sub1-text input {
+        font-size: 12px;
+    }
+    .profile-button-hover {
+        font-size: 14px !important;
+        width: 160px !important;
+        height: 34px !important;
+        margin-top: 19px !important;
+    }
+    .sidebar.siderbar-page-profile .ant-layout-sider-children ul li a{
+        font-size: 15px;
+    }
+    .sidebar-footer.picture-data{
+        margin: 5px 12px;
+        padding: 10px;
+    }
+    .ContactDetails-Address-details-sub .edit-button h5 {
+        font-size: 16px;
+    }
+    .ContactDetails-Address-details-sub p{
+        font-size: 14px;
+    }
+    .ContactDetails-Address-details-sub-buttons1{
+        font-size: 14px;
+    }
+    .ContactDetails-Address-details-sub-footer .footer-change{
+        font-size: 15px !important;
+    }
+}

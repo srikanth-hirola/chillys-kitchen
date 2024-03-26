@@ -1,33 +1,55 @@
 import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 import { deleteUserAddress } from '../../../redux/actions/user';
-
-const AddressCards = ({ address }) => {
+import FeatherIcon from 'feather-icons-react';
+import "./CardStyles.css";
+import { useState } from 'react';
+import AddNewAddress from '../Modals/AddNewAddress';
+import EditProfileAddress from '../Modals/EditProfileAddress';
+const AddressCards = ({ address, index }) => {
     const dispatch = useDispatch();
 
-    const handleDelete = (item) => {
-        const id = item?._id;
-        dispatch(deleteUserAddress(id));
+    const [editModal, setEditModal] = useState(false);
+    const showModal = () => {
+        setEditModal(true);
+    };
+
+    const handleDelete = () => {
+        dispatch(deleteUserAddress(index));
     };
 
 
+    console.log("addresspage", address);
     return (
-        <div className='ContactDetails-Address-details-sub'>
-            <h5>{address?.billinguserName}</h5>
-            <span>{address?.billinguserphonenumber}</span>
-            <p>{address?.billingaddress1} {address?.billingaddress2
-            }
-            </p>
-            <div className='ContactDetails-Address-details-sub-buttons'>
-                <button className='ContactDetails-Address-details-sub-buttons1'>{address?.addressType}</button>
-                {/* <button className='ContactDetails-Address-details-sub-buttons2'>Default billing address</button> */}
+        <>
+            <EditProfileAddress key={2} open={editModal} setOpen={setEditModal} showModal={showModal} />
+
+            <div className='ContactDetails-Address-details-sub p-3'>
+                <div className='edit-button'>
+                    <h5>{address?.firstName} {address?.lastName}</h5>
+                    <div className='d-flex justify-items-end'>
+                        <div className='feather-editing'>
+                            <FeatherIcon icon='edit'
+                                onClick={showModal}
+                            />
+                        </div>
+                        <div className='feather-delete'>
+                            <FeatherIcon icon='trash-2'
+                                onClick={() => handleDelete()}
+                            />
+                        </div>
+                    </div>
+                </div>
+              
+                <p className='my-2'>{address?.mobile},<span className='m-0'>{address?.flatBuildingNumber} ,{address?.nearbyLocation},{address?.areaName}, {address?.pincode}</span>
+</p>
+                <p className='m-0'></p>
+                <div className='ContactDetails-Address-details-sub-buttons'>
+                    <button className='ContactDetails-Address-details-sub-buttons1'>{address?.deliveryTypes}</button>
+                    {/* <button className='ContactDetails-Address-details-sub-buttons2'>Default billing address</button> */}
+                </div>
             </div>
-            <div className='ContactDetails-Address-details-sub-footer'>
-                <button className='ContactDetails-Address-details-sub-footer-button1' onClick={() => handleDelete(address)}>Remove</button>
-                {/* <button className='ContactDetails-Address-details-sub-footer-button2'>Edit</button>
-                <button className='ContactDetails-Address-details-sub-footer-button2'>Set as Default</button> */}
-            </div>
-        </div>
+        </>
     )
 }
 

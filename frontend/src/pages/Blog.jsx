@@ -8,10 +8,12 @@ import BlogBody from '../components/blogs/BlogBody'
 const Blog = () => {
   return (
     <>
-<Navbar/>
-<Blogbanner/>
-<BlogBody/>
-<Footer/>
+      <div>
+        <Navbar />
+        <Blogbanner />
+        <BlogBody />
+        <Footer />
+      </div>
     </>
   )
 }
