@@ -1,16 +1,31 @@
 /* eslint-disable no-unused-vars */
 
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Navbar from "../components/common/Navbar";
 import Footer from "../components/common/Footer";
 import { UserOutlined } from "@ant-design/icons";
 import { Form, Input, Checkbox, Button, Card } from "antd";
+import { useSelector } from "react-redux";
+import OrderSummary from "../components/CheckOut/OrderSummary";
+import { useNavigate } from "react-router";
 
 const { Item } = Form;
 
 const Checkout = () => {
-  const [quantity, setQuantity] = useState(1);
+  const { user } = useSelector((state) => state.user);
+  const { cart } = useSelector((state) => state.cart);
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    if (cart?.length === 0) {
+      navigate('/')
+    }
+  }, [cart, navigate]);
+
+
   const [selectedAddress, setSelectedAddress] = useState(null);
   const [showAddressForm, setShowAddressForm] = useState(false);
 
@@ -26,15 +41,7 @@ const Checkout = () => {
     deliveryTypes: [],
   });
 
-  const handleIncrement = () => {
-    setQuantity(quantity + 1);
-  };
 
-  const handleDecrement = () => {
-    if (quantity > 1) {
-      setQuantity(quantity - 1);
-    }
-  };
 
   const handleAddressSelect = (address) => {
     setSelectedAddress(address);
@@ -105,65 +112,65 @@ const Checkout = () => {
         <div className="checkout-sec">
           <div className="container">
             <div className="checkout-main-head">
-            <h3>Checkout</h3>
-            <div className="">
-            {!selectedAddress && !showAddressForm && (
-                    <div className="select-address-button">
-                      <Button onClick={handleAddAddress}>
-                        Add New Address
-                      </Button>
-                    </div>
-                  )}
+              <h3>Checkout</h3>
+              <div className="">
+                {!selectedAddress && !showAddressForm && (
+                  <div className="select-address-button">
+                    <Button onClick={handleAddAddress}>
+                      Add New Address
+                    </Button>
+                  </div>
+                )}
+              </div>
             </div>
-            </div>
-       
+
             <div className="row justify-content-around">
               <div className="col-md-7">
                 <div className="checkout">
                   {/* Address cards */}
                   <div className="row">
-            <div className="col-md-4">
-            <div className="address-cards">
-                    <Card
-                      title="Address 1"
-                      onClick={() => handleAddressSelect("Address 1")}
-                      style={{ marginBottom: 16 }}
-                    >
-                      123 Street, City, Country
-                    </Card>
-                
+                    <div className="col-md-4">
+                      <div className="address-cards">
+                        <Card
+                          title="Address 1"
+                          onClick={() => handleAddressSelect("Address 1")}
+                          style={{ marginBottom: 16 }}
+                        >
+                          123 Street, City, Country
+                        </Card>
+
+                      </div>
+
+                    </div>
+                    <div className="col-md-4">
+                      <div className="address-cards">
+                        <Card
+                          title="Address 2"
+                          onClick={() => handleAddressSelect("Address 2")}
+                        >
+                          456 Road, Town, Country
+                        </Card>
+                      </div>
+                    </div>
+                    <div className="col-md-4">
+                      <div className="address-cards">
+                        <Card
+                          title="Address 2"
+                          onClick={() => handleAddressSelect("Address 3")}
+                        >
+                          456 Road, Town, Country
+                        </Card>
+                      </div>
+                    </div>
                   </div>
-                 
-            </div>
-            <div className="col-md-4">
-            <div className="address-cards">
-                  <Card
-                      title="Address 2"
-                      onClick={() => handleAddressSelect("Address 2")}
-                    >
-                      456 Road, Town, Country
-                    </Card>
-                  </div>
-                  </div>
-            <div className="col-md-4">
-            <div className="address-cards">
-                  <Card
-                      title="Address 2"
-                      onClick={() => handleAddressSelect("Address 3")}
-                    >
-                      456 Road, Town, Country
-                    </Card>
-                  </div>
-                  </div>
-          </div>
                   {selectedAddress && (
                     <div className="selected-address">
                       <div className="selected-head">
-                      <h2>Selected Address</h2>
-                     
-                     <Button onClick={handleRemoveAddress}>
-                       Remove Address
-                     </Button>
+                        <h2>Selected Address</h2>
+
+                        <Button onClick={handleRemoveAddress}>
+                          Remove Address
+                        </Button>
                       </div>
                       <Form layout="vertical">
                         <Item label="First Name">
@@ -306,76 +313,11 @@ const Checkout = () => {
                       </Form>
                     </div>
                   )}
-                 
-                 
+
+
                 </div>
               </div>
-              <div className="col-md-5">
-                  <div className="order-summary">
-                    <div className="orders">
-                      <div className="title">
-                        <h4>Order summary</h4>
-                      </div>
-                    <div className="order-items row">
-                    <div className="order-item col-md-6">
-                      <div className="item-image">
-                        <img src="/images/products/cart-img.png" alt="Item" />
-                        <h5>Title of the item</h5>
-                      </div>
-
-                    </div>
-                    <div className="item-price col-md-6">
-                    <div className="item-details">
-
-                        <div className="quantity-controls">
-                          <button onClick={handleDecrement}>-</button>
-                          <span>{quantity}</span>
-                          <button onClick={handleIncrement}>+</button>
-                        </div>
-                      </div>
-                        <p>${10 * quantity}</p>
-                      </div>
-                    </div>
-                    </div>
-                    {/* Coupon Code Input */}
-                <div className="coupon-section">
-                  <h4>Apply Coupon</h4>
-                  <Form layout="horizontal">
-                    <Item>
-                      <Input
-                        value=""
-
-                        placeholder="Enter coupon code"
-                      />
-                    </Item>
-                    <Item>
-                      <Button >Apply</Button>
-                    </Item>
-                  </Form>
-                </div>
-                {/* Total Bill Section */}
-                <div className="total-bill-section">
-                  <h4>Total Bill</h4>
-                  <div className="bill-details">
-                    <div className="name">Total Products</div>
-                    <div className="value">250</div>
-                  </div>
-                  <div className="bill-details">
-                    <div className="name">Product Price</div>
-                    <div className="value">250</div>
-                  </div>
-                  <div className="bill-details">
-                    <div className="name">Discount Price</div>
-                    <div className="value">250</div>
-                  </div>
-                  <div className="bill-details">
-                    <div className="name">Total Amount</div>
-                    <div className="value">250</div>
-                  </div>
-                  <Button type="primary" block>Final Checkout</Button>
-                </div>
-                  </div>
-          </div>
+              <OrderSummary addressData={formData} />
             </div>
           </div>
           <Footer />

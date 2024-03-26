@@ -12,6 +12,7 @@ const Navbar = () => {
   const { category } = useSelector((state) => state.category);
   const { wishlist } = useSelector((state) => state.wishlist);
   const { cart } = useSelector((state) => state.cart);
+  const { user } = useSelector((state) => state.user);
 
   console.log(cart?.length, wishlist?.length)
 
@@ -84,9 +85,6 @@ const Navbar = () => {
                       </Dropdown>
                     </li>
                     <li>
-                      <Link to="/services">Services</Link>
-                    </li>
-                    <li>
                       <Link to="/blog">Blog</Link>
                     </li>
                     <li>
@@ -118,7 +116,7 @@ const Navbar = () => {
                     </li>
                     <li>
                       <span>
-                        <Link to='/login'>Login</Link>
+                        <Link to={user ? '/profile' : '/user-login'}>{user ? "Profile" : "Login"}</Link>
                       </span>
                     </li>
                   </ul>

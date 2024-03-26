@@ -12,6 +12,17 @@
         align-items: center;
     }
   }
+  .menu-cards{
+    .image-div{
+      .selected-image-index{
+        width: 100px !important;
+      }
+      .delete-img-button{
+        width: 10%;
+        height: 10%;
+      }
+    }
+  }
 }
 .category-select-dropDown{
   height: 39px;

@@ -16,11 +16,11 @@ const razorpay = new Razorpay({
 router.post(
   '/process',
   catchAsyncErrors(async (req, res, next) => {
-    const ShiteData = await Site.find({});
-    const currencyCode = ShiteData[0]?.currency?.code;
+    // const ShiteData = await Site.find({});
+    // const currencyCode = ShiteData[0]?.currency?.code;
     const myPayment = await stripe.paymentIntents.create({
       amount: req.body.amount,
-      currency: `${currencyCode}`,
+      currency: `INR`,
       metadata: {
         company: 'Hirola',
       },
@@ -41,8 +41,8 @@ router.get(
 
 router.post('/razorpay', async (req, res) => {
   const { amount } = req.body;
-  const ShiteData = await Site.find({});
-  const currencyCode = ShiteData[0]?.currency?.code;
+  // const ShiteData = await Site.find({});
+  const currencyCode = "INR";
 
   const options = {
     amount: amount, // Amount in paisa

@@ -3,31 +3,54 @@ const { isSeller, isAuthenticated, isAdmin } = require('../middleware/auth');
 const catchAsyncErrors = require('../middleware/catchAsyncErrors');
 const router = express.Router();
 const ErrorHandler = require('../utils/ErrorHandler');
-const Site = require('../model/siteConfig');
+const Site = require('../model/homePageConfig');
 const cloudinary = require('cloudinary');
 const { flushSiteConfig, cacheMiddleware } = require('../middleware/cacheMiddleware');
 
 
 
 // update site config
+// router.post(
+//     '/site-config', flushSiteConfig,
+//     catchAsyncErrors(async (req, res, next) => {
+//         try {
+//             const { formData } = req.body;
+//             const { mainColor, buttonFontColor, fontColor, fontActiveColor, bgcolor } = formData;
+
+//             await Site.updateMany(
+//                 {},
+//                 {
+//                     $set: {
+//                         mainColor: mainColor,
+//                         buttonFontColor: buttonFontColor,
+//                         fontColor: fontColor,
+//                         fontActiveColor: fontActiveColor,
+//                         bgcolor: bgcolor
+//                     }
+//                 }
+//             );
+
+//             res.status(200).json({ success: true });
+//         } catch (error) {
+//             return next(new ErrorHandler(error.message, 500));
+//         }
+//     })
+// );
+
+
 router.post(
-    '/site-config', flushSiteConfig,
+    '/site-config-chilly-kitchen', flushSiteConfig,
     catchAsyncErrors(async (req, res, next) => {
         try {
-            const { formData } = req.body;
-            const { mainColor, buttonFontColor, fontColor, fontActiveColor, bgcolor } = formData;
+            const formData  = req.body;
+            console.log("formData", formData)
+            const { creatingtext } = formData;
 
-            await Site.updateMany(
-                {},
-                {
-                    $set: {
-                        mainColor: mainColor,
-                        buttonFontColor: buttonFontColor,
-                        fontColor: fontColor,
-                        fontActiveColor: fontActiveColor,
-                        bgcolor: bgcolor
-                    }
-                }
+            await Site.create(
+                // {},
+                // {
+                    formData
+                // }
             );
 
             res.status(200).json({ success: true });
@@ -281,9 +304,10 @@ router.put(
         try {
             const { allImages, name } = req.body;
 
+
             const uploadPromises = allImages.map(async (image) => {
                 const myCloud = await cloudinary.v2.uploader.upload(image, {
-                    folder: `Ecom/${name}`,
+                    folder: `chilly_kitchen/${name}`,
                 });
 
                 return {
@@ -295,7 +319,7 @@ router.put(
             const uploadedImages = await Promise.all(uploadPromises);
 
             const siteInfo = await Site.findOne({});
-
+            console.log( 'hy before')
             const mergedImages = siteInfo[name]
                 ? siteInfo[name].concat(uploadedImages)
                 : uploadedImages;
@@ -304,6 +328,7 @@ router.put(
 
             res.status(200).json({ success: true });
         } catch (error) {
+            console.log(error)
             return next(new ErrorHandler(error.message, 500));
         }
     })
@@ -354,7 +379,7 @@ router.post(
 
 
 router.get(
-    '/site-config', cacheMiddleware,
+    '/site-config', 
     catchAsyncErrors(async (req, res, next) => {
         try {
 

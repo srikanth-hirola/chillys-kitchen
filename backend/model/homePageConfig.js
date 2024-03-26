@@ -3,49 +3,26 @@ const mongoose = require('mongoose');
 const homePageSchema = new mongoose.Schema({
 
     // banner with header fields
+    creatingtext: String,
     mainLogo : {
         public_id: String,
         url: String
     },
-    navLink : Array,
-    phoneNumber: Number,
+    headerContent: Object,
     bannerImages: Array,
-    bannerSubTitle: String,
-    bannerTitle: String,
-    bannerDescription: String,
-    bannerButtons: Array,
-
-    // special menu fields
-    menuSubTitle: String,
-    menuTitle: String,
-    menuCards: Array,
+    bannerContent: Object,
+    cardsImages: Array,
+    menuContent: Object,
 
     // aboutus section one
-    aboutUsImage: {
-        public_id: String,
-        url: String,
-    },
-    contactTitle: String,
-    email: String,
-    address: String,
-    aboutusTitle: String,
-    aboutUsDescriptionOne: String,    
-    aboutUsDescriptionTwo: String, 
-    aboutUsButton: {
-        title: String,
-        url: String,
-    },
-
-    // service section
-    serviceSubTitle: String,
-    serviceTitle: String,
-    serviceCards: Array,
+    aboutUsSectionOneImages: Array,
+    aboutUsOneContent: Object,
+    serviceImages: Array,
+    serviceContent: Object,
 
     // about us section two
-    aboutUsSectionTwoImage: Array,
-    aboutusSectionTwoTitle: String,
-    aboutUsSectionTwoDescription: String,    
-    aboutUslists: Array,
+    deliverySectionImages: Array,
+    deliverySectionContent: Object,
 
     // cclient imaages
     clientImages: Array,
@@ -55,18 +32,8 @@ const homePageSchema = new mongoose.Schema({
         public_id: String,
         url: String,
     },
-    footerDescription: String,
-    footerSocialMedia: Array,
-    footerLinksOne: {
-        title: String,
-        links: Array,
-    },
-    footerLinksTwo: {
-        title: String,
-        links: Array,
-    },
+    footerContent: Object,
     footerImages: Array,
-    footerImageTitle: String,
 
 });
 

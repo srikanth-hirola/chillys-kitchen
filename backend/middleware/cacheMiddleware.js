@@ -30,7 +30,7 @@ const cacheMiddleware = (req, res, next) => {
 // '/api/v2/category/get-all-categories',
 
 const flushSiteConfig = (req, res, next) => {
-    cache.del('/api/v2/site/site-config');
+    cache.del('/api/v2/site/site-config-chilly-kitchen');
     const originalJson = res.json;
     res.json = (data) => {
         originalJson.call(res, data);

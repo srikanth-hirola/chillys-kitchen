@@ -364,6 +364,7 @@ router.get(
   isSeller,
   catchAsyncErrors(async (req, res, next) => {
     try {
+      console.log(req.seller._id)
       const seller = await Shop.findById(req.seller._id);
 
       if (!seller) {
@@ -414,7 +415,7 @@ router.post(
 
 // log out from shop
 router.get(
-  '/logout',
+  '/logout-admin',
   catchAsyncErrors(async (req, res, next) => {
     try {
       res.cookie('seller_token', null, {

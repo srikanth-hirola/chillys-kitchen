@@ -1,6 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Lobster+Two:ital,wght@0,400;0,700;1,400;1,700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Lobster+Two:ital,wght@0,400;0,700;1,400;1,700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap");
 @import url(./home/_home.scss);
 @import url(./common/_header.scss);
 @import url(./common/_footer.scss);
@@ -15,51 +19,44 @@
 @import url(./pages/_catering.scss);
 @import url(./pages/_about.scss);
 
-
 // admin styles
 @import url(./admin/_global.scss);
 // @import url(./variables.scss);
 
 // Override default variables before the import
 $body-bg: #fff;
-$topbar-bg:#474747;
-$footer-bg:#474747;
-$bg-section-1:#F9F9F7;
-$bg-section-2:#474747;
-$bg-section-1:#F9F9F7;
+$topbar-bg: #474747;
+$footer-bg: #474747;
+$bg-section-1: #f9f9f7;
+$bg-section-2: #474747;
+$bg-section-1: #f9f9f7;
 
-$card-bg-1:#474747;
-$card-bg-2:#F9F9F7;
+$card-bg-1: #474747;
+$card-bg-2: #f9f9f7;
 
-$button-bg-1:#DBDFD0;
-$button-bg-2:#0c2c64;
+$button-bg-1: #dbdfd0;
+$button-bg-2: #0c2c64;
 // $button-bg-2:#0c2c64;
 
-$h1-font:96px;
-$h2-font:55px;
-$h3-font:24px;
-$h4-font:20px;
-$h5-font:18px;
-$h6-font:16px;
+$h1-font: 96px;
+$h2-font: 55px;
+$h3-font: 24px;
+$h4-font: 20px;
+$h5-font: 18px;
+$h6-font: 16px;
 
-$p-font-one:16px;
-$p-font-two:14px;
-$p-font-three:12px;
+$p-font-one: 16px;
+$p-font-two: 14px;
+$p-font-three: 12px;
 
+$button-actibe-bg-1: #0c2c64;
 
-
-$button-actibe-bg-1:#0c2c64;
-
-
-
-
-
-
-
-
-body{
-    font-family: "Poppins", sans-serif;
+body {
+  font-family: "Poppins", sans-serif;
 }
-*{
-    padding: 0;margin: 0;box-sizing: border-box;  font-family: "Poppins", sans-serif;
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
 }
