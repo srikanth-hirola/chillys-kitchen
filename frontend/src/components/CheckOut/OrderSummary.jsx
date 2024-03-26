@@ -9,6 +9,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { server } from "../../server";
 import { useNavigate } from "react-router";
+import toast from "react-hot-toast";
 
 const OrderSummary = ({ addressData }) => {
     const { cart } = useSelector((state) => state.cart);
@@ -80,7 +81,7 @@ const OrderSummary = ({ addressData }) => {
                     setTotalPriceFinal(Number(totalPrice) - Number(discountPrice))
                     setCoupanRefTotal(Number(totalPrice) - Number(discountPrice))
                 } else {
-                    message.error('Coupon is not applicable!')
+                    toast.error('Coupon is not applicable!')
                 }
 
 
@@ -118,7 +119,7 @@ const OrderSummary = ({ addressData }) => {
             addresDetails?.areaName === "" ||
             addresDetails?.deliveryTypes?.length === 0
         ) {
-            message.error("All Address Field's are required!");
+            toast.error("All Address Field's are required!");
             return false;
         } else {
             return true;

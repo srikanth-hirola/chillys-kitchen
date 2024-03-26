@@ -7,6 +7,7 @@ import sidebar_menu from '../../../constants/sidebar-menu';
 import useAPI from '../../../customHooks/API/useAPI';
 import { Link } from 'react-router-dom';
 import DashboardHeader from '../../../components/DashboardHeader';
+import toast from 'react-hot-toast';
 function ProductList() {
 
   const { getApi, deleteApi } = useAPI();
@@ -24,20 +25,20 @@ function ProductList() {
     fetchAllProducts()
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
-
+  console.log("data", products)
   const handleDeleteProduct = async ({ e, id }) => {
     e.preventDefault();
     console.log(id)
     const { error } = deleteApi({ endpoint: `/api/v2/product/delete-shop-product/${id}`, });
     if (error) {
-      alert(error?.response?.data?.message)
+      toast.error(error?.response?.data?.message, { position: 'top-right' })
     } else {
-      alert("Deleted Product Successfully");
+      toast.success("Deleted Product Successfully", { position: 'top-right' });
       setAllProducts((prev) => prev.filter((item) => item?._id !== id))
     }
   }
 
-
+console.log("data",products.map((data)=>data.name))
   const dataSource = [
     {
       key: '1',

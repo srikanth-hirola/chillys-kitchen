@@ -53,7 +53,7 @@ const SiteConfigMenu = () => {
   const handleAddMenuCard = () => {
     const { menuCards } = menuContent;
     if (menuCards.length >= 4) {
-      toast.error('Cannot add more than 4 menu cards!');
+      toast.error('Cannot add more than 4 menu cards!',{position:'top-right'});
     } else {
       const neMenuCards = [...menuCards, { image: { public_id: "", url: "" }, cardtitle: "", description: "", link: { text: "", url: "" },}];
       setMenuContent({ ...menuContent, menuCards: neMenuCards });

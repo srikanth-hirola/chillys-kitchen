@@ -39,7 +39,7 @@ const SiteConfigServices = () => {
   const handleAddServiceCard = () => {
     const { serviceCards } = serviceContent;
     if (serviceCards.length >= 3) {
-      toast.error('Cannot add more than 3 service cards!');
+      toast.error('Cannot add more than 3 service cards!',{position:'top-right'});
     } else {
       const newServiceCards = [...serviceCards, { image: { public_id: "", url: "" }, cardtitle: "", description: "",}];
       setServiceContent({ ...serviceContent, serviceCards: newServiceCards });

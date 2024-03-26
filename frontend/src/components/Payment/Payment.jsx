@@ -15,6 +15,7 @@ import {
     useElements,
 } from '@stripe/react-stripe-js';
 import { StyleConfig } from '../../utils/StyleConfig';
+import toast from 'react-hot-toast';
 
 const Payment = () => {
     const [orderData, setOrderData] = useState([]);
@@ -132,7 +133,7 @@ const Payment = () => {
             .then(() => {
                 setOpen(false);
                 navigate('/order/success');
-                message.success('Order successful!');
+                toast.success('Order successful!');
                 localStorage.setItem('cartItems', JSON.stringify([]));
                 localStorage.setItem('latestOrder', JSON.stringify([]));
                 window.location.reload();
@@ -167,7 +168,7 @@ const Payment = () => {
             });
 
             if (result.error) {
-                message.error(result.error.message);
+                toast.error(result.error.message,{position:'top-right'});
             } else {
                 if (result.paymentIntent.status === 'succeeded') {
                     order.paymentInfo = {
@@ -181,7 +182,7 @@ const Payment = () => {
                         .then((res) => {
                             setOpen(false);
                             navigate('/order/success');
-                            message.success('Order successful!');
+                            toast.success('Order successful!',{position:'top-right'});
                             localStorage.setItem('cartItems', JSON.stringify([]));
                             localStorage.setItem('latestOrder', JSON.stringify([]));
                             window.location.reload();
@@ -217,7 +218,7 @@ const Payment = () => {
             );
 
             if (!res) {
-                message.error("Razorpay SDK failed to load. Are you online?");
+                toast.error("Razorpay SDK failed to load. Are you online?",{position:'top-right'});
                 return;
             }
 
@@ -234,7 +235,7 @@ const Payment = () => {
             );
 
             if (!data) {
-                message.error("Server error. Are you online?");
+                toast.error("Server error. Are you online?",{position:'top-right'});
                 return;
             }
 
@@ -271,14 +272,14 @@ const Payment = () => {
                                     .post(`${server}/order/create-order`, order, config)
                                     .then((res) => {
                                         setOpen(false);
-                                        message.success('Order successful!');
+                                        toast.success('Order successful!',{position:'top-right'});
                                         navigate('/order/success');
                                         localStorage.setItem('cartItems', JSON.stringify([]));
                                         localStorage.setItem('latestOrder', JSON.stringify([]));
                                         window.location.reload();
                                     });
                             } else {
-                                alert('Payment Failed');
+                                toast.error('Payment Failed',{position:'top-right'});
                             }
                         })
                         .catch((e) => {
@@ -325,7 +326,7 @@ const Payment = () => {
             .then((res) => {
                 setOpen(false);
                 navigate('/order/success');
-                message.success('Order successful!');
+                toast.success('Order successful!',{position:'top-right'});
                 localStorage.setItem('cartItems', JSON.stringify([]));
                 localStorage.setItem('latestOrder', JSON.stringify([]));
                 window.location.reload();

@@ -75,7 +75,8 @@ const OrderDetails = () => {
     }
 
     return (
-        <div className='dashboard-container'>
+     <div className='order-details-parent'>
+           <div className='dashboard-container'>
             <SideBar menu={sidebar_menu} />
             <div className={`py-4 px-4 min-h-screen ${styles.section}`}>
                 <div className="w-full flex items-center justify-between">
@@ -177,19 +178,19 @@ const OrderDetails = () => {
 
                     <div className="w-full 800px:w-[60%]">
                         <h4 className="pt-3 text-[20px] font-[600]">Shipping Address:</h4>
-                        <h4 className="pt-3 text-[20px]">
+                        <h4 className="pt-3 text-[18px]">
                             Name: {data?.shippingAddress?.firstName} {data?.shippingAddress?.lastName}
                         </h4>
-                        <h4 className=" text-[20px]">
+                        <h4 className=" text-[18px]">
                             Mail ID: {data?.shippingAddress?.email}
                         </h4>
-                        <h4 className=" text-[20px]">
+                        <h4 className=" text-[18px]">
                             Mobile No: {data?.shippingAddress?.mobile}</h4>
-                        <h4 className=" text-[20px]">
+                        <h4 className=" text-[18px]">
                             Flat / Building No: {data?.shippingAddress?.flatBuildingNumber}</h4>
-                        <h4 className=" text-[20px]">LandMark: {data?.shippingAddress?.nearbyLocation}</h4>
-                        <h4 className=" text-[20px]">Area Name: {data?.shippingAddress?.areaName}</h4>
-                        <h4 className=" text-[20px]">Pincode: {data?.shippingAddress?.pincode}</h4>
+                        <h4 className=" text-[18px]">LandMark: {data?.shippingAddress?.nearbyLocation}</h4>
+                        <h4 className=" text-[18px]">Area Name: {data?.shippingAddress?.areaName}</h4>
+                        <h4 className=" text-[18px]">Pincode: {data?.shippingAddress?.pincode}</h4>
                     </div>
 
                     <div className="w-full 800px:w-[40%]">
@@ -242,6 +243,7 @@ const OrderDetails = () => {
                 </div>
             </div>
         </div>
+     </div>
     );
 };
 

@@ -1,0 +1,272 @@
+/* Admin Dashboard styles starts here */
+.DashboardMain-cards-parent a{
+    text-decoration: none !important;
+    color: #000 !important;
+}
+.DashboardMain-cards-sub-content {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+.DashboardMain-cards-sub-image {
+    height: 35px;
+    width: 35px;
+}
+.DashboardMain-cards-sub-image img{
+    height:100%;
+    width:100%;
+}
+.DashboardMain-cards-sub {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 13px;
+}
+.DashboardMain-cards-sub-text {
+    display: flex;
+    gap: 15px;
+}
+.DashboardMain-cards-sub p{
+    font-size: 18px;
+    font-weight: 600;
+    margin: 0;
+}
+.DashboardMain-cards-sub-parent {
+    margin-top: 35px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+    padding: 20px 15px 10px 15px;
+    border-radius: 8px;
+}
+
+/* styles for table */
+.Dashboard-table-Header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 10px;
+    margin-top: 50px;
+    margin-bottom: 15px;
+}
+.Dashboard-table-Header-right {
+    display: flex;
+    gap: 30px;
+}
+.DashboardMain-cards-sub h5{
+    margin: 0;
+}
+.Dashboard-table-Header-right p{
+    margin: 0;
+    font-weight: 500;
+}
+.sidebar-toggle-button-large button{
+    display: none;
+}
+/* Media queries for Dashboard */
+
+@media only screen and (max-width:575px){
+    .offcanvas-body{
+        width: 100%;
+        padding: 0 !important;
+    }
+    aside.ant-layout-sider.ant-layout-sider-dark.sidebar {
+        width: 100% !important;
+        min-width: 100% !important;
+    }
+    .sidebar-toggle-button-large button{
+        display: block;
+    }
+.ant-table-wrapper {
+        clear: both;
+        overflow: scroll;
+        max-width: 100%;
+    }
+    .dashboard-header>h3{
+        font-size: 20px;
+    }
+    .dashboard-header button{
+        margin-right: -30px;
+        font-size: 11px;
+    }
+    .Dashboard-table-component-parent {
+        overflow: scroll;
+    }
+    .Dashboard-table-Header{
+        gap: 20px;
+    }
+    .dashbord-header-container {
+        padding: 0;
+    }
+    .Dashboard-table-Header{
+        margin-top: 40px;
+    }
+    .DashboardMain-cards-sub-parent{
+        margin-top:12px;
+    }
+    .Dashboard-table-Header-left>h5{
+        font-size: 15px;
+        width: 150px;
+        margin: 0;
+    }
+    .Dashboard-table-Header-right p {
+        font-size: 13px;
+    }
+    .DashboardMain-cards-sub-image {
+        height: 27px;
+        width: 27px;
+    }
+    .DashboardMain-cards-sub-content {
+        gap: 10px;
+    }
+    .DashboardMain-cards-sub p,.DashboardMain-cards-sub h5 {
+        font-size: 16px;
+        font-weight: 500;
+    }
+    .DashboardMain-cards-sub-parent {
+        padding: 15px 10px 6px 10px;
+    }
+    .dashboard-content .dashboard-header {
+        padding: 35px 5px 15px 5px !important;
+        align-items: center;
+    }
+ .ant-table-cell a,.ant-table-cell span{
+        font-size: 12px;
+    }
+    .category-select-dropDown{
+        width: 100% !important;
+    }
+    .dashboard-content{
+        padding: 10px !important;
+    }
+    .dashboard-newsletter-parent .w-6\/12 {
+        width: 95%;
+    }
+    .dashboard-newsletter-parent label.font-semibold.pr-2  {
+        font-size: 13px;
+    }
+    .dashboard-newsletter-parent textarea.border-1.rounded.py-2.px-2.w-full.h-\[400px\] {
+        height: 160px;
+    }
+  body{
+    padding-right: 0;
+  }
+  .dashboard-content .dashboard-header .add-btn{
+    margin-right: 20px;
+  }
+  input#formFile {
+    font-size: 14px;
+}
+}
+
+@media only screen and (min-width:576px) and (max-width:767px){
+    .offcanvas-body{
+        width: 100%;
+        padding: 0 !important;
+    }
+    aside.ant-layout-sider.ant-layout-sider-dark.sidebar {
+        width: 100% !important;
+        min-width: 100% !important;
+    }
+    .sidebar-toggle-button-large button{
+        display: block;
+    }
+    .Dashboard-table-Header-left>h5{
+        font-size: 18px;
+        margin: 0;
+    }
+    .Dashboard-table-Header-right p {
+        font-size: 13px;
+    }
+    .Dashboard-table-component-parent .ant-table-cell a{
+        font-size: 12px;
+    }
+    .DashboardMain-cards-sub p,.DashboardMain-cards-sub h5 {
+        font-size: 16px;
+        font-weight: 500;
+    }
+    .Dashboard-table-component-parent {
+        overflow: scroll;
+    }
+    .DashboardMain-cards-sub-parent{
+        margin-top: 15px;
+    }
+    .DashboardMain-cards-sub-image {
+        height: 28px;
+        width: 26px;
+    }
+    .DashboardMain-cards-sub h5{
+        margin: 0;
+    }
+    .DashboardMain-cards-sub p{
+        font-size: 16px;
+    }
+    .DashboardMain-cards-sub h5{
+        font-size: 17px;
+    }
+    .order-details-parent .text-\[18px\] {
+        font-size: 16px;
+    }
+    .dashboard-newsletter-parent .w-6\/12 {
+        width:80%;
+    }
+    .dashboard-newsletter-parent label.font-semibold.pr-2  {
+        font-size: 15px;
+    }
+    .dashboard-newsletter-parent textarea.border-1.rounded.py-2.px-2.w-full.h-\[400px\] {
+        height: 160px;
+    }
+    .dashboard-newsletter-parent .w-full.min-h-\[45vh\].pt-5.rounded.flex.flex-col.items-center.gap-4.outer1-div{
+        padding-top: 0 !important;
+    }
+}
+@media only screen and (min-width:768px) and (max-width:991px){
+    .offcanvas-body{
+        width: 100%;
+        padding: 0 !important;
+    }
+    aside.ant-layout-sider.ant-layout-sider-dark.sidebar {
+        width: 100% !important;
+        min-width: 100% !important;
+    }
+
+    .DashboardMain-cards-sub h5{
+        margin: 0;
+        font-size: 18px;
+    }
+    .DashboardMain-cards-sub p{
+        font-size: 17px;
+        font-weight: 500;
+    }
+    .Dashboard-table-Header-left>h5{
+        font-size: 18px;
+        margin: 0;
+    }
+    .Dashboard-table-Header-right p {
+        font-size: 14px;
+    }
+    .Dashboard-table-component-parent .ant-table-cell a{
+        font-size: 12px;
+    }
+    .DashboardMain-cards-sub-parent{
+        margin-top: 15px;
+    }
+    .DashboardMain-cards-sub-image {
+        height: 29px;
+        width: 30px;
+    }
+    .Dashboard-table-Header-right p{
+        margin: 0;
+    }
+    .Dashboard-table-Header{
+        margin-bottom: 15px;
+    }
+}
+@media only screen and (min-width:992px) and (max-width:1199px){
+    .Dashboard-table-component-parent .ant-table-cell a{
+        font-size: 12px;
+    }
+}
+@media only screen and (min-width:1200px) and (max-width:1399px){
+    .dashboard-content .dashboard-header{
+        align-items: center;
+    }
+}
