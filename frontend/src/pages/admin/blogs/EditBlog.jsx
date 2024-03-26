@@ -35,7 +35,7 @@ function EditBlog() {
                 }
             }
         } catch (e) {
-            alert(e?.response?.data?.message);
+            toast.message(e?.response?.data?.message,{position:'top-right'});
         } finally {
             setLoading(true)
         }
@@ -52,13 +52,13 @@ function EditBlog() {
             setLoading(true)
             const { error, data } = await putApi({ endpoint: `/api/v2/blogs/update/${edit}`, postData: { blogEdit } })
             if (data) {
-                alert("Updated Blog Successfully!")
+                toast.success("Updated Blog Successfully!",{position:'top-right'})
             }
             if (error) {
-                alert(error?.response?.data?.message)
+                toast.error(error?.response?.data?.message,{position:'top-right'})
             }
         } catch (e) {
-            alert(e?.response?.data?.message)
+            toast.message(e?.response?.data?.message,{position:'top-right'})
         } finally {
             setLoading(false)
         }

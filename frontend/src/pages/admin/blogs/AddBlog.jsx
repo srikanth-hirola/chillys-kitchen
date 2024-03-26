@@ -12,6 +12,7 @@ import DashboardHeader from '../../../components/DashboardHeader';
 import BlogModal from '../../../utils/useStateModals/BlogModal';
 import BlogInputs from './BlogInputs';
 import useAPI from '../../../customHooks/API/useAPI';
+import toast from 'react-hot-toast';
 
 
 function AddBlog() {
@@ -27,13 +28,13 @@ function AddBlog() {
             setLoading(true)
             const { error, data } = await postApi({ endpoint: "/api/v2/blogs/compose", postData: { blogData } })
             if (data) {
-                alert("Published Blog Successfully!")
+                toast.success("Published Blog Successfully!",{position:'top-right'})
             }
             if (error) {
-                alert(error?.response?.data?.message)
+                toast.message(error?.response?.data?.message,{ position: 'top-right' })
             }
         } catch (e) {
-            alert(e?.response?.data?.message)
+            toast.message(e?.response?.data?.message,{ position: 'top-right' })
         } finally {
             setLoading(false)
         }

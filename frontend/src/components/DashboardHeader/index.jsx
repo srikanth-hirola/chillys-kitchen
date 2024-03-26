@@ -12,14 +12,14 @@ function DashboardHeader ({ btnText, onClick }) {
             }
 
             <div className='dashbord-header-right'>
-                <img 
+                {/* <img 
                     src={NotificationIcon}
                     alt='notification-icon'
                     className='dashbord-header-icon' />
                 <img 
                     src={SettingsIcon}
                     alt='settings-icon'
-                    className='dashbord-header-icon' />
+                    className='dashbord-header-icon' /> */}
                 <img
                     className='dashbord-header-avatar'
                     src='https://reqres.in/img/faces/9-image.jpg' />

@@ -10,42 +10,8 @@ const sidebar_menu = [
     path: '/admin',
     title: 'Dashboard',
   },
-
-
   {
     id: 2,
-    icon: ProductIcon,
-    title: 'Orders',
-    submenu: [
-      {
-        id: 1,
-        icon: ShippingIcon,
-        path: '/orders',
-        title: 'Total Orders',
-      },
-      {
-        id: 2,
-        icon: ShippingIcon,
-        path: '/pending-orders',
-        title: 'Pending Orders',
-      },
-      {
-        id: 3,
-        icon: ShippingIcon,
-        path: '/shipped-orders',
-        title: 'Shipped Orders',
-      },
-      {
-        id: 4,
-        icon: ShippingIcon,
-        path: '/delivered-orders',
-        title: 'Delivered Orders',
-      },
-    ]
-
-  },
-  {
-    id: 3,
     icon: ShippingIcon,
     title: 'Products',
     submenu: [
@@ -76,7 +42,47 @@ const sidebar_menu = [
     ],
   },
   {
+    id: 3,
+    icon: DashboardIcon,
+    path: '/customers',
+    title: 'Customers',
+  },
+
+  {
     id: 4,
+    icon: ProductIcon,
+    title: 'Orders',
+    submenu: [
+      {
+        id: 1,
+        icon: ShippingIcon,
+        path: '/orders',
+        title: 'Total Orders',
+      },
+      {
+        id: 2,
+        icon: ShippingIcon,
+        path: '/pending-orders',
+        title: 'Pending Orders',
+      },
+      {
+        id: 3,
+        icon: ShippingIcon,
+        path: '/shipped-orders',
+        title: 'Shipped Orders',
+      },
+      {
+        id: 4,
+        icon: ShippingIcon,
+        path: '/delivered-orders',
+        title: 'Delivered Orders',
+      },
+    ]
+
+  },
+
+  {
+    id: 5,
     icon: UserIcon,
     title: 'Blogs',
     submenu: [
@@ -92,17 +98,10 @@ const sidebar_menu = [
         path: '/add-blogs',
         title: 'Add Blog',
       },
-      {
-        id: 23,
-        icon: ShippingIcon,
-        path: '/admin-blogs/:edit',
-        title: 'Edit Blog',
-      },
-
     ],
   },
   {
-    id: 5,
+    id: 6,
     icon: UserIcon,
     title: 'Site Config',
     submenu: [
@@ -155,6 +154,12 @@ const sidebar_menu = [
     icon: UserIcon,
     path: '/coupons',
     title: 'Coupons',
+  },
+  {
+    id: 9,
+    icon: UserIcon,
+    path: '/help&support',
+    title: 'Help & Support',
   },
 ]
 

@@ -5,6 +5,7 @@ import axios from "axios";
 import { server } from "../server";
 import SideBar from "../components/Sidebar";
 import sidebar_menu from "../constants/sidebar-menu";
+import DashboardHeader from "../components/DashboardHeader";
 
 const NewsLetter = () => {
 
@@ -36,12 +37,18 @@ const NewsLetter = () => {
             toast.error(error.response.data.message)
         }
     }
-
-
     return (
         <div className='dashboard-container'>
             <SideBar menu={sidebar_menu} />
-            <div className="w-full min-h-[45vh] pt-5 rounded flex flex-col items-center gap-4 outer1-div">
+            <div className="dashboard-content">
+            <div className="dashboard-header">
+                <h3>Newsletter</h3>
+                <div className="add-btn">
+                    <DashboardHeader />
+                </div>
+            </div>
+           <div className="dashboard-newsletter-parent">
+           <div className="w-full min-h-[45vh] pt-5 rounded flex flex-col items-center gap-4 outer1-div">
                 <div className="w-[97%] flex justify-center border-1 rounded h-fit py-3">
                     <div className='w-6/12'>
                         <h3 className='text-center pt-2 pb-4'>Create Newsletter</h3>
@@ -73,6 +80,9 @@ const NewsLetter = () => {
                     </div>
                 </div>
             </div>
+           </div>
+            </div>
+
         </div>
     )
 }

@@ -8,6 +8,7 @@ import PropTypes from 'prop-types';
 import slugify from 'react-slugify';
 import JoditEditor from 'jodit-react';
 import { Link } from 'react-router-dom';
+import toast from 'react-hot-toast';
 
 const { Option } = Select;
 const BlogInputs = ({ blogData, setBlogData, onFinish, _id }) => {
@@ -32,7 +33,7 @@ const BlogInputs = ({ blogData, setBlogData, onFinish, _id }) => {
                 const { error, data } = await getApi({ endpoint: `/api/v2/blogs/category` })
 
                 if (error) {
-                    alert(error?.response?.data?.message)
+                    toast.error(error?.response?.data?.message,{position:'top-right'})
                 }
                 if (data) {
                     setCategoryDropDown(data?.categories)
@@ -88,7 +89,7 @@ const BlogInputs = ({ blogData, setBlogData, onFinish, _id }) => {
                 };
                 reader.readAsDataURL(file);
             } else {
-                alert(`File "${file.name}" exceeds the size limit of 200 KB.`);
+                toast.message(`File "${file.name}" exceeds the size limit of 200 KB.`,{position:'top-right'});
             }
         };
 
@@ -116,7 +117,7 @@ const BlogInputs = ({ blogData, setBlogData, onFinish, _id }) => {
     const handleSlugify = (e) => {
         e.preventDefault();
         if (!blogData?.title) {
-            alert("Title is required!")
+            toast.error("Title is required!")
             return;
         }
         const slug = slugify(blogData?.title);
@@ -128,18 +129,18 @@ const BlogInputs = ({ blogData, setBlogData, onFinish, _id }) => {
         try {
             const { error, data } = await postApi({ endpoint: '/api/v2/blogs/category', postData: { category } });
             if (error) {
-                alert(error?.response?.data?.message)
+                toast.error(error?.response?.data?.message,{position:'top-right'})
             }
             if (data) {
                 let updatedState = [...categoryDropDown];
                 updatedState.push({ category });
                 setCategoryDropDown(updatedState);
-                alert("Added Category successfully");
+                toast.success("Added Category successfully",{position:'top-right'});
                 setModalVisible(false);
                 setCategoryName('');
             }
         } catch (e) {
-            alert(e?.response?.data?.message);
+            toast.error(e?.response?.data?.message,{position:'top-right'});
         }
     }
 
@@ -154,7 +155,7 @@ const BlogInputs = ({ blogData, setBlogData, onFinish, _id }) => {
         try {
             const { error, data } = await deleteApi({ endpoint: `/api/v2/blogs/delete-Img/${_id}`, postData: { data: { public_id } } })
             if (error) {
-                alert(error?.response?.data?.message)
+                toast.error(error?.response?.data?.message,{position:'top-right'})
             }
             if (data) {
                 let updatedState = { ...blogData };
@@ -162,10 +163,10 @@ const BlogInputs = ({ blogData, setBlogData, onFinish, _id }) => {
                 images = images?.filter((image) => image?.public_id !== public_id)
                 updatedState.large_thumb = images;
                 setBlogData(updatedState);
-                alert('Image delete successfully!')
+                toast.success('Image delete successfully!',{position:'top-right'})
             }
         } catch (error) {
-            alert(error?.response?.data?.message)
+            toast.error(error?.response?.data?.message,{position:'top-right'})
         }
     }
 

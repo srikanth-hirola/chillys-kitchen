@@ -8,6 +8,7 @@ import { Button, Modal, Table, message } from 'antd'
 import { useSelector } from 'react-redux'
 import axios from 'axios'
 import { server } from '../../../server'
+import toast from 'react-hot-toast'
 
 const CouponsList = () => {
   const [modalVisible, setModalVisible] = useState(false);
@@ -45,13 +46,13 @@ const CouponsList = () => {
   const handleDelete = async (id) => {
     try {
       await axios.delete(`${server}/coupon/delete-coupon/${id}`, { withCredentials: true }).then((res) => {
-        message.success("Coupon code deleted succesfully!")
+        toast.success("Coupon code deleted succesfully!",{position:'top-right'})
       })
       setTimeout(() => {
         window.location.reload();
       }, [2000])
     } catch (error) {
-      message.error(error?.response?.data?.message)
+      toast.error(error?.response?.data?.message,{position:'top-right'})
     }
   };
 
@@ -81,13 +82,13 @@ const CouponsList = () => {
       .then((res) => {
         setModalVisible(false);
         setEditingCoupon(null);
-        message.success("Coupon code created successfully!");
+        toast.success("Coupon code created successfully!",{position:'top-right'});
         setTimeout(() => {
           window.location.reload();
         }, [2000])
       })
       .catch((error) => {
-        message.error(error.response.data.message);
+        toast.error(error.response.data.message,{position:'top-right'});
       });
 
   };
@@ -109,7 +110,7 @@ const CouponsList = () => {
           { withCredentials: true }
         )
         .then((res) => {
-          message.success("Coupon code updated successfully!");
+          toast.success("Coupon code updated successfully!",{position:'top-right'});
           setModalVisible(false);
           setEditingCoupon(null);
           setTimeout(() => {
@@ -117,10 +118,10 @@ const CouponsList = () => {
           }, [2000])
         })
         .catch((error) => {
-          message.error(error.response.data.message);
+          toast.error(error.response.data.message,{position:'top-right'});
         });
     } else {
-      message.error("Coupan is not selected!")
+      toast.error("Coupan is not selected!",{position:'top-right'})
     }
 
 
@@ -169,8 +170,10 @@ const CouponsList = () => {
       key: 'actions',
       render: (text, record) => (
         <>
-          <Button onClick={() => showModal(record)}>Edit</Button>
+          <div className='d-flex'>
+          <Button className='mr-1' onClick={() => showModal(record)}>Edit</Button>
           <Button onClick={() => handleDelete(record?._id)}>Delete</Button>
+          </div>
         </>
       ),
     },
