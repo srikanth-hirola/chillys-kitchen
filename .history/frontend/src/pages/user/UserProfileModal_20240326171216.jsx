@@ -95,7 +95,7 @@ const UserProfileModal = () => {
     return (
         <>
 
-            <Sider style={{ padding: '0' }} className="sidebar sidebar-profile siderbar-page-profile">
+            <Sider style={{ padding: '0' }} className="sidebar siderbar-page-profile">
                 <div className='side-toggle-button'>
                     <Menu
                         mode="inline"

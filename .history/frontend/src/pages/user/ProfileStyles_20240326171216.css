@@ -227,7 +227,7 @@ li.ant-menu-item.ant-menu-item-only-child.active{
         display: none;
     }
 
-    .sidebar.sidebar-profile .ant-layout-sider-children {
+    .sidebar .ant-layout-sider-children {
         display: flex;
         justify-content: space-between;
     }
