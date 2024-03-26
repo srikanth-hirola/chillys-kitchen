@@ -37,7 +37,7 @@ function ProductList() {
     }
   }
 
-
+console.log("data",products.map((data)=>data.name))
   const dataSource = [
     {
       key: '1',
@@ -91,6 +91,7 @@ function ProductList() {
       <div className='dashboard-content'>
       <div className="dashboard-header">
                     <h3>Products List</h3>
+                   
                     <div className="add-btn">
                         <DashboardHeader />
                         <div >
