@@ -415,7 +415,7 @@ router.post(
 
 // log out from shop
 router.get(
-  '/logout',
+  '/logout-admin',
   catchAsyncErrors(async (req, res, next) => {
     try {
       res.cookie('seller_token', null, {

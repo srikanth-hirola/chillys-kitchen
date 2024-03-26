@@ -11,19 +11,18 @@ const homePageSchema = new mongoose.Schema({
     headerContent: Object,
     bannerImages: Array,
     bannerContent: Object,
+    cardsImages: Array,
     menuContent: Object,
 
     // aboutus section one
-    aboutUsImage: {
-        public_id: String,
-        url: String,
-    },
-    aboutUsContent: Object,
+    aboutUsSectionOneImages: Array,
+    aboutUsOneContent: Object,
+    serviceImages: Array,
     serviceContent: Object,
 
     // about us section two
-    aboutUsSectionTwoImage: Array,
-    aboutUsSectionTwoContent: Object,
+    deliverySectionImages: Array,
+    deliverySectionContent: Object,
 
     // cclient imaages
     clientImages: Array,

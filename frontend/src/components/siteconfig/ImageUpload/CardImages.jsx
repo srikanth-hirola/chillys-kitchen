@@ -5,8 +5,9 @@ import toast from 'react-hot-toast';
 import { useDispatch } from 'react-redux';
 import { server } from '../../../server';
 import { DeleteImageModal } from './DeleteImageModal';
+import { DeleteOutlined, UploadOutlined } from '@ant-design/icons'
 
-const HomePageImage = ({ logoLoading, setLogoLoading, uploadedImages, name }) => {
+const CardImages = ({ logoLoading, setLogoLoading, uploadedImages, name }) => {
     // const { handleImageUploadAPI, handleLogoChange, handleRemoveImage } = useImagesHandler()
     const [allImages, setAllImages] = useState([]);
     const [modalShow, setModalShow] = useState(false);
@@ -73,13 +74,14 @@ const HomePageImage = ({ logoLoading, setLogoLoading, uploadedImages, name }) =>
 
     return (
         <>
-            <div className='gap-3 my-4'>
+            <div className='flex gap-3 my-4 mb-5'>
                 {uploadedImages?.length > 0 && uploadedImages.map((val, index) => (
-                    <div className='w-[130px] h-[80px] rounded overflow-hidden object-contain group relative border-1'>
-                        <button onClick={(e) => handleDeleteConfirmModel(e, val.public_id)} className='hidden group-hover:flex absolute inset-0 space-x-3 z-50 group-hover:h-full w-full justify-center items-center transition-transform transform-gpu filter-blur-[5px]' >
-                            {/* <FontAwesomeIcon icon={faTrash} style={{ color: "red" }} /> */}delete icon
+                    <div className=' flex w-[130px] h-[80px] rounded overflow-hidden object-contain group relative border-1'>
+                        <button onClick={(e) => handleDeleteConfirmModel(e, val.public_id)} className=' hidden group-hover:flex absolute inset-0 space-x-3 z-50 group-hover:h-full w-full justify-center items-center transition-transform transform-gpu filter-blur-[5px]' >
+                            {/* <FontAwesomeIcon icon={faTrash} style={{ color: "red" }} /> */}
+                            <DeleteOutlined style={{ color: "red", fontSize: "20px" }}/>
                         </button>
-                        <img src={val?.url} alt='bannerImage' className='w-full h-full group-hover:opacity-20' width="100px" />
+                        <img src={val?.url} alt='cardsImages' className='w-full h-full group-hover:opacity-20' width="100px" />
                     </div>))}
             </div>
 
@@ -89,15 +91,16 @@ const HomePageImage = ({ logoLoading, setLogoLoading, uploadedImages, name }) =>
                     {allImages?.length > 0 && allImages.map((val, index) => (
                         <div key={index} className='w-[130px] h-[80px] rounded overflow-hidden object-contain group relative border-1'>
                             <button onClick={(e) => handleRemoveImage({ e, index, allImages, setAllImages })} className='hidden group-hover:flex absolute inset-0 space-x-3 z-50 group-hover:h-full w-full justify-center items-center transition-transform transform-gpu filter-blur-[5px]' >
-                                {/* <FontAwesomeIcon icon={faTrash} style={{ color: "red" }} /> */}delete Icon
+                                {/* <FontAwesomeIcon icon={faTrash} style={{ color: "red" }} /> */}
+                                <DeleteOutlined style={{ color: "red", fontSize: "20px" }}/>
                             </button>
-                            <img src={val} alt='bannerImage' className='w-full h-full group-hover:opacity-20' width="100px"/>
+                            <img src={val} alt='cardsImages' className='w-full h-full group-hover:opacity-20'/>
                         </div>
                     ))}
                 </div>
                 {logoLoading ? <button
-                    className='w-[150px] h-[40px] rounded bg-green-500 text-white'>Loading...</button> : <button
-                        className='w-[150px] h-[40px] rounded bg-green-500 text-white' onClick={() => handleImageUploadAPI({ allImages, name: name, setAllImages, setLogoLoading })}>Upload Images</button>}
+                    className=' w-[150px] h-[40px] rounded bg-green-500 text-white'>Loading...</button> : <button
+                        className='w-[150px] h-[40px] rounded bg-green-500 text-white' onClick={() => handleImageUploadAPI({ allImages, name: name, setAllImages, setLogoLoading })}><UploadOutlined style={{ fontSize: '20px' }} />Upload Images</button>}
             </div>
             {modalShow && 
             <DeleteImageModal
@@ -108,9 +111,9 @@ const HomePageImage = ({ logoLoading, setLogoLoading, uploadedImages, name }) =>
                 setModalShow={setModalShow}
                 objName={name}
             />
-            }
+             }
         </>
     )
 }
 
-export default HomePageImage
+export default CardImages

@@ -44,7 +44,7 @@ function Login() {
             )
             .then((res) => {
                 toast.success("Login Success!");
-                navigate("/dashboard");
+                navigate("/admin");
                 window.location.reload(true);
             })
             .catch((err) => {
