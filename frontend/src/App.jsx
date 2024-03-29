@@ -222,7 +222,7 @@ function App() {
             </SellerProtectedRoute>
           }
         />
-        <Route
+        {/* <Route
           exact
           path="/shipped-orders"
           element={
@@ -230,7 +230,7 @@ function App() {
               <ShippedOrders />
             </SellerProtectedRoute>
           }
-        />
+        /> */}
         <Route
           exact
           path="/delivered-orders"

@@ -116,6 +116,19 @@ router.post('/category', catchAsyncErrors(async (req, res) => {
     }
 }));
 
+// get blog by id
+router.get('/blog/slug/:slug', catchAsyncErrors(async (req, res) => {
+    const requestSlug = req.params.slug;
+    Blog.findOne({ "slug": requestSlug })
+        .then((result) => {
+            res.send(result);
+        })
+        .catch((err) => {
+            console.log(err);
+        });
+}));
+
+// blog edit by id
 router.get('/blog/edit/:id', catchAsyncErrors(async (req, res) => {
     const requestID = req.params.id;
     Blog.findOne({ _id: requestID })

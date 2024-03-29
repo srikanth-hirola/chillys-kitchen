@@ -68,12 +68,6 @@ const sidebar_menu = [
       {
         id: 3,
         icon: ShippingIcon,
-        path: '/shipped-orders',
-        title: 'Shipped Orders',
-      },
-      {
-        id: 4,
-        icon: ShippingIcon,
         path: '/delivered-orders',
         title: 'Delivered Orders',
       },

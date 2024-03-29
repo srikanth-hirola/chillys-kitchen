@@ -1,9 +1,27 @@
 /* eslint-disable no-unused-vars */
 import { Pagination } from 'antd'
-import React, { useState } from 'react'
+import axios from 'axios';
+import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
+import { server } from '../../server';
 
 const BlogBody = () => {
+
+  const [blogData, setBlogData] = useState([]);
+    console.log("blogData", blogData)
+    const fetchBlog = async () => {
+        try {
+            const response = await axios.get(`${server}/blogs/blogs-list`);
+            setBlogData(response.data)
+        } catch (error) {
+            console.log(error)
+        }
+    };
+
+    useEffect(() => {
+        fetchBlog();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
 
   const data = [
     {
@@ -113,7 +131,7 @@ const BlogBody = () => {
   // Calculate the index range for the current page
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentItems = data.slice(indexOfFirstItem, indexOfLastItem);
+  const currentItems = blogData.slice(indexOfFirstItem, indexOfLastItem);
 
   // Change page
   const handleChangePage = (pageNumber) => {
@@ -137,13 +155,13 @@ const BlogBody = () => {
             <div className="row">
               {currentItems.map((blogData, index) => (
                 <div key={index} className="col-md-4 col-12 col-sm-6">
-                  <Link to="">
+                  <Link to={`/blog/${blogData.slug}`}>
                     <div className="blog-sec-card">
                       <div className="blog-sec-img">
-                        <img src={blogData.img} alt="" />
+                        <img src={blogData?.large_thumb[0].url} alt="" />
                       </div>
                       <div className="blog-sec-text">
-                        <h3>{blogData.title}</h3>
+                        <h3>{blogData?.title}</h3>
                         <p>{blogData.date}</p>
                       </div>
                     </div>

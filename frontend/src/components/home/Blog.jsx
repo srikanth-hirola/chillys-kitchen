@@ -1,8 +1,28 @@
 /* eslint-disable no-unused-vars */
-import React from 'react'
+import axios from 'axios';
+import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
+import { server } from '../../server';
 
 const Blog = () => {
+
+    const [blogData, setBlogData] = useState([]);
+    console.log("blogData", blogData)
+    const fetchBlog = async () => {
+        try {
+            const response = await axios.get(`${server}/blogs/blogs-list`);
+            setBlogData(response.data)
+        } catch (error) {
+            console.log(error)
+        }
+    };
+
+    useEffect(() => {
+        fetchBlog();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
+
+
   return (
     <>
         <div className="blog-home">

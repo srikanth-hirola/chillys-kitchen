@@ -48,8 +48,8 @@ router.post(
     '/contact',
     catchAsyncErrors(async (req, res, next) => {
         try {
-            const { form } = req.body;
-            await contact.create(form);
+            const { formData }  = req.body;
+            await contact.create(formData);
             res.status(201).json({
                 success: true
             })
@@ -63,7 +63,6 @@ router.post(
 // get all products of a shop
 router.get(
     '/contact',
-    isSeller,
     catchAsyncErrors(async (req, res, next) => {
         try {
             const contacts = await contact.find({});
