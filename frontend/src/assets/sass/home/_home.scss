@@ -765,3 +765,251 @@
  
   
 // logo section
+
+
+@media screen and (max-width:767px){
+    p{
+        text-align: justify;
+    }
+    .home-banner-sec .home-banner-sec-sub .banner-text .banner-title h1 {
+        font-size: 26px !important;
+        line-height: 38px !important;
+        strong {
+            color: #0c2c64;
+            font-size: 34px  !important;
+        }
+    }
+    .home-banner-sec .home-banner-sec-sub .banner-text {
+        min-height: 550px;
+        .banner-actions .banner-action-one {
+            padding: 14px 13px !important;
+            font-size: 12px !important;
+        }
+    }
+    .home-banner-sec .home-banner-sec-sub {
+        width: 100%;
+        height: fit-content !important;
+        background-size: cover;
+    }
+    .home-banner-sec .home-banner-sec-sub .banner-text{
+        height: fit-content !important;
+    }
+    .home-banner-sec .home-banner-sec-sub .banner-img {
+        width: 100%;
+        height: fit-content !important;
+    }
+    .home-browse .home-browse-title h2 {
+        text-align: center;
+        font-family: "Poppins", sans-serif;
+        font-size: 25px;
+        font-style: normal;
+        font-weight: 600;
+        padding: 5px 0px 0px;
+        margin: 0px;
+    }
+    .home-browse .home-browse-cards-sec {
+        border-radius: 12px;
+        background: #FFF;
+        padding: 44px 20px 54px;
+        box-shadow: rgba(100, 100, 111, 0.2) 4px 1px 22px -2px;
+        margin: 8px 0px;
+    }
+    .home-about .home-about-text h3 {
+        font-size: 29px;
+        line-height: 40.5px;
+        margin: 20px 0px;
+    }
+    .home-about .home-about-img .home-about-img-text-sec {
+        position: relative;
+        width: 100%;
+        border-radius: 12px;
+        background: #474747;
+        padding: 30px;
+        height: 280px;
+        bottom: 0;
+        right: 0;
+        margin: 20px 0px;
+    }
+    .home-about .home-about-text {
+        width: 96%;
+        margin: auto;
+    }
+    .home-services .home-services-title h3 {
+        color: var(--cafeu-vercel-app-mine-shaft, #0c2c64);
+        text-align: center;
+        font-family: "Poppins", sans-serif;
+        font-size: 25px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 29.8px;
+        padding: 10px 0px 48px;
+    }
+    .home-services .home-services-sec-card {
+        margin: 6px 0px;
+    }
+    .home-delivery .row.align-items-center {
+        flex-direction: column-reverse;
+    }
+    
+    .home-delivery .home-delivery-sec-text h3 {
+        font-size: 30px;
+        line-height: 41px;
+        padding-bottom: 20px;
+    }
+    
+    
+    .home-delivery .home-delivery-sec-text ul li {
+        width: 100%;
+    }
+    
+    
+    .home-delivery .home-delivery-sec-text ul li p {
+        font-size: 16px;
+    }
+    
+    .home-testimonal .title-testimonal h3 {
+        font-size: 31px;
+        line-height: 39px;
+    }
+    
+    .blog-home .blog-home-title h2 {
+        font-size: 17px;
+        line-height: 25px;
+    }
+    
+    .blog-home .blog-home-title button {
+        padding: 3px 21px;
+        font-size: 9px;
+    }
+    
+    .blog-home .blog-home-title {
+        padding: 0px 0px 30px;
+    }
+    
+}
+@media screen and (min-width:768px) and (max-width:991px){
+    p{
+        text-align: justify;
+    }
+    .home-banner-sec .home-banner-sec-sub .banner-text .banner-title h1 {
+        font-size: 26px !important;
+        line-height: 38px !important;
+        strong {
+            color: #0c2c64;
+            font-size: 34px  !important;
+        }
+    }
+    .home-banner-sec .home-banner-sec-sub .banner-text {
+        min-height: 550px;
+        .banner-actions .banner-action-one {
+            padding: 14px 13px !important;
+            font-size: 12px !important;
+        }
+    }
+    .home-banner-sec .home-banner-sec-sub {
+        width: 100%;
+        height: fit-content !important;
+        background-size: cover;
+    }
+    .home-banner-sec .home-banner-sec-sub .banner-text{
+        height: fit-content !important;
+    }
+    .home-banner-sec .home-banner-sec-sub .banner-img {
+        width: 100%;
+        height: fit-content !important;
+    }
+    .home-browse .home-browse-title h2 {
+        text-align: center;
+        font-family: "Poppins", sans-serif;
+        font-size: 25px;
+        font-style: normal;
+        font-weight: 600;
+        padding: 5px 0px 0px;
+        margin: 0px;
+    }
+    .home-browse .home-browse-cards-sec {
+        border-radius: 12px;
+        background: #FFF;
+        padding: 44px 20px 54px;
+        box-shadow: rgba(100, 100, 111, 0.2) 4px 1px 22px -2px;
+        margin: 8px 0px;
+    }
+    .home-about .home-about-text h3 {
+        font-size: 29px;
+        line-height: 40.5px;
+        margin: 20px 0px;
+    }
+    .home-about .home-about-img .home-about-img-text-sec {
+        position: relative;
+        width: 100%;
+        border-radius: 12px;
+        background: #474747;
+        padding: 30px;
+        height: 280px;
+        bottom: 0;
+        right: 0;
+        margin: 20px 0px;
+    }
+    .home-about .home-about-text {
+        width: 96%;
+        margin: auto;
+    }
+    .home-services .home-services-title h3 {
+        color: var(--cafeu-vercel-app-mine-shaft, #0c2c64);
+        text-align: center;
+        font-family: "Poppins", sans-serif;
+        font-size: 25px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 29.8px;
+        padding: 10px 0px 48px;
+    }
+    .home-services .home-services-sec-card {
+        margin: 6px 0px;
+    }
+    .home-delivery .row.align-items-center {
+        flex-direction: row;
+    }
+    
+    .home-delivery .home-delivery-sec-text h3 {
+        font-size: 30px;
+        line-height: 41px;
+        padding-bottom: 20px;
+    }
+    
+    
+    .home-delivery .home-delivery-sec-text ul li {
+        width: 100%;
+    }
+    
+    
+    .home-delivery .home-delivery-sec-text ul li p {
+        font-size: 16px;
+    }
+    
+    .home-testimonal .title-testimonal h3 {
+        font-size: 31px;
+        line-height: 39px;
+    }
+    
+    .blog-home .blog-home-title h2 {
+        font-size: 24px;
+        line-height: 25px;
+    }
+    
+    .blog-home .blog-home-title button {
+        padding: 3px 21px;
+        font-size: 15px;
+        font-weight: 500;
+    }
+    .home-browse-cards .col-md-3{
+        width: 50%;
+    }
+    .home-banner-sec .home-banner-sec-sub .banner-text .banner-actions .banner-action-two {
+        font-size: 13px;
+    }
+    .blog-home .blog-home-title {
+        padding: 0px 0px 30px;
+    }
+    
+}

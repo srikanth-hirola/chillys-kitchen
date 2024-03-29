@@ -85,6 +85,9 @@ const Navbar = () => {
                       </Dropdown>
                     </li>
                     <li>
+                      <Link to="/catering">Catering</Link>
+                    </li>
+                    <li>
                       <Link to="/blog">Blog</Link>
                     </li>
                     <li>

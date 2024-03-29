@@ -190,3 +190,22 @@
     }
   }
 }
+.payment-summary p {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #0c2c64;
+  padding: 9px 29px 0px 0px;
+}
+
+.payment-summary strong {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  /* border-bottom: 1px solid #0c2c64; */
+  padding: 14px 15px 15px 5px;
+  background: #0c2c64;
+  color: #fff;
+  margin: 10px 0px;
+  border-radius: 4px;
+}

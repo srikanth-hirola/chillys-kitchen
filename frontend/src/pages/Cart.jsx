@@ -42,7 +42,9 @@ const Cart = () => {
     // useEffect(() => {
     //     setCartData(cart)
     // }, [])
-
+    const deliveryCharges = 50; // Example delivery charges
+    const couponDiscount = 10; // Example coupon discount
+    const grandTotal = totalPrice + deliveryCharges - couponDiscount;
 
     return (
         <>
@@ -54,7 +56,7 @@ const Cart = () => {
                             <h3>Cart</h3>
                         </div>
                         <div className="row ">
-                            <div className="col-md-8">
+                            <div className="col-md-6">
                                 <div className="cart-body">
                                     <div className="cart-items">
                                         <div className="header">
@@ -71,7 +73,15 @@ const Cart = () => {
                                             </React.Fragment>
                                         ))}
                                     </div>
+                                    <div className="payment-summary">
+                                        <h4>Bill Details</h4>
+                                        <p>Total Items: <span>{cartData.length}</span></p>
+                                        <p>Delivery Charges: ₹ <span>{deliveryCharges}</span></p>
+                                        <p>Coupon Discount: ₹ <span>{couponDiscount}</span></p>
+                                        <strong>Grand Total: ₹ <span>{grandTotal}</span></strong>
+                                    </div>
                                     <div className="px-5 mb-3 bg-[#fa8232] rounded">
+                                    
                                         {/* checkout buttons */}
                                         <Link to="/checkout">
                                             <div
@@ -87,7 +97,7 @@ const Cart = () => {
 
                             </div>
 
-                            <div className="col-md-4">
+                            <div className="col-md-6">
                                 <div className="cart-checkout">
                                     <h5>Have a coupon?</h5>
                                     <p>Add your code for an instant cart discount</p>

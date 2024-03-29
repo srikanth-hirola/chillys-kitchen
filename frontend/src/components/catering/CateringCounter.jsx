@@ -59,7 +59,7 @@ const CateringCounter = () => {
   return (
     <div className="catering-counter">
       <div className="row">
-        <div className="col">
+        <div className="col-md-6">
           <div className="card">
             <img src={cards[0].image} alt={cards[0].label} />
            
@@ -69,7 +69,7 @@ const CateringCounter = () => {
             <div className="label">{cards[0].label}</div>
           </div>
         </div>
-        <div className="col mt-5">
+        <div className="col-md-6 mt-5">
           <div className="card">
             <img src={cards[1].image} alt={cards[1].label} />
             <div className="counter">
@@ -78,7 +78,7 @@ const CateringCounter = () => {
             <div className="label">{cards[1].label}</div>
           </div>
         </div>
-        <div className="col">
+        <div className="col-md-6">
           <div className="card">
             <img src={cards[2].image} alt={cards[2].label} />
             <div className="counter">
@@ -87,7 +87,7 @@ const CateringCounter = () => {
             </div>
           </div>
         </div>
-        <div className="col mt-5">
+        <div className="col-md-6 mt-5">
           <div className="card">
             <img src={cards[3].image} alt={cards[3].label} />
             <div className="counter">

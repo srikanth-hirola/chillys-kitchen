@@ -8,15 +8,15 @@ const Delivery = () => {
         <div className="home-delivery-sub">
             <div className="container">
                 <div className="row align-items-center">
-                    <div className="col-md-8">
+                    <div className="col-md-6 col-lg-6 col-xl-6 col-xxl-6">
                         <div className="home-delivery-img-sec">
                             <div className="row">
-                                <div className="col-md-8">
+                                <div className=" col-md-6 col-lg-6 col-xl-6 col-xxl-6">
                                     <div className="home-delivery-img-sec-img-one">
                                         <img src="images/home/fast-1.webp" alt="" />
                                     </div>
                                 </div>
-                                <div className="col-md-4">
+                                <div className=" col-md-6 col-lg-6 col-xl-6 col-xxl-6">
                                      <div className="home-delivery-img-sec-img-two">
                                         <img src="images/home/fast-2.webp" alt="" />
                                     </div>
@@ -27,7 +27,7 @@ const Delivery = () => {
                             </div>
                         </div>
                     </div>
-                    <div className="col-md-4">
+                    <div className=" col-md-6 col-lg-6 col-xl-6 col-xxl-6">
                                     <div className="home-delivery-sec-text">
                                         <div className="home-delivery-sec-text">
                                             <h3>Fastest Food Delivery in City</h3>

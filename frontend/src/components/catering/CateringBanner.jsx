@@ -8,7 +8,7 @@ const CateringBanner = () => {
         <>
             <div className="catering-banner">
                 <div className="container">
-                    <div className="row">
+                    <div className="row align-items-center">
                         <div className="col-md-6">
                             <div className="catering-banner-sec">
                                 <h3>Planning Fabulous</h3>
@@ -17,8 +17,10 @@ const CateringBanner = () => {
                                 <p>Find out professional caterers in your city for your Dream Events,
                                     long established fact a reader will be distracted the readable.</p>
                                 <div className="buttons-sec">
-                                    <Button >Know More</Button>
-                                    <Button >Know More</Button>
+                                    <Button className='' >
+                                        <a href="#cateringForm">Get Started</a>
+                                    </Button>
+                                    {/* <Button className='mx-2' >Know More</Button> */}
                                 </div>
                             </div>
                         </div>

@@ -11,7 +11,7 @@ const CateringForm = () => {
   };
   return (
     <>
-  <div className="catering-form">
+  <div className="catering-form" id='cateringForm' >
     <div className="catering-form-sub" style={{backgroundImage:`url(/images/home/form-banner.webp)`}}>
       <div className="container">
        

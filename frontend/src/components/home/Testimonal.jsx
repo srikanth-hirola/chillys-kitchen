@@ -26,6 +26,7 @@ export default function Testimonal() {
         autoplay={{
             delay:200
         }}
+        
         modules={[FreeMode]}
         className="mySwiper"
       >

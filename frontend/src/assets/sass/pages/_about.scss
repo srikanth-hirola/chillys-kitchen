@@ -396,3 +396,199 @@
 }
  }
     
+
+ @media screen and (max-width:767px){
+  .about-banner {
+    margin: 80px 0px;
+}
+.about-banner .banner-sec-img .about-banner-text h2 {
+  font-size: 35px;
+  line-height: 48px;
+  width: 100%;
+}
+.about-banner .banner-sec-img .about-banner-text p {
+
+  width: 100%;
+}
+.about-banner .about-banner-text-sec {
+  border-radius: 30px;
+  margin: 80px 0px -49px;
+}
+.about-banner .about-banner-text-sec .about-banner-text-bg {
+  width: 87%;
+  position: absolute;
+  border-radius: inherit;
+  height: 1528px;
+  right: 7.5%;
+  background: linear-gradient(200deg, #d9d9d9 -18.39%, rgba(217, 217, 217, 0) 89.51%);
+}
+.about-new-sec .row.align-items-center {
+  flex-direction: column-reverse;
+}
+
+.about-new .about-new-text {
+  padding: 0;
+}
+
+.about-new .about-new-text h3 {
+  font-size: 30px;
+  line-height: 43px;
+}
+
+.about-new .about-new-text .about-new-list {
+  flex-wrap: wrap;
+}
+
+ul.about-new-list {}
+
+.about-new .about-new-text .about-new-list li {
+  width: 100%;
+  margin: 7px 0px;
+}
+
+.about-new .about-new-image-sec .about-new-img-3 {
+  margin: 11px 0px;
+}
+
+.about-new .about-new-image-sec .about-new-img-2 {
+  margin-bottom: 7px;
+  margin-top: 14px;
+}
+
+.catering-services .services-section .scribe-one {
+  left: -14px;
+  top: -31px;
+  width: 100px;
+  height: 100px;
+}
+
+.catering-services .services-section .scribe-two {
+  bottom: -21px;
+  right: -24px;
+  width: 130px;
+  height: 130px;
+}
+
+.catering-services {
+  padding: 80px 0px 0px;
+}
+
+.about-timing .about-timing-sub {
+  width: 93%;
+  border-radius: 4px;
+  text-align: center;
+  padding: 10px;
+}
+.about-banner .banner-sec-img .banner-scrible img {
+  position: absolute;
+  width: 250px;
+  display: none;
+}
+ }
+
+ @media screen and (min-width:768px) and (max-width:992px) {
+  .about-banner {
+    margin: 80px 0px;
+}
+.about-banner-sec{
+  .row{
+    .col-md-6{
+      width: 100%;
+    }
+  }
+}
+.about-banner-text-sec {
+  .row{
+    .col-md-6{
+      width: 48%;
+    }
+  }
+}
+.about-banner .banner-sec-img .about-banner-text h2 {
+  font-size: 35px;
+  line-height: 48px;
+  width: 100%;
+}
+.about-banner .banner-sec-img .about-banner-text p {
+
+  width: 100%;
+}
+.about-banner .about-banner-text-sec {
+  border-radius: 30px;
+  margin: 80px 0px -49px;
+}
+.about-banner .about-banner-text-sec .about-banner-text-bg {
+  width: 93%;
+  position: absolute;
+  border-radius: inherit;
+  height: 584px;
+  right: 3.5%;
+  background: linear-gradient(200deg, #d9d9d9 -18.39%, rgba(217, 217, 217, 0) 89.51%);
+}
+.about-new-sec .row.align-items-center {
+  flex-direction: row;
+}
+
+.about-new .about-new-text {
+  padding: 0;
+}
+.services-section {
+  .col-md-3{
+    width: 48%;
+  }
+}
+.about-new .about-new-text h3 {
+  font-size: 30px;
+  line-height: 43px;
+}
+
+.about-new .about-new-text .about-new-list {
+  flex-wrap: wrap;
+}
+
+ul.about-new-list {}
+
+.about-new .about-new-text .about-new-list li {
+  width: 100%;
+  margin: 7px 0px;
+}
+
+.about-new .about-new-image-sec .about-new-img-3 {
+  margin: 11px 0px;
+}
+
+.about-new .about-new-image-sec .about-new-img-2 {
+  margin-bottom: 7px;
+  margin-top: 14px;
+}
+
+.catering-services .services-section .scribe-one {
+  left: -14px;
+  top: -31px;
+  width: 100px;
+  height: 100px;
+}
+
+.catering-services .services-section .scribe-two {
+  bottom: -21px;
+  right: -24px;
+  width: 130px;
+  height: 130px;
+}
+
+.catering-services {
+  padding: 80px 0px 0px;
+}
+
+.about-timing .about-timing-sub {
+  width: 93%;
+  border-radius: 4px;
+  text-align: center;
+  padding: 10px;
+}
+.about-banner .banner-sec-img .banner-scrible img {
+  position: absolute;
+  width: 250px;
+  display: none;
+}
+ }

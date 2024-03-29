@@ -24,7 +24,7 @@ const ProductCard = ({ product, key }) => {
     const { incrementCount, decrementCount, addToCartHandler, getOriginalPrice, getDiscountPrice, buyNowProduct } = useDetailsPageHandler({ data: product, click, count, selectedColor, setClick, setCount, setLimited, setMainImg, setSoldOut })
 
     return (
-        <div className="col-md-3" key={key}>
+        <div className="col-md-6 col-lg-3 col-xl-3 col-xxl-3" key={key}>
             <div className="menu-product-card">
                 <Link to={`${useAppendParam({ data: [{ param: 'subcat', value: getSubCategory({ data: product?.subCategory, name: "_id" })?.subCategory }, { param: 'product', value: product?.slug }] })}`}>
                     <div className="menu-product-card-img">

@@ -129,3 +129,24 @@
         
     }
 }
+
+
+@media screen and (min-width:991px) and (max-width:1200px){
+    .menu-product .menu-product-card .menu-product-sec .rating svg {
+        font-size: 14px;
+        color: #dcdc5c;
+    }
+    .menu-product .menu-product-card .menu-product-sec .product-card-actions span {
+        background: #0c2c64;
+        padding: 4px;
+        border-radius: 4px;
+        font-size: 8px;
+        margin: 3px !important;
+    }
+}
+@media screen and (min-width:1200px) and (max-width:1400px){
+    .menu-product .menu-product-card .menu-product-sec .rating svg {
+        font-size: 16px;
+        color: #dcdc5c;
+    }
+}
