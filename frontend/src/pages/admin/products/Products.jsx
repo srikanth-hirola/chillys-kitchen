@@ -101,7 +101,6 @@ console.log("data",products.map((data)=>data.name))
             </div>
           </div>
         </div>
-
         <Table
           dataSource={products}
           columns={columns}
