@@ -110,14 +110,18 @@
                 }
             }
             .product-card-actions{
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
                 span {
-                    background: black;
+                    background: #0c2c64;
                     padding: 9px;
                     border-radius: 4px;
                 }
                 svg {
                     color: #fff;
                     font-size: 15px;
+                    
                 }
             }
         }
