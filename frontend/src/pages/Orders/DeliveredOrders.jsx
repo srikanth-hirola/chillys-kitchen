@@ -11,6 +11,8 @@ import { getAllOrdersOfShop } from '../../redux/actions/order';
 const DeliveredOrders = () => {
     const { orders, isLoading } = useSelector((state) => state.order);
 
+    console.log("orders", orders)
+
     const columns = [
         {
             title: 'OrderID',

@@ -212,17 +212,18 @@ const OrderDetails = () => {
                             className="w-[200px]  border h-[35px] rounded-[5px]"
                         >
                             {[
+                                'select Order Status',
                                 'Processing',
                                 'On the way',
                                 'Delivered',
                             ]
-                                .slice(
-                                    [
-                                        'Processing',
-                                        'On the way',
-                                        'Delivered',
-                                    ].indexOf(data?.status)
-                                )
+                                // .slice(
+                                //     [
+                                //         'Processing',
+                                //         'On the way',
+                                //         'Delivered',
+                                //     ].indexOf(data?.status)
+                                // )
                                 .map((option, index) => (
                                     <option value={option} key={index}>
                                         {option}
