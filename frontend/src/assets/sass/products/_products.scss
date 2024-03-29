@@ -124,16 +124,17 @@
       }
     }
     .add-to-btn {
-      margin-top: 20px;
+      margin-top: 0;
       border-radius: 4px;
       background: #0c2c64;
       width: fit-content;
       padding: 10px 10px;
-      a {
+      a , button{
         color: #fff;
         text-decoration: none;
-        padding: 12px 30px;
+        padding: 6px 15px;
         font-size: 16px;
+
       }
     }
   }
@@ -306,4 +307,56 @@ padding: 30px 0;
     }
 }
 // product reviews section starts here 
+}
+
+.pr-dls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 0px;
+  .laptop-productdetails-wishlist {
+    display: flex;
+    gap: 8px;
+}
+  .laptop-productdetails-count {
+    display: flex;
+    width: 89%;
+    justify-content: space-between;
+    align-items: center;
+  
+    p{
+      &:first-child{
+        background-color: #0c2c64;
+        color: #fff;
+        border-radius: 50px;
+        padding: 10px 18px;
+        font-size: 19px;
+        cursor: pointer;
+        &:hover{
+          background-color: #fff;
+          border: 1px solid #0c2c64;
+          color: #0c2c64;
+        }
+      }
+      &:nth-child(2){
+        font-size: 19px;
+      }
+      &:last-child{
+        background-color: #0c2c64;
+        color: #fff;
+        border-radius: 50px;
+        padding: 10px 18px;
+        font-size: 19px;
+        cursor: pointer;
+        &:hover{
+          background-color: #fff;
+          border: 1px solid #0c2c64;
+          color: #0c2c64;
+        }
+      }
+    }
+  }
+}
+.product-tabs {
+  padding-top: 80px;
 }

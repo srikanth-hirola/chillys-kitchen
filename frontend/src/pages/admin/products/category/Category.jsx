@@ -21,6 +21,7 @@ function Category() {
         subCatImg: ''
     })
     const [subCategories, setSubCategories] = useState([]);
+    console.log("subCategories", subCategories)
     const [editActive, setEditActive] = useState(false);
 
     useEffect(() => {

@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { getPublishedProducts } from "../../redux/actions/product";
 import { Link } from 'react-router-dom';
-
+import {CloseOutlined} from '@ant-design/icons'
 const CartCard = ({ data1, quantityChangeHandler,
     removeFromCartHandler }) => {
 
@@ -130,9 +130,7 @@ const CartCard = ({ data1, quantityChangeHandler,
                         <div className="product-details">
                             <div className="title">{dataFound?.name}</div>
                             <p>{dataFound?.selectedColor?.SKU}</p>
-                            <div className="price">
-                                <Link onClick={() => removeFromCartHandler(dataFound)}>Remove</Link>
-                            </div>
+                          
                         </div>
                     </div>
                     <div className="quantity">
@@ -140,8 +138,11 @@ const CartCard = ({ data1, quantityChangeHandler,
                         <span>{dataFound?.qty}</span>
                         <button onClick={(e) => increment(e, dataFound)}>+</button>
                     </div>
-                    <div className="subtotal">{dataFound?.selectedColor?.discountPrice}</div>
-                    <div className="total">{totalPrice}</div>
+                    <div className="total">{dataFound?.selectedColor?.discountPrice}</div>
+                    <div className="subtotal">{totalPrice}</div>
+                    <div className="price">
+                                <Link  onClick={() => removeFromCartHandler(dataFound)}><CloseOutlined className='cl-ico'/></Link>
+                            </div>
                 </div>
             )}
         </>

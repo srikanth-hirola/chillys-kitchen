@@ -1,7 +1,8 @@
 .cart-page {
   width: 100%;
   padding: 20px;
-  margin: 150px 0px 80px;
+  margin: 89px 0px 80px;
+  background: #fff9f7;
   h3 {
     color: #000;
     font-size: 54px;
@@ -9,10 +10,10 @@
     font-weight: 600;
     text-align: center;
     letter-spacing: -1px;
-    margin-bottom: 70px;
+    margin: 40px 0px;
   }
   .cart-body {
-    box-shadow: rgba(100, 100, 111, 0.2) 0px 2px 14px 0px;
+    // box-shadow: rgba(100, 100, 111, 0.2) 0px 2px 14px 0px;
     padding: 20px;
 
     .cart-items {
@@ -24,7 +25,7 @@
         display: flex;
         gap: 10px;
         font-weight: bold;
-        border-bottom: 1px solid #ccc;
+        // border-bottom: 1px solid #ccc;
         padding-bottom: 10px;
         align-items: center;
         justify-content: space-between;
@@ -38,6 +39,7 @@
         .price {
           position: relative;
           left: 12%;
+         
         }
       }
 
@@ -45,15 +47,18 @@
         display: flex;
         gap: 10px;
         align-items: center;
-        padding: 10px 0;
+        padding: 0px 44px 0px 0px;
         margin: 20px 0px;
-        border-bottom: 1px solid #ccc;
         justify-content: space-between;
+        box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+        background: #fff;
+        position: relative;
 
         .product {
           display: flex;
           justify-content: start;
-          width: 47%;
+          width: 40%;
+          align-items: center;
           img {
             width: 90px;
             height: 90px;
@@ -68,6 +73,9 @@
               font-weight: bold;
               font-size: 14px;
             }
+            p{
+              margin: 0;
+            }
 
             .price {
               color: #007bff;
@@ -80,16 +88,20 @@
                 font-size: 13px;
                 font-weight: 500;
                 border-radius: 4px;
+                
               }
             }
           }
         }
-
+.total{
+  position: relative;
+  left: 13%;
+}
         .quantity {
           display: flex;
           align-items: center;
           justify-content: space-between;
-          border: 1px solid #0c2c64;
+          // border: 1px solid #0c2c64;
           text-align: center;
           font-size: 16px;
           font-style: normal;
@@ -103,12 +115,23 @@
             border: none;
             padding: 5px 10px;
             cursor: pointer;
-            margin: 0 5px;
+            margin: 0 16px;
+            background: #fff;
+            border-radius: 50pc;
+            color: #0c2c64;
+            border: 1px solid #0c2c64;
+            &:hover{
+              background: #0c2c64;
+              color: #fff;
+              border: 1xp solid #fff;
+            }
           }
         }
         .subtotal {
           text-align: center;
-          width: 37%;
+          width: 41%;
+          position: relative;
+          left: 1%;
         }
       }
     }
@@ -190,22 +213,45 @@
     }
   }
 }
-.payment-summary p {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  border-bottom: 1px solid #0c2c64;
-  padding: 9px 29px 0px 0px;
-}
 
-.payment-summary strong {
+.payment-summary {
   width: 100%;
-  display: flex;
-  justify-content: space-between;
-  /* border-bottom: 1px solid #0c2c64; */
-  padding: 14px 15px 15px 5px;
+  background: #fff;
+  padding: 40px 14px;
+  position: relative;
+  // left: 60.9%;
+  margin: 20px 0px 30px;
+ p {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #0c2c64;
+    padding: 9px 29px 0px 0px;
+  }
+  
+  strong {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    /* border-bottom: 1px solid #0c2c64; */
+    padding: 14px 15px 15px 5px;
+    background: #0c2c64;
+    color: #fff;
+    margin: 10px 0px;
+    border-radius: 4px;
+  }
+}
+.continue-shopping a {
   background: #0c2c64;
+  padding: 13px 30px;
   color: #fff;
-  margin: 10px 0px;
-  border-radius: 4px;
+  border-radius: 8px;
+  position: relative;
+  top: 14px;
+  left: 9px;
+}
+.cl-ico{
+  svg{
+    color: #0c2c64 !important;
+  }
 }

@@ -5,6 +5,7 @@ const router = express.Router();
 const ErrorHandler = require('../utils/ErrorHandler');
 const Inquiry = require('../model/Inquiry');
 const contact = require('../model/contact');
+const catering = require('../model/CateringForm');
 
 
 // create product
@@ -69,6 +70,41 @@ router.get(
             res.status(200).json({
                 success: true,
                 contacts
+            })
+        } catch (error) {
+            return next(new ErrorHandler(error, 400));
+        }
+    })
+);
+
+
+// create catering form
+router.post(
+    '/cateringform',
+    catchAsyncErrors(async (req, res, next) => {
+        try {
+            const form  = req.body;
+            await catering.create(form);
+            res.status(201).json({
+                success: true
+            })
+        } catch (error) {
+            return next(new ErrorHandler(error, 400));
+        }
+    })
+);
+
+
+// get all catering form
+router.get(
+    '/cateringform',
+    // isSeller,
+    catchAsyncErrors(async (req, res, next) => {
+        try {
+            const caterings = await catering.find({});
+            res.status(200).json({
+                success: true,
+                caterings
             })
         } catch (error) {
             return next(new ErrorHandler(error, 400));

@@ -287,6 +287,23 @@ router.get(
   })
 );
 
+// get orders by id
+router.get(
+  '/get-orderById/:orderId',
+  catchAsyncErrors(async (req, res, next) => {
+    try {
+      const order = await Order.findById(req.params.orderId);
+
+      res.status(200).json({
+        success: true,
+        order,
+      });
+    } catch (error) {
+      return next(new ErrorHandler(error.message, 500));
+    }
+  })
+);
+
 
 
 // get all orders of seller

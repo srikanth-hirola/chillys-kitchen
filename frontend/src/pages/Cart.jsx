@@ -55,8 +55,8 @@ const Cart = () => {
                         <div className="cart-title">
                             <h3>Cart</h3>
                         </div>
-                        <div className="row ">
-                            <div className="col-md-6">
+                        <div className="row mx-auto">
+                            <div className="col-md-12">
                                 <div className="cart-body">
                                     <div className="cart-items">
                                         <div className="header">
@@ -64,6 +64,7 @@ const Cart = () => {
                                             <div className="header-item quantity">Quantity</div>
                                             <div className="header-item price">Price</div>
                                             <div className="header-item subtotal">Subtotal</div>
+                                            <div className="header-item subtotal"></div>
                                         </div>
                                         {cartData?.map((cartItem, i) => (
                                             <React.Fragment key={i}>
@@ -73,31 +74,41 @@ const Cart = () => {
                                             </React.Fragment>
                                         ))}
                                     </div>
+                                   <div className="row">
+                                    <div className="col-md-8">
+                                            <div className="continue-shopping">
+                                                <Link to=''>Continue Shopping</Link>
+                                            </div>
+                                    </div>
+                                    <div className="col-md-4">
                                     <div className="payment-summary">
                                         <h4>Bill Details</h4>
                                         <p>Total Items: <span>{cartData.length}</span></p>
                                         <p>Delivery Charges: ₹ <span>{deliveryCharges}</span></p>
                                         <p>Coupon Discount: ₹ <span>{couponDiscount}</span></p>
                                         <strong>Grand Total: ₹ <span>{grandTotal}</span></strong>
-                                    </div>
-                                    <div className="px-5 mb-3 bg-[#fa8232] rounded">
+                                        <div className="px-5 mb-3 bg-[#fa8232] rounded">
                                     
-                                        {/* checkout buttons */}
-                                        <Link to="/checkout">
-                                            <div
-                                                className={`h-[45px] flex items-center justify-center w-[100%] rounded-[5px]`}
-                                            >
-                                                <h1 className=" text-[18px] mb-0 font-[600] text-white"  >
-                                                    Checkout Now (₹ {totalPrice})
-                                                </h1>
-                                            </div>
-                                        </Link>
+                                    {/* checkout buttons */}
+                                    <Link to="/checkout">
+                                        <div
+                                            className={`h-[45px] flex items-center justify-center w-[100%] rounded-[5px]`}
+                                        >
+                                            <h1 className=" text-[18px] mb-0 font-[600] text-white"  >
+                                                Checkout Now (₹ {totalPrice})
+                                            </h1>
+                                        </div>
+                                    </Link>
+                                </div>
                                     </div>
+                                    </div>
+                                   </div>
+                                   
                                 </div>
 
                             </div>
 
-                            <div className="col-md-6">
+                            {/* <div className="col-md-6">
                                 <div className="cart-checkout">
                                     <h5>Have a coupon?</h5>
                                     <p>Add your code for an instant cart discount</p>
@@ -112,7 +123,7 @@ const Cart = () => {
                                         </Button>
                                     </div>
                                 </div>
-                            </div>
+                            </div> */}
                         </div>
                     </div>
                 </div>

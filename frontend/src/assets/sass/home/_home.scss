@@ -657,7 +657,7 @@
     .our-menu-sub{
         background-size: contain;
         padding: 40px 0px 100px;
-        min-height: 1550px;
+        min-height: 1316px;
         .ant-tabs-nav{
             width: 100%;
             &::before{
@@ -675,9 +675,10 @@
         }
         .our-menu-cards{
             margin-bottom: 20px;
+            box-shadow: rgb(100 100 111 / 13%) 0px 7px 29px 0px;
             .our-menu-tab-cards-image {
                 width: 100%;
-                height: 450px;
+                height: 280px;
                img {
                     width: 100%;
                     height: 100%;
@@ -702,6 +703,13 @@
     font-weight: 400;
     line-height: 25px;
     margin-bottom: 5px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    height: 80px;
+    margin: 20px 0px;
                 }
                 .cart-sec {
                     display: flex;

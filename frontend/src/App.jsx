@@ -64,6 +64,10 @@ import NewsLetter from "./pages/NewsLetter.jsx";
 import ProfilePage from "./pages/user/ProfilePage.jsx";
 import OrdersPageProfile from "./pages/user/OrdersPageProfile.jsx";
 import ContactDetailsPage from "./pages/user/ContactDetailsPage.jsx";
+import UserSingleOrderDetails from "./pages/user/UserSingleOrderDetails.jsx";
+import CollabarationImagesConfig from "./components/siteconfig/CollabarationImagesConfig.jsx";
+import FooterConfig from "./components/siteconfig/FooterConfig.jsx";
+import Testimonials from "./components/siteconfig/Testimonials.jsx";
 
 function App() {
   const [stripeApikey, setStripeApiKey] = useState("");
@@ -309,10 +313,37 @@ function App() {
         />
         <Route
           exact
+          path="/site-config/testimonials"
+          element={
+            <SellerProtectedRoute>
+              <Testimonials />
+            </SellerProtectedRoute>
+          }
+        />
+        <Route
+          exact
+          path="/site-config/collabarators"
+          element={
+            <SellerProtectedRoute>
+              <CollabarationImagesConfig />
+            </SellerProtectedRoute>
+          }
+        />
+        <Route
+          exact
           path="/site-config/header"
           element={
             <SellerProtectedRoute>
               <SiteConfigHeader />
+            </SellerProtectedRoute>
+          }
+        />
+        <Route
+          exact
+          path="/site-config/footer"
+          element={
+            <SellerProtectedRoute>
+              <FooterConfig />
             </SellerProtectedRoute>
           }
         />
@@ -332,6 +363,15 @@ function App() {
           element={
             <ProtectedRoute>
               <ProfilePage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          exact
+          path="/user/order/:id"
+          element={
+            <ProtectedRoute>
+              <UserSingleOrderDetails />
             </ProtectedRoute>
           }
         />
