@@ -11,8 +11,8 @@ import useHandleChange from "../../hooks/site-Config/UseHandleChange";
 import { Button } from "antd";
 import { StyleConfig } from "../../utils/StyleConfig";
 import useSaveLayoutContent from "../../hooks/site-Config/UseSaveLayoutContent";
-
 import DashboardHeader from "../DashboardHeader";
+import MainImage from "./ImageUpload/MainImage";
 
 const SiteConfigBanner = () => {
   const { success, error, siteConfigData } = useSelector(
@@ -79,11 +79,13 @@ const SiteConfigBanner = () => {
           uploadedImages={uploadedImages}
           key={1}
         />
+        <MainImage title={"Banner Background Image"} aboutUsOneContent={bannerContent} logoLoading={logoLoading} setAboutUsOneContent={setBannerContent} uploadedImages={uploadedImages} key={2} name={"BannerBackgroundImage"} />
+        <MainImage title={"Banner Main Image"} aboutUsOneContent={bannerContent} logoLoading={logoLoading} setAboutUsOneContent={setBannerContent} uploadedImages={uploadedImages} key={3} name={"BannerMainImage"} />
         <BannerTextContent
           bannerContent={bannerContent}
           setBannerContent={setBannerContent}
           handleChange={handleChange}
-          key={2}
+          key={4}
         />
         {logoLoading ? (
           <Button type="primary" htmlType="submit">

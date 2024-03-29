@@ -4,10 +4,9 @@ const homePageSchema = new mongoose.Schema({
 
     // banner with header fields
     creatingtext: String,
-    mainLogo : {
-        public_id: String,
-        url: String
-    },
+
+    headerImages: Array,
+
     headerContent: Object,
     bannerImages: Array,
     bannerContent: Object,
@@ -24,15 +23,14 @@ const homePageSchema = new mongoose.Schema({
     deliverySectionImages: Array,
     deliverySectionContent: Object,
 
+    testimonialsImages: Array,
+    testimonialsContent: Object,
+
     // cclient imaages
     clientImages: Array,
 
-    // footer
-    footerLogo: {
-        public_id: String,
-        url: String,
-    },
     footerContent: Object,
+    OtherFooterContent: Object,
     footerImages: Array,
 
 });

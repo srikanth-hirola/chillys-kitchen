@@ -142,6 +142,24 @@ const sidebar_menu = [
         path: '/site-config/delivery',
         title: 'Delivery ',
       },
+      {
+        id: 7,
+        icon: ShippingIcon,
+        path: '/site-config/testimonials',
+        title: 'Testimonials',
+      },
+      {
+        id: 8,
+        icon: ShippingIcon,
+        path: '/site-config/collabarators',
+        title: 'Collaborators',
+      },
+      {
+        id: 9,
+        icon: ShippingIcon,
+        path: '/site-config/footer',
+        title: 'Footer ',
+      },
     ],
   },
   {
@@ -155,6 +173,12 @@ const sidebar_menu = [
     icon: UserIcon,
     path: '/coupons',
     title: 'Coupons',
+  },
+  {
+    id: 9,
+    icon: UserIcon,
+    path: '/admin-catering',
+    title: 'catering Enquiries',
   },
 ]
 

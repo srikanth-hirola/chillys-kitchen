@@ -35,21 +35,6 @@ const SiteConfigMenu = () => {
     setMenuContent(siteConfigData?.menuContent);
   }, [siteConfigData]);
 
-  // const handleAddMenuCard = () => {
-  //   setMenuContent({
-  //     ...menuContent,
-  //     menuCards: [
-  //       ...menuContent.menuCards,
-  //       {
-  //         image: { public_id: "", url: "" },
-  //         cardtitle: "",
-  //         description: "",
-  //         link: { text: "", url: "" },
-  //       },
-  //     ],
-  //   });
-  // };
-
   const handleAddMenuCard = () => {
     const { menuCards } = menuContent;
     if (menuCards.length >= 4) {

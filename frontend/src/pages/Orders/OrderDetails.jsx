@@ -16,6 +16,7 @@ const OrderDetails = () => {
     const { seller } = useSelector((state) => state.seller);
     const dispatch = useDispatch();
     const [status, setStatus] = useState('');
+    console.log("status", status)
     const navigate = useNavigate();
     const styles = StyleConfig();
 
