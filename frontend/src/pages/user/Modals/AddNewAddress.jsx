@@ -47,8 +47,6 @@ const AddNewAddress = ({ open, setOpen }) => {
             deliveryTypes: checkedValues,
         });
     };
-
-
     const dispatch = useDispatch();
 
 
@@ -179,7 +177,10 @@ const AddNewAddress = ({ open, setOpen }) => {
                                 onChange={handleCheckboxChange}
                             />
                         </Item>
-                        <button onClick={handleSubmit}>Submit</button>
+                        <div className='d-flex align-items-center add-footer-submit'>
+                            <button onClick={handleSubmit} className='text-light bg-success p-2 mx-1 border-r-2'>Submit</button>
+                            <button className='text-light bg-danger p-2'>cancel</button>
+                        </div>
                     </Form>
                 </div>
             </Modal>

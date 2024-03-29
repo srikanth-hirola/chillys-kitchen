@@ -117,14 +117,14 @@ export const updatUserAddress =
     };
 
 // delete user address
-export const deleteUserAddress = (id) => async (dispatch) => {
+export const deleteUserAddress = (index) => async (dispatch) => {
   try {
     dispatch({
       type: "deleteUserAddressRequest",
     });
 
     const { data } = await axios.delete(
-      `${server}/user/delete-user-address/${id}`,
+      `${server}/user/delete-user-address/${index}`,
       { withCredentials: true }
     );
 

@@ -7,6 +7,7 @@ import sidebar_menu from '../../../../constants/sidebar-menu';
 import DashboardHeader from '../../../../components/DashboardHeader';
 import useAPI from '../../../../customHooks/API/useAPI';
 import confirm from 'antd/es/modal/confirm';
+import toast from 'react-hot-toast';
 
 const { Option } = Select;
 function Category() {
@@ -86,7 +87,7 @@ function Category() {
         form.validateFields()
             .then(values => {
                 // Logic to update category goes here
-                message.success('Category updated successfully');
+                toast.success('Category updated successfully',{ position: 'top-right' });
                 setModalVisible(false);
             })
             .catch(error => {
@@ -101,11 +102,11 @@ function Category() {
     const handleDeleteSubCategory = async (id) => {
         const { data, error } = await deleteApi({ endpoint: `/api/v2/category/delete-sub-category/${id}` });
         if (error) {
-            alert(error?.response?.data?.message)
-            message.error('Deleted Sub Category and related products successfully');
+            toast.info(error?.response?.data?.message,{ position: 'top-right' })
+            toast.error('Deleted Sub Category and related products successfully',{ position: 'top-right' });
         }
         if (data) {
-            message.success('Deleted Sub Category and related products successfully');
+            toast.success('Deleted Sub Category and related products successfully',{ position: 'top-right' });
             let updatedState = [...subCategories];
             updatedState = updatedState?.filter((item) => item?._id !== id);
             setSubCategories(updatedState)
@@ -148,16 +149,16 @@ function Category() {
         try {
             const { error, data } = await deleteApi({ endpoint: `/api/v2/category/delete-subCat-Img/${_id}`, postData: { data: { public_id } } })
             if (error) {
-                alert(error?.response?.data?.message)
+                toast.info(error?.response?.data?.message,{ position: 'top-right' })
             }
             if (data) {
                 let updatedState = { ...subCategoryData };
                 updatedState.subCatImg = '';
                 setSubCategory(updatedState);
-                alert('Image delete successfully!')
+                toast.success('Image delete successfully!',{ position: 'top-right' })
             }
         } catch (error) {
-            alert(error?.response?.data?.message)
+            toast.info(error?.response?.data?.message,{ position: 'top-right' })
         }
     }
 
@@ -218,10 +219,10 @@ function Category() {
         e.preventDefault();
         const { data, error } = await postApi({ endpoint: `/api/v2/category/add-sub-category`, postData: subCategoryData });
         if (error) {
-            alert(error?.response?.data?.message)
+            toast.info(error?.response?.data?.message,{ position: 'top-right' })
         }
         if (data) {
-            alert("Added SubCategory Successfully");
+           toast.success("Added SubCategory Successfully",{ position: 'top-right' })
         }
     }
 
@@ -229,10 +230,10 @@ function Category() {
         e.preventDefault();
         const { data, error } = await putApi({ endpoint: `/api/v2/category/edit-sub-category`, postData: subCategoryData });
         if (error) {
-            alert(error?.response?.data?.message)
+            toast.info(error?.response?.data?.message,{ position: 'top-right' })
         }
         if (data) {
-            alert("Added SubCategory Successfully");
+            toast.success("Added SubCategory Successfully",{ position: 'top-right' });
         }
     }
 
@@ -327,8 +328,6 @@ function Category() {
                                 )}
                             </div>
                         </>}
-
-
                     </Form>
                 </Modal>
             </div>

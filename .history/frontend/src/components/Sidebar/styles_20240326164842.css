@@ -1,0 +1,181 @@
+.sidebar {
+    top: 0;
+    left: 0;
+    width: 250px;
+    max-height: 800px;
+    overflow: scroll;
+    display: flex;
+    justify-content: center;
+    position: sticky;
+    background: #001529;
+    /* background-image: linear-gradient(#000000, #000000, #000000); */
+}
+.sidebar::-webkit-scrollbar{
+    display: none;
+}
+.sidebar-logo-container {
+    display: 'flex';
+    align-items: center;
+}
+.sidebar-logo-container img {
+    width: 100%;
+    padding: 2em;
+}
+.sidebar .logo{
+    width: 150px;
+    height: 150px;
+}
+.sidebar .logo img{
+    width: 100%;
+    height: 100%;
+}
+.sidebar-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.sidebar-items {
+    height: 100%;
+    width: 100%;
+}
+.sidebar-item {
+    padding: 1.5em;
+    padding-left: 2em;
+    display: flex;
+    color: #FFFFFF;
+    list-style: none;
+    text-decoration: none;
+    align-items: center;
+    justify-content: flex-start;
+    cursor: pointer;
+}
+.sidebar-item:hover {
+    background-color: #ffffff;
+    color: #000000;
+}
+ul.ant-menu.ant-menu-root.ant-menu-inline.ant-menu-dark.css-dev-only-do-not-override-1ae8k9u {
+    /* background: #000; */
+}
+aside.ant-layout-sider.ant-layout-sider-dark.sidebar {
+    max-width: 300px;
+    height: 800px;
+}
+.sidebar-item-active {
+    padding: 1.5em;
+    padding-left: 2em;
+    display: flex;
+    color: #FFFFFF;
+    list-style: none;
+    text-decoration: none;
+    align-items: center;
+    justify-content: flex-start;
+    background-color: #1f2121;
+    cursor: pointer;
+}
+.sidebar-item-icon {
+    width: 20px;
+}
+.sidebar-item-label {
+    font-size: small;
+    font-weight: 600;
+    margin-left: 15px;
+}
+/* Footer */
+.sidebar-footer {
+    padding: 1.5em;
+    color: #FFFFFF;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+}
+
+/* newly added styles - naresh 25-3-2024 */
+.dashboard-header button{
+    background: rgb(76, 136, 248);
+}
+.Menu-title-dashboard.active,
+.Menu-title-dashboard:hover{
+    background: #fff !important;
+}
+.Menu-title-dashboard.active a,
+.Menu-title-dashboard:hover a {
+    color: #000 !important;
+    font-weight: 600;
+}
+.ant-menu-title-content {
+    color: #fff;
+}
+a {
+    text-decoration: none !important;
+}
+
+/* newly added styles - naresh 26-3-2024 */
+
+.ant-modal-footer .ant-btn-primary,button.ant-btn.css-dev-only-do-not-override-1ae8k9u.ant-btn-primary,.ant-form-item-control-input-content .ant-btn-primary{
+background: rgb(76, 136, 248); ;
+}
+.Dashboard-sidebar-parent .offcanvas-toggle {
+    display: none;
+}
+.Dashboard-sidebar-menu-icon {
+    height: 25px;
+    width: 30px;
+}
+.Dashboard-sidebar-menu-icon img {
+    height:100%;
+    width:100%;
+}
+.Dashboard-sidebar-parent div#offcanvasExample {
+    width: 235px;
+    /* z-index: 1055; */
+}
+.Dashboard-sidebar-parent ::-webkit-scrollbar {
+    display: none;
+}
+@media only screen and (max-width:767px){
+.offcanvas-body{
+    padding: 0 !important;
+}
+aside.ant-layout-sider.ant-layout-sider-dark.sidebar {
+}
+.Dashboard-sidebar-parent .offcanvas-toggle{
+    display: block;
+}
+.Dashboard-sidebar-menu-icon {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+}
+.sidebar-for-largescreens{
+    display: none;
+}
+.dashboard-content .dashboard-header{
+    align-items: center;
+}
+.dashboard-header>h3{
+    margin: 0;
+}
+}
+@media only screen and (min-width:768px) and (max-width:991px){
+    .Dashboard-sidebar-parent .offcanvas-toggle{
+        display: block;
+    }
+    .Dashboard-sidebar-menu-icon {
+        position: absolute;
+        top: 10px;
+        left: 20px;
+    }
+    .sidebar-for-largescreens{
+        display: none;
+    }
+    .dashboard-content .dashboard-header{
+        align-items: center;
+    }
+    .dashboard-header>h3{
+        margin: 0;
+    }
+}
+
+

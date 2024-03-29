@@ -8,14 +8,14 @@ const NewsLetterInput = () => {
 
     const handleEmailSubscribe = async () => {
         if (!email) {
-            toast.error('Email Id is required');
+            toast.error('Email Id is required',{position:'top-right'});
             return;
         }
         try {
             await axios.post(`${server}/newsletter/subscribe-to-newsletter`, { email })
-            toast.success('Subscribed successfully')
+            toast.success('Subscribed successfully',{position:'top-right'})
         } catch (error) {
-            toast.error(error.response.data.message)
+            toast.error(error.response.data.message,{position:'top-right'})
         }
     }
 

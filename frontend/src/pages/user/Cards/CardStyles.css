@@ -1,0 +1,47 @@
+.ContactDetails-Address-details-sub .edit-button{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.ContactDetails-Address-details-sub .edit-button .feather-editing{
+    margin:4px;
+    border-radius: 5px;
+    background-color: aquamarine;
+    padding: 4px;
+}
+.ContactDetails-Address-details-sub .edit-button .feather-delete{
+    margin:4px;
+    border-radius: 5px;
+    background-color: #ff8b8b;
+    padding: 4px;
+}
+.ContactDetails-Address-details-sub{
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+.ContactDetails-sub1-text .add-contact-details{
+    border: 1px solid ;
+    padding: 6px 20px;
+    height: fit-content;
+    margin-left: auto;
+    background-color: darkblue;
+    color: white;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+.ContactDetails-sub1-text{
+    display: flex;
+    align-items: center;
+    width: 95%;
+}
+.ContactDetails-Address-details-sub-footer .footer-change{
+    background-color: darkblue;
+    color: white;
+    padding: 4px 20px;
+    margin: 5px 0;
+    border-radius: 10px;
+}
+.add-footer-submit button{
+    border-radius: 5px;
+} 

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 import { getPublishedProducts } from '../../redux/actions/product';
 import { message } from 'antd';
+import toast from 'react-hot-toast';
 
 const CheckoutProductCard = ({ data1, quantityChangeHandler,
     removeFromCartHandler }) => {
@@ -89,7 +90,7 @@ const CheckoutProductCard = ({ data1, quantityChangeHandler,
         stockLimit = data.selectedColor?.stock;
 
         if (value >= stockLimit) {
-            message.error('Reached Stock Limit!');
+            toast.error('Reached Stock Limit!');
         } else {
             setValue(value + 1);
             const updateCartData = { ...data, qty: value + 1 };

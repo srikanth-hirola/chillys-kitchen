@@ -54,10 +54,10 @@ const SiteConfigBanner = () => {
 
   useEffect(() => {
     if (success) {
-      toast.success("Site Configuration Updated Successfully");
+      toast.success("Site Configuration Updated Successfully",{position:'top-right'});
     }
     if (error) {
-      toast.error(error.response.data.message);
+      toast.error(error.response.data.message,{position:'top-right'});
     }
     dispatch(getAllSiteConfig());
   }, [success, error, dispatch]);

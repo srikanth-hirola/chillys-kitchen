@@ -1,3 +1,437 @@
-.catering-main{
-    margin: 150px 0px 80px;
+.catering-main {
+  margin: 90px 0px 80px;
+//   background: #fff9f7;
+.catering-banner {
+    padding: 40px 0px;
+    background: #fff9f7;
 }
+  .catering-banner-sec {
+    .cb-sec {
+      background: #0c2c64;
+      width: fit-content;
+      padding: 9px 25px 10px 25px;
+      border-radius: 4px;
+      margin: 20px 0px;
+      h3 {
+        color: #fff;
+        opacity: 1;
+        font-size: 14px;
+        margin: 0;
+      }
+    }
+    strong{
+        font-family: Poppins;
+    font-size: 75px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 72.4px;
+    text-transform: capitalize;
+    margin: 47px 0px;
+    color: #000;
+    }
+    p{
+        color: #000;
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 27px;
+        margin: 27px 0px;
+    }
+    .buttons-sec{
+        a{
+            padding: 10px 30px;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: 5s ease-in all 2s;
+            margin: 0px 4px;
+           &:hover{
+            background-color: #fff;
+            border: 1px solid #0c2c64;
+            color: #0c2c64;
+           }
+            &:first-child{
+                background-color: #0c2c64;
+                color: #fff;
+                transition: 5s ease-in all 2s;
+            }
+           
+            &:last-child{
+                background-color: #fff;
+                border: 1px solid #0c2c64;
+                color: #0c2c64;
+            }
+        }
+    }
+   
+  }
+  .catering-banner-img{
+    width: 100%;height: 500px;
+    img{
+        width: 100%;height: 100%;object-fit: contain;
+    }
+}
+.catering-services {
+    padding: 80px 0px;
+    background: #fff9f7;
+    .catering-services-sub{
+        width: 100%;
+        background-position: top;
+    }
+    .catering-services-title{
+        p{
+            color: #0c2c64;
+    text-align: center;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 21.6px;
+    text-transform: capitalize;
+        }
+        h5{
+            color: #212529;
+            text-align: center;
+            font-family: Poppins;
+            font-size: 36px;
+            font-style: normal;
+            font-weight: 500;
+            line-height: 43.2px;
+            text-transform: capitalize;
+            padding-bottom: 38px;
+        }
+    }
+    .services-section {
+        position: relative;
+        .scribe-one {
+            width: 140px;
+            height: 140px;
+            position: absolute;
+            left: -5%;
+            top: -5%;
+            img{
+                width: 100%;height: 100%;object-fit: contain;
+            }
+        }
+        .scribe-two {
+            width: 170px;
+            height: 170px;
+            position: absolute;
+            right: -4%;
+            bottom: -8%;
+            img{
+                width: 100%;height: 100%;object-fit: contain;
+            }
+        }
+    }
+    .services-section-cards {
+        margin-bottom: 30px;
+        border-radius: 10px;
+        background: var(--kamleshyadav-com-nero, #FFF);
+        box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.08);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        padding: 50px 30px;
+        .services-section-cards-img {
+            width: 100px;
+            height: 100px;
+            background: #f5f5f5;
+            border-radius: 50%;
+            img{
+                width: 100%;height: 100%;padding: 20px;
+            }
+        }
+        .services-section-cards-text{
+            text-align: center;
+            h5{
+                color: #212529;
+    text-align: center;
+    font-family: Poppins;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 21.6px;
+    text-transform: capitalize;
+    padding: 24px 0px 10px;
+            }
+            p{
+                color: #000000bf;
+                text-align: center;
+                font-size: 14px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: 24px;
+            }
+            a{
+                color: #212529;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 24px;
+    text-decoration: none;
+    text-align: center;
+            }
+        }
+    }
+}
+// catering form section
+.catering-form {
+    padding: 0px 0px 00px;
+    .catering-form-sub{
+        width: 100%;
+        background-size: contain;
+        background-position: center;
+        padding-bottom: 92px;
+    }
+    
+    .catering-form-sec{
+        .catering-form-title {
+            padding: 20px 0px;
+            h4{
+                color: #0c2c64;
+                text-align: center;
+                font-size: 18px;
+                font-style: normal;
+                font-weight: 500;
+                line-height: 21.6px;
+                text-transform: capitalize;
+            }
+            h5{
+                color: #212529;
+                text-align: center;
+                font-family: Poppins;
+                font-size: 36px;
+                font-style: normal;
+                font-weight: 500;
+                line-height: 64.2px;
+                text-transform: capitalize;
+            }
+        }
+        width: 100%;
+        background-size: contain;
+        background-position: center;
+        border-radius: 10px;
+background: var(--kamleshyadav-com-nero, #FFF);
+box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.08);
+padding: 40px 60px;
+        .catering-form-sec {
+            width: 100%;
+            background-size: cover;
+            height: fit-content;
+            background-position: center;
+            padding-bottom: 30px;
+            .banner-sec-form {
+                border-radius: 10px;
+                background: var(--kamleshyadav-com-nero, #FFF);
+                box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.08);
+                padding: 20px 57px;
+                position: relative;
+               
+               
+            }
+            
+        }
+    }
+    .btn-primary{
+        color: #fff;
+        background: #0c2c64;
+        border: none;display: flex;justify-content: center;width: 18%;margin: auto;
+    }
+    .ant-input{
+        height: 45px ;
+    }
+    .ant-picker{
+        width: 100%;
+        height: 45px;
+    }
+    .ant-select{
+        height: 45px;
+    }
+
+}
+// catering form section
+}
+
+
+
+.form-img-one {
+    position: absolute;
+    left: 90px;
+}
+.form-img-two {
+    position: absolute;
+    right: 91px;
+    transform: rotate(180deg);
+}
+
+// catering counter 
+.category-story{
+    padding: 80px 0%;
+    background: #fff9f7;
+    .catering-story-video {
+        position: relative;
+        width: 100%;
+        height: 380px;
+        .video-player{
+            height: 450px;
+            button{
+                position: absolute;
+                right: 0%;
+                top: 0%;
+                background: #fff;
+                border: none;
+                padding: 8px 22px;
+                border-radius: 4px 0px 0px 4px;
+            }
+        }
+      
+        .thumbnail {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          cursor: pointer;
+          width: 90%;
+          span{
+            svg{
+                position: absolute;
+                left: 49%;
+                background: #fff;
+                color: #000;
+                padding: 14px;
+                border-radius: 50%;
+            
+            }
+          }
+          img{
+            width: 100%;height: 500px;
+          }
+        }
+      
+        .play-icon {
+          font-size: 64px;
+          color: #fff;
+          opacity: 0.8;
+          transition: opacity 0.2s ease-in-out;
+        }
+      
+        .play-icon:hover {
+          opacity: 1;
+        }
+      
+        .video-wrapper {
+          position: relative;
+          width: 100%;
+          height: 100%;
+      
+          .video {
+            width: 100%;
+            height: 100%;
+          }
+      
+          .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            padding: 10px;
+            background-color: rgba(0, 0, 0, 0.5);
+            color: #fff;
+            cursor: pointer;
+            z-index: 10;
+          }
+        }
+      }
+      
+.catering-counter{
+    .card {
+        padding: 40px 16px;
+        border-radius: 10px;
+        background: var(--kamleshyadav-com-nero, #FFF);
+        box-shadow: 0px 0px 60px 0px rgba(0, 0, 0, 0.08);
+        border: none;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        &:nth-child(even){
+            margin-top: 40px;
+        }
+        .label{
+            color: #212529;
+            text-align: center;
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 24px;
+        }
+        .counter{
+            color: #212529;
+            text-align: center;
+            font-size: 35px;
+            font-style: normal;
+            font-weight: 600;
+            line-height: 26.4px;
+            text-transform: capitalize;
+            padding: 12px 0px;
+        }
+        img{
+            width: 80px;height: 80px;object-fit: contain;
+        }
+    }
+}}
+// catering counter 
+
+// catering news 
+.catering-news{
+    padding: 80px 0px;
+    .catering-news-image {
+        width: 100%;
+        height: 450px;
+        img{
+            width: 100%;height: 100%;object-fit: contain;
+        }
+    }
+    .catering-news-text{
+       strong{
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 21.6px;
+        text-transform: capitalize;
+        color: #0c2c64;
+       }
+       h5{
+        color: #212529;
+        font-family: Poppins;
+        font-size: 39px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 46.2px;
+        text-transform: capitalize;
+        width: 80%;
+        margin: 20px 0px;
+    
+       }
+       p{
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 24px;
+       }
+       ul.catering-news-list {
+        padding: 0;
+        li{
+            list-style: none;
+            border-radius: 3px;
+            background: #fff;
+            box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.08);
+            display: flex;
+            justify-content: start;
+            width: 88%;
+            gap: 28px;
+            margin: 23px 1px;
+            padding: 20px;
+        }
+    }
+    }
+}
+// catering news 

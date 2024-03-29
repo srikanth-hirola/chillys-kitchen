@@ -70,12 +70,12 @@ const ContactBanner = () => {
               </li>
             </ul>
             <div className="circle-1">
-            <svg xmlns="http://www.w3.org/2000/svg" width="139" height="138" viewBox="0 0 139 138" fill="none">
-<circle cx="69.0664" cy="69" r="69" fill="#484848" fill-opacity="0.5"/>
-</svg>
+              <svg xmlns="http://www.w3.org/2000/svg" width="139" height="138" viewBox="0 0 139 138" fill="none">
+                <circle cx="69.0664" cy="69" r="69" fill="#484848" fill-opacity="0.5" />
+              </svg>
             </div>
             <div className="circle-2">
-                
+
             </div>
           </div>
         </div>

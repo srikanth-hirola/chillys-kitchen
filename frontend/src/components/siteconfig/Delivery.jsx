@@ -36,7 +36,7 @@ const SiteConfigDelivery = () => {
   const handleAddLists = () => {
     const { deliveryLists } = deliverySectionContent;
     if (deliveryLists.length >= 4) {
-      toast.error('Cannot add more than 4 Lists!');
+      toast.error('Cannot add more than 4 Lists!',{position:'top-right'});
     } else {
       const newLists = [...deliveryLists, { image: { public_id: "", url: "" }, text: "",}];
       setDeliverySectionContent({ ...deliverySectionContent, deliveryLists: newLists });
