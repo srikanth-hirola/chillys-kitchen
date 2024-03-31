@@ -7,7 +7,15 @@ import {
   PinterestOutlined
 } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 const Footer = () => {
+
+  const { success, error, siteConfigData } = useSelector(
+    (state) => state.siteConfig
+  );
+
+  const footerContent = siteConfigData.footerContent;
+  const OtherFooterContent = siteConfigData.OtherFooterContent;
   return (
     <>
       <div className="footer">
@@ -17,15 +25,28 @@ const Footer = () => {
               <div className="row">
                 <div className="col-md-3">
                   <div className="footer-logo-sec">
+                    {footerContent && 
                     <div className="footer-logo-img">
-                      <img src="/images/logo.png" alt="" />
+                      <img src={footerContent?.footerlogo?.image?.url} alt="" />
                     </div>
+                    } 
                     <div className="footer-logo-txt">
-                      <p>In the new era of technology we look a in the future with certainty and pride to for our company and.</p>
+                      {footerContent && 
+                      <p>{footerContent?.summary}</p>
+                      }
                     </div>
                     <div className="footer-social">
                       <ul>
-                        <li>
+                        {footerContent && footerContent?.socialMedia?.map((socialmedia, i) => (
+                          <li key={i}>
+                          <span>
+                            <Link to={socialmedia?.link}>
+                              <img src={socialmedia?.image?.url} alt="" />
+                            </Link>
+                          </span>
+                        </li>
+                        ))}
+                        {/* <li>
                           <span><InstagramOutlined /></span>
                         </li>
                         <li>
@@ -36,62 +57,39 @@ const Footer = () => {
                         </li>
                         <li>
                           <span><PinterestOutlined /></span>
-                        </li>
+                        </li> */}
                       </ul>
                     </div>
                   </div>
                 </div>
+                  {OtherFooterContent && OtherFooterContent?.map((col) => (
                 <div className="col-md-2 col-sm-6">
-                  <div className="footer-logo-sec-one">
-                    <h2>Pages</h2>
+                    <div className="footer-logo-sec-one">
+                    <h2>{col?.heading}</h2>
                     <ul>
-                      <li>
-                        <Link>Home</Link>
+                      {col?.items?.map((item, a) => (
+                        <li key={a}>
+                        <Link to={item?.url}>{item?.title}</Link>
                       </li>
-                      <li>
-                        <Link>About</Link>
-                      </li>
-                      <li>
-                        <Link>Book Table</Link>
-                      </li>
-                      <li>
-                        <Link>Products</Link>
-                      </li>
-                      <li>
-                        <Link>Blog</Link>
-                      </li>
-                      <li>
-                        <Link>Contact</Link>
-                      </li>
+                      ))}
                     </ul>
                   </div>
                 </div>
-                <div className="col-md-3 col-sm-6">
-                  <div className="footer-logo-sec-two">
-                    <h2>Utillity Pages</h2>
+                  ))}
+                {/* <div className="col-md-3 col-sm-6">
+                {OtherFooterContent && OtherFooterContent?.map((col, i) => (
+                    <div key={i===1} className="footer-logo-sec-two">
+                    <h2>{col?.heading}</h2>
                     <ul>
-                      <li>
-                        <Link>Cart</Link>
+                      {col?.items?.map((item, a) => (
+                        <li key={a}>
+                        <Link to={item?.url}>{item?.text}</Link>
                       </li>
-                      <li>
-                        <Link>Wishlist</Link>
-                      </li>
-
-                      <li>
-                        <Link>T&C</Link>
-                      </li>
-                      <li>
-                        <Link>Refund Policy</Link>
-                      </li>
-                      <li>
-                        <Link>Privacy Policy</Link>
-                      </li>
-                      <li>
-                        <Link>Contact</Link>
-                      </li>
+                      ))}
                     </ul>
                   </div>
-                </div>
+                  ))}
+                </div> */}
                 <div className="col-md-4">
                   <div className="footer-logo-sec-insta">
                     <h2>Follow Us On Instagram</h2>

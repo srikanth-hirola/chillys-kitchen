@@ -19,6 +19,7 @@ const ProductDetails = () => {
   const { useQueryParam } = useUrlHandler();
   let params = useQueryParam("product");
   const [productData, setProductData] = useState(null);
+  console.log("productData in productdetails", productData)
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
@@ -56,6 +57,7 @@ const ProductDetails = () => {
   }, [params])
 
   const [selectedColor, setSelectedColor] = useState();
+  console.log("selectedColor in pd", selectedColor)
   const [count, setCount] = useState(1);
   const [soldOut, setSoldOut] = useState(false);
   const [mainImg, setMainImg] = useState([]);

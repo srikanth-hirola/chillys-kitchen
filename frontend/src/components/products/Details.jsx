@@ -15,7 +15,6 @@ const Details = ({ productData, selectedColor, soldOut, limited, getOriginalPric
   const { getSubCategory } = useData();
 
 
-
   return (
     <>
       <div className="product-details-sec">
@@ -35,7 +34,7 @@ const Details = ({ productData, selectedColor, soldOut, limited, getOriginalPric
             <Price originalPrice={getOriginalPrice({ data: productData })} discountPrice={getDiscountPrice({ data: productData })} />
             <p>{productData?.description}</p>
           </div>
-          <VarientSelect data={productData} setCount={setCount} setLimited={setLimited} setMainImage={setMainImg} setSelectedColor={setSelectedColor} key={3} />
+          <VarientSelect data={productData} setCount={setCount} setLimited={setLimited} setMainImage={setMainImg} selectedColor={selectedColor} setSelectedColor={setSelectedColor} key={3} />
           <Counter count={count} incrementCount={incrementCount} decrementCount={decrementCount} />
           <AddToCart addToCart={addToCartHandler} id={productData?._id} />
           <WishList data={productData} click={click} setClick={setClick} />

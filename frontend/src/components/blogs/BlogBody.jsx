@@ -8,7 +8,6 @@ import { server } from '../../server';
 const BlogBody = () => {
 
   const [blogData, setBlogData] = useState([]);
-    console.log("blogData", blogData)
     const fetchBlog = async () => {
         try {
             const response = await axios.get(`${server}/blogs/blogs-list`);

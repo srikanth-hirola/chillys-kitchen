@@ -416,7 +416,7 @@ function App() {
         <Route exact path="/menu" element={<Menu />} />
         <Route exact path="/catering" element={<CateringMain />} />
         <Route exact path="/book-table" element={<BookTable />} />
-        <Route exact path="/blog" element={<Blog />} />
+        <Route exact path="/blogs" element={<Blog />} />
         <Route exact path="/cart" element={<Cart />} />
 
         <Route
