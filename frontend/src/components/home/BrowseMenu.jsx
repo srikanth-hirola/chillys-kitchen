@@ -22,7 +22,7 @@ const BrowseMenu = () => {
                                 <div className="home-browse-cards-sec-text">
                                     <h3>Breakfast</h3>
                                     <p>In the new era of technology we look in the future with certainty and pride for our life.</p>
-                                    <Link to=''>Explore Now</Link>
+                                    <Link to='/services'>Explore Now</Link>
                                 </div>
                             </div>
                         </div>
@@ -34,7 +34,7 @@ const BrowseMenu = () => {
                                 <div className="home-browse-cards-sec-text">
                                     <h3>Main Dishes</h3>
                                     <p>In the new era of technology we look in the future with certainty and pride for our life.</p>
-                                    <Link to=''>Explore Now</Link>
+                                    <Link to='/services'>Explore Now</Link>
                                 </div>
                             </div>
                         </div>
@@ -46,7 +46,7 @@ const BrowseMenu = () => {
                                 <div className="home-browse-cards-sec-text">
                                     <h3>Drinks</h3>
                                     <p>In the new era of technology we look in the future with certainty and pride for our life.</p>
-                                    <Link to=''>Explore Now</Link>
+                                    <Link to='/services'>Explore Now</Link>
                                 </div>
                             </div>
                         </div>
@@ -58,7 +58,7 @@ const BrowseMenu = () => {
                                 <div className="home-browse-cards-sec-text">
                                     <h3>Desserts</h3>
                                     <p>In the new era of technology we look in the future with certainty and pride for our life.</p>
-                                    <Link to=''>Explore Now</Link>
+                                    <Link to='/services'>Explore Now</Link>
                                 </div>
                             </div>
                         </div>

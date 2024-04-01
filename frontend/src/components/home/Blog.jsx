@@ -30,7 +30,7 @@ const Blog = () => {
                 <div className="container">
                     <div className="blog-home-title">
                         <h2>Our Blog & Articles</h2>
-                        <button>Read All Services</button>
+                        <Link to='/blog'>All Blogs</Link>
                     </div>
                     <div className="row">
                         <div className="col-md-6">

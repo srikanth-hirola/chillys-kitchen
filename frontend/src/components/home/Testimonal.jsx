@@ -17,16 +17,50 @@ export default function Testimonal() {
         <h3>What Our Customers Say</h3>
      </div>
      <Swiper
-        slidesPerView={3}
+        slidesPerView={1}
         spaceBetween={30}
-        freeMode={true}
+        // freeMode={true}
+        loop={true}
         pagination={{
           clickable: true,
         }}
         autoplay={{
             delay:200
         }}
-        
+        breakpoints={{
+            // when window width is >= 320px
+            320: {
+              slidesPerView: 1,
+              spaceBetween: 10
+            },
+            // when window width is >= 480px
+            480: {
+              slidesPerView: 1,
+              spaceBetween: 20
+            },
+            // when window width is >= 768px
+            768: {
+              slidesPerView: 1,
+              spaceBetween: 30
+            },
+            992: {
+              slidesPerView: 2,
+              spaceBetween: 30
+            },
+            1200: {
+              slidesPerView: 3,
+              spaceBetween: 30
+            },
+            1400: {
+              slidesPerView: 3,
+              spaceBetween: 30
+            }
+            ,
+            1800: {
+              slidesPerView: 3,
+              spaceBetween: 30
+            }
+          }}
         modules={[FreeMode]}
         className="mySwiper"
       >

@@ -15,8 +15,8 @@ const AboutBanner = () => {
                
                <h2>The Fastest Delivery In <span>Your City</span></h2>
                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Commodo, sed proin amet a vestibulum enim volutpat lacus. Volutpat arcu sit sed tortor etiam volutpat ipsum. </p>
-               <Link to=''>Order Now</Link>
-               <Link to=''>Order Now</Link>
+               <Link to='/catering'>Get Started</Link>
+               <Link to='/services'>More Services</Link>
              </div>
              <div className="banner-scrible">
              <img src="/images/home/ab-group.jpg" alt="" />
@@ -28,7 +28,8 @@ const AboutBanner = () => {
                 <div className="about-banner-text-bg"></div>
                   <div className="row">
                     <div className="col-md-6">
-                    <div className="about-banner-cards">
+                   <Link to='/menu?category=Cloud%20Kitchen&subcat=Indian%20Breads&product=palak-roti'>
+                   <div className="about-banner-cards">
                       <div className="about-banner-cards-image">
                       <img src="/images/home/ab-banner-1.png" alt="" />
                       </div>
@@ -38,6 +39,7 @@ const AboutBanner = () => {
                         <p>250</p>
                       </div>
                     </div>
+                   </Link>
                     </div>
                     <div className="col-md-6">
                     <div className="about-banner-cards">

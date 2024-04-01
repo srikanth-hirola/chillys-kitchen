@@ -2,6 +2,8 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router'
 import { server } from '../../server';
+import Navbar from '../../components/common/Navbar';
+import Footer from '../../components/common/Footer';
 
 const UserSingleOrderDetails = () => {
     const { id } = useParams();
@@ -23,35 +25,46 @@ const UserSingleOrderDetails = () => {
     if (!order) {
         return <div>Loading...</div>; // Display a loading message while waiting for data
       }
-
+console.log("order",order)
   return (
-    <div>
-      <h1>Order Details</h1>
-      <p>Order ID: {order._id}</p>
-      <p>Status: {order.status}</p>
-      <p>Payment Status: {order.paymentInfo.status}</p>
-      <p>Total Price: ₹{order.totalPrice}</p>
+    <div className='orders-main' >
+    <Navbar/>
+     <div className="container">
+     <h1>Order Details</h1>
+     <div className="order-details">
+     <p><pre>Order ID: </pre><span>{order._id}</span></p>
+      <p><pre>Status:</pre> <span>{order.status}</span></p>
+      <p><pre>Payment Status:</pre> <span>{order.paymentInfo.status}</span></p>
+      <p><pre>Total Price:</pre> <span>₹{order.totalPrice}</span></p>
+     </div>
       {/* Render other order details as needed */}
       <h2>Items:</h2>
-      <ul>
+      <ul className='orders-main-lis'>
         {order.cart.map((item) => (
           <li key={item._id}>
-            <p>Name: {item.name}</p>
-            <p>Quantity: {item.qty}</p>
-            <p>Price: ${item.finalPrice}</p>
+            <img src={item.mainImage.url} alt="" />
+           <div className="order-content">
+           <h3>{item.name}</h3>
+           <p>{item.qty}</p>
+           <p>{item.finalPrice}</p>
+           </div>
+        
             {/* Render other item details as needed */}
           </li>
         ))}
       </ul>
       <h2>Shipping Address:</h2>
-      <p>Name: {order.shippingAddress.firstName} {order.shippingAddress.lastName}</p>
-      <p>Email: {order.shippingAddress.email}</p>
-      <p>Mobile: {order.shippingAddress.mobile}</p>
+      <div className="ship-add">
+      <p><pre>Name:</pre> <span>{order.shippingAddress.firstName} {order.shippingAddress.lastName}</span></p>
+      <p><pre>Email:</pre> <span>{order.shippingAddress.email}</span></p>
+      <p><pre>Mobile:</pre><span> {order.shippingAddress.mobile}</span></p>
+      <p><pre>Area:</pre><span> {order.shippingAddress.areaName}</span></p>
+      <p><pre>Pincode:</pre><span> {order.shippingAddress.pincode}</span></p>
       {/* Render other shipping address details as needed */}
-      <h2>User Details:</h2>
-      <p>Name: {order.user.name}</p>
-      <p>Email: {order.user.email}</p>
-      {/* Render other user details as needed */}
+      </div>
+      
+     </div>
+    <Footer/>
     </div>
   )
 }

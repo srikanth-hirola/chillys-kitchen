@@ -124,12 +124,14 @@
   margin: 60px 0px;
   .about-sec-two-sub-text-one {
     h4 {
+     a{
       color: #193250;
       font-size: 14px;
       font-style: normal;
       font-weight: 500;
       line-height: normal;
       text-transform: uppercase;
+     }
     }
     p {
       color: #252525;
@@ -178,15 +180,28 @@
       }
       .about-timing-cards-text {
         h4 {
+         
           color: #000;
           font-size: 18px;
           font-style: normal;
           font-weight: 600;
           line-height: normal;
+          text-align: center;
+      
+        }
+        h4{
+          a{
+            color: #000;
+          font-size: 18px;
+          font-style: normal;
+          font-weight: 600;
+          line-height: normal;
+          text-align: center;
+          }
         }
         p {
           color: #000;
-          font-size: 13px;
+          font-size: 15px;
           font-style: normal;
           font-weight: 400;
           line-height: normal;
@@ -425,7 +440,11 @@
 .about-new-sec .row.align-items-center {
   flex-direction: column-reverse;
 }
-
+.about-banner .banner-sec-img .about-banner-text a {
+  font-size: 14px;
+  padding: 15px 26px;
+  margin: 0px 20px 0px 0px;
+}
 .about-new .about-new-text {
   padding: 0;
 }
@@ -483,6 +502,25 @@ ul.about-new-list {}
   position: absolute;
   width: 250px;
   display: none;
+}
+.about-banner .about-banner-text-sec .about-banner-text-bg {
+  width: 90%;
+  position: absolute;
+  border-radius: inherit;
+  height: 1350px;
+  right: 4.5%;
+}
+.about-new-image-sec{
+  .col-md-6{
+    width: 50%;
+  }
+}
+.about-sec-two-sub-image {
+  margin: 20px 0px;
+  padding: 30px;
+}
+.about-sec-two .about-sec-two-sub-text-one p{
+  padding-top: 18px;
 }
  }
 

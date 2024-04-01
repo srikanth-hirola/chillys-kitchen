@@ -46,22 +46,22 @@ const Footer = () => {
                     <h2>Pages</h2>
                     <ul>
                       <li>
-                        <Link>Home</Link>
+                        <Link to='/' >Home</Link>
                       </li>
                       <li>
-                        <Link>About</Link>
+                        <Link to='/about'>About</Link>
                       </li>
                       <li>
-                        <Link>Book Table</Link>
+                        <Link  to='/services'>Services</Link>
                       </li>
                       <li>
-                        <Link>Products</Link>
+                        <Link to='/services'>Products</Link>
                       </li>
                       <li>
-                        <Link>Blog</Link>
+                        <Link to='/blog'>Blog</Link>
                       </li>
                       <li>
-                        <Link>Contact</Link>
+                        <Link  to='/contact-us'>Contact</Link>
                       </li>
                     </ul>
                   </div>
@@ -71,23 +71,23 @@ const Footer = () => {
                     <h2>Utillity Pages</h2>
                     <ul>
                       <li>
-                        <Link>Cart</Link>
+                        <Link  to='/cart' >Cart</Link>
                       </li>
                       <li>
-                        <Link>Wishlist</Link>
+                        <Link  to='/wishlist'>Wishlist</Link>
                       </li>
 
                       <li>
-                        <Link>T&C</Link>
+                        <Link  to='/terms-and-conditions'>T&C</Link>
                       </li>
                       <li>
-                        <Link>Refund Policy</Link>
+                        <Link  to='/refund-policy'>Refund Policy</Link>
                       </li>
                       <li>
-                        <Link>Privacy Policy</Link>
+                        <Link  to='/privacy-policy'>Privacy Policy</Link>
                       </li>
                       <li>
-                        <Link>Contact</Link>
+                        <Link  to='/contact-us'>Contact</Link>
                       </li>
                     </ul>
                   </div>

@@ -1,5 +1,6 @@
 /* eslint-disable no-unused-vars */
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const Services = () => {
   return (
@@ -14,6 +15,7 @@ const Services = () => {
                 <div className="home-services-cards">
                     <div className="row">
                         <div className="col-md-4">
+                            <Link to='/catering'>
                             <div className="home-services-sec-card">
                                 <div className="home-services-sec-card-img">
                                     <img src="images/home/browse-2.webp" alt="" />
@@ -23,9 +25,11 @@ const Services = () => {
                                     <p>In the new era of technology we look in the future with certainty for life.</p>
                                 </div>
                             </div>
+                            </Link>
                         </div>
                         <div className="col-md-4">
-                            <div className="home-services-sec-card">
+                           <Link to='/catering'>
+                           <div className="home-services-sec-card">
                                 <div className="home-services-sec-card-img">
                                     <img src="images/home/browse-1.webp" alt="" />
                                 </div>
@@ -34,9 +38,11 @@ const Services = () => {
                                     <p>In the new era of technology we look in the future with certainty for life.</p>
                                 </div>
                             </div>
+                           </Link>
                         </div>
                         <div className="col-md-4">
-                            <div className="home-services-sec-card">
+                           <Link to='/catering'>
+                           <div className="home-services-sec-card">
                                 <div className="home-services-sec-card-img">
                                     <img src="images/home/browse-3.webp" alt="" />
                                 </div>
@@ -45,6 +51,7 @@ const Services = () => {
                                     <p>In the new era of technology we look in the future with certainty for life.</p>
                                 </div>
                             </div>
+                           </Link>
                         </div>
                     </div>
                 </div>

@@ -18,7 +18,10 @@ const WishListCard = ({
                         <div className="product">
                             <img src={`${data1?.mainImage?.url}`} alt={"Product"} />
                             <div className="product-details">
-                                <div className="title">{data1?.name}</div>
+                               <div className="title-sec">
+                               <div className="title">{data1?.name}</div>
+                                <div className="title">{data1?.originalPrice}</div>
+                               </div>
                                 <div className="price">
                                     <Link onClick={() => removeFromCartHandler(data1)}>Remove</Link>
                                 </div>

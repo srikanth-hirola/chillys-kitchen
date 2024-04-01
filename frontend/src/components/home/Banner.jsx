@@ -12,8 +12,8 @@ const Banner = () => {
                                 <div className="banner-text">
                                     <div className="banner-title">
                                         <strong>Best In Cafes</strong>
-                                        <h1>Asian Lettuce Wrap <br />
-                                            <strong>Chicken</strong> Chopped Salad</h1>
+                                        <h1>Mom&apos;s  Food Is The Best<br />
+                                            <strong>We Cook </strong> With The Same Care</h1>
                                     </div>
                                     <div className="banner-description">
                                         <p>Discover delectable cuisine and unforgettable moments in our welcoming, culinary haven.</p>

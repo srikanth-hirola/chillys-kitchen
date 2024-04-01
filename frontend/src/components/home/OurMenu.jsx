@@ -45,19 +45,40 @@ const OurMenu = () => {
   return (
     <div className="our-menu">
       <div className="our-menu-sub" style={{ backgroundImage: `url(images/home/tabs.jpg)` }}>
-        <div className="container">
+        <div className="container-lg container-md container-xl container-xxl">
           <Tabs
             defaultActiveKey="all"
             centered
             style={{
-              height: "300px",
+              height: "",
               display: "flex",
               justifyContent: "center",
               alignItems: "center",
             }}
             onChange={handleTabChange}
           >
-            <TabPane tab="All" key="all">
+            <TabPane
+                tab={
+                  <div
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "center",
+                    }}
+                    className="tb-title"
+                  >
+                    <span>
+                      <img
+                        src='https://res.cloudinary.com/duusv7nak/image/upload/v1711365021/chilly_kitchen/subCategories/x0dy051ytvqnl9sl9o9w.webp'
+                        className="tab-img"
+                        alt=""
+                      />
+                    </span>
+                    <span>All</span>
+                  </div>
+                }
+                key={"All"}
+              >
               <div className="our-menu-tab-cards">
                 <div className="row">
                   {displayedProducts.map((product) => (

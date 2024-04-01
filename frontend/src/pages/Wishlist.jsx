@@ -44,6 +44,7 @@ const Wishlist = () => {
                                         <div className="header">
                                             <div className="header-item product">Product</div>
                                         </div>
+                                        <div className="wish-list-main">
                                         {cartData?.map((cartItem, i) => (
                                             <React.Fragment key={i}>
                                                 <WishListCard data1={cartItem}
@@ -51,6 +52,7 @@ const Wishlist = () => {
                                                 />
                                             </React.Fragment>
                                         ))}
+                                        </div>
                                     </div>
 
                                 </div>

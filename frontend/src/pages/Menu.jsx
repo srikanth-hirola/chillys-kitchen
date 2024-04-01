@@ -15,7 +15,11 @@ const Menu = () => {
     <>
       <Navbar />
 
-      {paramsProduct ? <ProductDetails /> : <><Banner /><MenuMiddleware /></>}
+      {paramsProduct ? <ProductDetails /> : <><Banner
+      title="Menu"
+        text1="Home"
+        text2="Menu"
+       /><MenuMiddleware /></>}
 
       <Footer />
     </>
