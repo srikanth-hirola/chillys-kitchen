@@ -6,6 +6,7 @@ import { UserOutlined, LockOutlined, PhoneOutlined } from '@ant-design/icons';
 import Navbar from '../../components/common/Navbar';
 import Footer from '../../components/common/Footer';
 import axios from 'axios';
+import { server } from '../../../../../frontend/src/server';
 
 function UserRegister() {
 
@@ -24,7 +25,7 @@ function UserRegister() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         axios
-            .post(`http://localhost:8000/api/v2/user/create-user`, { name, email, password, phonenumber, confirmpassword })
+            .post(`${server}/api/v2/user/create-user`, { name, email, password, phonenumber, confirmpassword })
             .then((res) => {
                 console.log(res.data)
                 toast.success(res.data.message);
@@ -36,7 +37,7 @@ function UserRegister() {
                 setConfirmPassword("");
             })
             .catch((error) => {
-                toast.error(error.response.data.message,,{position:'top-right'});
+                toast.error(error.response.data.message,{position:'top-right'});
                 // alert(error.response.data.message)
             })
             .finally(() => {

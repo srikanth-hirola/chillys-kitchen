@@ -108,7 +108,9 @@ const UserProfileModal = () => {
                         {renderMenu(sidebar_menu)}
                     </Menu>
                     <div className="sidebar-footer picture-data">
-                        <span className="sidebar-item-label">Logout</span>
+                        <span className="sidebar-item-label">
+                            <button type='button' onClick={logoutHandler}>Logout</button>
+                        </span>
                         {/* <Feather icon="log-out"/> */}
                         <FeatherIcon icon="log-out" />
                         {/* <img src={LogoutIcon} alt="icon-logout" className="sidebar-item-icon" /> */}

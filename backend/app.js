@@ -12,6 +12,7 @@ app.use(compression())
 
 const allowedOrigins = [
   'http://localhost:5173',
+  'https://chillykitchen.netlify.com',
 ];
 
 

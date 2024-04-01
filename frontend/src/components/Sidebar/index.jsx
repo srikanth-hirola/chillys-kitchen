@@ -22,7 +22,7 @@ const SideBar = () => {
     const activeItem = location.pathname;
     const handleLogout = () => {
         axios
-            .get(`${server}/shop/logout-admin, { withCredentials: true }`)
+            .get(`${server}/shop/logout-admin`, { withCredentials: true })
             .then((res) => {
                 toast.success(res.data.message);
                 window.location.reload(true);

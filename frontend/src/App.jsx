@@ -123,8 +123,9 @@ function App() {
 
       <Routes>
         <Route path="*" element={<div></div>} />
+        <Route exact path="/login" element={<Login />} />
         <Route
-          exact
+          // exact
           path="/admin"
           element={
             <SellerProtectedRoute>
@@ -391,7 +392,7 @@ function App() {
             </ProtectedRoute>
           }
         />
-        <Route exact path="/login" element={<Login />} />
+        
         <Route exact path="/user-login" element={<UserLogin />} />
         <Route exact path="/user-register" element={<UserRegister />} />
 

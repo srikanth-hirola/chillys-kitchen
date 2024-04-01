@@ -27,25 +27,30 @@ function Login() {
       [FieldName]: value,
     }));
   };
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await axios
-      .post(
-        `${server}/shop/login-shop`,
+
+    try {
+      const response = await axios.post(`${server}/shop/login-shop`,
         {
           email: logindata?.email,
           password: logindata?.password,
         },
         { withCredentials: true }
       )
-      .then((res) => {
-        toast.success("Login Success!");
-        navigate("/admin");
-        window.location.reload(true);
-      })
-      .catch((err) => {
-        toast.error(err.response.data.message);
-      });
+      console.log("response", response)
+      if(response.status === 201){
+        toast.success("login successfull")
+        navigate('/admin')
+      } else {
+        toast.error("login failed")
+      }
+    } catch (error) {
+      console.log(error)
+    }
+    
+      
   };
   const handleForgetPassword = (e) => {
     e.preventDefault();
