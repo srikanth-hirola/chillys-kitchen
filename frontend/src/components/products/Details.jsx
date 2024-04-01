@@ -38,8 +38,9 @@ const Details = ({ productData, selectedColor, soldOut, limited, getOriginalPric
           <Counter count={count} incrementCount={incrementCount} decrementCount={decrementCount} />
           <AddToCart addToCart={addToCartHandler} id={productData?._id} />
           <WishList data={productData} click={click} setClick={setClick} />
+          </div>
         </div>
-      </div>
+     
     </>
   );
 };

@@ -158,3 +158,41 @@
   }
 }
 // header stylings goes here
+.header-sec {
+  // Your existing styles for header-sec
+
+  .header-menu {
+    display: block; // Hide desktop menu initially on smaller screens
+  }
+
+  .mobile-menu {
+    display: none; // Show mobile menu toggle icon initially on smaller screens
+  }
+
+  @media screen and (max-width: 1100px) {
+    :where(.css-dev-only-do-not-override-42nv3w).ant-menu-light .ant-menu-item a, :where(.css-dev-only-do-not-override-42nv3w).ant-menu-light>.ant-menu .ant-menu-item a, :where(.css-dev-only-do-not-override-42nv3w).ant-menu-light .ant-menu-item a:hover, :where(.css-dev-only-do-not-override-42nv3w).ant-menu-light>.ant-menu .ant-menu-item a:hover {
+      color: #000 !important;
+      font-weight: 600 !important;
+  }
+  .one-main{
+    border: 1px solid #000;
+    padding: 8px 24px;
+    color: #000;
+    border-radius: 49px;
+  }
+    .header-menu {
+      display: none; // Show desktop menu on screens wider than 992px
+    }
+    
+
+    .mobile-menu {
+      display: block; 
+      // Hide mobile menu toggle icon on screens wider than 992px
+      svg{
+        position: absolute;
+        top: 30px;right:25px;z-index: 9999;font-size: 25px;
+      }
+    }
+  
+  }
+}

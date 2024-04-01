@@ -19,7 +19,7 @@
         }
     }
     .contact-banner{
-        background: #000;
+        background: #0c2c64;
         height: 550px;
         width: 100%;
         border-radius: 8px;
@@ -60,21 +60,21 @@
             }
         }
         .circle-1{
-            border-radius: 269px;
-    background: #1A1A1A;
-    position: absolute;
-    top: -21%;
-    right: 99px;
-    z-index: -1;
+          border-radius: 269px;
+          background: rgb(255 255 255);
+          position: absolute;
+          top: -21%;
+          right: 99px;
+          z-index: -1;
         }
         .circle-2{
-            border-radius: 269px;
-            width: 350px;
-            height: 350px;
-            position: absolute;
-            bottom: -85%;
-            right: -115px;
-            background: rgba(72, 72, 72, 0.50);
+          border-radius: 269px;
+          width: 350px;
+          height: 350px;
+          position: absolute;
+          bottom: -85%;
+          right: -115px;
+          background: rgb(255 255 255 / 59%);
         }
     }
         }

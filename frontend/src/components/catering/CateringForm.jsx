@@ -1,12 +1,18 @@
 /* eslint-disable no-unused-vars */
-import axios from 'axios';
 import React, { useState } from 'react'
-import Form from 'react-bootstrap/Form';
+import { Form, Input, Select, DatePicker } from 'antd';
+import axios from 'axios';
 import { server } from '../../server';
 import toast from 'react-hot-toast';
 
+const { Option } = Select;
 const CateringForm = () => {
+  const [form] = Form.useForm();
 
+  const onFinish = (values) => {
+    console.log('Received values:', values);
+  };
+  
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -52,64 +58,99 @@ const CateringForm = () => {
       toast.error("Error Submitting form");
     }
   }
-
-
   return (
-    <div>
-      <Form>
-          <Form.Group>
-          <Form.Label>Name</Form.Label>
-            <Form.Control value={formData?.name} onChange={(e) => handleChange(e.target.value, "name")} />
-          </Form.Group>
-          <Form.Group>
-          <Form.Label>Email ID</Form.Label>
-            <Form.Control value={formData?.email} onChange={(e) => handleChange(e.target.value,"email")} />
-          </Form.Group>
-          <Form.Group>
-          <Form.Label>Phone Number</Form.Label>
-            <Form.Control value={formData?.phoneNumber} onChange={(e) => handleChange(e.target.value,"phoneNumber")} />
-          </Form.Group>
-          <Form.Group>
-          <Form.Label>Select Category</Form.Label>
-          <Form.Select placeholder="Choose Your Category" className="form-control" value={formData?.category} onChange={(e) => handleChange(e.target.value, "category")} required >
-            <option disabled selected value="">Choose Your Service</option>
-            <option value="Wedding">Wedding</option>
-            <option value="Corporate">Corporate</option>
-            <option value="Events">Events</option>
-            <option value="Birthdays">Birthdays</option>
-          </Form.Select>
-          </Form.Group>
-          <Form.Group>
-          <Form.Label>No Of Peoples</Form.Label>
-            <Form.Control value={formData?.noOfPeople} onChange={(e) => handleChange(e.target.value, "noOfPeople")} />
-          </Form.Group>
-          <Form.Group>
-          <Form.Label>Type</Form.Label>
-          <Form.Select placeholder="Choose Your Type" className="form-control" value={formData?.type} onChange={(e) => handleChange(e.target.value, "type" )} required >
-            <option disabled selected value="">Choose Your Type</option>
-            <option value="Vegeterian">Vegeterian</option>
-            <option value="Non-Vegeterian">Non-Vegeterian</option>
-          </Form.Select>
-          </Form.Group>
-          <Form.Group>
-          <Form.Label>Date</Form.Label>
-            <Form.Control type='date' value={formData?.date} onChange={(e) => handleChange(e.target.value, "date")} />
-          </Form.Group>
-          <Form.Group>
-          <Form.Label>Location</Form.Label>
-            <Form.Control value={formData?.location} onChange={(e) => handleChange(e.target.value, "location")} />
-          </Form.Group>
-          <Form.Group>
-          <Form.Label>Pincode</Form.Label>
-            <Form.Control value={formData?.pincode} onChange={(e) => handleChange(e.target.value, "pincode")} />
-          </Form.Group>
-          <Form.Group>
-          <Form.Label>Message</Form.Label>
-            <Form.Control as="textarea" rows={5} value={formData?.message} onChange={(e) => handleChange(e.target.value, "message")} />
-          </Form.Group>
-        </Form>
-        <button type='submit' className='btn btn-md btn-primary' onClick={(e) => handleSubmit(e)}>Submit</button>
+    <>
+  <div className="catering-form" id='cateringForm' >
+    <div className="catering-form-sub" style={{backgroundImage:`url(/images/home/form-banner.webp)`}}>
+      <div className="container">
+       
+        <div className="catering-form-sec">
+        <div className="catering-form-title">
+          <h4>Book us</h4>
+          <h5>Where you want Our Services</h5>
+        </div>
+        <Form
+        form={form}
+        layout="vertical"
+        onFinish={onFinish}
+        initialValues={{
+          eventType: 'Wedding', // Initial values for event type select
+          foodType: 'Vegetarian', // Initial values for food type select
+        }}
+      >
+      <div className="banner-sec-form">
+      <div className="form-img-one">
+        <img src="/images/home/form-scribe.webp" alt="" />
+      </div>
+      <div className="form-img-two">
+        <img src="/images/home/form-scribe.webp" alt="" />
+      </div>
+        <div className="row">
+          <div className="col-md-4">
+            <Form.Item name="name" label="Name">
+              <Input value={formData?.name} onChange={(e) => handleChange(e.target.value, "name")} />
+            </Form.Item>
+          </div>
+          <div className="col-md-4">
+            <Form.Item name="email" label="Email">
+              <Input type="email" value={formData?.email} onChange={(e) => handleChange(e.target.value,"email")} />
+            </Form.Item>
+          </div>
+          <div className="col-md-4">
+            <Form.Item name="mobile" label="Mobile Number">
+              <Input type="tel" value={formData?.phoneNumber} onChange={(e) => handleChange(e.target.value,"phoneNumber")}  />
+            </Form.Item>
+          </div>
+          <div className="col-md-4">
+            <Form.Item name="eventType" label="Event Type" value={formData?.category} onChange={(e) => handleChange(e.target.value, "category")} required>
+              <Select>
+                <Option value="Wedding">Wedding</Option>
+                <Option value="Birthday">Birthday</Option>
+                <Option value="Corporate">Corporate</Option>
+              </Select>
+            </Form.Item>
+          </div>
+          <div className="col-md-4">
+            <Form.Item name="numberOfPeople" label="Number of People">
+              <Input type="number" value={formData?.noOfPeople} onChange={(e) => handleChange(e.target.value, "noOfPeople")} />
+            </Form.Item>
+          </div>
+          <div className="col-md-4">
+            <Form.Item name="foodType" label="Food Type" value={formData?.type} onChange={(e) => handleChange(e.target.value, "type" )} required>
+              <Select>
+                <Option value="Vegetarian">Vegetarian</Option>
+                <Option value="Non-Vegetarian">Non-Vegetarian</Option>
+              </Select>
+            </Form.Item>
+          </div>
+          <div className="col-md-4">
+            <Form.Item name="dateOfEvent" label="Date of Event">
+              <DatePicker width={'100%'} value={formData?.date} onChange={(e) => handleChange(e.target.value, "date")}/>
+            </Form.Item>
+          </div>
+          <div className="col-md-4">
+            <Form.Item name="location" label="Location">
+              <Input value={formData?.location} onChange={(e) => handleChange(e.target.value, "location")} />
+            </Form.Item>
+          </div>
+          <div className="col-md-4">
+            <Form.Item name="pincode" label="Pincode">
+              <Input value={formData?.pincode} onChange={(e) => handleChange(e.target.value, "pincode")}/>
+            </Form.Item>
+          </div>
+        </div>
+        </div>
+        <Form.Item>
+          <button className="btn btn-primary" type="submit" onClick={(e) => handleSubmit(e)}>
+            Submit
+          </button>
+        </Form.Item>
+      </Form>
+        </div>
+      </div>
     </div>
+  </div>
+    </>
   )
 }
 

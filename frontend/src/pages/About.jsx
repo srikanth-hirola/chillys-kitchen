@@ -6,6 +6,7 @@ import AboutBanner from '../components/about/AboutBanner'
 import AboutSectionTwo from '../components/about/AboutSectionTwo'
 import AboutTiming from '../components/about/AboutTiming'
 import AboutNew from '../components/about/AboutNew'
+import CateringServices from '../components/catering/CateringServices'
 // import AboutGallery from '../components/about/AboutGallery'
 
 const About = () => {
@@ -14,8 +15,9 @@ const About = () => {
 <Navbar/>
 <AboutBanner/>
 <AboutNew/>
-<AboutTiming/>
+<CateringServices/>
 <AboutSectionTwo/>
+<AboutTiming/>
 {/* <AboutGallery/> */}
 <Footer/>
     </>

@@ -171,7 +171,7 @@
             line-height: 24px;
             padding-bottom: 20px;
         }
-        button{
+        a{
             border-radius: 118px;
     border: 1.5px solid var(--Neutral-07, #0c2c64);
     padding: 17px 30px;
@@ -419,6 +419,7 @@
         display: flex;
         justify-content: space-between;
         padding: 0px 0px 80px;
+        align-items: center;
         h2{
             color: var(--Neutral-07, #0c2c64);
             font-family: "Poppins", sans-serif;;
@@ -427,18 +428,19 @@
             font-weight: 500;
             line-height: 60.5px;
         }
-        button{
+        a{
             border-radius: 118px;
-    background: #0c2c64;
-    color: var(--Neutral-01, #FFF);
-    text-align: right;
-      font-family: "Poppins", sans-serif;
-    border: none;
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 24px;
-    padding: 1px 32px;
+            background: #0c2c64;
+            color: var(--Neutral-01, #FFF);
+            text-align: right;
+            font-family: "Poppins", sans-serif;
+            border: none;
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 500;
+            line-height: 24px;
+            padding: 9px 32px;
+            height: 42px;
         }
     }
     .blog-card-home{
@@ -657,27 +659,34 @@
     .our-menu-sub{
         background-size: contain;
         padding: 40px 0px 100px;
-        min-height: 1550px;
+        min-height: 1316px;
         .ant-tabs-nav{
             width: 100%;
             &::before{
                 border: none !important;
+            }
+            .ant-tabs-tab{
+                margin: 0px 4px;
             }
             .tb-title {
                 padding: 0px 10px;
                 gap: 15px;
                 span{
                     .tab-img{
-                        width: 50px;height: 50px;
+                        width: 80px;
+    height: 80px;
+    border-radius: 46px;
+    object-fit: cover;
                     }
                 }
             }
         }
         .our-menu-cards{
             margin-bottom: 20px;
+            box-shadow: rgb(100 100 111 / 13%) 0px 7px 29px 0px;
             .our-menu-tab-cards-image {
                 width: 100%;
-                height: 450px;
+                height: 280px;
                img {
                     width: 100%;
                     height: 100%;
@@ -702,6 +711,13 @@
     font-weight: 400;
     line-height: 25px;
     margin-bottom: 5px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    height: 80px;
+    margin: 20px 0px;
                 }
                 .cart-sec {
                     display: flex;
@@ -730,6 +746,19 @@
                 }
             }
         }
+    }
+    :where(.css-dev-only-do-not-override-42nv3w).ant-tabs >.ant-tabs-nav .ant-tabs-nav-wrap, :where(.css-dev-only-do-not-override-42nv3w).ant-tabs >div>.ant-tabs-nav .ant-tabs-nav-wrap {
+        position: relative;
+        display: flex;
+        flex: none;
+        align-self: stretch;
+        overflow: auto;
+        white-space: nowrap;
+        transform: translate(0);
+    }
+    .tb-title span {
+        width: 100px;
+        height: fit-content;
     }
 }
 .ant-tabs-nav-wrap {
@@ -765,3 +794,324 @@
  
   
 // logo section
+
+
+@media screen and (max-width:767px){
+    p{
+        text-align: justify;
+    }
+    .home-banner-sec .home-banner-sec-sub .banner-text .banner-title h1 {
+        font-size: 26px !important;
+        line-height: 38px !important;
+        strong {
+            color: #0c2c64;
+            font-size: 34px  !important;
+        }
+    }
+    .home-banner-sec .home-banner-sec-sub .banner-text .banner-actions .banner-action-two {
+
+        font-size: 13px;
+    }
+    .home-banner-sec .home-banner-sec-sub .banner-text {
+        height: 550px !important;
+        display: flex;
+        justify-content: end;
+        align-items: end;
+        margin-top: 40px !important;
+        .banner-actions .banner-action-one {
+            padding: 14px 13px !important;
+            font-size: 12px !important;
+        }
+    }
+    .home-banner-sec .home-banner-sec-sub {
+        width: 100%;
+        height: fit-content !important;
+        background-size: cover;
+    }
+ 
+    .home-banner-sec .home-banner-sec-sub .banner-img {
+        width: 100%;
+        height: fit-content !important;
+    }
+    .home-browse .home-browse-title h2 {
+        text-align: center;
+        font-family: "Poppins", sans-serif;
+        font-size: 25px;
+        font-style: normal;
+        font-weight: 600;
+        padding: 5px 0px 0px;
+        margin: 0px;
+    }
+    .home-browse .home-browse-cards-sec {
+        border-radius: 12px;
+        background: #FFF;
+        padding: 44px 20px 54px;
+        box-shadow: rgba(100, 100, 111, 0.2) 4px 1px 22px -2px;
+        margin: 8px 0px;
+    }
+    .home-about .home-about-text h3 {
+        font-size: 29px;
+        line-height: 40.5px;
+        margin: 20px 0px;
+    }
+    .home-about .home-about-img .home-about-img-text-sec {
+        position: relative;
+        width: 100%;
+        border-radius: 12px;
+        background: #474747;
+        padding: 30px;
+        height: 280px;
+        bottom: 0;
+        right: 0;
+        margin: 20px 0px;
+    }
+    .home-about .home-about-text {
+        width: 96%;
+        margin: auto;
+    }
+    .home-services .home-services-title h3 {
+        color: var(--cafeu-vercel-app-mine-shaft, #0c2c64);
+        text-align: center;
+        font-family: "Poppins", sans-serif;
+        font-size: 25px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 29.8px;
+        padding: 10px 0px 48px;
+    }
+    .home-services .home-services-sec-card {
+        margin: 6px 0px;
+    }
+    .home-delivery .row.align-items-center {
+        flex-direction: column-reverse;
+    }
+    
+    .home-delivery .home-delivery-sec-text h3 {
+        font-size: 30px;
+        line-height: 41px;
+        padding-bottom: 20px;
+    }
+    .home-delivery .home-delivery-img-sec .home-delivery-img-sec-img-one {
+        width: 100%;
+        margin: auto;
+        height: 350px;
+        img{
+            object-fit: contain;
+        }
+    }
+    .home-delivery-img-sec{
+        .col-md-6.col-lg-6.col-xl-6.col-xxl-6{
+            width: 49%;
+        }
+    }
+    .home-delivery .home-delivery-img-sec .home-delivery-img-sec-img-two {
+        width: 90%;
+        height: fit-content;
+        margin: 30px 0px 20px;
+    }
+    .home-delivery .home-delivery-img-sec .home-delivery-img-sec-img-three {
+        width: 90%;
+        height: fit-content;
+    }
+    
+    .home-delivery .home-delivery-sec-text ul li {
+        width: 100%;
+    }
+    
+    
+    .home-delivery .home-delivery-sec-text ul li p {
+        font-size: 16px;
+    }
+    
+    .home-testimonal .title-testimonal h3 {
+        font-size: 31px;
+        line-height: 39px;
+    }
+    
+    .blog-home .blog-home-title h2 {
+        font-size: 17px;
+        line-height: 25px;
+    }
+    
+    .blog-home .blog-home-title button {
+        padding: 3px 21px;
+        font-size: 14px;
+        font-weight: 500;
+    }
+    
+    .blog-home .blog-home-title {
+        padding: 0px 0px 30px;
+    }
+    
+    .blog-home .blog-card-home a .blog-card-home-image-one {
+        width: 100%;
+        height: fit-content;
+    }
+    .home-about .home-about-img .home-about-img-sec-one {
+        width: 100%;
+        height: fit-content;
+    }
+    .home-about .home-about-img .home-about-img-text-sec .home-about-img-text-sec-sub ul li p{
+        text-align: left;
+    }
+    .home-browse{
+        padding: 50px 0px 0px;
+    }
+    .home-about{
+        padding: 60px 0px;
+    }
+    .home-services {
+        padding: 35px 0px;
+    }
+    .home-delivery {
+        padding: 40px 0px 40px;
+        background: #F9F9F7;
+    }
+    .home-testimonal {
+        padding: 20px 0px 40px;
+    }
+    .home-testimonal .title-testimonal h3 {
+        font-size: 25px;
+        line-height: 36px;
+    }
+    .home-testimonal .title-testimonal {
+        padding: 20px 0px 40px;
+    }
+    .blog-home .blog-card-home a .blog-card-home-image {
+        height: 100%;
+        width: 100%;
+        img{
+            width: 100%;height: 100%;object-fit: cover;
+        }
+
+    }
+}
+@media screen and (min-width:768px) and (max-width:991px){
+    p{
+        text-align: justify;
+    }
+    .home-banner-sec .home-banner-sec-sub .banner-text .banner-title h1 {
+        font-size: 26px !important;
+        line-height: 38px !important;
+        strong {
+            color: #0c2c64;
+            font-size: 34px  !important;
+        }
+    }
+    .home-banner-sec .home-banner-sec-sub .banner-text {
+        min-height: 550px;
+        .banner-actions .banner-action-one {
+            padding: 14px 13px !important;
+            font-size: 12px !important;
+        }
+    }
+    .home-banner-sec .home-banner-sec-sub {
+        width: 100%;
+        height: fit-content !important;
+        background-size: cover;
+    }
+    .home-banner-sec .home-banner-sec-sub .banner-text{
+        height: fit-content !important;
+    }
+    .home-banner-sec .home-banner-sec-sub .banner-img {
+        width: 100%;
+        height: fit-content !important;
+    }
+    .home-browse .home-browse-title h2 {
+        text-align: center;
+        font-family: "Poppins", sans-serif;
+        font-size: 25px;
+        font-style: normal;
+        font-weight: 600;
+        padding: 5px 0px 0px;
+        margin: 0px;
+    }
+    .home-browse .home-browse-cards-sec {
+        border-radius: 12px;
+        background: #FFF;
+        padding: 44px 20px 54px;
+        box-shadow: rgba(100, 100, 111, 0.2) 4px 1px 22px -2px;
+        margin: 8px 0px;
+    }
+    .home-about .home-about-text h3 {
+        font-size: 29px;
+        line-height: 40.5px;
+        margin: 20px 0px;
+    }
+    .home-about .home-about-img .home-about-img-text-sec {
+        position: relative;
+        width: 100%;
+        border-radius: 12px;
+        background: #474747;
+        padding: 30px;
+        height: 280px;
+        bottom: 0;
+        right: 0;
+        margin: 20px 0px;
+    }
+    .home-about .home-about-text {
+        width: 96%;
+        margin: auto;
+    }
+    .home-services .home-services-title h3 {
+        color: var(--cafeu-vercel-app-mine-shaft, #0c2c64);
+        text-align: center;
+        font-family: "Poppins", sans-serif;
+        font-size: 25px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 29.8px;
+        padding: 10px 0px 48px;
+    }
+    .home-services .home-services-sec-card {
+        margin: 6px 0px;
+    }
+    .home-delivery .row.align-items-center {
+        flex-direction: row;
+    }
+    
+    .home-delivery .home-delivery-sec-text h3 {
+        font-size: 30px;
+        line-height: 41px;
+        padding-bottom: 20px;
+    }
+    
+    
+    .home-delivery .home-delivery-sec-text ul li {
+        width: 100%;
+    }
+    
+    
+    .home-delivery .home-delivery-sec-text ul li p {
+        font-size: 16px;
+    }
+    
+    .home-testimonal .title-testimonal h3 {
+        font-size: 31px;
+        line-height: 39px;
+    }
+    
+    .blog-home .blog-home-title h2 {
+        font-size: 24px;
+        line-height: 25px;
+    }
+    
+    .blog-home .blog-home-title button {
+        padding: 3px 21px;
+        font-size: 15px;
+        font-weight: 500;
+    }
+    .home-browse-cards .col-md-3{
+        width: 50%;
+    }
+    .home-banner-sec .home-banner-sec-sub .banner-text .banner-actions .banner-action-two {
+        font-size: 13px;
+    }
+    .blog-home .blog-home-title {
+        padding: 0px 0px 30px;
+    }
+    
+}
+
+
+

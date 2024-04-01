@@ -9,7 +9,22 @@ const AboutTiming = () => {
         <div className="about-timing-sub">
           <div className="container">
             <div className="row justify-content-between align-items-center">
-              <div className="col-md-3">
+              
+              <div className="col-md-4">
+                <div className="about-timing-cards">
+                  <div className="about-timing-cards-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="24" viewBox="0 0 20 24" fill="none">
+  <path d="M19 10C19 17 10 23 10 23C10 23 1 17 1 10C1 7.61305 1.94821 5.32387 3.63604 3.63604C5.32387 1.94821 7.61305 1 10 1C12.3869 1 14.6761 1.94821 16.364 3.63604C18.0518 5.32387 19 7.61305 19 10Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M10 13C11.6569 13 13 11.6569 13 10C13 8.34315 11.6569 7 10 7C8.34315 7 7 8.34315 7 10C7 11.6569 8.34315 13 10 13Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+                  </div>
+                  <div className="about-timing-cards-text">
+                    <h4>Sahakarnagar</h4>
+                    <p>Sy.No.83/1, railway Underpass, next to RL football arena, Sahakar Nagar, Bengaluru</p>
+                  </div>
+                </div>
+              </div>
+              <div className="col-md-4">
                 <div className="about-timing-cards">
                   <div className="about-timing-cards-icon">
                     <svg
@@ -36,26 +51,14 @@ const AboutTiming = () => {
                     </svg>
                   </div>
                   <div className="about-timing-cards-text">
-                    <h4>Today 10:00am - 10:00pm</h4>
-                    <p>Working time</p>
+                  <h4>
+                      <a href="mailto:support@chillykitchen.com">support@chillykitchen.com</a>
+                    </h4>
+                    <p>Email</p>
                   </div>
                 </div>
               </div>
-              <div className="col-md-3">
-                <div className="about-timing-cards">
-                  <div className="about-timing-cards-icon">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="24" viewBox="0 0 20 24" fill="none">
-  <path d="M19 10C19 17 10 23 10 23C10 23 1 17 1 10C1 7.61305 1.94821 5.32387 3.63604 3.63604C5.32387 1.94821 7.61305 1 10 1C12.3869 1 14.6761 1.94821 16.364 3.63604C18.0518 5.32387 19 7.61305 19 10Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-  <path d="M10 13C11.6569 13 13 11.6569 13 10C13 8.34315 11.6569 7 10 7C8.34315 7 7 8.34315 7 10C7 11.6569 8.34315 13 10 13Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>
-                  </div>
-                  <div className="about-timing-cards-text">
-                    <h4>Washington, D.C., DC,USA</h4>
-                    <p>Our Location</p>
-                  </div>
-                </div>
-              </div>
-              <div className="col-md-3">
+              <div className="col-md-4">
                 <div className="about-timing-cards">
                   <div className="about-timing-cards-icon">
                   <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" viewBox="0 0 23 23" fill="none">
@@ -63,9 +66,12 @@ const AboutTiming = () => {
 </svg>
                   </div>
                   <div className="about-timing-cards-text">
-                    <h4>+0123 456 7891</h4>
+                    <h4>
+                      <a href="tel:+91-8088248901">+91-8088248901</a>
+                    </h4>
                     <p>Phone Number</p>
                   </div>
+               
                 </div>
               </div>
             </div>

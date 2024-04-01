@@ -127,7 +127,7 @@ const ContactForm = () => {
            </div>
            <div className="col-md-6">
          <div className="contact-button">
-         <Button onClick={(e) => handleSubmit(e)} type="primary" block>Final Checkout</Button>
+         <Button onClick={(e) => handleSubmit(e)} type="primary" block>Submit</Button>
          </div>
            </div>
           </Form>

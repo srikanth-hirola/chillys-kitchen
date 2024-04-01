@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 // eslint-disable-next-line no-unused-vars
 import React from 'react'
 import {
@@ -62,8 +63,8 @@ const Footer = () => {
                     </div>
                   </div>
                 </div>
-                  {OtherFooterContent && OtherFooterContent?.map((col) => (
-                <div className="col-md-2 col-sm-6">
+                  {OtherFooterContent && OtherFooterContent?.map((col , i) => (
+                <div className="col-md-2 col-sm-6" key={i}>
                     <div className="footer-logo-sec-one">
                     <h2>{col?.heading}</h2>
                     <ul>
@@ -81,9 +82,24 @@ const Footer = () => {
                     <div key={i===1} className="footer-logo-sec-two">
                     <h2>{col?.heading}</h2>
                     <ul>
-                      {col?.items?.map((item, a) => (
-                        <li key={a}>
-                        <Link to={item?.url}>{item?.text}</Link>
+                      <li>
+                        <Link  to='/cart' >Cart</Link>
+                      </li>
+                      <li>
+                        <Link  to='/wishlist'>Wishlist</Link>
+                      </li>
+
+                      <li>
+                        <Link  to='/terms-and-conditions'>T&C</Link>
+                      </li>
+                      <li>
+                        <Link  to='/refund-policy'>Refund Policy</Link>
+                      </li>
+                      <li>
+                        <Link  to='/privacy-policy'>Privacy Policy</Link>
+                      </li>
+                      <li>
+                        <Link  to='/contact-us'>Contact</Link>
                       </li>
                       ))}
                     </ul>

@@ -1,5 +1,7 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const Services = ({serviceContent}) => {
   return (
@@ -16,7 +18,7 @@ const Services = ({serviceContent}) => {
                 <div className="home-services-cards">
                     <div className="row">
                         {serviceContent && serviceContent?.serviceCards?.map((servicecards, i) => (
-                             <div className="col-md-4">
+                             <div className="col-md-4" key={i}>
                              <div className="home-services-sec-card">
                                  <div className="home-services-sec-card-img">
                                      <img src={servicecards?.image?.url} alt="" />

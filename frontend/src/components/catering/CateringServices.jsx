@@ -22,7 +22,8 @@ const CateringServices = () => {
               </div>
               <div className="row">
                 <div className="col-md-3">
-                  <div className="services-section-cards">
+                 <Link to='/catering'>
+                 <div className="services-section-cards">
                     <div className="services-section-cards-img">
                       <img src="/images/home/wedding.svg" alt="" />
                     </div>
@@ -34,9 +35,11 @@ const CateringServices = () => {
                       <Link to="">Read More</Link>
                     </div>
                   </div>
+                 </Link>
                 </div>
                 <div className="col-md-3">
-                  <div className="services-section-cards">
+                <Link to='/catering'>
+                <div className="services-section-cards">
                     <div className="services-section-cards-img">
                       <img src="/images/home/corporate.svg" alt="" />
                     </div>
@@ -48,9 +51,11 @@ const CateringServices = () => {
                       <Link to="">Read More</Link>
                     </div>
                   </div>
+                </Link>
                 </div>
                 <div className="col-md-3">
-                  <div className="services-section-cards">
+                 <Link to='/catering'>
+                 <div className="services-section-cards">
                     <div className="services-section-cards-img">
                       <img src="/images/home/cocktail.svg" alt="" />
                     </div>
@@ -62,9 +67,11 @@ const CateringServices = () => {
                       <Link to="">Read More</Link>
                     </div>
                   </div>
+                 </Link>
                 </div>
                 <div className="col-md-3">
-                  <div className="services-section-cards">
+                 <Link to='/catering'>
+                 <div className="services-section-cards">
                     <div className="services-section-cards-img">
                       <img src="/images/home/bento.svg" alt="" />
                     </div>
@@ -76,8 +83,10 @@ const CateringServices = () => {
                       <Link to="">Read More</Link>
                     </div>
                   </div>
+                 </Link>
                 </div>
                 <div className="col-md-3">
+                  <Link to='/catering'>
                   <div className="services-section-cards">
                     <div className="services-section-cards-img">
                       <img src="/images/home/buffet.svg" alt="" />
@@ -90,9 +99,11 @@ const CateringServices = () => {
                       <Link to="">Read More</Link>
                     </div>
                   </div>
+                  </Link>
                 </div>
                 <div className="col-md-3">
-                  <div className="services-section-cards">
+                 <Link to='/catering'>
+                 <div className="services-section-cards">
                     <div className="services-section-cards-img">
                       <img src="/images/home/sit-down.svg" alt="" />
                     </div>
@@ -104,9 +115,11 @@ const CateringServices = () => {
                       <Link to="">Read More</Link>
                     </div>
                   </div>
+                 </Link>
                 </div>
                 <div className="col-md-3">
-                  <div className="services-section-cards">
+                 <Link to='/catering'>
+                 <div className="services-section-cards">
                     <div className="services-section-cards-img">
                       <img src="/images/home/home.svg" alt="" />
                     </div>
@@ -118,8 +131,10 @@ const CateringServices = () => {
                       <Link to="">Read More</Link>
                     </div>
                   </div>
+                 </Link>
                 </div>
                 <div className="col-md-3">
+                  <Link to='/catering'>
                   <div className="services-section-cards">
                     <div className="services-section-cards-img">
                       <img src="/images/home/pub.svg" alt="" />
@@ -132,6 +147,7 @@ const CateringServices = () => {
                       <Link to="">Read More</Link>
                     </div>
                   </div>
+                  </Link>
                 </div>
               </div>
               <div className="scribe-two">

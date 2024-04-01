@@ -68,6 +68,7 @@ import UserSingleOrderDetails from "./pages/user/UserSingleOrderDetails.jsx";
 import CollabarationImagesConfig from "./components/siteconfig/CollabarationImagesConfig.jsx";
 import FooterConfig from "./components/siteconfig/FooterConfig.jsx";
 import Testimonials from "./components/siteconfig/Testimonials.jsx";
+import Services from "./pages/Services.jsx";
 
 function App() {
   const [stripeApikey, setStripeApiKey] = useState("");
@@ -415,6 +416,9 @@ function App() {
         <Route exact path="/" element={<Home />} />
         <Route exact path="/about" element={<About />} />
         <Route exact path="/menu" element={<Menu />} />
+        <Route exact path="/services" element={<Services 
+          title="Services"
+        />} />
         <Route exact path="/catering" element={<CateringMain />} />
         <Route exact path="/book-table" element={<BookTable />} />
         <Route exact path="/blogs" element={<Blog />} />
