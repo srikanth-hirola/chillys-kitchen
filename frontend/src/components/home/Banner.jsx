@@ -1,33 +1,46 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 import React from 'react'
+import { Link } from 'react-router-dom';
 
-const Banner = () => {
+const Banner = ({bannerContent}) => {
     return (
         <>
             <div className="home-banner-sec" id='banner-sec'>
-                <div className="home-banner-sec-sub" style={{ backgroundImage: `url(images/home/banner.webp)` }}>
+                <div className="home-banner-sec-sub" style={{ backgroundImage: `url(${bannerContent?.BannerBackgroundImage?.image?.url})` }}>
                     <div className="container">
                         <div className="row align-items-center">
                             <div className="col-md-6">
                                 <div className="banner-text">
                                     <div className="banner-title">
-                                        <strong>Best In Cafes</strong>
-                                        <h1>Mom&apos;s  Food Is The Best<br />
-                                            <strong>We Cook </strong> With The Same Care</h1>
+                                        {bannerContent && 
+                                        <strong>{bannerContent?.title}</strong>
+                                        }
+                                        {bannerContent && 
+                                        <h1>{bannerContent?.subTitle}<br />
+                                            {/* <strong>Chicken</strong> Chopped Salad */}
+                                            </h1>
+                                        }
                                     </div>
                                     <div className="banner-description">
-                                        <p>Discover delectable cuisine and unforgettable moments in our welcoming, culinary haven.</p>
+                                        {bannerContent && 
+                                        <p>{bannerContent?.description}</p>
+                                        }
                                     </div>
+                                    {bannerContent && 
                                     <div className="banner-actions">
-                                        <button className="banner-action-one">Book A Table </button>
-                                        <button className="banner-action-two">Explore Menu </button>
+                                        <Link to={bannerContent?.buttonOneLink} className="banner-action-one">{bannerContent?.buttonOneText} </Link>
+                                        <Link to={bannerContent?.buttonTwoLink} className="banner-action-two">{bannerContent?.buttonTwoText}</Link>
                                     </div>
+                                    }
                                 </div>
                             </div>
                             <div className="col-md-6">
+                                {bannerContent && 
                                 <div className="banner-img">
-                                    <img src="images/home/baner1.png" alt="" />
+                                    <img src={bannerContent?.BannerMainImage?.image?.url} alt="" />
                                 </div>
+                                }
                             </div>
                         </div>
                     </div>

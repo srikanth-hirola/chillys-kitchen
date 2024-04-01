@@ -1,11 +1,13 @@
 import { Select } from "antd";
 const { Option } = Select;
 import PropTypes from 'prop-types'
+import { useState } from "react";
 
 const VarientSelect = ({ data, setSelectedColor, setCount, setLimited, selectedColor }) => {
 
     const handleOptionChange = (value) => {
-        const option = data?.colorInputs?.find(opt => opt._id === parseInt(value));
+        const option = data?.colorInputs?.find(opt => opt._id === value);
+        console.log("option", option)
         if (option) {
             setSelectedColor(option);
             setCount(1);
@@ -28,8 +30,9 @@ const VarientSelect = ({ data, setSelectedColor, setCount, setLimited, selectedC
                         <div className="variation-product" >
                             <div className="var-title"><h3>{selectedColor?.imageColor
                             }</h3></div>
-                            <div className="var-price"><p><strong>Price:</strong> {selectedColor.price}</p></div>
-                            <div className="var-desc"><p><strong>Description:</strong> {selectedColor.description}</p></div>
+                            <div className="var-price"><p><strong>Original Price:</strong> {selectedColor.originalPrice}</p></div>
+                            <div className="var-price"><p><strong>Discount Price:</strong> {selectedColor.discountPrice}</p></div>
+                            {/* <div className="var-desc"><p><strong>Description:</strong> {selectedColor.description}</p></div> */}
                         </div>
                     )}
                 </div>

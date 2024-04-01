@@ -143,6 +143,13 @@ import { Badge, Dropdown, Menu, Drawer } from 'antd';
 import { useSelector } from 'react-redux';
 
 const Navbar = () => {
+
+  const { success, error, siteConfigData } = useSelector(
+    (state) => state.siteConfig
+  );
+
+  const navbardata = siteConfigData.headerContent;
+
   const [isScrolled, setIsScrolled] = useState(false);
   const [categories, setCategories] = useState([]);
   const [drawerVisible, setDrawerVisible] = useState(false);
@@ -213,33 +220,20 @@ const Navbar = () => {
           <div className="container">
             <div className="row align-items-center">
               <div className="col-md-3">
+                {navbardata && 
                 <div className="logo-sec">
-                  <img src="/images/logo.png" alt="" />
+                  <img src={navbardata?.headerLogo?.image?.url} alt="" />
                 </div>
+                }
               </div>
               <div className="col-md-9">
                 <div className="header-menu">
-                  <ul className="desktop-menu"> {/* Add a class for desktop menu */}
-                    <li>
-                      <Link to="/">Home</Link>
+                  <ul>
+                    {navbardata && navbardata?.navItems?.map((navitems, i) => (
+                      <li key={i}>
+                      <Link to={navitems?.link}>{navitems?.title}</Link>
                     </li>
-                    <li>
-                      <Link to="/about">About</Link>
-                    </li>
-                    <li>
-                      <Dropdown overlay={menu} placement="bottomLeft">
-                        <Link to="/services">Services</Link>
-                      </Dropdown>
-                    </li>
-                    <li>
-                      <Link to="/catering">Catering</Link>
-                    </li>
-                    <li>
-                      <Link to="/blog">Blog</Link>
-                    </li>
-                    <li>
-                      <Link to="/contact-us">Contact</Link>
-                    </li>
+                    ))}
                     <li>
                       <Link to="/cart">
                         <Badge count={cart?.length ?? 0}>
@@ -255,9 +249,11 @@ const Navbar = () => {
                       </Link>
                     </li>
                     <li>
+                      {navbardata && 
                       <span>
-                        <a href="tel:+91 9874563210">+91 9874563210</a>
+                        <a href={`tel:${navbardata.phonenumber}`}>{navbardata.phonenumber}</a>
                       </span>
+                      }
                     </li>
                     <li>
                       <span>
