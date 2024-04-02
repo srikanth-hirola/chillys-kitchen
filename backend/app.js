@@ -16,6 +16,7 @@ const allowedOrigins = [
   'https://chilles.netlify.app',
   'http://13.233.179.100:8001',
   'http://localhost:3000',
+  'https://sirenscoop.in',
 ];
 
 
