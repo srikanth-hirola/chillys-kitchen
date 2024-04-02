@@ -1,13 +1,8 @@
 const app = require("./app");
 const connectDatabase = require("./db/Database");
 const cloudinary = require("cloudinary");
-var http = require('http');
-var server = http.createServer(function (request, response) {
-  if (request.url === '/') {
-    response.setHeader('Content-Type', 'text/html');
-    response.end('<strong>obligatory bear!</strong>');
-  }
-});
+
+
 // Handling uncaught Exception
 process.on("uncaughtException", (err) => {
   console.log(`Error: ${err.message}`);
@@ -33,12 +28,12 @@ cloudinary.config({
 server.listen(8000, function () {
   console.log('Im listening on port 8000');
 });
-// create server
-// const server = app.listen(process.env.PORT, () => {
-//   console.log(
-//     `Server is running on http://localhost:${process.env.PORT}`
-//   );
-// });
+create server
+const server = app.listen(process.env.PORT, () => {
+  console.log(
+    `Server is running on http://localhost:${process.env.PORT}`
+  );
+});
 
 // unhandled promise rejection
 process.on("unhandledRejection", (err) => {
