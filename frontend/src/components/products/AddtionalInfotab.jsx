@@ -1,7 +1,8 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 import React from "react";
 
-const AddtionalInfoTab = () => {
+const AddtionalInfoTab = ({productData}) => {
     const data = [
         { title: 'Title 1', value: 'Value 1' },
         { title: 'Title 2', value: 'Value 2' },
@@ -34,12 +35,16 @@ const AddtionalInfoTab = () => {
                 <div className="value">Value</div>
             </div>
             <div className="list">
-                {data.map((item, index) => (
+                {
+                  productData && productData.length>0 && productData.map((data)=>(
+                    data.specs.map((item, index) => (
                     <div key={index} className="list-item">
-                        <div className="title">{item.title}</div>
+                        <div className="title">{item.key}</div>
                         <div className="value">{item.value}</div>
                     </div>
-                ))}
+                ))
+                  ))
+                }
             </div>
         </div>
         </div>

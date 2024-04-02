@@ -34,7 +34,7 @@ const Blog = () => {
           <div className="container">
             <div className="blog-home-title">
               <h2>Our Blog & Articles</h2>
-              <button>Read All Services</button>
+              <Link to='/blogs'>Read All Services</Link>
             </div>
             <div className="row">
               <div className="col-md-6">
@@ -55,7 +55,7 @@ const Blog = () => {
               </div>
               <div className="col-md-6">
                 <div className="row">
-                  {blogData.slice(1).map((blog, index) => (
+                  {blogData.slice(2).map((blog, index) => (
                     <div key={index} className="col-md-6">
                       <div className="blog-card-home">
                         <Link to={`/blog/${blog.slug}`}>

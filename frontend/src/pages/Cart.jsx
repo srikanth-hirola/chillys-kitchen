@@ -51,7 +51,7 @@ const Cart = () => {
             <Navbar />
             <div className="cart-page">
                 <div className="cart-page-sec">
-                    <div className="container">
+                    <div className="container-lg container-xl container-xxl">
                         <div className="cart-title">
                             <h3>Cart</h3>
                         </div>

@@ -4,7 +4,7 @@ const useAPI = () => {
 
     const postApi = async ({ endpoint, postData }) => {
         try {
-            let { data } = await axios.post(`http://13.233.179.100:8001${endpoint}`, postData);
+            let { data } = await axios.post(`https://chillys-kitchen-4.onrender.com${endpoint}`, postData);
             return { data: data }
         } catch (error) {
             return { error: error }
@@ -13,7 +13,7 @@ const useAPI = () => {
 
     const putApi = async ({ endpoint, postData }) => {
         try {
-            let { data } = await axios.put(`http://13.233.179.100:8001${endpoint}`, postData);
+            let { data } = await axios.put(`https://chillys-kitchen-4.onrender.com${endpoint}`, postData);
             return { data: data }
         } catch (error) {
             return { error: error }
@@ -22,7 +22,7 @@ const useAPI = () => {
 
     const deleteApi = async ({ endpoint, postData }) => {
         try {
-            let { data } = await axios.delete(`http://13.233.179.100:8001${endpoint}`, postData);
+            let { data } = await axios.delete(`https://chillys-kitchen-4.onrender.com${endpoint}`, postData);
             return { data: data }
         } catch (error) {
             return { error: error }
@@ -31,7 +31,7 @@ const useAPI = () => {
 
     const getApi = async ({ endpoint }) => {
         try {
-            let { data } = await axios.get(`http://13.233.179.100:8001${endpoint}`);
+            let { data } = await axios.get(`https://chillys-kitchen-4.onrender.com${endpoint}`);
             return { data: data }
         } catch (error) {
             return { error: error }

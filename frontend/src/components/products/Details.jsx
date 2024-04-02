@@ -35,9 +35,11 @@ const Details = ({ productData, selectedColor, soldOut, limited, getOriginalPric
             <p>{productData?.description}</p>
           </div>
           <VarientSelect data={productData} setCount={setCount} setLimited={setLimited} setMainImage={setMainImg} selectedColor={selectedColor} setSelectedColor={setSelectedColor} key={3} />
-          <Counter count={count} incrementCount={incrementCount} decrementCount={decrementCount} />
+         <div className="cart-main">
+         <Counter count={count} incrementCount={incrementCount} decrementCount={decrementCount} />
           <AddToCart addToCart={addToCartHandler} id={productData?._id} />
           <WishList data={productData} click={click} setClick={setClick} />
+         </div>
           </div>
         </div>
      

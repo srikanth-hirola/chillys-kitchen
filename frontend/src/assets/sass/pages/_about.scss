@@ -80,13 +80,13 @@
       width: 100%;
       h2 {
         color: #000;
-        font-size: 65px;
+        font-size: 47px;
         font-style: normal;
         font-weight: 500;
-        line-height: 78px;
-        width: 81%;
+        line-height: 63px;
+        width: 100%;
         padding-bottom: 30px;
-        padding-top: 30px;
+        padding-top: 70px;
       }
       p {
         color: #000;
@@ -489,7 +489,7 @@ ul.about-new-list {}
 }
 
 .catering-services {
-  padding: 80px 0px 0px;
+  padding: 40px 0px 0px;
 }
 
 .about-timing .about-timing-sub {
@@ -521,6 +521,9 @@ ul.about-new-list {}
 }
 .about-sec-two .about-sec-two-sub-text-one p{
   padding-top: 18px;
+}
+.about-new .about-new-image-sec{
+  padding: 0px 0px 20px;
 }
  }
 
@@ -572,7 +575,7 @@ ul.about-new-list {}
 }
 .services-section {
   .col-md-3{
-    width: 48%;
+    width: 49%;
   }
 }
 .about-new .about-new-text h3 {
@@ -630,3 +633,28 @@ ul.about-new-list {}
   display: none;
 }
  }
+@media screen and (min-width:992px) and (max-width:1200px){
+  .catering-services .services-section-cards .services-section-cards-text h5 {
+    color: #212529;
+    text-align: center;
+    font-family: Poppins;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 21.6px;
+    text-transform: capitalize;
+    padding: 24px 0px 10px;
+}
+.catering-services {
+  padding: 40px 0px;
+  background: #fff9f7;
+}
+.services-section {
+  .col-md-3{
+    width: 49%;
+  }
+}
+.catering-main .catering-form .catering-form-sub{
+  padding-bottom: 0;
+}
+}

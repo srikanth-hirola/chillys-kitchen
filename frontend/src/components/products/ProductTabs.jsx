@@ -20,7 +20,7 @@ function Producttabs({ productData }) {
     return (
         <div className="product-tabs">
             <div className="product-tabs-sec">
-                <div className="container">
+                <div className="container-lg container-xl container-xxl ">
                     <Tabs activeKey={activeTab} onChange={handleTabChange}>
                         <TabPane tab="Description" key="description">
                             <ProductDescriptionTab description={productData?.description} />

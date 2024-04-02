@@ -16,7 +16,7 @@ const Delivery = ({ deliverySectionContent }) => {
               <div className="col-md-8">
                 <div className="home-delivery-img-sec">
                   <div className="row">
-                    <div className="col-md-8">
+                    <div className="col-md-7">
                       {deliverySectionContent && (
                         <div className="home-delivery-img-sec-img-one">
                           <img
@@ -27,7 +27,7 @@ const Delivery = ({ deliverySectionContent }) => {
                       )}
                     </div>
                     {deliverySectionContent && (
-                      <div className="col-md-4">
+                      <div className="col-md-5">
                         <div className="home-delivery-img-sec-img-two">
                           <img
                             src={
@@ -62,7 +62,9 @@ const Delivery = ({ deliverySectionContent }) => {
                       {deliverySectionContent &&  deliverySectionContent?.deliveryLists?.map((lists, i) => (
                         <li key={i}>
                         <span>
-                          <img src={lists?.image?.url} alt="" />
+                         <div className="del-img">
+                         <img src={lists?.image?.url} alt="" />
+                         </div>
                         </span>
                         <p>{lists?.text}</p>
                       </li>

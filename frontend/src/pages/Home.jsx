@@ -58,7 +58,7 @@ const Home = () => {
       <Testimonal testimonialsContent={testimonialsContent} />
       <HomeLogo clientImages={clientImages} />
       <Blog blogData={blogData} />
-      <NewsLetterInput />
+      {/* <NewsLetterInput /> */}
       <Footer />
     </>
   )

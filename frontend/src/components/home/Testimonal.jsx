@@ -17,7 +17,7 @@ export default function Testimonal({ testimonialsContent }) {
           <div className="title-testimonal">
             {testimonialsContent && <h3>{testimonialsContent?.title}</h3>}
           </div>
-          <Swiper
+        <Swiper
             slidesPerView={3}
             spaceBetween={30}
             freeMode={true}
@@ -28,6 +28,25 @@ export default function Testimonal({ testimonialsContent }) {
               delay: 200,
             }}
             modules={[FreeMode]}
+            breakpoints={{
+            // when window width is >= 768px
+            320: {
+              slidesPerView: 1,
+            },
+            480: {
+              slidesPerView: 1,
+            },
+            768: {
+              slidesPerView: 1,
+            },
+            // when window width is >= 992px
+            992: {
+              slidesPerView: 2,
+            },
+            1200: {
+              slidesPerView: 2,
+            },
+          }}
             className="mySwiper"
           >
             {testimonialsContent &&

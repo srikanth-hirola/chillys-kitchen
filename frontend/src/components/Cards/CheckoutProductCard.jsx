@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 import { getPublishedProducts } from '../../redux/actions/product';
-import { message } from 'antd';
+// import { message } from 'antd';
 import toast from 'react-hot-toast';
 
 const CheckoutProductCard = ({ data1, quantityChangeHandler,
@@ -115,7 +115,7 @@ const CheckoutProductCard = ({ data1, quantityChangeHandler,
     };
 
     return (
-        <div className="order-items row">
+        <div className="order-items row align-items-center">
             <div className="order-item col-md-6">
                 <div className="item-image">
                     <img src={`${dataFound?.selectedColor?.mainImage?.url ? dataFound?.selectedColor?.mainImage?.url : dataFound?.selectedColor?.image?.url}`} alt="Item" />

@@ -14,12 +14,30 @@ const OurMenu = () => {
   const [displayedProducts, setDisplayedProducts] = useState([]);
   const { getApi } = useAPI();
 
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     try {
+  //       const subCategoriesResponse = await getApi({ endpoint: '/api/v2/category/get-all-sub-categories' });
+  //       setSubCategories(subCategoriesResponse.data.categories);
+
+  //       const productsResponse = await getApi({ endpoint: '/api/v2/product/get-published-products' });
+  //       const allProducts = productsResponse.data.products;
+  //       setAllProducts(allProducts);
+  //       setInitiallySlicedProducts(allProducts.slice(0, 8)); // Set initial displayed products
+  //       setDisplayedProducts(allProducts.slice(0, 8));  // Set initially sliced products as displayed initially
+  //     } catch (error) {
+  //       console.log(error);
+  //     }
+  //   };
+
+  //   fetchData();
+  // }, []);
   useEffect(() => {
     const fetchData = async () => {
       try {
         const subCategoriesResponse = await getApi({ endpoint: '/api/v2/category/get-all-sub-categories' });
         setSubCategories(subCategoriesResponse.data.categories);
-
+  
         const productsResponse = await getApi({ endpoint: '/api/v2/product/get-published-products' });
         const allProducts = productsResponse.data.products;
         setAllProducts(allProducts);
@@ -29,18 +47,28 @@ const OurMenu = () => {
         console.log(error);
       }
     };
-
+  
     fetchData();
   }, []);
+  
 
+  // const handleTabChange = (key) => {
+  //   if (key === "all") {
+  //     setDisplayedProducts(initiallySlicedProducts); // Display initially sliced products in the "All" tab
+  //   } else {
+  //     const filteredProducts = products.filter((product) => product.subCategory === key);
+  //     setDisplayedProducts(filteredProducts); // Update displayed products based on the selected subcategory
+  //   }
+  // };
   const handleTabChange = (key) => {
-    if (key === "all") {
+    if (key.toLowerCase() === "all") {
       setDisplayedProducts(initiallySlicedProducts); // Display initially sliced products in the "All" tab
     } else {
       const filteredProducts = products.filter((product) => product.subCategory === key);
       setDisplayedProducts(filteredProducts); // Update displayed products based on the selected subcategory
     }
   };
+  
 
   return (
     <div className="our-menu">

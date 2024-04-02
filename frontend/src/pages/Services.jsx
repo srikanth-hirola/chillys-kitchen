@@ -20,8 +20,8 @@ const Services = ({ title }) => {
             <div className="services-sub">
                 <div className="container">
 <div className="services-main-title">
-<h2>Lorem, ipsum dolor.</h2>
-                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Blanditiis beatae quos placeat quidem dolorem sit eaque voluptate, sint illo quasi doloribus culpa a asperiores provident!</p>
+<h2>Epicurean Elegance: Chilly&apos;s Culinary Collective</h2>
+                <p>Experience culinary excellence with Chilly's Kitchen: cloud kitchen creations, bespoke catering for any occasion, and tailored corporate meal solutions. Elevate every meal into an unforgettable epicurean adventure. </p>
 </div>
                     <div className="row">
                         <div className="col-md-4">
@@ -34,7 +34,7 @@ const Services = ({ title }) => {
                                     <div className="title">
                                         <h3>Catering</h3>
                                     </div>
-                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore illo sit consectetur soluta, recusandae laborum ipsum perspiciatis corporis maiores harum!</p>
+                                    <p>Celebrate life's moments with Chilly's bespoke catering—where every dish is a masterpiece and every event is a cherished memory. Let us elevate your occasion with unparalleled culinary delights</p>
                                 </div>
                               </Link>
                             </div>
@@ -49,7 +49,7 @@ const Services = ({ title }) => {
                                     <div className="title">
                                         <h3>Cloud Kitchen</h3>
                                     </div>
-                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore illo sit consectetur soluta, recusandae laborum ipsum perspiciatis corporis maiores harum!</p>
+                                    <p>Indulge in our cloud kitchen delights—crafted with passion and delivered with care. From comforting classics to exotic flavors, savor culinary excellence at your doorstep</p>
                                 </div>
                               </Link>
                             </div>
@@ -63,7 +63,7 @@ const Services = ({ title }) => {
                                     <div className="title">
                                         <h3>Corporate Meals</h3>
                                     </div>
-                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore illo sit consectetur soluta, recusandae laborum ipsum perspiciatis corporis maiores harum!</p>
+                                    <p>Fuel success with Chilly's corporate meal solutions—designed to nourish minds and inspire productivity. From boardroom meetings to company-wide events, we cater to your team's unique tastes and preferences.</p>
                                 </div>
                               </Link>
                             </div>

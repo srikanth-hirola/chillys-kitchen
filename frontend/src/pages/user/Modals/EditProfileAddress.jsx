@@ -103,7 +103,7 @@ const EditProfileAddress = ({ open, setOpen }) => {
     //       const fetchEditProfileAddress = async () => {
     //         try {
     //           const response = await axios.get(
-    //             `http://localhost:8000/api/BankDeatils/transactions/${editProfileAddress}`
+    //             `http://localhost:8000//api/BankDeatils/transactions/${editProfileAddress}`
     //           );
     //           setTransactions(response.data);
     //         } catch (error) {

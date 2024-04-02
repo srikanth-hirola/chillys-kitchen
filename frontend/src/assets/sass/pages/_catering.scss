@@ -555,6 +555,7 @@ padding: 40px 60px;
 
 
 @media screen and (max-width:767px){
+  
     .catering-main .catering-banner-sec strong {
         font-size: 36px;
       
@@ -615,12 +616,19 @@ padding: 40px 60px;
     }
     
     .catering-counter .col {flex-grow: 1;}
+
 }
 @media screen and (min-width:767px) and (max-width:992px){
     .catering-main .catering-banner-sec strong {
         font-size: 36px;
       
         line-height: 44px;
+    }
+    .catering-main {
+        margin: 20px 0px 0px;
+        .services-section{
+            justify-content: space-between;
+        }
     }
     .catering-counter{
         .col-md-6{
