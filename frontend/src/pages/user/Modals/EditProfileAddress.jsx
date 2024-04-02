@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { useState, useEffect } from 'react';
 import { Form, Input, Checkbox, Modal } from "antd";
 // import { Country, State, City } from 'country-state-city';
@@ -103,7 +104,7 @@ const EditProfileAddress = ({ open, setOpen }) => {
     //       const fetchEditProfileAddress = async () => {
     //         try {
     //           const response = await axios.get(
-    //             `http://localhost:8000//api/BankDeatils/transactions/${editProfileAddress}`
+    //             `http://13.233.179.100:8001/api/BankDeatils/transactions/${editProfileAddress}`
     //           );
     //           setTransactions(response.data);
     //         } catch (error) {

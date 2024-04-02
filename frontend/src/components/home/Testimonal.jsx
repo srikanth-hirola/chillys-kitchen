@@ -27,6 +27,7 @@ export default function Testimonal({ testimonialsContent }) {
             autoplay={{
               delay: 200,
             }}
+            loop={true}
             modules={[FreeMode]}
             breakpoints={{
             // when window width is >= 768px

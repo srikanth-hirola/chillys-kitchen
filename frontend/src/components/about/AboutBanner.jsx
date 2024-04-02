@@ -28,7 +28,7 @@ const AboutBanner = () => {
                 <div className="about-banner-text-bg"></div>
                   <div className="row">
                     <div className="col-md-6">
-                   <Link to='/menu?category=Cloud%20Kitchen&subcat=Indian%20Breads&product=palak-roti'>
+                   <Link to='/menu?category=Cloud%20Kitchen&subcat=Starters&product=chicken-65'>
                    <div className="about-banner-cards">
                       <div className="about-banner-cards-image">
                       <img src="/images/home/ab-banner-1.png" alt="" />
@@ -42,40 +42,46 @@ const AboutBanner = () => {
                    </Link>
                     </div>
                     <div className="col-md-6">
+                    <Link to='/menu?category=Cloud%20Kitchen&subcat=Gravy&product=dal-tadka'>
                     <div className="about-banner-cards">
                       <div className="about-banner-cards-image">
                         <img src="/images/home/ab-banner-2.png" alt="" />
                       </div>
                       <div className="about-banner-cards-text">
-                        <h4>Starters</h4>
+                        <h4>Gravy</h4>
                         <strong>Chilly Chicken</strong>
                         <p>250</p>
                       </div>
                     </div>
+                    </Link>
                     </div>
                     <div className="col-md-6">
+                    <Link to='/menu?category=Cloud%20Kitchen&subcat=Combos&product=dal-chawal-combo'>
                     <div className="about-banner-cards">
                       <div className="about-banner-cards-image">
                         <img src="/images/home/ab-banner-3.png" alt="" />
                       </div>
                       <div className="about-banner-cards-text">
-                        <h4>Starters</h4>
+                        <h4>Combos</h4>
                         <strong>Chilly Chicken</strong>
                         <p>250</p>
                       </div>
                     </div>
+                    </Link>
                     </div>
                     <div className="col-md-6">
+                    <Link to='/menu?category=Cloud%20Kitchen&subcat=Rice%20and%20Biryani&product=dal-khichdi'>
                     <div className="about-banner-cards">
                       <div className="about-banner-cards-image">
                         <img src="/images/home/ab-banner-4.png" alt="" />
                       </div>
                       <div className="about-banner-cards-text">
-                        <h4>Starters</h4>
+                        <h4>Rice & Biryani</h4>
                         <strong>Chilly Chicken</strong>
                         <p>250</p>
                       </div>
                     </div>
+                    </Link>
                     </div>
                   </div>
                 </div>

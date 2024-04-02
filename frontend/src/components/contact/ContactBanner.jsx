@@ -32,7 +32,7 @@ const ContactBanner = () => {
                     />
                   </svg>
                 </span>
-                +1012 3456 789
+                <a href="tel:+91-8088248901">+91-8088248901</a>
               </li>
               <li>
                 <span>
@@ -49,7 +49,7 @@ const ContactBanner = () => {
                     />
                   </svg>
                 </span>
-                demo@gmail.com
+                <a href="mailto:support@chillykitchen.com">support@chillykitchen.com</a>
               </li>
               <li>
                 <span>

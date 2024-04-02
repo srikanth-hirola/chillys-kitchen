@@ -7,7 +7,7 @@ const ProductDescriptionTab = ({description}) => {
     <>
       <div className="product-description">
       <div className="product-description-sec">
-      <h4>Lorem Ipsum is simply dummy text</h4>
+      <h4>Description</h4>
         <p>{description}</p>
 
       </div>

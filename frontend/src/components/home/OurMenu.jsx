@@ -131,7 +131,7 @@ const OurMenu = () => {
                 </div>
               </div>
             </TabPane>
-            {subCategories.map((category) => (
+            {subCategories.slice(0,4).map((category) => (
               <TabPane
                 tab={
                   <div

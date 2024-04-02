@@ -222,7 +222,9 @@ const Navbar = () => {
               <div className="col-md-3">
                 {navbardata && 
                 <div className="logo-sec">
+                  <Link to='/'>
                   <img src={navbardata?.headerLogo?.image?.url} alt="" />
+                  </Link>
                 </div>
                 }
               </div>
