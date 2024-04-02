@@ -1,7 +1,13 @@
 const app = require("./app");
 const connectDatabase = require("./db/Database");
 const cloudinary = require("cloudinary");
-
+var http = require('http');
+var server = http.createServer(function (request, response) {
+  if (request.url === '/') {
+    response.setHeader('Content-Type', 'text/html');
+    response.end('<strong>obligatory bear!</strong>');
+  }
+});
 // Handling uncaught Exception
 process.on("uncaughtException", (err) => {
   console.log(`Error: ${err.message}`);
