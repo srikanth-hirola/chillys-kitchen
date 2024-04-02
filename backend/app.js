@@ -11,11 +11,11 @@ const compression = require('compression')
 app.use(compression())
 
 const allowedOrigins = [
-  'http://localhost:5173',
+ 'http://localhost:5173',
   'https://chillykitchen.netlify.com',
-  'https://chilles.netlify.app/',
-  'http://13.233.179.100:8001/'
-];
+  'https://chilles.netlify.app',
+  'http://13.233.179.100:8001',
+  'http://localhost:3000'];
 
 
 app.use(
