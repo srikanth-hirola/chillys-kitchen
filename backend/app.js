@@ -15,7 +15,8 @@ const allowedOrigins = [
   'https://chillykitchen.netlify.com',
   'https://chilles.netlify.app',
   'http://13.233.179.100:8001',
-  'http://localhost:3000'];
+  'http://localhost:3000',
+];
 
 
 app.use(
