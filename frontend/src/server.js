@@ -1,6 +1,6 @@
 // export const server = 'http://13.233.179.100:8001/api/v2';
 // export const server = 'http://13.233.179.100:8001/api/v2';
-export const server = 'https://chillys-kitchen-8.onrender/api/v2';
+export const server = 'https://chillys-kitchen-10.onrender/api/v2';
 export const payPalClientId =
     'AZQAdKHjE2Gm4B0aHAqS5ltIaT45CohcoaIikO97_bBMyHFnfzvWlyh7E3d7OUUvJJZAXT509mIA2xM8';
 
