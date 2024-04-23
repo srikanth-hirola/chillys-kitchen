@@ -22,6 +22,18 @@ const allowedOrigins = [
  
 ];
 
+const corsOptions = {
+  origin: [
+    "http://localhost:5173",
+    "http://13.233.179.100:8001",
+    "http://localhost:3000",
+    "https://chillys-kitchen.vercel.app"
+  ],
+  methods: ["POST", "GET", "PUT", "DELETE"],
+  credentials: true,
+};
+
+app.use(cors(corsOptions))
 
 app.use(
   cors({
