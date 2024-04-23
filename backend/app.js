@@ -18,7 +18,8 @@ const allowedOrigins = [
   'http://localhost:3000',
   'https://sirenscoop.in',
  'https://chillys-kitchen.vercel.app',
- 'https://chillys-kitchen-10.onrender.com'
+ 'https://chillys-kitchen-10.onrender.com',
+ 'https://chillys-kitchen-0cnw.onrender.com',
  
 ];
 
